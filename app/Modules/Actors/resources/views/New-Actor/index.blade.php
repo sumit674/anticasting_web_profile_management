@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en" class="no-js">
+
 <head>
     <meta charset="UTF-8">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
@@ -216,7 +217,7 @@
                                                                     @php
                                                                         $selectedStates = [];
                                                                         if (isset(request()->filter_model_ethnicity_2d7fb)) {
-                                                                            $selectedStates = explode("||", request()->filter_model_ethnicity_2d7fb);
+                                                                            $selectedStates = explode('||', request()->filter_model_ethnicity_2d7fb);
                                                                         }
                                                                     @endphp
                                                                     @foreach ($state as $item)
@@ -238,17 +239,23 @@
                                                                 tabindex="-1" aria-hidden="true"
                                                                 data-select2-id="gender">
                                                                 <option data-select2-id="20"></option>
+                                                                @php
+                                                                    $selectedGender = [];
+                                                                    if (isset(request()->filter_gender_2d7fb)) {
+                                                                        $selectedGender = explode('||', request()->filter_gender_2d7fb);
+                                                                    }
+                                                                @endphp
                                                                 <option value='Male' data-value_label="Male"
-                                                                    @if (isset(request()->gender) && in_array('Male', old('gender', request()->gender))) selected @endif>
+                                                                    @if (isset($selectedGender) && in_array('Male', $selectedGender)) selected @endif>
                                                                     Male
                                                                 </option>
                                                                 <option value='Female' data-value_label="Female"
-                                                                    @if (isset(request()->gender) && in_array('Female', old('gender', request()->gender))) selected @endif>
+                                                                    @if (isset($selectedGender) && in_array('Female', $selectedGender)) selected @endif>
                                                                     Female
                                                                 </option>
                                                                 <option value='prefernottosay'
-                                                                    data-value_label="Female"
-                                                                    @if (isset(request()->gender) && in_array('prefernottosay', old('gender', request()->gender))) selected @endif>
+                                                                    data-value_label="prefernottosay"
+                                                                    @if (isset($selectedGender) && in_array('prefernottosay', $selectedGender)) selected @endif>
                                                                     Prefer not
                                                                     to
                                                                     say
@@ -256,12 +263,13 @@
                                                             </select>
                                                         </div>
                                                         <div class="um-search-filter um-slider-filter-type ">
+                        
                                                             <input type="hidden" id="birth_date_min"
                                                                 name="birth_date[]" class="um_range_min"
-                                                                value="14">
+                                                                value="{{old('birth_date', request()->filter_birth_date_from_2d7fb)}}">
                                                             <input type="hidden" id="birth_date_max"
                                                                 name="birth_date[]" class="um_range_max"
-                                                                value="56">
+                                                                value="{{old('birth_date', request()->filter_birth_date_to_2d7fb)}}">
                                                             <div class="um-slider ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"
                                                                 data-field_name="birth_date" data-min="0"
                                                                 data-max="56">
@@ -269,9 +277,12 @@
                                                                     style="left: 0%; width: 100%;"></div>
                                                                 <span tabindex="0"
                                                                     class="ui-slider-handle ui-corner-all ui-state-default"
-                                                                    style="left: 25%;"></span><span tabindex="0"
+                                                                    style="left: 25%;"
+                                                                    onclick="getAgeFilter()"></span><span
+                                                                    tabindex="0"
                                                                     class="ui-slider-handle ui-corner-all ui-state-default"
-                                                                    style="left: 100%;"></span>
+                                                                    style="left: 100%;"
+                                                                    onclick="getAgeFilter()"></span>
                                                                 <div class="ui-slider-range ui-corner-all ui-widget-header"
                                                                     style="left: 25%; width: 75%;"></div>
                                                             </div>
@@ -357,6 +368,30 @@
                                     type: 'GET',
                                     data: {
                                         'gender': gender,
+                                    },
+                                    //see the $_token
+                                    dataType: 'json',
+                                    success: function(data) {
+                                        console.log(data);
+                                        $("#actors_list_div").html(data.html);
+                                    },
+                                    // error:function(xhr, textStatus, thrownError) {
+                                    //     alert(xhr + "\n" + textStatus + "\n" + thrownError);
+                                    // }
+
+                                });
+                            }
+
+                            function getAgeFilter() {
+                                var url = (new URL(document.location)).searchParams;
+                                var min_age = url.get("filter_birth_date_from_2d7fb");
+                                var max_age = url.get("filter_birth_date_to_2d7fb");
+                                $.ajax({
+                                    url: "{{ route('admin.filter-actors') }}",
+                                    type: 'GET',
+                                    data: {
+                                         'min_age': min_age,
+                                         'max_age': max_age,
                                     },
                                     //see the $_token
                                     dataType: 'json',

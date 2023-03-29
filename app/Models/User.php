@@ -50,22 +50,25 @@ class User extends Authenticatable
         return $this->hasOne(IntroVideo::class, 'user_id');
     }
     public function scopeFilterAge($query)
-    {
-        if (isset($_GET['max_age']) && !empty($_GET['max_age']) && isset($_GET['min_age']) && !empty($_GET['min_age'])) {
-            $maxAge = (int) $_GET['max_age'];
-            $minAge = (int) $_GET['min_age'];
-            // prepare dates for comparison
-            // make sure to use Carbon\Carbon in the
-            // $dateOfBirth = '1990-08-17';
-            // $years = \Carbon\Carbon::parse($dateOfBirth)->age;
-            //  dd($years);
+    { 
+   
+        if ((isset(request()->min_age) || isset(request()->max_age)) && (!empty(request()->min_age) || !empty(request()->max_age))) {
+       
+            $maxAge = (int) request()->max_age;
+            $minAge = (int) request()->min_age;
+            
+            // // prepare dates for comparison
+            // // make sure to use Carbon\Carbon in the
+            // // $dateOfBirth = '1990-08-17';
+            // // $years = \Carbon\Carbon::parse($dateOfBirth)->age;
+            // //  dd($years);
             $minDate = \Carbon\Carbon::today()->subYears($maxAge);
             $maxDate = \Carbon\Carbon::today()
                 ->subYears($minAge)
                 ->endOfDay();
-            $query->whereHas('profile', function ($q) use ($minDate, $maxDate) {
-                $q->whereBetween('date_of_birth', [$minDate, $maxDate]);
-            });
+             $query->whereHas('profile', function ($q) use ($minDate,$maxDate) {
+                $q->whereBetween('date_of_birth', [$minDate,$maxDate]);
+             });
             // $query->where('ethnicity', 'like', '%'.$queryString.'%');
             // $query->whereHas('user', function ($q) use ($queryString) {
             //$q->where('name', 'like', '%' . $queryString . '%');
@@ -84,7 +87,7 @@ class User extends Authenticatable
         // }
         if (isset(request()->ethnicity) && !empty(request()->ethnicity)) {
             // $ethnicty = request()->ethnicity;
-            $ethnicity = explode("||", request()->ethnicity);
+            $ethnicity = explode('||', request()->ethnicity);
             if (is_array($ethnicity)) {
                 return $query->whereHas('profile', function ($q) use ($ethnicity) {
                     $q->whereIn('ethnicity', $ethnicity);
@@ -94,11 +97,17 @@ class User extends Authenticatable
     }
     public function scopeFilterGender($query)
     {
-        if (isset($_GET['gender']) && !empty($_GET['gender'])) {
-            $Gender = $_GET['gender'];
-            if (is_array($Gender)) {
-                return $query->whereHas('profile', function ($q) use ($Gender) {
-                    $q->whereIn('gender', $Gender);
+        if (isset(request()->gender) && !empty(request()->gender)) {
+           
+            $gender = explode('||', request()->gender);
+            // if (is_array($Gender)) {
+            //     return $query->whereHas('profile', function ($q) use ($Gender) {
+            //         $q->whereIn('gender', $Gender);
+            //     });
+            // }
+            if (is_array($gender)) {
+                return $query->whereHas('profile', function ($q) use ($gender) {
+                    $q->whereIn('gender',$gender);
                 });
             }
         }
