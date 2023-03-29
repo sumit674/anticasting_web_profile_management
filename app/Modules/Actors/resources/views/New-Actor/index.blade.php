@@ -1,9 +1,8 @@
 <!doctype html>
 <html lang="en" class="no-js">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <link rel="profile" href="http://gmpg.org/xfn/11">
     <title>Anticasting | Actors</title>
     <meta name="robots" content="max-image-preview:large">
@@ -23,9 +22,13 @@
     <link rel="stylesheet" id="um_styles-css" href="{{ asset('assets/admin/new-actor/css/um-styles.css') }}"
         type="text/css" media="all">
     <link rel="stylesheet" href="{{ asset('assets/admin/new-actor/css/actor-style.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/admin/new-actor/css/jquery-ui.css') }}" type="text/css"
+        media="all">
+    <link rel="stylesheet" href="{{ asset('assets/admin/new-actor/css/um-members.css') }}" type="text/css"
+        media="all">
+    <link rel="stylesheet" href="{{ asset('assets/admin/new-actor/css/um-kaya-models.css') }}" type="text/css"
+        media="all">
     <!--n2css-->
-    <script type="text/javascript" src="{{ asset('assets/admin/new-actor/js/jquery.min.js') }}" id="jquery-core-js">
-    </script>
     <style type="text/css">
         .recentcomments a {
             display: inline !important;
@@ -66,7 +69,7 @@
                                 <div class="search-grid-container">
                                     <div class="search-results-box">
                                         <div class="um-members-wrapper kaya_grid_style">
-                                            <div class="um-members-grid-wrapper">
+                                            <div class="um-members-grid-wrapper" id="actors_list_div">
                                                 <div class="um-members um-members-list">
                                                     @if (isset($actors))
                                                         @foreach ($actors as $k => $item)
@@ -169,6 +172,7 @@
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="search-filter-box">
                                         <div class="um-member-directory-header">
                                             <div class="um-member-directory-header-row um-member-directory-search-row">
@@ -196,42 +200,29 @@
                                                         </span>
                                                     </div>
                                                 </div>
-                                                {{-- <script type="text/template" id="tmpl-um-members-filtered-line">
-                           <# if ( data.filters.length > 0 ) { #>
-                           	<# _.each( data.filters, function( filter, key, list ) { #>
-                           		<div class="um-members-filter-tag">
-                           			<# if ( filter.type == 'slider' ) { #>
-                           				<# if ( filter.value[0] == filter.value[1] ) { #>
-                           					<strong>{{{filter.label}}}</strong>: {{{filter.value[0]}}}
-                           				<# } else { #>
-                           					{{{filter.value_label}}}
-                           				<# } #>
-                           			<# } else { #>
-                           				<strong>{{{filter.label}}}</strong>: {{{filter.value_label}}}
-                           			<# } #>
-                           			<div class="um-members-filter-remove um-tip-n" data-name="{{{filter.name}}}"
-                           			     data-value="{{{filter.value}}}" data-range="{{{filter.range}}}"
-                           			     data-type="{{{filter.type}}}" title="Remove filter">&times;</div>
-                           		</div>
-                           	<# }); #>
-                           <# } #>
-                        </script> --}}
+
                                                 <div
                                                     class="um-member-directory-header-row um-member-directory-filters-bar">
                                                     <div class="um-search um-search-9">
                                                         <div class="um-search-filter um-select-filter-type ">
                                                             <select class="um-s1 select2-hidden-accessible"
-                                                                id="model_categories" name="model_categories"
+                                                                id="model_ethnicity" name="model_ethnicity"
+                                                                onchange="getEthnicityFilter()"
                                                                 data-placeholder="Ethnicity" aria-label="Ethnicity"
                                                                 style="display: block;" tabindex="-1"
-                                                                aria-hidden="true" data-select2-id="model_categories">
+                                                                aria-hidden="true">
                                                                 <option data-select2-id="16"></option>
-
                                                                 @if (isset($state))
+                                                                    @php
+                                                                        $selectedStates = [];
+                                                                        if (isset(request()->filter_model_ethnicity_2d7fb)) {
+                                                                            $selectedStates = explode("||", request()->filter_model_ethnicity_2d7fb);
+                                                                        }
+                                                                    @endphp
                                                                     @foreach ($state as $item)
                                                                         <option value="{{ $item->value }}"
                                                                             data-value_label="Ethnicity"
-                                                                            @if (isset(request()->ethnicity) && in_array($item->value, old('ethnicity', request()->ethnicity))) selected @endif>
+                                                                            @if (isset($selectedStates) && in_array($item->value, $selectedStates)) selected @endif>
                                                                             {{ $item->name }}</option>
                                                                     @endforeach
                                                                 @endif
@@ -242,9 +233,10 @@
                                                             class="um-search-filter um-select-filter-type um-search-filter-2">
                                                             <select class="um-s1 select2-hidden-accessible"
                                                                 id="gender" name="gender"
-                                                                data-placeholder="Gender" aria-label="Gender"
-                                                                style="display: block;" tabindex="-1"
-                                                                aria-hidden="true" data-select2-id="gender">
+                                                                onchange="getGenderFilter()" data-placeholder="Gender"
+                                                                aria-label="Gender" style="display: block;"
+                                                                tabindex="-1" aria-hidden="true"
+                                                                data-select2-id="gender">
                                                                 <option data-select2-id="20"></option>
                                                                 <option value='Male' data-value_label="Male"
                                                                     @if (isset(request()->gender) && in_array('Male', old('gender', request()->gender))) selected @endif>
@@ -286,66 +278,14 @@
                                                             <div class="um-slider-range"
                                                                 data-placeholder-s="<strong>Age:</strong>&nbsp;{value} years old"
                                                                 data-placeholder-p="<strong>Age:</strong>&nbsp;{min_range} - {max_range} years old"
-                                                                data-label="Birth Date"><strong>Age:</strong>&nbsp;14 -
-                                                                56 years old</div>
-                                                        </div>
-                                                        <div
-                                                            class="um-search-filter um-slider-filter-type um-search-filter-2">
-                                                            <input type="hidden" id="model_height_in_CM_min"
-                                                                name="model_height_in_CM[]" class="um_range_min"
-                                                                value="113">
-                                                            <input type="hidden" id="model_height_in_CM_max"
-                                                                name="model_height_in_CM[]" class="um_range_max"
-                                                                value="189">
-                                                            <div class="um-slider ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"
-                                                                data-field_name="model_height_in_CM" data-min="100"
-                                                                data-max="189">
-                                                                <div class="ui-slider-range ui-corner-all ui-widget-header"
-                                                                    style="left: 0%; width: 100%;"></div>
-                                                                <span tabindex="0"
-                                                                    class="ui-slider-handle ui-corner-all ui-state-default"
-                                                                    style="left: 14.6067%;"></span><span
-                                                                    tabindex="0"
-                                                                    class="ui-slider-handle ui-corner-all ui-state-default"
-                                                                    style="left: 100%;"></span>
-                                                                <div class="ui-slider-range ui-corner-all ui-widget-header"
-                                                                    style="left: 14.6067%; width: 85.3933%;"></div>
+                                                                data-label="Birth Date">
+                                                                <strong>Age:</strong>&nbsp;14 -
+                                                                56 years old
                                                             </div>
-                                                            <div class="um-slider-range"
-                                                                data-placeholder-s="<strong>Model Height In CM:</strong>&nbsp;{value}"
-                                                                data-placeholder-p="<strong>Model Height In CM:</strong>&nbsp;{min_range} - {max_range}"
-                                                                data-label="Model Height in CM"><strong>Model Height In
-                                                                    CM:</strong>&nbsp;113 - 189</div>
-                                                        </div>
-                                                        <div class="um-search-filter um-slider-filter-type ">
-                                                            <input type="hidden" id="hip_size_in_CM_min"
-                                                                name="hip_size_in_CM[]" class="um_range_min"
-                                                                value="55">
-                                                            <input type="hidden" id="hip_size_in_CM_max"
-                                                                name="hip_size_in_CM[]" class="um_range_max"
-                                                                value="100">
-                                                            <div class="um-slider ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"
-                                                                data-field_name="hip_size_in_CM" data-min="30"
-                                                                data-max="100">
-                                                                <div class="ui-slider-range ui-corner-all ui-widget-header"
-                                                                    style="left: 0%; width: 100%;"></div>
-                                                                <span tabindex="0"
-                                                                    class="ui-slider-handle ui-corner-all ui-state-default"
-                                                                    style="left: 35.7143%;"></span><span
-                                                                    tabindex="0"
-                                                                    class="ui-slider-handle ui-corner-all ui-state-default"
-                                                                    style="left: 100%;"></span>
-                                                                <div class="ui-slider-range ui-corner-all ui-widget-header"
-                                                                    style="left: 35.7143%; width: 64.2857%;"></div>
-                                                            </div>
-                                                            <div class="um-slider-range"
-                                                                data-placeholder-s="<strong>Hip Size In CM:</strong>&nbsp;{value}"
-                                                                data-placeholder-p="<strong>Hip Size In CM:</strong>&nbsp;{min_range} - {max_range}"
-                                                                data-label="Hip Size in CM"><strong>Hip Size In
-                                                                    CM:</strong>&nbsp;55 - 100</div>
                                                         </div>
                                                     </div>
                                                 </div>
+
                                                 <div class="um-member-directory-header-row">
                                                     <div class="um-filtered-line">
                                                         <div class="um-members-filter-tag">
@@ -370,7 +310,8 @@
                                                                 title="Remove filter">×</div>
                                                         </div>
                                                         <div class="um-clear-filters" style="display: block;"><a
-                                                                href="{{route('admin.actors')}}" class="um-clear-filters-a"
+                                                                href="{{ route('admin.actors') }}"
+                                                                class="um-clear-filters-a"
                                                                 title="Remove all filters">Clear all</a></div>
                                                     </div>
                                                 </div>
@@ -380,12 +321,59 @@
                                 </div>
                             </div>
                         </article>
-                        <link rel="stylesheet" href="{{ asset('assets/admin/new-actor/css/jquery-ui.css') }}"
-                            type="text/css" media="all">
-                        <link rel="stylesheet" href="{{ asset('assets/admin/new-actor/css/um-members.css') }}"
-                            type="text/css" media="all">
-                        <link rel="stylesheet" href="{{ asset('assets/admin/new-actor/css/um-kaya-models.css') }}"
-                            type="text/css" media="all">
+                        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+
+                        <script>
+                            function getEthnicityFilter() {
+                                var url = (new URL(document.location)).searchParams;
+                                var ethnicity = url.get("filter_model_ethnicity_2d7fb");
+                                $.ajax({
+                                    url: "{{ route('admin.filter-actors') }}",
+                                    type: 'GET',
+                                    data: {
+                                        'ethnicity': ethnicity,
+                                    },
+                                    //see the $_token
+                                    dataType: 'json',
+                                    success: function(data) {
+                                        console.log(data);
+                                        $("#actors_list_div").html(data.html);
+                                    },
+                                    // error:function(xhr, textStatus, thrownError) {
+                                    //     alert(xhr + "\n" + textStatus + "\n" + thrownError);
+                                    // }
+
+                                });
+
+                            }
+
+                            getEthnicityFilter();
+
+                            function getGenderFilter() {
+                                var url = (new URL(document.location)).searchParams;
+                                var gender = url.get("filter_gender_2d7fb");
+                                $.ajax({
+                                    url: "{{ route('admin.filter-actors') }}",
+                                    type: 'GET',
+                                    data: {
+                                        'gender': gender,
+                                    },
+                                    //see the $_token
+                                    dataType: 'json',
+                                    success: function(data) {
+                                        console.log(data);
+                                        $("#actors_list_div").html(data.html);
+                                    },
+                                    // error:function(xhr, textStatus, thrownError) {
+                                    //     alert(xhr + "\n" + textStatus + "\n" + thrownError);
+                                    // }
+
+                                });
+                            }
+                        </script>
+
+                        {{-- <script type="text/javascript" src="{{ asset('assets/admin/new-actor/js/jquery.min.js') }}" id="jquery-core-js">
+                         </script> --}}
                         <script type="text/javascript" src="{{ asset('assets/admin/new-actor/js/underscore.min.js') }}"></script>
                         <script type="text/javascript" src="{{ asset('assets/admin/new-actor/js/wp-util.min.js') }}"></script>
                         <script type="text/javascript" src="{{ asset('assets/admin/new-actor/js/core.min.js') }}"></script>
@@ -405,6 +393,8 @@
                         <script type="text/javascript" src="{{ asset('assets/admin/new-actor/js/dropdown.min.js') }}"></script>
                         <script type="text/javascript" src="{{ asset('assets/admin/new-actor/js/um-members.min.js') }}"></script>
                         <script type="text/javascript" src="{{ asset('assets/admin/new-actor/js/kaya-um-custom.js') }}"></script>
+
+
 </body>
 
 </html>

@@ -9,7 +9,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'admin', 'middleware' => ['web', 'admin']], function () {
 
-    Route::get('actors', [ActorsController::class, 'listActors'])->name('admin.actors');
+    Route::any('actors', [ActorsController::class, 'listActors'])->name('admin.actors');
+
+    Route::get('filter-actors', [ActorsController::class, 'filterActorList'])->name('admin.filter-actors');
+
     Route::get('actors/{id}/detail', [ActorsController::class, 'actorDetail'])->name('admin.actors.detail');
     Route::get('actors/{id}/video', [ActorsController::class, 'actorVideo'])->name('admin.actors.video');
     Route::get('list-actors', [ManageActorController::class, 'ActorList'])->name('admin.actors.mange');
@@ -22,4 +25,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'admin']], function (
     Route::get('list-actors/{id}/delete', [ManageActorController::class, 'ActorDelete'])->name('admin.actors.mange.delete');
     Route::get('list-actors/{id}/delete', [ManageActorController::class, 'ActorDelete'])->name('admin.actors.mange.delete');
     Route::post('bucket-actors/store',[BucketController::class,'store'])->name('admin.actors.bucket.store');
+   
 });
+ 
