@@ -25,7 +25,7 @@ class UsersTableSeeder extends Seeder
             'first_name'=>'Super',
             'last_name'=>'Admin',
             'email'=>'admin@gmail.com',
-            'password'=> bcrypt('Admin@10'),
+            'password'=> bcrypt('Pass@123'),
            
           //  'gender	'=>'Male',
             'status'=>1,
@@ -42,7 +42,7 @@ class UsersTableSeeder extends Seeder
             'first_name'=>'Sub',
             'last_name'=>'Admin',
             'email'=>'admin@2023gmail.com',
-            'password'=> bcrypt('Admin@10'),
+            'password'=> bcrypt('Pass@123'),
           
            // 'gender	'=>'Female',
             'status'=>1,

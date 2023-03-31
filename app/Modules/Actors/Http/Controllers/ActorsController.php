@@ -20,12 +20,16 @@ class ActorsController extends Controller
         $actors = User::where('user_type', '0')
             ->with('images')
             ->with('profile')
-            ->get();
-
-        // dd($actors);
+            ->FilterAge()
+            ->FilterEthnicty()
+            ->FilterGender()
+            ->orderby('id', 'desc')
+            ->paginate(8);
         $state = State::all();
 
-        return view('Actors::New-Actor.index', compact('actors', 'state'));
+        // return view('Actors::New-Actor.index', compact('actors', 'state'));
+        //  return view('Actors::index', compact('actors', 'state'));
+        return view('Actors::profiles.list', compact('actors', 'state'));
     }
 
     public function filterActorList(Request $request)
@@ -46,7 +50,7 @@ class ActorsController extends Controller
             //     });
             // }
 
-            $actorList = $actors->get();
+            $actorList = $actors->paginate(6);
 
             //dd($actors->count());
             if (!$actorList->count()) {
@@ -72,7 +76,7 @@ class ActorsController extends Controller
 
             // }
             $actors->FilterGender();
-            $actorList = $actors->get();
+            $actorList = $actors->paginate(6);
             //dd($actorList);
             //dd($actors->count());
             if (!$actorList->count()) {
@@ -83,13 +87,11 @@ class ActorsController extends Controller
                 ->render();
             return response()->json(['success' => true, 'html' => $returnHTML]);
         }
-      
+
         if (($request->min_age || $request->max_age) && $request->ajax()) {
-        
-          
             $actors = User::query();
             $actors->FilterAge();
-            $actorList = $actors->get();
+            $actorList = $actors->paginate(6);
             // dd($actorList);
             //dd($actors->count());
             if (!$actorList->count()) {

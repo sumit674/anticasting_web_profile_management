@@ -25,20 +25,19 @@
 	background-color: #ddd;
 }
 .feature {
-	width: 225px;
-	margin: auto;
+    width: 270px;
+    margin: auto;
 }
 .main-img {
-	height: 0;
-	border: 1px dotted #c5c5c5;
-	background-size: cover;
-	/* image-css */
-	height: 200px;
-	width: 225px;
-	background-size: 225px 200px;
-	background-repeat: no-repeat;
-	opacity: 0.8;
-	box-shadow: rgba(107, 105, 105, 0.35) 0px 5px 15px;
+    height: 0;
+    border: 1px dotted #c5c5c5;
+    background-size: cover;
+    height: 280px;
+    width: 270px;
+    background-size: 265px 285px;
+    background-repeat: no-repeat;
+    opacity: 0.8;
+    box-shadow: rgba(107, 105, 105, 0.35) 0px 5px 15px;
 }
 .image-holder {
 	background-size: cover;

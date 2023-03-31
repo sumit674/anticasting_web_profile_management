@@ -167,9 +167,9 @@
                                         </div>
                                         <div class="um-members-pagination-box">
                                             <div class="um-members-pagi uimob340-hide uimob500-hide">
-                                                {{-- <nav data-pagination>
+                                                <nav data-pagination>
                                                     {{ $actors->links('Actors::pagination') }}
-                                                </nav> --}}
+                                                </nav>
                                             </div>
                                         </div>
                                     </div>
@@ -262,7 +262,10 @@
                                                                 </option>
                                                             </select>
                                                         </div>
-                                                        <div class="um-search-filter um-slider-filter-type ">
+
+                                                        
+
+                                                        <div class="um-search-filter um-slider-filter-type">
                         
                                                             <input type="hidden" id="birth_date_min"
                                                                 name="birth_date[]" class="um_range_min"
@@ -299,27 +302,6 @@
 
                                                 <div class="um-member-directory-header-row">
                                                     <div class="um-filtered-line">
-                                                        <div class="um-members-filter-tag">
-                                                            <strong>Age:</strong>&nbsp;14 - 56 years old
-                                                            <div class="um-members-filter-remove um-tip-n"
-                                                                data-name="birth_date" data-value="14,56"
-                                                                data-range="" data-type="slider"
-                                                                title="Remove filter">×</div>
-                                                        </div>
-                                                        <div class="um-members-filter-tag">
-                                                            <strong>Model Height In CM:</strong>&nbsp;113 - 189
-                                                            <div class="um-members-filter-remove um-tip-n"
-                                                                data-name="model_height_in_CM" data-value="113,189"
-                                                                data-range="" data-type="slider"
-                                                                title="Remove filter">×</div>
-                                                        </div>
-                                                        <div class="um-members-filter-tag">
-                                                            <strong>Hip Size In CM:</strong>&nbsp;55 - 100
-                                                            <div class="um-members-filter-remove um-tip-n"
-                                                                data-name="hip_size_in_CM" data-value="55,100"
-                                                                data-range="" data-type="slider"
-                                                                title="Remove filter">×</div>
-                                                        </div>
                                                         <div class="um-clear-filters" style="display: block;"><a
                                                                 href="{{ route('admin.actors') }}"
                                                                 class="um-clear-filters-a"
@@ -332,6 +314,10 @@
                                 </div>
                             </div>
                         </article>
+
+                        
+                        
+
                         <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 
                         <script>
@@ -429,7 +415,7 @@
                         <script type="text/javascript" src="{{ asset('assets/admin/new-actor/js/um-members.min.js') }}"></script>
                         <script type="text/javascript" src="{{ asset('assets/admin/new-actor/js/kaya-um-custom.js') }}"></script>
 
-
+                
 </body>
 
 </html>

@@ -74,7 +74,7 @@
                                     <div class="col-md-3 col-sm-6">
                                         <div class="product-grid4">
                                             <div class="product-image4">
-                                                <a href="{{route('admin.actors.mange.new-details',$item->id)}}">
+                                                <a href="{{ route('admin.actors.mange.new-details', $item->id) }}">
                                                     @isset($item->images[0]->image)
                                                         <img class="pic-1 actor-img" src="{{ $item->images[0]?->image }}" />
                                                         <img class="pic-2 actor-img" src="{{ $item->images[0]?->image }}" />
@@ -243,7 +243,7 @@
     })
     $(".close-filter-btn").on('click', function() {
         $('.filters-selected').hide()
-   
+
     })
     //gender filter js
     $('.filter-gender-show').hide()
@@ -255,7 +255,7 @@
         $(".gender-value-text").text(selValue);
         $(".filter-gender-show").show();
     });
-   //ethnicity filter js
+    //ethnicity filter js
     $("#ethnicity").on("change", function() {
         //Getting Value
         var selValue = $("#ethnicity").val();

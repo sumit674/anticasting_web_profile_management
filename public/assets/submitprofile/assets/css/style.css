@@ -857,16 +857,18 @@ ol {
   padding-top: 180px;
 } */
 .breadcrumbs {
-  background: url(./../images/page-banner.jpg);
-  background-position: center;
-  background-attachment: fixed;
-  opacity: 0.8;
-  background-attachment: scroll;
-  background-repeat: no-repeat;
-  background-size: auto;
-  position: relative;
-  padding: 110px 0;
-  padding-top: 180px;
+    background: url(./../images/page-banner.jpg);
+    background-position: center;
+    background-attachment: fixed;
+    opacity: 0.8;
+    background-attachment: scroll;
+    background-repeat: no-repeat;
+    background-size: auto;
+    position: relative;
+    padding: 100px 0;
+    /* padding-top: 150px; */
+    padding-top: 55px;
+    height: 250px;
 }
 
 .breadcrumbs .breadcrumbs-content {
@@ -884,7 +886,7 @@ ol {
   /* background-color: rgba(160, 137, 137, 0.4) !important; */
 }
 .breadcrumbs .breadcrumbs-content .page-title {
-  font-size: 46px;
+  font-size: 35px;
   color: #ffffff;
   font-weight: 500;
   position: relative;
