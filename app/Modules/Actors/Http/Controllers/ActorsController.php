@@ -17,14 +17,22 @@ class ActorsController extends Controller
      */
     public function listActors(Request $request)
     {
-        $actors = User::where('user_type', '0')
-            ->with('images')
-            ->with('profile')
+        $items = User::query();
+        $items
+            ->where('user_type', '0')
             ->FilterAge()
             ->FilterEthnicty()
             ->FilterGender()
-            ->orderby('id', 'desc')
-            ->paginate(8);
+            ->FilterProfile()
+            ->with('images')
+            ->with('profile');
+        if ($request->has('sort') && $request->sort == 'oldest') {
+            $items->orderBy('created_at', 'asc');
+        } else {
+            $items->orderBy('created_at', 'desc');
+        }
+        //
+        $actors = $items->paginate(8);
         $state = State::all();
 
         // return view('Actors::New-Actor.index', compact('actors', 'state'));

@@ -36,7 +36,7 @@
     </div>
     <!-- Bootstrap core JavaScript-->
  
-    <script src="{{ asset('assets/front-dashboard/vendor/jquery/jquery.min.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="{{ asset('assets/front-dashboard/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
     <!-- Core plugin JavaScript-->
@@ -51,6 +51,7 @@
     <!-- Page level custom scripts -->
     <script src="{{ asset('assets/front-dashboard/js/demo/chart-area-demo.js') }}"></script>
     <script src="{{ asset('assets/front-dashboard/js/demo/chart-pie-demo.js') }}"></script>
+    @yield('footer')
 </body>
 
 </html>

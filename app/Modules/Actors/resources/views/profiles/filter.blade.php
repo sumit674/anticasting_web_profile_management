@@ -15,7 +15,7 @@
                         <option value="">Select Ethnicity</option>
                         @if (isset($state))
                             @foreach ($state as $item)
-                                <option value="{{ $item->value }}" @if (isset(request()->ethnicity) && in_array($item->value, old('ethnicity', request()->ethnicity))) selected @endif>
+                                <option value="{{$item->value}}"@if (isset(request()->ethnicity) && in_array($item->value, old('ethnicity', request()->ethnicity))) selected @endif>
                                     {{ $item->name }}</option>
                             @endforeach
                         @endif
@@ -39,10 +39,11 @@
                     {{-- <label class="form-label" for="age">Age</label> --}}
                     <div class="d-flex justify-content-between">
                         <div>
+                            <input type="hidden" name="min_age" id="min_age"
+                            value="{{ old('min_age', request()->min_age) }}" />
                             <input type="hidden" name="max_age" id="max_age"
                                 value="{{ old('max_age', request()->max_age) }}" />
-                            <input type="hidden" name="min_age" id="min_age"
-                                value="{{ old('min_age', request()->min_age) }}" />
+                          
                             <label class="form-label" for=""><b>Age:</b></label>
                             <span class="age"></span>
                             <span>years old</span>

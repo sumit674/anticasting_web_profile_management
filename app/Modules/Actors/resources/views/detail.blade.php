@@ -19,7 +19,7 @@
 
     .image-container {
         width: 150px !important;
-        height: 290px !important;
+        height: 245px !important;
         background-color: #fff;
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -95,7 +95,7 @@
     <div class="row">
         <div class="col-12">
             <div class="card-details">
-                <div class="card-body  border">
+                <div class="card-body">
                     <div class="btn-close text-right h4" id="close-yt">x</div>
                     <div class="collapse show pt-0">
                         @if (isset($actor))
