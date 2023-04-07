@@ -239,7 +239,7 @@
     /* Create four equal columns that floats next to eachother */
     .column {
         float: left;
-        width: 52%;
+        width: 100%;
     }
 
     /* The Modal (background) */
@@ -264,6 +264,7 @@
         padding: 0;
         width: 30%;
         max-width: 1200px;
+       
     }
 
     /* The Close Button */
@@ -343,14 +344,14 @@
                         <div class="row align-items-center">
                             <div class="col-lg-6 mt-b mb-lg-0 ">
                                 <div class="left-image">
-                                    <img src="{{ $item?->images[0]?->image }}"  width="300" height="200" onclick="openModal();currentSlide(1)" class="hover-shadow">
+                                    <img src="{{ $item?->images[0]?->image }}"style="width:75%;height:75%; object-fit:fill;" onclick="openModal();currentSlide(1)" class="hover-shadow">
                                 </div>
                                 <div class="d-flex justify-content-center p-3">
                                     <div class="column">
-                                        <img src="{{ $item?->images[1]?->image }}"  width="250" height="150" onclick="openModal();currentSlide(2)" class="hover-shadow">
+                                        <img src="{{ $item?->images[1]?->image }}" style="width:100%;height:75%; object-fit:fill;" onclick="openModal();currentSlide(2)" class="hover-shadow">
                                     </div>
                                     <div class="column">
-                                        <img src="{{ $item?->images[2]?->image }}"  width="250" height="150" onclick="openModal();currentSlide(3)" class="hover-shadow">
+                                        <img src="{{ $item?->images[2]?->image }}" style="width:100%;height:75%; object-fit:fill;" onclick="openModal();currentSlide(3)" class="hover-shadow">
                                     </div>
                                 </div>
                             </div>
@@ -488,17 +489,17 @@
 
         <div class="mySlides">
             <div class="numbertext">1 / 3</div>
-            <img src="{{ $item?->images[0]?->image }}" style="width:100%">
+            <img src="{{ $item?->images[0]?->image }}" style="width:100%;height:100%; object-fit:fill;">
         </div>
 
         <div class="mySlides">
             <div class="numbertext">2 / 3</div>
-            <img src="{{ $item?->images[1]?->image }}" style="width:100%">
+            <img src="{{ $item?->images[1]?->image }}" style="width:100%;height:100%;object-fit:fill;">
         </div>
 
         <div class="mySlides">
             <div class="numbertext">3 / 3</div>
-            <img src="{{ $item?->images[2]?->image }}" style="width:100%">
+            <img src="{{ $item?->images[2]?->image }}" style="width:100%;height:100%;object-fit:fill;">
         </div>
 
         <!-- Next/previous controls -->
