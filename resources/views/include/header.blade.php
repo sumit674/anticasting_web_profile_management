@@ -16,7 +16,10 @@
           <li><a href="{{ url('/about')}}">About Us</a></li>
           <li><a href="services.html">Our Work</a></li>
            <li><a href="{{ url('/contact')}}">Contact</a></li>
+           {{-- <li><a href="{{ route('users.profile-detail')}}">View Profile</a></li> --}}
+       
            @auth
+           {{-- <li><a href="{{ route('users.profile-detail')}}">View Profile</a></li> --}}
            <li><a class="get-a-quote" href="{{ route('users.submitProfile') }}">Submit Profile</a></li>
            <li><a class="get-a-quote" href="{{ route('users.logout') }}">Logout</a></li>
            @else

@@ -34,7 +34,7 @@
                                             <label class="form-label">
                                                 <b>
                                                     First name
-                                                 <span style="color:red;"><b>*</b></span>
+                                                    <span style="color:red;"><b>*</b></span>
                                                 </b>
                                             </label>
                                             <input type="text" class="form-control" placeholder="First Name"
@@ -52,7 +52,7 @@
                                             <label class="form-label">
                                                 <b>
                                                     Last name
-                                                 <span style="color:red;"><b>*</b></span>
+                                                    <span style="color:red;"><b>*</b></span>
                                                 </b>
                                             </label>
                                             <input type="text" class="form-control" placeholder="Last Name"
@@ -80,8 +80,8 @@
                                             <label class="form-label"><b>Phone number</b></label>
                                             <div class="input-group mb-3">
                                                 <!--
-                                                 <span class="input-group-text" style="width:10px;">+</span>
-                                                                -->
+                                                                         <span class="input-group-text" style="width:10px;">+</span>
+                                                                                        -->
                                                 <input type="text" class="form-control" name="countryCode" readonly
                                                     style="width:15px;"
                                                     value="{{ old('countryCode', $userInfo->countryCode) }}" />
@@ -98,8 +98,8 @@
                                         <div class="mb-3">
                                             <label class="form-label">
                                                 <b>
-                                                 Date Of Birth
-                                                 <span style="color:red;"><b>*</b></span>
+                                                    Date Of Birth
+                                                    <span style="color:red;"><b>*</b></span>
                                                 </b>
                                             </label>
                                             <input type="date" class="form-control" placeholder="Date of Birth"
@@ -119,7 +119,7 @@
                                             <label class="form-label">
                                                 <b>
                                                     First name
-                                                 <span style="color:red;"><b>*</b></span>
+                                                    <span style="color:red;"><b>*</b></span>
                                                 </b>
                                             </label>
                                             <select name="gender" id="gender" class="form-control">
@@ -176,7 +176,7 @@
                                             <label class="form-label">
                                                 <b>
                                                     Current Location
-                                                 <span style="color:red;"><b>*</b></span>
+                                                    <span style="color:red;"><b>*</b></span>
                                                 </b>
                                             </label>
                                             <input type="text" class="form-control" name="current_location"
@@ -194,7 +194,7 @@
                                             <label class="form-label">
                                                 <b>
                                                     Ethnicity
-                                                 <span style="color:red;"><b>*</b></span>
+                                                    <span style="color:red;"><b>*</b></span>
                                                 </b>
                                             </label>
                                             <select name="ethnicity" id="ethnicity" class="form-control">
@@ -214,6 +214,25 @@
                                                     {{ $message }}
                                                 </span>
                                             @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="mb-3">
+                                            <label class="form-label">
+                                                <b>
+                                                    About me
+                                                    <span style="color:red;"><b>*</b></span>
+                                                </b>
+                                            </label>
+                                             <textarea id="about_me" name="about_me" class="form-control"> 
+                                                @isset($userProfile->about_me)
+                                                   {{ $userProfile->about_me }}
+                                                @endisset
+                                             
+                                             </textarea>
+                                          
                                         </div>
                                     </div>
                                 </div>
@@ -283,6 +302,49 @@
     </script>
     <script src="{{ asset('assets/website/js/submit-profile/image-gallery.js') }}"></script>
     <script>
+      $(document).ready(function() {
+            $('#about_me').summernote({
+                placeholder: 'Enter movie description goes here..',
+                // tabsize: 2,
+                height: 300,
+                // followingToolbar: true,
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'underline', 'clear']],
+                    ['fontname', ['fontname']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'picture', 'video']],
+                    ['view', ['fullscreen', 'codeview', 'help']],
+                ],
+                popover: {
+                    image: [
+                        ['image', ['resizeFull', 'resizeHalf', 'resizeQuarter', 'resizeNone']],
+                        ['float', ['floatLeft', 'floatRight', 'floatNone']],
+                        ['remove', ['removeMedia']]
+                    ],
+                    link: [
+                        ['link', ['linkDialogShow', 'unlink']]
+                    ],
+                    table: [
+                        ['add', ['addRowDown', 'addRowUp', 'addColLeft', 'addColRight']],
+                        ['delete', ['deleteRow', 'deleteCol', 'deleteTable']],
+                    ],
+                    air: [
+                        ['color', ['color']],
+                        ['font', ['bold', 'underline', 'clear']],
+                        ['para', ['ul', 'paragraph']],
+                        ['table', ['table']],
+                        ['insert', ['link', 'picture']]
+                    ]
+                }
+
+            })
+            $('.dropdown-toggle').dropdown();
+        });
+    </script>
+    <script>
         $(function() {
             $("#success").dialog({
                 autoOpen: true,
@@ -328,26 +390,26 @@
         //  $('#show-intro').on('click', function() {
         //     $('#video-section').slideToggle();
         // });
-        /*Sample Intro video js*/
-        $('#intro_video').hide();
-        $('#hide').on('click', function() {
-            $('#intro_video').hide();
-        })
-        $('#show').on('click', function() {
-            $('#intro_video').show();
-        })
-        /*Choose Intro video js*/
-        $('#hindi').on('click', function() {
-          
-            $('#intro_hindi').show();
-            $('#intro_english').hide();
-        })
-        $('#intro_english').hide();
-        $('#english').on('click', function() {
-          
-          $('#intro_hindi').hide();
-          $('#intro_english').show();
-      })
+        //     /*Sample Intro video js*/
+        //     $('#intro_video').hide();
+        //     $('#hide').on('click', function() {
+        //         $('#intro_video').hide();
+        //     })
+        //     $('#show').on('click', function() {
+        //         $('#intro_video').show();
+        //     })
+        //     /*Choose Intro video js*/
+        //     $('#hindi').on('click', function() {
+
+        //         $('#intro_hindi').show();
+        //         $('#intro_english').hide();
+        //     })
+        //     $('#intro_english').hide();
+        //     $('#english').on('click', function() {
+
+        //       $('#intro_hindi').hide();
+        //       $('#intro_english').show();
+        //   })
         // to stop the ifram video
         function stopVideo(element) {
             // getting every iframe from the body

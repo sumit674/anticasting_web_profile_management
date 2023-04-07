@@ -204,5 +204,11 @@
             document.querySelector('#max_age').value = $("#slider-range").slider("values", 1);
             document.querySelector('#min_age').value = $("#slider-range").slider("values", 0);
         });
+        $(function() {
+            $('.ethnicity').fSelect();
+        });
+        $(function() {
+            $('.gender').fSelect();
+        });
     </script>
 @endsection

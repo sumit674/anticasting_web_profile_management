@@ -75,76 +75,57 @@
             padding: 0 !important;
         }
     </style>
-    {{-- <link rel="stylesheet" id="wp-block-library-css" href="./assets-details-page/css/style.min.css" type="text/css"
-    media="all">
-<link rel="stylesheet" id="wp-block-library-theme-inline-css"
-    href="./assets-details-page/css/library-theme-inline-css.css" />
-<link rel="stylesheet" id="classic-theme-styles-css" href="./assets-details-page/css/classic-themes.min.css"
-    type="text/css" media="all">
-
-<link rel="stylesheet" id="global-styles-inline-css" href="./assets-details-page/css/styles-inline.css"
-    type="text/css" media="all">
-
-<link rel="stylesheet" id="contact-form-7-css" href="./assets-details-page/css/styles.css" type="text/css"
-    media="all">
-
-<link rel="stylesheet" id="hfe-style-css" href="./assets-details-page/css/header-footer-elementor.css"
-    type="text/css" media="all">
-<link rel="stylesheet" id="elementor-icons-css" href="./assets-details-page/css/elementor-icons.min.css"
-    type="text/css" media="all">
-<link rel="stylesheet" id="elementor-frontend-legacy-css" href="./assets-details-page/css/frontend-legacy.min.css"
-    type="text/css" media="all"> --}}
     <link rel="stylesheet" id="elementor-frontend-css"
-        href="https://kayapati.com/demos/models/wp-content/plugins/elementor/assets/css/frontend.min.css?ver=3.6.7"
+        href="{{asset('assets/view-profile/css/frontend.min.css')}}"
         type="text/css" media="all">
     <link rel="stylesheet" id="elementor-post-5285-css"
-        href="https://kayapati.com/demos/models/wp-content/uploads/elementor/css/post-5285.css?ver=1658128830"
+        href="{{asset('assets/view-profile/css/post-5285.css')}}"
         type="text/css" media="all">
     <link rel="stylesheet" id="elementor-global-css"
-        href="https://kayapati.com/demos/models/wp-content/uploads/elementor/css/global.css?ver=1658128830" type="text/css"
+        href="{{asset('assets/view-profile/css/global.css')}}" type="text/css"
         media="all">
     <link rel="stylesheet" id="elementor-post-5364-css"
-        href="https://kayapati.com/demos/models/wp-content/uploads/elementor/css/post-5364.css?ver=1658128880"
+        href="{{asset('assets/view-profile/css/post-5364.css')}}"
         type="text/css" media="all">
     <link rel="stylesheet" id="hfe-widgets-style-css"
-        href="https://kayapati.com/demos/models/wp-content/plugins/header-footer-elementor/inc/widgets-css/frontend.css?ver=1.6.12"
+        href="{{asset('assets/view-profile/css/frontend.css')}}"
         type="text/css" media="all">
     <link rel="stylesheet" id="elementor-post-5193-css"
-        href="https://kayapati.com/demos/models/wp-content/uploads/elementor/css/post-5193.css?ver=1658128830"
+        href="{{asset('assets/view-profile/css/post-5193.css')}}"
         type="text/css" media="all">
     <link rel="stylesheet" id="models-style-css"
-        href="https://kayapati.com/demos/models/wp-content/themes/models/style.css?ver=6.1.1" type="text/css"
+        href="{{asset('assets/view-profile/css/style.css')}}" type="text/css"
         media="all">
     <link rel="stylesheet" id="font-awesome-css"
-        href="https://kayapati.com/demos/models/wp-content/plugins/elementor/assets/lib/font-awesome/css/font-awesome.min.css?ver=4.7.0"
+        href="{{asset('assets/view-profile/css/font-awesome.min.css')}}"
         type="text/css" media="all">
     <link rel="stylesheet" id="models-menu-css"
-        href="https://kayapati.com/demos/models/wp-content/themes/models/css/smart-menu.css?ver=6.1.1" type="text/css"
+        href="{{asset('assets/view-profile/css/smart-menu.css')}}" type="text/css"
         media="all">
     <link rel="stylesheet" id="models-layout-css"
-        href="https://kayapati.com/demos/models/wp-content/themes/models/css/layout.css?ver=6.1.1" type="text/css"
+        href="{{asset('assets/view-profile/css/layout.css')}}" type="text/css"
         media="all">
     <link rel="stylesheet" id="models-theme-responsive-css"
-        href="https://kayapati.com/demos/models/wp-content/themes/models/css/responsive.css?ver=6.1.1" type="text/css"
+        href="{{asset('assets/view-profile/css/responsive.css')}}" type="text/css"
         media="all">
     <link rel="stylesheet" id="buttons-css"
-        href="https://kayapati.com/demos/models/wp-includes/css/buttons.min.css?ver=6.1.1" type="text/css" media="all">
+        href="{{asset('assets/view-profile/css/buttons.min.css')}}" type="text/css" media="all">
     <link rel="stylesheet" id="dashicons-css"
-        href="https://kayapati.com/demos/models/wp-includes/css/dashicons.min.css?ver=6.1.1" type="text/css" media="all">
+        href="{{asset('assets/view-profile/css/dashicons.min.css')}}" type="text/css" media="all">
     <link rel="stylesheet" id="mediaelement-css"
-        href="https://kayapati.com/demos/models/wp-includes/js/mediaelement/mediaelementplayer-legacy.min.css?ver=4.2.17"
+        href="{{asset('assets/view-profile/css/mediaelementplayer-legacy.min.css')}}"
         type="text/css" media="all">
     <link rel="stylesheet" id="wp-mediaelement-css"
-        href="https://kayapati.com/demos/models/wp-includes/js/mediaelement/wp-mediaelement.min.css?ver=6.1.1"
+        href="{{asset('assets/view-profile/css/wp-mediaelement.min.css')}}"
         type="text/css" media="all">
     <link rel="stylesheet" id="media-views-css"
-        href="https://kayapati.com/demos/models/wp-includes/css/media-views.min.css?ver=6.1.1" type="text/css"
+        href="{{asset('assets/view-profile/css/media-views.min.css')}}" type="text/css"
         media="all">
     <link rel="stylesheet" id="imgareaselect-css"
-        href="https://kayapati.com/demos/models/wp-includes/js/imgareaselect/imgareaselect.css?ver=0.9.8" type="text/css"
+        href="{{asset('assets/view-profile/css/imgareaselect.css')}}" type="text/css"
         media="all">
     <link rel="stylesheet" id="simple-lightbox-css-css"
-        href="https://kayapati.com/demos/models/wp-content/themes/models/ultimate-member/assets/css/lightbox.min.css?ver=1.3"
+        href="{{asset('assets/view-profile/css/lightbox.min.css')}}"
         type="text/css" media="all">
     <link rel="stylesheet" id="drweb-print-style-css"
         href="https://kayapati.com/demos/models/wp-content/themes/models/ultimate-member/assets/css/um-kaya-compcard.css?ver=20130821"
@@ -1028,23 +1009,29 @@
                                                                         </style>
                                                                         <div class="custommediawrapper-out1"
                                                                             id="custommediagallery-img_gallery">
-                                                                            <div class="umem_media_sepeartor"><a
+                                                                            {{-- <div class="umem_media_sepeartor"><a
                                                                                     href="#"
                                                                                     data-lightbox="test"><img
                                                                                         src="{{ $item?->images[0]?->image }}"
                                                                                         width="350px" height="350px"></a>
+                                                                            </div> --}}
+                                                                            <div class="umem_media_sepeartor"><a
+                                                                                    href="#"
+                                                                                    data-lightbox="test"><img
+                                                                                        src="{{ $item?->images[0]?->image }}"
+                                                                                        style="width:350px;height:120px; object-fit:fill;"></a>
                                                                             </div>
                                                                             <div class="umem_media_sepeartor"><a
                                                                                     href="#"
                                                                                     data-lightbox="test"><img
                                                                                         src="{{ $item?->images[1]?->image }}"
-                                                                                        width="350px" height="350px"></a>
+                                                                                        style="width:350px;height:120px; object-fit:cover;"></a>
                                                                             </div>
                                                                             <div class="umem_media_sepeartor"><a
                                                                                     href="#"
                                                                                     data-lightbox="test"><img
                                                                                         src="{{ $item?->images[2]?->image }}"
-                                                                                        width="350px" height="350px"></a>
+                                                                                        style="width:350px;height:120px; object-fit:cover;"></a>
                                                                             </div>
 
                                                                         </div>

@@ -11,20 +11,23 @@
             <div class="row">
                 <div class="col-md-12">
                     <label class="form-label" for="ethnicity">Ethnicity</label>
-                    <select name="ethnicity[]" id="ethnicity" class="form-control">
-                        <option value="">Select Ethnicity</option>
+                    <select name="ethnicity[]" id="ethnicity" class="form-control ethnicity"  multiple="multiple">
+                        <optgroup label="Ethnicity">
+                        
                         @if (isset($state))
                             @foreach ($state as $item)
-                                <option value="{{$item->value}}"@if (isset(request()->ethnicity) && in_array($item->value, old('ethnicity', request()->ethnicity))) selected @endif>
+                                <option value="{{$item->value}}"@if (isset(request()->ethnicity) && in_array($item->value, old('ethnicity', request()->ethnicity))) selected  @endif>
                                     {{ $item->name }}</option>
                             @endforeach
                         @endif
+                        </optgroup>
                     </select>
                 </div>
                 <div class="col-md-12">
                     <label class="form-label" for="gender">Gender</label>
-                    <select name="gender[]" id="gender" class="form-control">
-                        <option value="">Select Gender</option>
+                    <select name="gender[]" id="gender" class="form-control gender" multiple="multiple">
+                
+                        <optgroup label="Gender">
                         <option value='Male' @if (isset(request()->gender) && in_array('Male', old('gender', request()->gender))) selected @endif>Male
                         </option>
                         <option value='Female' @if (isset(request()->gender) && in_array('Female', old('gender', request()->gender))) selected @endif>Female
@@ -33,6 +36,7 @@
                             Prefer not
                             to
                             say</option>
+                        </optgroup>   
                     </select>
                 </div>
                 <div class="col-md-12">

@@ -3,18 +3,12 @@
 use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\{
-    HomeController,
-    AboutUsController, 
-    ContactUsController,
-    MessageController,
-    ImageController,
-    
- };
+use App\Http\Controllers\{HomeController, AboutUsController, ContactUsController, MessageController, ImageController};
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\ChangePasswordController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,25 +56,26 @@ Route::group(['prefix' => 'users', 'middleware' => ['web', 'user']], function ()
 
     Route::post('/changepassword-post', [ChangePasswordController::class, 'changePasswordPost'])->name('users.changepassword-post');
 
-    /* Submit Profile */
-    Route::get('/submitProfile', [\App\Http\Controllers\ProfileController::class, 'submitProfile'])->name('users.submitProfile');
-    Route::post('submitProfile-store', [\App\Http\Controllers\ProfileController::class, 'submitProfileStore'])->name('users.submitProfile.store');
-
-    Route::get('/submitProfile/edit/{id}', [\App\Http\Controllers\ProfileController::class, 'editProfile'])->name('users.submitProfile.edit');
-    Route::put('submitProfile-update/{id}', [\App\Http\Controllers\ProfileController::class, 'updateProfile'])->name('users.submitProfile.update');
-    Route::get('/view-profile',[\App\Http\Controllers\ViewProfileController::class,'profileDetails'])->name('users.view.profile');
+    
+    Route::get('/view-profile', [\App\Http\Controllers\ViewProfileController::class, 'profileDetails'])->name('users.view.profile');
     /*Logout User */
     Route::get('/logout', [LoginController::class, 'logout'])->name('users.logout');
     /* Message*/
-    Route::post('message-post',[MessageController::class, 'storeMessage'])->name('users.message');
-   // Route::get('/message-show',[MessageController::class, 'showMessage'])->name('users.message.show');
-    Route::post('/userimage', [\App\Http\Controllers\ProfileController::class,'uploadUserImage'])->name('users.uploadImages');
-    Route::post('/userworkreel', [\App\Http\Controllers\ProfileController::class,'submitWorkReel'])->name('users.userworkreel');
-    Route::post('/userintrovideo', [\App\Http\Controllers\ProfileController::class,'IntroVideo'])->name('users.introvideos');
-    Route::post('/delete/single/{id}/{user_id}/image', [ImageController::class,'deleteHeadShotImageSingle'])->name('user.single.image');
-    Route::get('/delete/all/{user_id}/image', [ImageController::class,'deleteHeadShotImageAll'])->name('user.delete-all-headshots');
+    Route::post('message-post', [MessageController::class, 'storeMessage'])->name('users.message');
+    // Route::get('/message-show',[MessageController::class, 'showMessage'])->name('users.message.show');
 });
-
+/* Submit Profile */
+Route::get('/submitProfile', [ProfileController::class, 'submitProfile'])->name('users.submitProfile');
+Route::post('submitProfile-store', [ProfileController::class, 'submitProfileStore'])->name('users.submitProfile.store');
+Route::post('/userimage', [ProfileController::class, 'uploadUserImage'])->name('users.uploadImages');
+Route::post('/userworkreel', [ProfileController::class, 'submitWorkReel'])->name('users.userworkreel');
+Route::post('/userintrovideo', [ProfileController::class, 'IntroVideo'])->name('users.introvideos');
+Route::post('/delete/single/{id}/{user_id}/image', [ImageController::class, 'deleteHeadShotImageSingle'])->name('user.single.image');
+Route::get('/delete/all/{user_id}/image', [ImageController::class, 'deleteHeadShotImageAll'])->name('user.delete-all-headshots');
+/*View Actor Profile */
+Route::get('/profile/{id}',[ProfileController::class, 'actorDetails'])->name('profile-detail');
+/*View User Profile */
+Route::get('/view-profile',[ProfileController::class, 'viewProfileDetails'])->name('view-profile');
 /*
    Otp
 */
@@ -113,7 +108,6 @@ Route::post('/admin/resetpassword-post', [\App\Http\Controllers\Admin\Auth\Forgo
 
 /* Working on Admin Backend */
 Route::group(['prefix' => 'admin', 'middleware' => ['web', 'admin']], function () {
-
     Route::get('/changepassword', [\App\Http\Controllers\Admin\Auth\ChangePasswordController::class, 'changePassword'])->name('admin.changePassword');
     Route::post('/changepassword-post', [\App\Http\Controllers\Admin\Auth\ChangePasswordController::class, 'changePasswordPost'])->name('admin.changePasswordPost');
     Route::get('/logout', [\App\Http\Controllers\Admin\Auth\LoginController::class, 'logoutAdmin'])->name('admin.logout');

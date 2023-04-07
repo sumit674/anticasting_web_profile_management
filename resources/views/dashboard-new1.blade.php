@@ -1,10 +1,5 @@
-<html lang="en-US">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="profile" href="http://gmpg.org/xfn/11">
-
+@extends('front-dashboard.layouts.app')
+@section('content')
     <title>Anticasting | View Profile</title>
     <meta name="robots" content="max-image-preview:large">
     <link rel="alternate" type="application/rss+xml" title="Models » Feed" href="https://kayapati.com/demos/models/feed/">
@@ -80,78 +75,41 @@
             padding: 0 !important;
         }
     </style>
-    {{-- <link rel="stylesheet" id="wp-block-library-css" href="./assets-details-page/css/style.min.css" type="text/css"
+    <link rel="stylesheet" id="elementor-frontend-css" href="{{ asset('assets/view-profile/css/frontend.min.css') }}"
+        type="text/css" media="all">
+    <link rel="stylesheet" id="elementor-post-5285-css" href="{{ asset('assets/view-profile/css/post-5285.css') }}"
+        type="text/css" media="all">
+    <link rel="stylesheet" id="elementor-global-css" href="{{ asset('assets/view-profile/css/global.css') }}"
+        type="text/css" media="all">
+    <link rel="stylesheet" id="elementor-post-5364-css" href="{{ asset('assets/view-profile/css/post-5364.css') }}"
+        type="text/css" media="all">
+    <link rel="stylesheet" id="hfe-widgets-style-css" href="{{ asset('assets/view-profile/css/frontend.css') }}"
+        type="text/css" media="all">
+    <link rel="stylesheet" id="elementor-post-5193-css" href="{{ asset('assets/view-profile/css/post-5193.css') }}"
+        type="text/css" media="all">
+    <link rel="stylesheet" id="models-style-css" href="{{ asset('assets/view-profile/css/style.css') }}" type="text/css"
         media="all">
-    <link rel="stylesheet" id="wp-block-library-theme-inline-css"
-        href="./assets-details-page/css/library-theme-inline-css.css" />
-    <link rel="stylesheet" id="classic-theme-styles-css" href="./assets-details-page/css/classic-themes.min.css"
+    <link rel="stylesheet" id="font-awesome-css" href="{{ asset('assets/view-profile/css/font-awesome.min.css') }}"
         type="text/css" media="all">
-
-    <link rel="stylesheet" id="global-styles-inline-css" href="./assets-details-page/css/styles-inline.css"
-        type="text/css" media="all">
-
-    <link rel="stylesheet" id="contact-form-7-css" href="./assets-details-page/css/styles.css" type="text/css"
+    <link rel="stylesheet" id="models-menu-css" href="{{ asset('assets/view-profile/css/smart-menu.css') }}" type="text/css"
         media="all">
-
-    <link rel="stylesheet" id="hfe-style-css" href="./assets-details-page/css/header-footer-elementor.css"
-        type="text/css" media="all">
-    <link rel="stylesheet" id="elementor-icons-css" href="./assets-details-page/css/elementor-icons.min.css"
-        type="text/css" media="all">
-    <link rel="stylesheet" id="elementor-frontend-legacy-css" href="./assets-details-page/css/frontend-legacy.min.css"
-        type="text/css" media="all"> --}}
-    <link rel="stylesheet" id="elementor-frontend-css"
-        href="https://kayapati.com/demos/models/wp-content/plugins/elementor/assets/css/frontend.min.css?ver=3.6.7"
-        type="text/css" media="all">
-    <link rel="stylesheet" id="elementor-post-5285-css"
-        href="https://kayapati.com/demos/models/wp-content/uploads/elementor/css/post-5285.css?ver=1658128830"
-        type="text/css" media="all">
-    <link rel="stylesheet" id="elementor-global-css"
-        href="https://kayapati.com/demos/models/wp-content/uploads/elementor/css/global.css?ver=1658128830"
-        type="text/css" media="all">
-    <link rel="stylesheet" id="elementor-post-5364-css"
-        href="https://kayapati.com/demos/models/wp-content/uploads/elementor/css/post-5364.css?ver=1658128880"
-        type="text/css" media="all">
-    <link rel="stylesheet" id="hfe-widgets-style-css"
-        href="https://kayapati.com/demos/models/wp-content/plugins/header-footer-elementor/inc/widgets-css/frontend.css?ver=1.6.12"
-        type="text/css" media="all">
-    <link rel="stylesheet" id="elementor-post-5193-css"
-        href="https://kayapati.com/demos/models/wp-content/uploads/elementor/css/post-5193.css?ver=1658128830"
-        type="text/css" media="all">
-    <link rel="stylesheet" id="models-style-css"
-        href="https://kayapati.com/demos/models/wp-content/themes/models/style.css?ver=6.1.1" type="text/css"
+    <link rel="stylesheet" id="models-layout-css" href="{{ asset('assets/view-profile/css/layout.css') }}" type="text/css"
         media="all">
-    <link rel="stylesheet" id="font-awesome-css"
-        href="https://kayapati.com/demos/models/wp-content/plugins/elementor/assets/lib/font-awesome/css/font-awesome.min.css?ver=4.7.0"
+    <link rel="stylesheet" id="models-theme-responsive-css" href="{{ asset('assets/view-profile/css/responsive.css') }}"
         type="text/css" media="all">
-    <link rel="stylesheet" id="models-menu-css"
-        href="https://kayapati.com/demos/models/wp-content/themes/models/css/smart-menu.css?ver=6.1.1" type="text/css"
+    <link rel="stylesheet" id="buttons-css" href="{{ asset('assets/view-profile/css/buttons.min.css') }}" type="text/css"
         media="all">
-    <link rel="stylesheet" id="models-layout-css"
-        href="https://kayapati.com/demos/models/wp-content/themes/models/css/layout.css?ver=6.1.1" type="text/css"
-        media="all">
-    <link rel="stylesheet" id="models-theme-responsive-css"
-        href="https://kayapati.com/demos/models/wp-content/themes/models/css/responsive.css?ver=6.1.1" type="text/css"
-        media="all">
-    <link rel="stylesheet" id="buttons-css"
-        href="https://kayapati.com/demos/models/wp-includes/css/buttons.min.css?ver=6.1.1" type="text/css"
-        media="all">
-    <link rel="stylesheet" id="dashicons-css"
-        href="https://kayapati.com/demos/models/wp-includes/css/dashicons.min.css?ver=6.1.1" type="text/css"
-        media="all">
+    <link rel="stylesheet" id="dashicons-css" href="{{ asset('assets/view-profile/css/dashicons.min.css') }}"
+        type="text/css" media="all">
     <link rel="stylesheet" id="mediaelement-css"
-        href="https://kayapati.com/demos/models/wp-includes/js/mediaelement/mediaelementplayer-legacy.min.css?ver=4.2.17"
+        href="{{ asset('assets/view-profile/css/mediaelementplayer-legacy.min.css') }}" type="text/css" media="all">
+    <link rel="stylesheet" id="wp-mediaelement-css" href="{{ asset('assets/view-profile/css/wp-mediaelement.min.css') }}"
         type="text/css" media="all">
-    <link rel="stylesheet" id="wp-mediaelement-css"
-        href="https://kayapati.com/demos/models/wp-includes/js/mediaelement/wp-mediaelement.min.css?ver=6.1.1"
+    <link rel="stylesheet" id="media-views-css" href="{{ asset('assets/view-profile/css/media-views.min.css') }}"
         type="text/css" media="all">
-    <link rel="stylesheet" id="media-views-css"
-        href="https://kayapati.com/demos/models/wp-includes/css/media-views.min.css?ver=6.1.1" type="text/css"
-        media="all">
-    <link rel="stylesheet" id="imgareaselect-css"
-        href="https://kayapati.com/demos/models/wp-includes/js/imgareaselect/imgareaselect.css?ver=0.9.8"
+    <link rel="stylesheet" id="imgareaselect-css" href="{{ asset('assets/view-profile/css/imgareaselect.css') }}"
         type="text/css" media="all">
-    <link rel="stylesheet" id="simple-lightbox-css-css"
-        href="https://kayapati.com/demos/models/wp-content/themes/models/ultimate-member/assets/css/lightbox.min.css?ver=1.3"
+    <link rel="stylesheet" id="simple-lightbox-css-css" href="{{ asset('assets/view-profile/css/lightbox.min.css') }}"
         type="text/css" media="all">
     <link rel="stylesheet" id="drweb-print-style-css"
         href="https://kayapati.com/demos/models/wp-content/themes/models/ultimate-member/assets/css/um-kaya-compcard.css?ver=20130821"
@@ -248,9 +206,9 @@
     <script type="text/javascript" src="https://kayapati.com/demos/models/wp-includes/js/plupload/plupload.min.js?ver=2.1.9"
         id="plupload-js"></script>
     <!--[if lt IE 8]>
-<script type='text/javascript' src='https://kayapati.com/demos/models/wp-includes/js/json2.min.js?ver=2015-05-03'
-    id='json2-js'></script>
-<![endif]-->
+                    <script type='text/javascript' src='https://kayapati.com/demos/models/wp-includes/js/json2.min.js?ver=2015-05-03'
+                        id='json2-js'></script>
+                    <![endif]-->
     <script type="text/javascript"
         src="https://kayapati.com/demos/models/wp-content/plugins/ultimate-member/assets/js/um-gdpr.min.js?ver=2.4.2"
         id="um-gdpr-js"></script>
@@ -307,7 +265,7 @@
     <meta name="twitter:url" content="https://kayapati.com/demos/models/user/lavanphoto/">
 
     <script
-        type="application/ld+json">{"@context":"http:\/\/schema.org","@type":"Person","name":"karala lavan","description":"karala lavan is on Models. Join Models to view karala lavan&#039;s profile","image":"https:\/\/kayapati.com\/demos\/models\/wp-content\/uploads\/ultimatemember\/5\/profile_photo-320x320.jpg?1679982290","url":"https:\/\/kayapati.com\/demos\/models\/user\/lavanphoto\/"}</script>
+    type="application/ld+json">{"@context":"http:\/\/schema.org","@type":"Person","name":"karala lavan","description":"karala lavan is on Models. Join Models to view karala lavan&#039;s profile","image":"https:\/\/kayapati.com\/demos\/models\/wp-content\/uploads\/ultimatemember\/5\/profile_photo-320x320.jpg?1679982290","url":"https:\/\/kayapati.com\/demos\/models\/user\/lavanphoto\/"}</script>
 
     <!-- END - Ultimate Member profile SEO meta tags -->
     <style id="kirki-inline-styles">
@@ -625,11 +583,60 @@
             background-color: #e5e5e5 !important;
         }
     </style>
-</head>
+    <style>
+        body {
+            background: #fff;
+            min-height: 100vh;
+            background: linear-gradient(to right bottom, #273c75, #079992);
+            background-repeat: no-repeat;
+        }
 
-<body
-    class="page-template page-template-templates page-template-template-fullwidth page-template-templatestemplate-fullwidth-php page page-id-4859 um-page-user um-page-loggedout ehf-header ehf-footer ehf-template-models ehf-stylesheet-models elementor-default elementor-kit-5285 e--ua-blink e--ua-chrome e--ua-webkit"
-    data-elementor-device-mode="widescreen">
+        img {
+            max-width: 100%;
+        }
+
+        .container-img {
+            padding: 40px 0;
+        }
+
+        figure {
+            max-width: 800px;
+            margin: 0 auto 40px;
+            border: 2px solid #fff;
+        }
+
+        figure img {
+            max-width: 100%;
+            min-width: 100%;
+            display: block;
+            height: 210px;
+            width: 210px;
+            box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+        }
+
+        ul {
+            list-style: none;
+            margin: 0;
+            text-align: center;
+        }
+
+        .img-ul li{
+            margin: 0 5px;
+            display:flex;
+            width: 150px;
+            border: 1px solid #fff;
+            cursor: pointer;
+        }
+
+        .img-ul li img {
+            display: block;
+            opacity: 0.4;
+            transition: 0.4s;
+            box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19)
+        }
+    </style>
+
+
     <div id="kaya-page-content-wrapper" class="">
         <div class="main-wrapper">
             <!-- Page title section -->
@@ -655,52 +662,41 @@
 
 
                                         <div class="one_fifth profile_head_sidebar">
-
-
-                                            <div class="um-header no-cover">
-
-
-                                                <div class="um-profile-photo" data-user_id="5">
-
-                                                    <a href="https://kayapati.com/demos/models/user/lavanphoto/"
-                                                        class="um-profile-photo-img" title="karala lavan">
-                                                        <span class="um-profile-photo-overlay">
-                                                            <span class="um-profile-photo-overlay-s">
-                                                                <ins>
-                                                                    <i class="um-faicon-camera"></i>
-                                                                </ins>
-                                                            </span>
-                                                        </span><img src="{{ $item?->images[0]?->image }}"
-                                                            class="gravatar avatar avatar-320 um-avatar um-avatar-uploaded"
-                                                            width="320" height="320" alt="karala lavan"
-                                                            data-default="https://kayapati.com/demos/models/wp-content/plugins/ultimate-member/assets/img/default_avatar.jpg"
-                                                            onerror="if ( ! this.getAttribute('data-load-error') ){ this.setAttribute('data-load-error', '1');this.setAttribute('src', this.getAttribute('data-default'));}">
-                                                    </a>
-
-
-                                                </div>
-
-                                                <div class="um-profile-meta">
-
-
-                                                    <div class="um-main-meta">
-
-                                                        <div class="um-name">
-
-                                                            <a href="https://kayapati.com/demos/models/user/lavanphoto/"
-                                                                title="karala lavan">{{ $item?->first_name . ' ' . $item?->last_name }}</a>
-
-
-                                                        </div>
-
-                                                        <div class="um-clear"></div>
-                                                    </div>
-                                                </div>
-                                                <div class="um-clear"></div>
+                                            <div class="container-img">
+                                                <figure>
+                                                    <img id="mainImg" src="{{ $item?->images[0]?->image }}">
+                                                </figure>
+                                                <ul class="img-ul">
+                                                    <li><img src="{{ $item?->images[0]?->image }}"></li>
+                                                    <li><img src="{{ $item?->images[1]?->image }}"></li>
+                                                    <li><img src="{{ $item?->images[2]?->image }}"></li>
+                                                  
+                                                </ul>
                                             </div>
-
-
                                         </div>
+                                        <script>
+                                            $(document).ready(function () {
+                                                    $('ul img').on({
+                                                        alert('Mahesh')
+                                                            mouseover: function () {
+                                                                    $(this).css({
+                                                                            'opacity': 1,
+                                                                    });
+                                                            },
+                                                            mouseout: function () {
+                                                                    $(this).css({
+                                                                            'opacity': 0.4
+                                                                    });
+                                                            },
+                                                            click: function () {
+                                                                    var imageURL = $(this).attr('src');
+                                                                    $('#mainImg').fadeOut(500, function () {
+                                                                            $(this).attr('src', imageURL);
+                                                                    }).fadeIn(500);
+                                                            }
+                                                    });
+                                            });
+                                    </script>
                                         <div class="four_fifth_last">
 
                                             <div class="um-profile-navbar ">
@@ -738,8 +734,7 @@
                                                                     <div class="um-clear"></div>
                                                                 </div>
                                                                 <div class="um-field-area">
-                                                                    <div class="um-field-value"
-                                                                        id="model_categories-8">
+                                                                    <div class="um-field-value" id="model_categories-8">
                                                                         {{ $item?->first_name . ' ' . $item?->last_name }}
                                                                     </div>
                                                                 </div>
@@ -753,8 +748,7 @@
                                                                     <div class="um-clear"></div>
                                                                 </div>
                                                                 <div class="um-field-area">
-                                                                    <div class="um-field-value"
-                                                                        id="model_categories-8">
+                                                                    <div class="um-field-value" id="model_categories-8">
                                                                         {{ $item?->email }}
                                                                     </div>
                                                                 </div>
@@ -768,9 +762,8 @@
                                                                     <div class="um-clear"></div>
                                                                 </div>
                                                                 <div class="um-field-area">
-                                                                    <div class="um-field-value"
-                                                                        id="model_categories-8">
-                                                                        {{ $item?->countryCode ." ". $item?->mobile_no}}
+                                                                    <div class="um-field-value" id="model_categories-8">
+                                                                        {{ $item?->countryCode . ' ' . $item?->mobile_no }}
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -830,48 +823,48 @@
                                                                 </div>
                                                             </div>
                                                             {{-- <div id="um_field_8_user_url"
-                                                                class="um-field um-field-url  um-field-user_url um-field-url um-field-type_url"
-                                                                data-key="user_url">
-                                                                <div class="um-field-label"><label
-                                                                        for="user_url-8">Website URL</label>
-                                                                    <div class="um-clear"></div>
+                                                            class="um-field um-field-url  um-field-user_url um-field-url um-field-type_url"
+                                                            data-key="user_url">
+                                                            <div class="um-field-label"><label
+                                                                    for="user_url-8">Website URL</label>
+                                                                <div class="um-clear"></div>
+                                                            </div>
+                                                            <div class="um-field-area">
+                                                                <div class="um-field-value" id="user_url-8"><a
+                                                                        href="http://www.yoursite.com"
+                                                                        title="http://www.yoursite.com"
+                                                                        target="_blank">http://www.yoursite.com</a>
                                                                 </div>
-                                                                <div class="um-field-area">
-                                                                    <div class="um-field-value" id="user_url-8"><a
-                                                                            href="http://www.yoursite.com"
-                                                                            title="http://www.yoursite.com"
-                                                                            target="_blank">http://www.yoursite.com</a>
-                                                                    </div>
-                                                                </div>
-                                                            </div> --}}
+                                                            </div>
+                                                        </div> --}}
                                                             {{-- <div id="um_field_8_model_categories"
-                                                                class="um-field um-field-checkbox  um-field-model_categories um-field-checkbox um-field-type_checkbox"
-                                                                data-key="model_categories">
-                                                                <div class="um-field-label"><label
-                                                                        for="model_categories-8">Model
-                                                                        Categories</label>
-                                                                    <div class="um-clear"></div>
+                                                            class="um-field um-field-checkbox  um-field-model_categories um-field-checkbox um-field-type_checkbox"
+                                                            data-key="model_categories">
+                                                            <div class="um-field-label"><label
+                                                                    for="model_categories-8">Model
+                                                                    Categories</label>
+                                                                <div class="um-clear"></div>
+                                                            </div>
+                                                            <div class="um-field-area">
+                                                                <div class="um-field-value"
+                                                                    id="model_categories-8">
+                                                                    Fashion Model, Commercial Model, Fitness Model
                                                                 </div>
-                                                                <div class="um-field-area">
-                                                                    <div class="um-field-value"
-                                                                        id="model_categories-8">
-                                                                        Fashion Model, Commercial Model, Fitness Model
-                                                                    </div>
-                                                                </div>
-                                                            </div> --}}
+                                                            </div>
+                                                        </div> --}}
                                                             {{-- <div id="um_field_8_years_of_experience"
-                                                                class="um-field um-field-number  um-field-years_of_experience um-field-number um-field-type_number"
-                                                                data-key="years_of_experience">
-                                                                <div class="um-field-label"><label
-                                                                        for="years_of_experience-8">Years Of Experience
-                                                                    </label>
-                                                                    <div class="um-clear"></div>
-                                                                </div>
-                                                                <div class="um-field-area">
-                                                                    <div class="um-field-value"
-                                                                        id="years_of_experience-8">2</div>
-                                                                </div>
-                                                            </div> --}}
+                                                            class="um-field um-field-number  um-field-years_of_experience um-field-number um-field-type_number"
+                                                            data-key="years_of_experience">
+                                                            <div class="um-field-label"><label
+                                                                    for="years_of_experience-8">Years Of Experience
+                                                                </label>
+                                                                <div class="um-clear"></div>
+                                                            </div>
+                                                            <div class="um-field-area">
+                                                                <div class="um-field-value"
+                                                                    id="years_of_experience-8">2</div>
+                                                            </div>
+                                                        </div> --}}
                                                         </div>
                                                     </article>
                                                     <article class="kaya-um-tabs-content">
@@ -881,140 +874,140 @@
                                                         <div class="um-clear"></div>
                                                     </article>
                                                     {{-- <article class="kaya-um-tabs-content">
-                                                        <div class="um-col-1">
-                                                            <div class="um-field um-field-block  um-field-block um-field-type_block"
-                                                                data-key="um_block_8_37">
-                                                                <h4 class="kaya-um-row-heading"> PHYSICAL ATTRIBUTES
-                                                                </h4>
-                                                            </div>
+                                                    <div class="um-col-1">
+                                                        <div class="um-field um-field-block  um-field-block um-field-type_block"
+                                                            data-key="um_block_8_37">
+                                                            <h4 class="kaya-um-row-heading"> PHYSICAL ATTRIBUTES
+                                                            </h4>
                                                         </div>
-                                                    </article>
-                                                    <article class="kaya-um-tabs-content">
-                                                        <div class="um-col-121">
-                                                            <div id="um_field_8_eye_color"
-                                                                class="um-field um-field-select  um-field-eye_color um-field-select um-field-type_select"
-                                                                data-key="eye_color">
-                                                                <div class="um-field-label"><label
-                                                                        for="eye_color-8">Eye
-                                                                        Color</label>
-                                                                    <div class="um-clear"></div>
-                                                                </div>
-                                                                <div class="um-field-area">
-                                                                    <div class="um-field-value" id="eye_color-8">Blue
-                                                                    </div>
-                                                                </div>
+                                                    </div>
+                                                </article>
+                                                <article class="kaya-um-tabs-content">
+                                                    <div class="um-col-121">
+                                                        <div id="um_field_8_eye_color"
+                                                            class="um-field um-field-select  um-field-eye_color um-field-select um-field-type_select"
+                                                            data-key="eye_color">
+                                                            <div class="um-field-label"><label
+                                                                    for="eye_color-8">Eye
+                                                                    Color</label>
+                                                                <div class="um-clear"></div>
                                                             </div>
-                                                            <div id="um_field_8_skin_color"
-                                                                class="um-field um-field-select  um-field-skin_color um-field-select um-field-type_select"
-                                                                data-key="skin_color">
-                                                                <div class="um-field-label"><label
-                                                                        for="skin_color-8">Skin Color</label>
-                                                                    <div class="um-clear"></div>
-                                                                </div>
-                                                                <div class="um-field-area">
-                                                                    <div class="um-field-value" id="skin_color-8">
-                                                                        Light
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div id="um_field_8_hair_color"
-                                                                class="um-field um-field-select  um-field-hair_color um-field-select um-field-type_select"
-                                                                data-key="hair_color">
-                                                                <div class="um-field-label"><label
-                                                                        for="hair_color-8">Hair Color</label>
-                                                                    <div class="um-clear"></div>
-                                                                </div>
-                                                                <div class="um-field-area">
-                                                                    <div class="um-field-value" id="hair_color-8">
-                                                                        Brown
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div id="um_field_8_model_height_in_CM"
-                                                                class="um-field um-field-number  um-field-model_height_in_CM um-field-number um-field-type_number"
-                                                                data-key="model_height_in_CM">
-                                                                <div class="um-field-label"><label
-                                                                        for="model_height_in_CM-8">Model Height in
-                                                                        CM</label>
-                                                                    <div class="um-clear"></div>
-                                                                </div>
-                                                                <div class="um-field-area">
-                                                                    <div class="um-field-value"
-                                                                        id="model_height_in_CM-8">156</div>
+                                                            <div class="um-field-area">
+                                                                <div class="um-field-value" id="eye_color-8">Blue
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </article> --}}
+                                                        <div id="um_field_8_skin_color"
+                                                            class="um-field um-field-select  um-field-skin_color um-field-select um-field-type_select"
+                                                            data-key="skin_color">
+                                                            <div class="um-field-label"><label
+                                                                    for="skin_color-8">Skin Color</label>
+                                                                <div class="um-clear"></div>
+                                                            </div>
+                                                            <div class="um-field-area">
+                                                                <div class="um-field-value" id="skin_color-8">
+                                                                    Light
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div id="um_field_8_hair_color"
+                                                            class="um-field um-field-select  um-field-hair_color um-field-select um-field-type_select"
+                                                            data-key="hair_color">
+                                                            <div class="um-field-label"><label
+                                                                    for="hair_color-8">Hair Color</label>
+                                                                <div class="um-clear"></div>
+                                                            </div>
+                                                            <div class="um-field-area">
+                                                                <div class="um-field-value" id="hair_color-8">
+                                                                    Brown
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div id="um_field_8_model_height_in_CM"
+                                                            class="um-field um-field-number  um-field-model_height_in_CM um-field-number um-field-type_number"
+                                                            data-key="model_height_in_CM">
+                                                            <div class="um-field-label"><label
+                                                                    for="model_height_in_CM-8">Model Height in
+                                                                    CM</label>
+                                                                <div class="um-clear"></div>
+                                                            </div>
+                                                            <div class="um-field-area">
+                                                                <div class="um-field-value"
+                                                                    id="model_height_in_CM-8">156</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </article> --}}
                                                     {{-- <article class="kaya-um-tabs-content">
-                                                        <div class="um-col-122">
-                                                            <div id="um_field_8_hair_type"
-                                                                class="um-field um-field-select  um-field-hair_type um-field-select um-field-type_select"
-                                                                data-key="hair_type">
-                                                                <div class="um-field-label"><label
-                                                                        for="hair_type-8">Hair Type</label>
-                                                                    <div class="um-clear"></div>
-                                                                </div>
-                                                                <div class="um-field-area">
-                                                                    <div class="um-field-value" id="hair_type-8">Long
-                                                                    </div>
-                                                                </div>
+                                                    <div class="um-col-122">
+                                                        <div id="um_field_8_hair_type"
+                                                            class="um-field um-field-select  um-field-hair_type um-field-select um-field-type_select"
+                                                            data-key="hair_type">
+                                                            <div class="um-field-label"><label
+                                                                    for="hair_type-8">Hair Type</label>
+                                                                <div class="um-clear"></div>
                                                             </div>
-                                                            <div id="um_field_8_dress_size"
-                                                                class="um-field um-field-select  um-field-dress_size um-field-select um-field-type_select"
-                                                                data-key="dress_size">
-                                                                <div class="um-field-label"><label
-                                                                        for="dress_size-8">Dress Size</label>
-                                                                    <div class="um-clear"></div>
-                                                                </div>
-                                                                <div class="um-field-area">
-                                                                    <div class="um-field-value" id="dress_size-8">
-                                                                        2XL/46
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div id="um_field_8_shoe_size"
-                                                                class="um-field um-field-select  um-field-shoe_size um-field-select um-field-type_select"
-                                                                data-key="shoe_size">
-                                                                <div class="um-field-label"><label
-                                                                        for="shoe_size-8">Shoe Size</label>
-                                                                    <div class="um-clear"></div>
-                                                                </div>
-                                                                <div class="um-field-area">
-                                                                    <div class="um-field-value" id="shoe_size-8">6
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div id="um_field_8_bra_size_in_cm"
-                                                                class="um-field um-field-number  um-field-bra_size_in_cm um-field-number um-field-type_number"
-                                                                data-key="bra_size_in_cm">
-                                                                <div class="um-field-label"><label
-                                                                        for="bra_size_in_cm-8">Bra Size in CM</label>
-                                                                    <div class="um-clear"></div>
-                                                                </div>
-                                                                <div class="um-field-area">
-                                                                    <div class="um-field-value" id="bra_size_in_cm-8">
-                                                                        57
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div id="um_field_8_hip_size_in_CM"
-                                                                class="um-field um-field-number  um-field-hip_size_in_CM um-field-number um-field-type_number"
-                                                                data-key="hip_size_in_CM">
-                                                                <div class="um-field-label"><label
-                                                                        for="hip_size_in_CM-8">Hip Size in CM</label>
-                                                                    <div class="um-clear"></div>
-                                                                </div>
-                                                                <div class="um-field-area">
-                                                                    <div class="um-field-value" id="hip_size_in_CM-8">
-                                                                        50
-                                                                    </div>
+                                                            <div class="um-field-area">
+                                                                <div class="um-field-value" id="hair_type-8">Long
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </article>
-                                                    <article class="kaya-um-tabs-content">
-                                                        <div class="um-clear"></div>
-                                                    </article> --}}
+                                                        <div id="um_field_8_dress_size"
+                                                            class="um-field um-field-select  um-field-dress_size um-field-select um-field-type_select"
+                                                            data-key="dress_size">
+                                                            <div class="um-field-label"><label
+                                                                    for="dress_size-8">Dress Size</label>
+                                                                <div class="um-clear"></div>
+                                                            </div>
+                                                            <div class="um-field-area">
+                                                                <div class="um-field-value" id="dress_size-8">
+                                                                    2XL/46
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div id="um_field_8_shoe_size"
+                                                            class="um-field um-field-select  um-field-shoe_size um-field-select um-field-type_select"
+                                                            data-key="shoe_size">
+                                                            <div class="um-field-label"><label
+                                                                    for="shoe_size-8">Shoe Size</label>
+                                                                <div class="um-clear"></div>
+                                                            </div>
+                                                            <div class="um-field-area">
+                                                                <div class="um-field-value" id="shoe_size-8">6
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div id="um_field_8_bra_size_in_cm"
+                                                            class="um-field um-field-number  um-field-bra_size_in_cm um-field-number um-field-type_number"
+                                                            data-key="bra_size_in_cm">
+                                                            <div class="um-field-label"><label
+                                                                    for="bra_size_in_cm-8">Bra Size in CM</label>
+                                                                <div class="um-clear"></div>
+                                                            </div>
+                                                            <div class="um-field-area">
+                                                                <div class="um-field-value" id="bra_size_in_cm-8">
+                                                                    57
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div id="um_field_8_hip_size_in_CM"
+                                                            class="um-field um-field-number  um-field-hip_size_in_CM um-field-number um-field-type_number"
+                                                            data-key="hip_size_in_CM">
+                                                            <div class="um-field-label"><label
+                                                                    for="hip_size_in_CM-8">Hip Size in CM</label>
+                                                                <div class="um-clear"></div>
+                                                            </div>
+                                                            <div class="um-field-area">
+                                                                <div class="um-field-value" id="hip_size_in_CM-8">
+                                                                    50
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </article>
+                                                <article class="kaya-um-tabs-content">
+                                                    <div class="um-clear"></div>
+                                                </article> --}}
                                                 </div>
                                                 <div class="um-row-heading"
                                                     style="margin: 0px 0px 30px 0px;margin-bottom: 0px;border-width: 0px 0px 0px 0px;border-style: solid;border-radius: 0px 0px 0px 0px;border-bottom-width: 0px;">
@@ -1040,24 +1033,30 @@
                                                                         </style>
                                                                         <div class="custommediawrapper-out1"
                                                                             id="custommediagallery-img_gallery">
+                                                                            {{-- <div class="umem_media_sepeartor"><a
+                                                                                    href="#"
+                                                                                    data-lightbox="test"><img
+                                                                                        src="{{ $item?->images[0]?->image }}"
+                                                                                        width="350px" height="350px"></a>
+                                                                            </div> --}}
                                                                             <div class="umem_media_sepeartor"><a
                                                                                     href="#"
                                                                                     data-lightbox="test"><img
                                                                                         src="{{ $item?->images[0]?->image }}"
-                                                                                        width="350px"
-                                                                                        height="350px"></a></div>
+                                                                                        style="width:350px;height:120px; object-fit:fill;"></a>
+                                                                            </div>
                                                                             <div class="umem_media_sepeartor"><a
                                                                                     href="#"
                                                                                     data-lightbox="test"><img
                                                                                         src="{{ $item?->images[1]?->image }}"
-                                                                                        width="350px"
-                                                                                        height="350px"></a></div>
+                                                                                        style="width:350px;height:120px; object-fit:cover;"></a>
+                                                                            </div>
                                                                             <div class="umem_media_sepeartor"><a
                                                                                     href="#"
                                                                                     data-lightbox="test"><img
                                                                                         src="{{ $item?->images[2]?->image }}"
-                                                                                        width="350px"
-                                                                                        height="350px"></a></div>
+                                                                                        style="width:350px;height:120px; object-fit:cover;"></a>
+                                                                            </div>
 
                                                                         </div>
                                                                         <script>
@@ -1084,8 +1083,7 @@
                                                                 class="um-field um-field-youtube_video  um-field-youtubevideo1_38 um-field-youtube_video um-field-type_youtube_video"
                                                                 data-key="youtubevideo1_38">
                                                                 <div class="um-field-area">
-                                                                    <div class="um-field-value"
-                                                                        id="youtubevideo1_38-8">
+                                                                    <div class="um-field-value" id="youtubevideo1_38-8">
                                                                         <div class="um-youtube">
                                                                             <iframe width="600" height="450"
                                                                                 src="{{ $item?->profile->work_reel1 }}"
@@ -1103,8 +1101,7 @@
                                                                 class="um-field um-field-youtube_video  um-field-youtubevideo1_38 um-field-youtube_video um-field-type_youtube_video"
                                                                 data-key="youtubevideo1_38">
                                                                 <div class="um-field-area">
-                                                                    <div class="um-field-value"
-                                                                        id="youtubevideo1_38-8">
+                                                                    <div class="um-field-value" id="youtubevideo1_38-8">
                                                                         <div class="um-youtube">
                                                                             <iframe width="600" height="450"
                                                                                 src="{{ $item?->profile->work_reel2 }}"
@@ -1122,8 +1119,7 @@
                                                                 class="um-field um-field-youtube_video  um-field-youtubevideo1_38 um-field-youtube_video um-field-type_youtube_video"
                                                                 data-key="youtubevideo1_38">
                                                                 <div class="um-field-area">
-                                                                    <div class="um-field-value"
-                                                                        id="youtubevideo1_38-8">
+                                                                    <div class="um-field-value" id="youtubevideo1_38-8">
                                                                         <div class="um-youtube">
                                                                             <iframe width="600" height="450"
                                                                                 src="{{ $item?->profile->work_reel3 }}"
@@ -1150,8 +1146,7 @@
                                                                 class="um-field um-field-youtube_video  um-field-youtubevideo1_38 um-field-youtube_video um-field-type_youtube_video"
                                                                 data-key="youtubevideo1_38">
                                                                 <div class="um-field-area">
-                                                                    <div class="um-field-value"
-                                                                        id="youtubevideo1_38-8">
+                                                                    <div class="um-field-value" id="youtubevideo1_38-8">
                                                                         <div class="um-youtube">
                                                                             <iframe width="600" height="450"
                                                                                 src="{{ $item?->introVideo?->intro_video_link }}"
@@ -1165,96 +1160,96 @@
                                                     </article>
                                                 </div>
                                                 {{-- <div class="um-row-heading"
-                                                    style="margin: 0px 0px 30px 0px;margin-bottom: 0px;border-width: 0px 0px 0px 0px;border-style: solid;border-radius: 0px 0px 0px 0px;border-bottom-width: 0px;">
-                                                    <span class="um-row-heading-icon" style=""><i
-                                                            class="um-icon-android-call"></i></span>Contact Me
-                                                </div>
-                                                <div class="um-row _um_row_5 kaya-um-tabs"
-                                                    style="padding: 0px; margin: 0px 0px 30px; border-width: 0px; border-style: solid; border-radius: 0px; display: none;">
-                                                    <article class="kaya-um-tabs-content">
-                                                        <div class="um-col-121">
-                                                            <div class="um-field um-field-shortcode  um-field-shortcode um-field-type_shortcode"
-                                                                data-key="um_shortcode_8_40">
-                                                                <div role="form" class="wpcf7" id="wpcf7-f5287-p4859-o1"
-                                                                    lang="en-US" dir="ltr">
-                                                                    <div class="screen-reader-response">
-                                                                        <p role="status" aria-live="polite"
-                                                                            aria-atomic="true"></p>
-                                                                        <ul></ul>
-                                                                    </div>
-                                                                    <form
-                                                                        action="/demos/models/user/lavanphoto/#wpcf7-f5287-p4859-o1"
-                                                                        method="post" class="wpcf7-form init"
-                                                                        novalidate="novalidate" data-status="init">
-                                                                        <div style="display: none;">
-                                                                            <input type="hidden" name="_wpcf7"
-                                                                                value="5287">
-                                                                            <input type="hidden" name="_wpcf7_version"
-                                                                                value="5.6">
-                                                                            <input type="hidden" name="_wpcf7_locale"
-                                                                                value="en_US">
-                                                                            <input type="hidden" name="_wpcf7_unit_tag"
-                                                                                value="wpcf7-f5287-p4859-o1">
-                                                                            <input type="hidden"
-                                                                                name="_wpcf7_container_post"
-                                                                                value="4859">
-                                                                            <input type="hidden"
-                                                                                name="_wpcf7_posted_data_hash" value="">
-                                                                            <input type="hidden"
-                                                                                name="_wpcf7_ultimate_member_profile_id"
-                                                                                value="5">
-                                                                        </div>
-                                                                        <p><label> Your Name (required)<br>
-                                                                                <span class="wpcf7-form-control-wrap"
-                                                                                    data-name="your-name"><input
-                                                                                        type="text" name="your-name"
-                                                                                        value="" size="40"
-                                                                                        class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required"
-                                                                                        aria-required="true"
-                                                                                        aria-invalid="false"></span>
-                                                                            </label></p>
-                                                                        <p><label> Your Email (required)<br>
-                                                                                <span class="wpcf7-form-control-wrap"
-                                                                                    data-name="your-email"><input
-                                                                                        type="email" name="your-email"
-                                                                                        value="" size="40"
-                                                                                        class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email"
-                                                                                        aria-required="true"
-                                                                                        aria-invalid="false"></span>
-                                                                            </label></p>
-                                                                        <p><label> Subject<br>
-                                                                                <span class="wpcf7-form-control-wrap"
-                                                                                    data-name="your-subject"><input
-                                                                                        type="text" name="your-subject"
-                                                                                        value="" size="40"
-                                                                                        class="wpcf7-form-control wpcf7-text"
-                                                                                        aria-invalid="false"></span>
-                                                                            </label></p>
-                                                                        <p><label> Your Message<br>
-                                                                                <span class="wpcf7-form-control-wrap"
-                                                                                    data-name="your-message"><textarea
-                                                                                        name="your-message" cols="40"
-                                                                                        rows="10"
-                                                                                        class="wpcf7-form-control wpcf7-textarea"
-                                                                                        aria-invalid="false"></textarea></span>
-                                                                            </label></p>
-                                                                        <p><input type="submit" value="Send"
-                                                                                class="wpcf7-form-control has-spinner wpcf7-submit"><span
-                                                                                class="wpcf7-spinner"></span></p>
-                                                                        <div class="wpcf7-response-output"
-                                                                            aria-hidden="true"></div>
-                                                                    </form>
+                                                style="margin: 0px 0px 30px 0px;margin-bottom: 0px;border-width: 0px 0px 0px 0px;border-style: solid;border-radius: 0px 0px 0px 0px;border-bottom-width: 0px;">
+                                                <span class="um-row-heading-icon" style=""><i
+                                                        class="um-icon-android-call"></i></span>Contact Me
+                                            </div>
+                                            <div class="um-row _um_row_5 kaya-um-tabs"
+                                                style="padding: 0px; margin: 0px 0px 30px; border-width: 0px; border-style: solid; border-radius: 0px; display: none;">
+                                                <article class="kaya-um-tabs-content">
+                                                    <div class="um-col-121">
+                                                        <div class="um-field um-field-shortcode  um-field-shortcode um-field-type_shortcode"
+                                                            data-key="um_shortcode_8_40">
+                                                            <div role="form" class="wpcf7" id="wpcf7-f5287-p4859-o1"
+                                                                lang="en-US" dir="ltr">
+                                                                <div class="screen-reader-response">
+                                                                    <p role="status" aria-live="polite"
+                                                                        aria-atomic="true"></p>
+                                                                    <ul></ul>
                                                                 </div>
+                                                                <form
+                                                                    action="/demos/models/user/lavanphoto/#wpcf7-f5287-p4859-o1"
+                                                                    method="post" class="wpcf7-form init"
+                                                                    novalidate="novalidate" data-status="init">
+                                                                    <div style="display: none;">
+                                                                        <input type="hidden" name="_wpcf7"
+                                                                            value="5287">
+                                                                        <input type="hidden" name="_wpcf7_version"
+                                                                            value="5.6">
+                                                                        <input type="hidden" name="_wpcf7_locale"
+                                                                            value="en_US">
+                                                                        <input type="hidden" name="_wpcf7_unit_tag"
+                                                                            value="wpcf7-f5287-p4859-o1">
+                                                                        <input type="hidden"
+                                                                            name="_wpcf7_container_post"
+                                                                            value="4859">
+                                                                        <input type="hidden"
+                                                                            name="_wpcf7_posted_data_hash" value="">
+                                                                        <input type="hidden"
+                                                                            name="_wpcf7_ultimate_member_profile_id"
+                                                                            value="5">
+                                                                    </div>
+                                                                    <p><label> Your Name (required)<br>
+                                                                            <span class="wpcf7-form-control-wrap"
+                                                                                data-name="your-name"><input
+                                                                                    type="text" name="your-name"
+                                                                                    value="" size="40"
+                                                                                    class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required"
+                                                                                    aria-required="true"
+                                                                                    aria-invalid="false"></span>
+                                                                        </label></p>
+                                                                    <p><label> Your Email (required)<br>
+                                                                            <span class="wpcf7-form-control-wrap"
+                                                                                data-name="your-email"><input
+                                                                                    type="email" name="your-email"
+                                                                                    value="" size="40"
+                                                                                    class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email"
+                                                                                    aria-required="true"
+                                                                                    aria-invalid="false"></span>
+                                                                        </label></p>
+                                                                    <p><label> Subject<br>
+                                                                            <span class="wpcf7-form-control-wrap"
+                                                                                data-name="your-subject"><input
+                                                                                    type="text" name="your-subject"
+                                                                                    value="" size="40"
+                                                                                    class="wpcf7-form-control wpcf7-text"
+                                                                                    aria-invalid="false"></span>
+                                                                        </label></p>
+                                                                    <p><label> Your Message<br>
+                                                                            <span class="wpcf7-form-control-wrap"
+                                                                                data-name="your-message"><textarea
+                                                                                    name="your-message" cols="40"
+                                                                                    rows="10"
+                                                                                    class="wpcf7-form-control wpcf7-textarea"
+                                                                                    aria-invalid="false"></textarea></span>
+                                                                        </label></p>
+                                                                    <p><input type="submit" value="Send"
+                                                                            class="wpcf7-form-control has-spinner wpcf7-submit"><span
+                                                                            class="wpcf7-spinner"></span></p>
+                                                                    <div class="wpcf7-response-output"
+                                                                        aria-hidden="true"></div>
+                                                                </form>
                                                             </div>
                                                         </div>
-                                                    </article>
-                                                    <article class="kaya-um-tabs-content">
-                                                        <div class="um-col-122"></div>
-                                                    </article>
-                                                    <article class="kaya-um-tabs-content">
-                                                        <div class="um-clear"></div>
-                                                    </article>
-                                                </div> --}}
+                                                    </div>
+                                                </article>
+                                                <article class="kaya-um-tabs-content">
+                                                    <div class="um-col-122"></div>
+                                                </article>
+                                                <article class="kaya-um-tabs-content">
+                                                    <div class="um-clear"></div>
+                                                </article>
+                                            </div> --}}
                                                 <div class="um-row _um_row_6 compcard landscape"
                                                     style="padding: 20PX;background-color: #ffffff;margin: 0px 0px 30px 0px;border-width: 0px 0px 0px 0px;border-style: solid;border-radius: 1px;"
                                                     id="compcard">
@@ -1367,8 +1362,8 @@
                                                             </div>
                                                         </div>
                                                         <div class="um-field um-field-shortcode  um-field-shortcode um-field-type_shortcode"
-                                                            data-key="um_shortcode_8_13"><span
-                                                                class="kaya_um_user_meta"> <strong> Country: </strong>
+                                                            data-key="um_shortcode_8_13"><span class="kaya_um_user_meta">
+                                                                <strong> Country: </strong>
                                                                 Belgium </span>
 
                                                             <span class="kaya_um_user_meta"> <strong> Eye Color:
@@ -1391,8 +1386,7 @@
                                                 <p class="um_request_name">
                                                     <label for="um_request_8">Only fill in if you are not human</label>
                                                     <input type="hidden" name="um_request" id="um_request_8"
-                                                        class="input" value="" size="25"
-                                                        autocomplete="off">
+                                                        class="input" value="" size="25" autocomplete="off">
                                                 </p>
 
 
@@ -1444,9 +1438,749 @@
             margin: 5px 2px;
         }
     </style>
-    <link rel="stylesheet" id="um-models-css"
-        href="https://kayapati.com/demos/models/wp-content/themes/models/ultimate-member/templates/theme-style/um-kaya-models.css?ver=1.2"
-        type="text/css" media="all">
+    <style>
+        /* Disable cover image */
+        .um-cover,
+        .um-member-cover,
+        .um-member-more,
+        .um-member-less {
+            display: none !important;
+            height: 0px !important;
+        }
+
+        .psgal.photoswipe_showme {
+            opacity: 1 !important;
+        }
+
+        /* Search results text alignment to center */
+        .um-directory .um-members-wrapper .um-members .um-members-none {
+            width: 100% !Important;
+            position: absolute;
+        }
+
+        .user-title-meta-info h3 a,
+        .user-title-meta-info h3 a:visited {
+            color: #eee !important;
+        }
+
+        .um-directory .um-members-wrapper .um-members a {
+            color: inherit;
+        }
+
+
+        /*--------------------------------------------------------------
+                # Profile form editing
+                --------------------------------------------------------------*/
+        table.form-table.pods-meta {
+            background: #fff;
+            border: 10px solid #dedede;
+        }
+
+        .cleditorMain {
+            background-color: #eeeeee;
+        }
+
+        .um-editing .um-profile-body h131,
+        .um-editing #um_role_selector_wrapper,
+        .um-editing .um-profile-body table:not(.pods-meta):not(.picker__table):not(.page-50) {
+            display: none !important;
+        }
+
+        .pods-meta iframe {
+            height: auto !important;
+        }
+
+        .pods-meta table th,
+        .mce-item-table th,
+        table caption {
+            width: inherit !important;
+
+        }
+
+        .um-field-block hr {
+            margin: 0px !important;
+        }
+
+        .um-editing .um-single-image-preview.show,
+        .um-editing .um-single-file-preview.show,
+        .um-editing .um-single-image-preview>img {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            margin-right: 15px;
+        }
+
+        .um-editing .wp-editor-container textarea.wp-editor-area {
+            height: 100px !Important;
+        }
+
+        /*--------------------------------------------------------------
+                # UM Directory Search Filter
+                --------------------------------------------------------------*/
+        /* search filter overlay loader */
+        .um-members-overlay {
+            background-color: #fff !important;
+            opacity: .5;
+        }
+
+
+        /* search slider margin fixing */
+        .um-directory .um-member-directory-header .um-member-directory-header-row .um-search .um-search-filter.um-slider-filter-type .um-slider.ui-slider.ui-slider-horizontal {
+            margin: 8px 8px;
+        }
+
+        .search-grid-container {
+            display: grid;
+            grid-gap: 15px;
+            grid-template-columns: auto 300px;
+            position: relative;
+        }
+
+        .search-grid-container-for-left-search-box {
+            display: grid;
+            grid-gap: 15px;
+            grid-template-columns: 300px auto;
+            position: relative;
+        }
+
+        .search-grid-container-for-left-search-box div:nth-child(2) {
+            grid-column: 1 / 1;
+            grid-row: 1 / 1;
+        }
+
+        /* search filter box left side code end*/
+        @media (max-width: 1024px) {
+
+            .search-grid-container,
+            .search-grid-container-for-left-search-box {
+                grid-template-columns: auto;
+            }
+
+            .one_fifth,
+            .four_fifth_last {
+                width: 100%;
+            }
+
+            .search-grid-container div:nth-child(2),
+            .search-grid-container-for-left-search-box div:nth-child(2) {
+                grid-column: 1 / 1;
+                grid-row: 1 / 1;
+            }
+
+            .um-directory .um-member-directory-header .search_filter_header_wrap_sidebar .um-member-directory-header-row .um-search {
+                grid-template-rows: auto 2fr !important;
+                grid-template-columns: repeat(2, 2fr) !important;
+                grid-gap: 20px;
+            }
+
+        }
+
+        @media (max-width: 500px) {
+            .um-directory .um-member-directory-header .search_filter_header_wrap_sidebar .um-member-directory-header-row .um-search {
+                grid-template-rows: auto 1fr !important;
+                grid-template-columns: repeat(1, 1fr) !important;
+                grid-gap: 20px;
+            }
+        }
+
+        @media (min-width: 1025px) {
+            .um-directory .um-member-directory-header .search_filter_header_wrap_sidebar .um-member-directory-header-row .um-search {
+                grid-template-rows: auto 1fr !important;
+                grid-template-columns: repeat(1, 1fr) !important;
+                grid-gap: 20px;
+            }
+
+        }
+
+        /* search filter sidebar */
+        .um-directory .um-member-directory-header .um-member-directory-header-row .um-member-directory-search-line {
+            width: 100%;
+        }
+
+        .search_filter_header_wrap,
+        .search_filter_header_wrap_sidebar {
+            padding: 10px;
+            border-style: 1px solid #ddd;
+            width: calc(100% - 20px);
+            box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+        }
+
+        .um-directory .um-member-directory-header .um-member-directory-header-row .um-filtered-line .um-members-filter-tag {
+            background-color: rgba(200, 200, 200, 0.5)
+        }
+
+        /*--------------------------------------------------------------
+                # managing grid image width height for responsiveness
+                --------------------------------------------------------------*/
+
+        .um-directory.uimob960 .um-members-wrapper .um-members-grid-wrapper .um-members.um-members-list .um-member .um-member-photo,
+        .um-directory.uimob960 .um-members-wrapper .um-members-grid-wrapper .um-members.um-members-list .um-member .um-member-photo a,
+
+        .um-directory.uimob800 .um-members-wrapper .um-members-grid-wrapper .um-members.um-members-list .um-member .um-member-photo,
+        .um-directory.uimob800 .um-members-wrapper .um-members-grid-wrapper .um-members.um-members-list .um-member .um-member-photo a,
+
+        .um-directory.uimob500 .um-members-wrapper .um-members-grid-wrapper .um-members.um-members-list .um-member .um-member-photo,
+        .um-directory.uimob500 .um-members-wrapper .um-members-grid-wrapper .um-members.um-members-list .um-member .um-member-photo a,
+        .um-directory.uimob340 .um-members-wrapper .um-members.um-members-list .um-member .um-member-photo,
+        .um-directory.uimob340 .um-members-wrapper .um-members.um-members-list .um-member .um-member-photo a {
+            width: inherit !important;
+            height: inherit !important;
+
+        }
+
+        .um-directory.uimob960 .um-members-wrapper .um-members-grid-wrapper .um-members.um-members-list .um-member .um-member-photo a img,
+        .um-directory.uimob800 .um-members-wrapper .um-members-grid-wrapper .um-members.um-members-list .um-member .um-member-photo a img,
+        .um-directory.uimob500 .um-members-wrapper .um-members-grid-wrapper .um-members.um-members-list .um-member .um-member-photo a img,
+        .um-directory.uimob340 .um-members-wrapper .um-members.um-members-list .um-member .um-member-photo a img {
+            width: 100% !important;
+            height: inherit !important;
+        }
+
+        .um-directory.uimob800 .um-members-wrapper .um-members-grid-wrapper .um-members.um-members-list .um-member .um-member-photo,
+        .um-directory.uimob800 .um-members-wrapper .um-members-grid-wrapper .um-members.um-members-list .um-member .um-member-card,
+        .um-directory.uimob500 .um-members-wrapper .um-members-grid-wrapper .um-members.um-members-list .um-member .um-member-card,
+        .um-directory.uimob340 .um-members-wrapper .um-members-grid-wrapper .um-members.um-members-list .um-member .um-member-card {
+            width: unset;
+        }
+
+        .um-directory.uimob800 .um-members-wrapper .um-members-grid-wrapper .um-members.um-members-list .um-member .um-member-photo,
+        .um-directory.uimob500 .um-members-wrapper .um-members-grid-wrapper .um-members.um-members-list .um-member .um-member-photo,
+
+            {
+            margin: 0px;
+        }
+
+        /*--------------------------------------------------------------
+                # Compcard Style
+                --------------------------------------------------------------*/
+
+        #campcard_wrap {
+            display: none;
+            text-align: center;
+        }
+
+        .cc_print_button {
+            padding: 10px 15px;
+            font-size: 20px;
+            text-align: center;
+            display: inline-block;
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }
+
+        .um-viewing .compcard {
+            display: none;
+        }
+
+        /*--------------------------------------------------------------
+                #  um member photo disable round
+                --------------------------------------------------------------*/
+
+        .um-header {
+
+            border-bottom: none !important;
+        }
+
+        /* Member Directory  photo round disable */
+        .um-directory .um-members-wrapper .um-members .um-member .um-member-photo.radius-1 a img,
+        .um-directory .um-members-wrapper .um-members .um-member {
+            -moz-border-radius: 3px !important;
+            -webkit-border-radius: 3px !important;
+            border-radius: 3px !important;
+            box-shadow: 3px 3px 3px rgba(127, 127, 127, 0.1);
+        }
+
+
+        /*--------------------------------------------------------------
+                # UM Directory List styles
+                --------------------------------------------------------------*/
+        .um-directory .um-members-wrapper .um-members.um-members-list {
+            display: grid;
+            grid-gap: 15px;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            align-items: flex-start;
+        }
+
+        .um-directory .um-members-wrapper .um-members.um-members-list .um-member {
+            padding: 0px;
+            background-color: transparent;
+        }
+
+        .um-directory .um-members-wrapper .um-members.um-members-list .um-member .um-member-card-container .um-member-card .um-member-card-content .um-member-meta-main .um-member-meta .um-member-metaline {
+            padding: 3px 0px;
+            line-height: inherit;
+        }
+
+        .um-directory .um-members-wrapper .um-members.um-members-list .um-member .um-member-card-container .um-member-card .um-member-card-content .um-member-meta-main .um-member-meta {
+            margin: 0px;
+        }
+
+        .um-directory .um-members-wrapper .um-members.um-members-list .um-member .um-member-card-container .um-member-card .um-member-card-content .um-member-tagline {
+            color: inherit;
+        }
+
+        /*--------------------------------------------------------------
+                # UM Profile Page Styles
+                --------------------------------------------------------------*/
+        .um-8.um .um-profile-body,
+        .um-8.um {
+            max-width: 100%;
+        }
+
+        /* Profile photo disable round */
+        .um .um-profile-photo a.um-profile-photo-img,
+        .um .um-profile-photo img,
+        .um .um-profile-photo span.um-profile-photo-overlay,
+        .um-profile-photo a.um-profile-photo-img {
+            border-radius: 3px !important;
+            -webkit-border-radius: 3px !important;
+            border: none !important;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 3px 3px 3px rgba(127, 127, 127, 0.5);
+        }
+
+        /* Profile photo responsive */
+        .um-profile-photo {
+            width: inherit;
+
+        }
+
+        .um-profile-photo a {
+            max-width: 100%;
+            height: unset !important;
+        }
+
+        /* Profile Navbar */
+        .um-profile-nav {
+            padding: unset;
+            background: transparent;
+            text-align: center;
+            margin-left: 25px;
+
+        }
+
+        .um-profile-nav-item a {
+            padding: 10px 30px;
+            border-radius: 0px;
+            margin-bottom: -1px;
+
+        }
+
+        .um-profile-nav-item i {
+            top: 10px;
+        }
+
+        /* user bio text font size */
+        .um-meta-text {
+            font-size: inherit;
+        }
+
+        .um-profile .profile_head_sidebar #campcard_wrap {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        /* Profile Photo responsive  */
+        div.uimob960 .um-profile-photo a.um-profile-photo-img {
+            width: inherit !important;
+            height: inherit !important;
+            top: inherit !important;
+        }
+
+        .um-members-wrapper .um-members-grid-wrapper .um-members.um-members-list .um-member .um-member-photo a img,
+        .um-8.um .um-profile-photo a.um-profile-photo-img {
+            max-height: 100% !important;
+        }
+
+        /* Profile page right side box  */
+        .um-profile .um-profile-body {
+            background-color: #f9f9f9;
+            border: 1px solid #eee;
+            min-height: 100px;
+            padding: 30px !important;
+            max-width: 100% !important;
+        }
+
+        .um-profile-note {
+            padding-top: inherit;
+        }
+
+        /* Profile page meat data styles  */
+        @media (min-width: 768px) {
+            .um-profile.um-viewing .um-field-label {
+                display: inline-block;
+                float: left;
+                border: none;
+                margin: 0px 10px 0px 0px;
+                color: #333;
+
+            }
+        }
+
+        .um-profile.um-viewing .um-field-label label::after {
+            content: " :";
+        }
+
+        .um-profile.um-viewing .um-field {
+            display: block;
+            margin: 0px;
+        }
+
+        .um-profile.um-viewing .um-field .um-field-value {
+            color: #868686;
+        }
+
+        .psgal {
+            width: inherit !important;
+        }
+
+        .um-member-photo.radius-1 {
+            background-color: #eee;
+
+        }
+
+        /* Enable grayscale mode
+                .um-member-photo a img {
+                  -webkit-filter: grayscale(100%);
+                  filter: grayscale(100%);
+                }
+
+                .um-member-photo a img {
+                  opacity: 0.9;
+                }
+
+                .um-member-photo a img:hover {
+                  opacity: 1;
+                    -webkit-filter: grayscale(0%);
+                  filter: grayscale(0%);
+                }
+                */
+
+
+        /*--------------------------------------------------------------
+                # Ultimate Member   Directory Grid Column Settings
+                --------------------------------------------------------------*/
+
+        .um-directory .um-members-wrapper .um-members-grid-wrapper .um-members.um-members-list {
+            display: grid !important;
+            grid-gap: 15px;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            align-items: start;
+        }
+
+        .um-directory .um-members-wrapper .um-members-grid-wrapper .um-members.um-members-list .um-member img {
+            min-height: 275px;
+            object-fit: cover !important;
+            width: 100%;
+        }
+
+        /* hack for making the profile photo height more than width */
+        @media (min-width: 1024px) {
+            .um-profile-photo a.um-profile-photo-img img {
+                min-height: 275px;
+                object-fit: cover !important;
+                width: 100%;
+            }
+        }
+
+        /*--------------------------------------------------------------
+                # Member Card Hover Styles
+                --------------------------------------------------------------*/
+
+        /* Enable grayscale mode
+                */
+        .um-member-photo-grayscale a img.um-avatar {
+            -webkit-filter: grayscale(100%);
+            filter: grayscale(100%);
+        }
+
+        .um-member-photo-grayscale a img.um-avatar {
+            opacity: 0.9;
+        }
+
+        .um-member-photo-grayscale a img:hover,
+        .um-member:hover .um-member-photo-grayscale a img {
+            opacity: 1;
+            -webkit-filter: grayscale(0%);
+            filter: grayscale(0%);
+        }
+
+
+
+        .um-member-photo.radius-1 {
+            position: relative;
+        }
+
+        @media (min-width: 1025px) {
+            .um-directory .um-members-wrapper .um-members-grid-wrapper .um-members.um-members-list .um-member .um-member-card-wrap-on .um-member-meta-main {
+                position: absolute;
+                bottom: 0px;
+                padding: 10px;
+                width: calc(100% - 20px);
+            }
+
+            .um-member-card-wrap-on {
+                opacity: 0;
+                transition: 0.4s;
+                transform-style: preserve-3d;
+                transform: rotateX(-50deg);
+            }
+
+            .um-member:hover .um-member-card-wrap-on {
+                transform: rotateX(180deg);
+                opacity: 1;
+            }
+
+        }
+
+
+
+        .um-directory .um-members-wrapper .um-members-grid-wrapper .um-members.um-members-list .um-member .um-member-card-wrap-off .um-member-meta-main {
+            position: relative !important;
+            padding: 10px;
+
+        }
+
+
+        /* Meta fields data style and font size */
+        .um-member-tagline,
+        .um-member-name,
+        .um-member-metaline {
+            border-bottom: none;
+            padding: 0px;
+            font-size: inherit !important;
+            text-align: center;
+        }
+
+        .um-member-tagline,
+        .um-member-metaline {
+            border-bottom: 1px solid rgba(127, 127, 127, 0.1);
+            padding: 2px 5px;
+        }
+
+        .um-members-grid-wrapper .um-member,
+        .um-member-photo.radius-1 {
+            transition: 0.6s;
+            transform-style: preserve-3d;
+            transform: rotateY(-0deg);
+
+        }
+
+        .um-members-grid-wrapper .um-member:hover .um-member-card-wrap-on {
+            transform: rotateY(-360deg);
+            z-index: 10 !important;
+        }
+
+        .um-members-grid-wrapper .um-member:hover .um-member-card-wrap-on {
+            transform: rotateY(-0deg);
+
+        }
+
+
+        .um-member-name h3 {
+            margin-top: 10px;
+        }
+
+        /*--------------------------------------------------------------
+                # Profile Tab section style
+                --------------------------------------------------------------*/
+
+
+        .um-viewing .um-profile {
+            display: none;
+        }
+
+        .preload {
+            width: 100px;
+            height: 100px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+        }
+
+        .kaya-um-tabs {
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+
+        }
+
+        .um-viewing .kaya-um-tabs,
+        .um-editing .kaya-um-tabs {
+
+            padding: 1px 0px !important;
+
+        }
+
+        .kaya-um-tabs-content {
+            display: block !important;
+            margin: 20px !important;
+        }
+
+
+        .um-row-heading {
+            cursor: pointer;
+            background: #dedede;
+            color: #333;
+            padding: 8px 12px !important;
+            margin-bottom: 1px !important;
+
+        }
+
+
+        .um-row-heading i {
+            font-size: 20px;
+            line-height: 22px;
+            margin: 0px 4px 0px 0px !important;
+
+        }
+
+        .kaya-um-tabs .um-tabs-heading:hover {
+            background-color: #2a282a;
+
+        }
+
+        .kaya-um-tabs-wrap .kaya_pt_active {
+
+            background: #795624;
+            display: block;
+            height: 20px;
+            color: #fff;
+            box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+        }
+
+
+        :root {
+            --tab-button-order: 1;
+            --tab-content-order: 10;
+        }
+
+
+        @media (min-width: 768px) {
+            .um-viewing .kaya-um-tabs-wrap {
+                display: flex;
+                flex-wrap: wrap;
+
+            }
+
+            .um-viewing .kaya-um-tabs-wrap .um-row-heading {
+                order: var(--tab-button-order);
+                height: auto;
+                margin-right: 2px !important;
+
+            }
+
+            .um-viewing .um-row-heading {
+                border-top-right-radius: 5px !important;
+                border-top-left-radius: 5px !important;
+                margin-bottom: unset !important;
+
+            }
+
+            .um-viewing .kaya-um-tabs-wrap div.kaya-um-tabs {
+                background-color: #fff;
+                order: var(--tab-content-order);
+                width: -webkit-fill-available;
+                border-top: 0px solid #e63f19 !important;
+                align-items: flex-start;
+            }
+        }
+
+        .um-viewing .gallery-section .kaya-um-tabs-content>div {
+            -webkit-column-count: 4;
+            -moz-column-count: 4;
+            column-count: 4;
+            -webkit-column-width: 150px;
+            -moz-column-width: 150px;
+            column-width: 150px;
+
+        }
+
+        #custommediagallery-video-gallery {
+            -webkit-column-count: 2;
+            -moz-column-count: 2;
+            column-count: 2;
+            -webkit-column-width: 320px;
+            -moz-column-width: 320px;
+            column-width: 320px;
+
+        }
+
+        #custommediagallery-audios {
+            -webkit-column-count: 3;
+            -moz-column-count: 3;
+            column-count: 3;
+            -webkit-column-width: 200px;
+            -moz-column-width: 200px;
+            column-width: 200px;
+            column-gap: 20px;
+
+        }
+
+        #custommediagallery-video-gallery video {
+            max-width: 100%;
+
+        }
+
+        .kaya-um-row-heading {
+            color: #333;
+            padding: 5px 10px;
+            margin-bottom: 0px;
+
+        }
+
+        .kaya-um-tabs-off .um-row-heading {
+
+            font-size: 19px !important;
+            font-weight: bold;
+        }
+
+        .hide-kaya-um-tabs,
+        .hide-um-row-heading {
+            display: none;
+        }
+
+        .gallery-section .um-photo,
+        .gallery-section div.um-photo a,
+        .gallery-section .um-field,
+        .um-editing #um_field_img-gallery,
+        .um-editing #um_field_video-gallery,
+        .um-editing #um_field_audios {
+
+            margin: 0px;
+            padding: 0px !important;
+            border: none !important;
+            box-shadow: none !important;
+            display: block;
+
+
+        }
+
+        .customemediauploader {
+            padding: 12px 20px !important;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+
+        .um-viewing .gallery-section div img,
+        .umem_video_sepeartor,
+        #custommediagallery-audios div {
+            box-shadow: 0px !important;
+            padding-bottom: 15px !important;
+            vertical-align: top;
+        }
+
+        .um-editing .gallery-section .kaya-um-tabs-content>div,
+        .um-editing .custommediatable {
+
+            display: flex;
+            flex-wrap: wrap;
+            align-items: left;
+            justify-content: left;
+            gap: 20px;
+        }
+    </style>
     <link rel="stylesheet" id="e-animations-css"
         href="https://kayapati.com/demos/models/wp-content/plugins/elementor/assets/lib/animations/animations.min.css?ver=3.6.7"
         type="text/css" media="all">
@@ -1456,16 +2190,6 @@
     <script type="text/javascript"
         src="https://kayapati.com/demos/models/wp-includes/js/dist/vendor/wp-polyfill.min.js?ver=3.15.0"
         id="wp-polyfill-js"></script>
-    <script type="text/javascript" id="contact-form-7-js-extra">
-        /* <![CDATA[ */
-        var wpcf7 = {
-            "api": {
-                "root": "https:\/\/kayapati.com\/demos\/models\/wp-json\/",
-                "namespace": "contact-form-7\/v1"
-            }
-        };
-        /* ]]> */
-    </script>
     <script type="text/javascript"
         src="https://kayapati.com/demos/models/wp-content/plugins/contact-form-7/includes/js/index.js?ver=5.6"
         id="contact-form-7-js"></script>
@@ -1483,87 +2207,13 @@
         id="shortcode-js"></script>
     <script type="text/javascript" src="https://kayapati.com/demos/models/wp-includes/js/backbone.min.js?ver=1.4.1"
         id="backbone-js"></script>
-    <script type="text/javascript" id="wp-util-js-extra">
-        /* <![CDATA[ */
-        var _wpUtilSettings = {
-            "ajax": {
-                "url": "\/demos\/models\/wp-admin\/admin-ajax.php"
-            }
-        };
-        /* ]]> */
-    </script>
     <script type="text/javascript" src="https://kayapati.com/demos/models/wp-includes/js/wp-util.min.js?ver=6.1.1"
         id="wp-util-js"></script>
     <script type="text/javascript" src="https://kayapati.com/demos/models/wp-includes/js/wp-backbone.min.js?ver=6.1.1"
         id="wp-backbone-js"></script>
-    <script type="text/javascript" id="media-models-js-extra">
-        /* <![CDATA[ */
-        var _wpMediaModelsL10n = {
-            "settings": {
-                "ajaxurl": "\/demos\/models\/wp-admin\/admin-ajax.php",
-                "post": {
-                    "id": 0
-                }
-            }
-        };
-        /* ]]> */
-    </script>
     <script type="text/javascript" src="https://kayapati.com/demos/models/wp-includes/js/media-models.min.js?ver=6.1.1"
         id="media-models-js"></script>
-    <script type="text/javascript" id="wp-plupload-js-extra">
-        /* <![CDATA[ */
-        var pluploadL10n = {
-            "queue_limit_exceeded": "You have attempted to queue too many files.",
-            "file_exceeds_size_limit": "%s exceeds the maximum upload size for this site.",
-            "zero_byte_file": "This file is empty. Please try another.",
-            "invalid_filetype": "Sorry, you are not allowed to upload this file type.",
-            "not_an_image": "This file is not an image. Please try another.",
-            "image_memory_exceeded": "Memory exceeded. Please try another smaller file.",
-            "image_dimensions_exceeded": "This is larger than the maximum size. Please try another.",
-            "default_error": "An error occurred in the upload. Please try again later.",
-            "missing_upload_url": "There was a configuration error. Please contact the server administrator.",
-            "upload_limit_exceeded": "You may only upload 1 file.",
-            "http_error": "Unexpected response from the server. The file may have been uploaded successfully. Check in the Media Library or reload the page.",
-            "http_error_image": "The server cannot process the image. This can happen if the server is busy or does not have enough resources to complete the task. Uploading a smaller image may help. Suggested maximum size is 2560 pixels.",
-            "upload_failed": "Upload failed.",
-            "big_upload_failed": "Please try uploading this file with the %1$sbrowser uploader%2$s.",
-            "big_upload_queued": "%s exceeds the maximum upload size for the multi-file uploader when used in your browser.",
-            "io_error": "IO error.",
-            "security_error": "Security error.",
-            "file_cancelled": "File canceled.",
-            "upload_stopped": "Upload stopped.",
-            "dismiss": "Dismiss",
-            "crunching": "Crunching\u2026",
-            "deleted": "moved to the Trash.",
-            "error_uploading": "\u201c%s\u201d has failed to upload.",
-            "unsupported_image": "This image cannot be displayed in a web browser. For best results convert it to JPEG before uploading.",
-            "noneditable_image": "This image cannot be processed by the web server. Convert it to JPEG or PNG before uploading.",
-            "file_url_copied": "The file URL has been copied to your clipboard"
-        };
-        var _wpPluploadSettings = {
-            "defaults": {
-                "file_data_name": "async-upload",
-                "url": "\/demos\/models\/wp-admin\/async-upload.php",
-                "filters": {
-                    "max_file_size": "536870912b",
-                    "mime_types": [{
-                        "extensions": "jpg,jpeg,jpe,gif,png,bmp,tiff,tif,webp,ico,heic,asf,asx,wmv,wmx,wm,avi,divx,flv,mov,qt,mpeg,mpg,mpe,mp4,m4v,ogv,webm,mkv,3gp,3gpp,3g2,3gp2,txt,asc,c,cc,h,srt,csv,tsv,ics,rtx,css,vtt,dfxp,mp3,m4a,m4b,aac,ra,ram,wav,ogg,oga,flac,mid,midi,wma,wax,mka,rtf,pdf,class,tar,zip,gz,gzip,rar,7z,psd,xcf,doc,pot,pps,ppt,wri,xla,xls,xlt,xlw,mdb,mpp,docx,docm,dotx,dotm,xlsx,xlsm,xlsb,xltx,xltm,xlam,pptx,pptm,ppsx,ppsm,potx,potm,ppam,sldx,sldm,onetoc,onetoc2,onetmp,onepkg,oxps,xps,odt,odp,ods,odg,odc,odb,odf,wp,wpd,key,numbers,pages,svg"
-                    }]
-                },
-                "heic_upload_error": true,
-                "multipart_params": {
-                    "action": "upload-attachment",
-                    "_wpnonce": "cff7a48608"
-                }
-            },
-            "browser": {
-                "mobile": false,
-                "supported": true
-            },
-            "limitExceeded": false
-        };
-        /* ]]> */
-    </script>
+
     <script type="text/javascript"
         src="https://kayapati.com/demos/models/wp-includes/js/plupload/wp-plupload.min.js?ver=6.1.1" id="wp-plupload-js">
     </script>
@@ -1574,112 +2224,16 @@
     <script type="text/javascript"
         src="https://kayapati.com/demos/models/wp-includes/js/jquery/ui/sortable.min.js?ver=1.13.2"
         id="jquery-ui-sortable-js"></script>
-    <script type="text/javascript" id="mediaelement-core-js-before">
-        var mejsL10n = {
-            "language": "en",
-            "strings": {
-                "mejs.download-file": "Download File",
-                "mejs.install-flash": "You are using a browser that does not have Flash player enabled or installed. Please turn on your Flash player plugin or download the latest version from https:\/\/get.adobe.com\/flashplayer\/",
-                "mejs.fullscreen": "Fullscreen",
-                "mejs.play": "Play",
-                "mejs.pause": "Pause",
-                "mejs.time-slider": "Time Slider",
-                "mejs.time-help-text": "Use Left\/Right Arrow keys to advance one second, Up\/Down arrows to advance ten seconds.",
-                "mejs.live-broadcast": "Live Broadcast",
-                "mejs.volume-help-text": "Use Up\/Down Arrow keys to increase or decrease volume.",
-                "mejs.unmute": "Unmute",
-                "mejs.mute": "Mute",
-                "mejs.volume-slider": "Volume Slider",
-                "mejs.video-player": "Video Player",
-                "mejs.audio-player": "Audio Player",
-                "mejs.captions-subtitles": "Captions\/Subtitles",
-                "mejs.captions-chapters": "Chapters",
-                "mejs.none": "None",
-                "mejs.afrikaans": "Afrikaans",
-                "mejs.albanian": "Albanian",
-                "mejs.arabic": "Arabic",
-                "mejs.belarusian": "Belarusian",
-                "mejs.bulgarian": "Bulgarian",
-                "mejs.catalan": "Catalan",
-                "mejs.chinese": "Chinese",
-                "mejs.chinese-simplified": "Chinese (Simplified)",
-                "mejs.chinese-traditional": "Chinese (Traditional)",
-                "mejs.croatian": "Croatian",
-                "mejs.czech": "Czech",
-                "mejs.danish": "Danish",
-                "mejs.dutch": "Dutch",
-                "mejs.english": "English",
-                "mejs.estonian": "Estonian",
-                "mejs.filipino": "Filipino",
-                "mejs.finnish": "Finnish",
-                "mejs.french": "French",
-                "mejs.galician": "Galician",
-                "mejs.german": "German",
-                "mejs.greek": "Greek",
-                "mejs.haitian-creole": "Haitian Creole",
-                "mejs.hebrew": "Hebrew",
-                "mejs.hindi": "Hindi",
-                "mejs.hungarian": "Hungarian",
-                "mejs.icelandic": "Icelandic",
-                "mejs.indonesian": "Indonesian",
-                "mejs.irish": "Irish",
-                "mejs.italian": "Italian",
-                "mejs.japanese": "Japanese",
-                "mejs.korean": "Korean",
-                "mejs.latvian": "Latvian",
-                "mejs.lithuanian": "Lithuanian",
-                "mejs.macedonian": "Macedonian",
-                "mejs.malay": "Malay",
-                "mejs.maltese": "Maltese",
-                "mejs.norwegian": "Norwegian",
-                "mejs.persian": "Persian",
-                "mejs.polish": "Polish",
-                "mejs.portuguese": "Portuguese",
-                "mejs.romanian": "Romanian",
-                "mejs.russian": "Russian",
-                "mejs.serbian": "Serbian",
-                "mejs.slovak": "Slovak",
-                "mejs.slovenian": "Slovenian",
-                "mejs.spanish": "Spanish",
-                "mejs.swahili": "Swahili",
-                "mejs.swedish": "Swedish",
-                "mejs.tagalog": "Tagalog",
-                "mejs.thai": "Thai",
-                "mejs.turkish": "Turkish",
-                "mejs.ukrainian": "Ukrainian",
-                "mejs.vietnamese": "Vietnamese",
-                "mejs.welsh": "Welsh",
-                "mejs.yiddish": "Yiddish"
-            }
-        };
-    </script>
     <script type="text/javascript"
         src="https://kayapati.com/demos/models/wp-includes/js/mediaelement/mediaelement-and-player.min.js?ver=4.2.17"
         id="mediaelement-core-js"></script>
     <script type="text/javascript"
         src="https://kayapati.com/demos/models/wp-includes/js/mediaelement/mediaelement-migrate.min.js?ver=6.1.1"
         id="mediaelement-migrate-js"></script>
-    <script type="text/javascript" id="mediaelement-js-extra">
-        /* <![CDATA[ */
-        var _wpmejsSettings = {
-            "pluginPath": "\/demos\/models\/wp-includes\/js\/mediaelement\/",
-            "classPrefix": "mejs-",
-            "stretching": "responsive"
-        };
-        /* ]]> */
-    </script>
+
     <script type="text/javascript"
         src="https://kayapati.com/demos/models/wp-includes/js/mediaelement/wp-mediaelement.min.js?ver=6.1.1"
         id="wp-mediaelement-js"></script>
-    <script type="text/javascript" id="wp-api-request-js-extra">
-        /* <![CDATA[ */
-        var wpApiSettings = {
-            "root": "https:\/\/kayapati.com\/demos\/models\/wp-json\/",
-            "nonce": "27fac245c8",
-            "versionString": "wp\/v2\/"
-        };
-        /* ]]> */
-    </script>
     <script type="text/javascript" src="https://kayapati.com/demos/models/wp-includes/js/api-request.min.js?ver=6.1.1"
         id="wp-api-request-js"></script>
     <script type="text/javascript"
@@ -1691,173 +2245,11 @@
     <script type="text/javascript"
         src="https://kayapati.com/demos/models/wp-includes/js/dist/i18n.min.js?ver=9e794f35a71bb98672ae" id="wp-i18n-js">
     </script>
-    <script type="text/javascript" id="wp-i18n-js-after">
-        wp.i18n.setLocaleData({
-            'text direction\u0004ltr': ['ltr']
-        });
-    </script>
     <script type="text/javascript"
         src="https://kayapati.com/demos/models/wp-includes/js/dist/a11y.min.js?ver=ecce20f002eda4c19664" id="wp-a11y-js">
     </script>
     <script type="text/javascript" src="https://kayapati.com/demos/models/wp-includes/js/clipboard.min.js?ver=2.0.11"
         id="clipboard-js"></script>
-    <script type="text/javascript" id="media-views-js-extra">
-        /* <![CDATA[ */
-        var _wpMediaViewsL10n = {
-            "mediaFrameDefaultTitle": "Media",
-            "url": "URL",
-            "addMedia": "Add media",
-            "search": "Search",
-            "select": "Select",
-            "cancel": "Cancel",
-            "update": "Update",
-            "replace": "Replace",
-            "remove": "Remove",
-            "back": "Back",
-            "selected": "%d selected",
-            "dragInfo": "Drag and drop to reorder media files.",
-            "uploadFilesTitle": "Upload files",
-            "uploadImagesTitle": "Upload images",
-            "mediaLibraryTitle": "Media Library",
-            "insertMediaTitle": "Add media",
-            "createNewGallery": "Create a new gallery",
-            "createNewPlaylist": "Create a new playlist",
-            "createNewVideoPlaylist": "Create a new video playlist",
-            "returnToLibrary": "\u2190 Go to library",
-            "allMediaItems": "All media items",
-            "allDates": "All dates",
-            "noItemsFound": "No items found.",
-            "insertIntoPost": "Insert into post",
-            "unattached": "Unattached",
-            "mine": "Mine",
-            "trash": "Trash",
-            "uploadedToThisPost": "Uploaded to this post",
-            "warnDelete": "You are about to permanently delete this item from your site.\nThis action cannot be undone.\n 'Cancel' to stop, 'OK' to delete.",
-            "warnBulkDelete": "You are about to permanently delete these items from your site.\nThis action cannot be undone.\n 'Cancel' to stop, 'OK' to delete.",
-            "warnBulkTrash": "You are about to trash these items.\n  'Cancel' to stop, 'OK' to delete.",
-            "bulkSelect": "Bulk select",
-            "trashSelected": "Move to Trash",
-            "restoreSelected": "Restore from Trash",
-            "deletePermanently": "Delete permanently",
-            "errorDeleting": "Error in deleting the attachment.",
-            "apply": "Apply",
-            "filterByDate": "Filter by date",
-            "filterByType": "Filter by type",
-            "searchLabel": "Search",
-            "searchMediaLabel": "Search media",
-            "searchMediaPlaceholder": "Search media items...",
-            "mediaFound": "Number of media items found: %d",
-            "noMedia": "No media items found.",
-            "noMediaTryNewSearch": "No media items found. Try a different search.",
-            "attachmentDetails": "Attachment details",
-            "insertFromUrlTitle": "Insert from URL",
-            "setFeaturedImageTitle": "Featured image",
-            "setFeaturedImage": "Set featured image",
-            "createGalleryTitle": "Create gallery",
-            "editGalleryTitle": "Edit gallery",
-            "cancelGalleryTitle": "\u2190 Cancel gallery",
-            "insertGallery": "Insert gallery",
-            "updateGallery": "Update gallery",
-            "addToGallery": "Add to gallery",
-            "addToGalleryTitle": "Add to gallery",
-            "reverseOrder": "Reverse order",
-            "imageDetailsTitle": "Image details",
-            "imageReplaceTitle": "Replace image",
-            "imageDetailsCancel": "Cancel edit",
-            "editImage": "Edit image",
-            "chooseImage": "Choose image",
-            "selectAndCrop": "Select and crop",
-            "skipCropping": "Skip cropping",
-            "cropImage": "Crop image",
-            "cropYourImage": "Crop your image",
-            "cropping": "Cropping\u2026",
-            "suggestedDimensions": "Suggested image dimensions: %1$s by %2$s pixels.",
-            "cropError": "There has been an error cropping your image.",
-            "audioDetailsTitle": "Audio details",
-            "audioReplaceTitle": "Replace audio",
-            "audioAddSourceTitle": "Add audio source",
-            "audioDetailsCancel": "Cancel edit",
-            "videoDetailsTitle": "Video details",
-            "videoReplaceTitle": "Replace video",
-            "videoAddSourceTitle": "Add video source",
-            "videoDetailsCancel": "Cancel edit",
-            "videoSelectPosterImageTitle": "Select poster image",
-            "videoAddTrackTitle": "Add subtitles",
-            "playlistDragInfo": "Drag and drop to reorder tracks.",
-            "createPlaylistTitle": "Create audio playlist",
-            "editPlaylistTitle": "Edit audio playlist",
-            "cancelPlaylistTitle": "\u2190 Cancel audio playlist",
-            "insertPlaylist": "Insert audio playlist",
-            "updatePlaylist": "Update audio playlist",
-            "addToPlaylist": "Add to audio playlist",
-            "addToPlaylistTitle": "Add to Audio Playlist",
-            "videoPlaylistDragInfo": "Drag and drop to reorder videos.",
-            "createVideoPlaylistTitle": "Create video playlist",
-            "editVideoPlaylistTitle": "Edit video playlist",
-            "cancelVideoPlaylistTitle": "\u2190 Cancel video playlist",
-            "insertVideoPlaylist": "Insert video playlist",
-            "updateVideoPlaylist": "Update video playlist",
-            "addToVideoPlaylist": "Add to video playlist",
-            "addToVideoPlaylistTitle": "Add to video Playlist",
-            "filterAttachments": "Filter media",
-            "attachmentsList": "Media list",
-            "settings": {
-                "tabs": [],
-                "tabUrl": "https:\/\/kayapati.com\/demos\/models\/wp-admin\/media-upload.php?chromeless=1",
-                "mimeTypes": {
-                    "image": "Images",
-                    "audio": "Audio",
-                    "video": "Video",
-                    "application\/msword,application\/vnd.openxmlformats-officedocument.wordprocessingml.document,application\/vnd.ms-word.document.macroEnabled.12,application\/vnd.ms-word.template.macroEnabled.12,application\/vnd.oasis.opendocument.text,application\/vnd.apple.pages,application\/pdf,application\/vnd.ms-xpsdocument,application\/oxps,application\/rtf,application\/wordperfect,application\/octet-stream": "Documents",
-                    "application\/vnd.apple.numbers,application\/vnd.oasis.opendocument.spreadsheet,application\/vnd.ms-excel,application\/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application\/vnd.ms-excel.sheet.macroEnabled.12,application\/vnd.ms-excel.sheet.binary.macroEnabled.12": "Spreadsheets",
-                    "application\/x-gzip,application\/rar,application\/x-tar,application\/zip,application\/x-7z-compressed": "Archives"
-                },
-                "captions": true,
-                "nonce": {
-                    "sendToEditor": "560a1a552f"
-                },
-                "post": {
-                    "id": 0
-                },
-                "defaultProps": {
-                    "link": "",
-                    "align": "",
-                    "size": ""
-                },
-                "attachmentCounts": {
-                    "audio": 1,
-                    "video": 1
-                },
-                "oEmbedProxyUrl": "https:\/\/kayapati.com\/demos\/models\/wp-json\/oembed\/1.0\/proxy",
-                "embedExts": ["mp3", "ogg", "flac", "m4a", "wav", "mp4", "m4v", "webm", "ogv", "flv"],
-                "embedMimes": {
-                    "mp3": "audio\/mpeg",
-                    "ogg": "audio\/ogg",
-                    "flac": "audio\/flac",
-                    "m4a": "audio\/mpeg",
-                    "wav": "audio\/wav",
-                    "mp4": "video\/mp4",
-                    "m4v": "video\/mp4",
-                    "webm": "video\/webm",
-                    "ogv": "video\/ogg",
-                    "flv": "video\/x-flv"
-                },
-                "contentWidth": 640,
-                "months": [{
-                    "year": "2020",
-                    "month": "10",
-                    "text": "October 2020"
-                }, {
-                    "year": "2020",
-                    "month": "1",
-                    "text": "January 2020"
-                }],
-                "mediaTrash": 0,
-                "infiniteScrolling": 0
-            }
-        };
-        /* ]]> */
-    </script>
     <script type="text/javascript" src="https://kayapati.com/demos/models/wp-includes/js/media-views.min.js?ver=6.1.1"
         id="media-views-js"></script>
     <script type="text/javascript" src="https://kayapati.com/demos/models/wp-includes/js/media-editor.min.js?ver=6.1.1"
@@ -1919,14 +2311,6 @@
     <script type="text/javascript"
         src="https://kayapati.com/demos/models/wp-content/plugins/ultimate-member/assets/js/um-conditional.min.js?ver=2.4.2"
         id="um_conditional-js"></script>
-    <script type="text/javascript" id="um_scripts-js-extra">
-        /* <![CDATA[ */
-        var um_scripts = {
-            "max_upload_size": "536870912",
-            "nonce": "a9f8a51bf7"
-        };
-        /* ]]> */
-    </script>
     <script type="text/javascript"
         src="https://kayapati.com/demos/models/wp-content/plugins/ultimate-member/assets/js/um-scripts.min.js?ver=2.4.2"
         id="um_scripts-js"></script>
@@ -1960,116 +2344,6 @@
     <script type="text/javascript"
         src="https://kayapati.com/demos/models/wp-content/plugins/elementor/assets/lib/dialog/dialog.min.js?ver=4.9.0"
         id="elementor-dialog-js"></script>
-    <script type="text/javascript" id="elementor-frontend-js-before">
-        var elementorFrontendConfig = {
-            "environmentMode": {
-                "edit": false,
-                "wpPreview": false,
-                "isScriptDebug": false
-            },
-            "i18n": {
-                "shareOnFacebook": "Share on Facebook",
-                "shareOnTwitter": "Share on Twitter",
-                "pinIt": "Pin it",
-                "download": "Download",
-                "downloadImage": "Download image",
-                "fullscreen": "Fullscreen",
-                "zoom": "Zoom",
-                "share": "Share",
-                "playVideo": "Play Video",
-                "previous": "Previous",
-                "next": "Next",
-                "close": "Close"
-            },
-            "is_rtl": false,
-            "breakpoints": {
-                "xs": 0,
-                "sm": 480,
-                "md": 768,
-                "lg": 1025,
-                "xl": 1440,
-                "xxl": 1600
-            },
-            "responsive": {
-                "breakpoints": {
-                    "mobile": {
-                        "label": "Mobile",
-                        "value": 767,
-                        "default_value": 767,
-                        "direction": "max",
-                        "is_enabled": true
-                    },
-                    "mobile_extra": {
-                        "label": "Mobile Extra",
-                        "value": 880,
-                        "default_value": 880,
-                        "direction": "max",
-                        "is_enabled": false
-                    },
-                    "tablet": {
-                        "label": "Tablet",
-                        "value": 1024,
-                        "default_value": 1024,
-                        "direction": "max",
-                        "is_enabled": true
-                    },
-                    "tablet_extra": {
-                        "label": "Tablet Extra",
-                        "value": 1200,
-                        "default_value": 1200,
-                        "direction": "max",
-                        "is_enabled": false
-                    },
-                    "laptop": {
-                        "label": "Laptop",
-                        "value": 1366,
-                        "default_value": 1366,
-                        "direction": "max",
-                        "is_enabled": false
-                    },
-                    "widescreen": {
-                        "label": "Widescreen",
-                        "value": 2400,
-                        "default_value": 2400,
-                        "direction": "min",
-                        "is_enabled": false
-                    }
-                }
-            },
-            "version": "3.6.7",
-            "is_static": false,
-            "experimentalFeatures": {
-                "e_import_export": true,
-                "e_hidden_wordpress_widgets": true,
-                "landing-pages": true,
-                "elements-color-picker": true,
-                "favorite-widgets": true,
-                "admin-top-bar": true
-            },
-            "urls": {
-                "assets": "https:\/\/kayapati.com\/demos\/models\/wp-content\/plugins\/elementor\/assets\/"
-            },
-            "settings": {
-                "page": [],
-                "editorPreferences": []
-            },
-            "kit": {
-                "active_breakpoints": ["viewport_mobile", "viewport_tablet"],
-                "lightbox_enable_counter": "yes",
-                "lightbox_enable_fullscreen": "yes",
-                "lightbox_enable_zoom": "yes",
-                "lightbox_enable_share": "yes",
-                "lightbox_title_src": "title",
-                "lightbox_description_src": "description"
-            },
-            "post": {
-                "id": 4859,
-                "title": "karala%20lavan%20%7C%20Models",
-                "excerpt": "",
-                "featuredImage": false
-            }
-        };
-    </script>
     <script type="text/javascript"
         src="https://kayapati.com/demos/models/wp-content/plugins/elementor/assets/js/frontend.min.js?ver=3.6.7"
         id="elementor-frontend-js"></script><span id="elementor-device-mode" class="elementor-screen-only"></span>
@@ -2081,36 +2355,4 @@
             jQuery('input[name="um_request"]').val('');
         });
     </script>
-
-
-
-    <p id="a11y-speak-intro-text" class="a11y-speak-intro-text"
-        style="position: absolute;margin: -1px;padding: 0;height: 1px;width: 1px;overflow: hidden;clip: rect(1px, 1px, 1px, 1px);-webkit-clip-path: inset(50%);clip-path: inset(50%);border: 0;word-wrap: normal !important;"
-        hidden="hidden">Notifications</p>
-    <div id="a11y-speak-assertive" class="a11y-speak-region"
-        style="position: absolute;margin: -1px;padding: 0;height: 1px;width: 1px;overflow: hidden;clip: rect(1px, 1px, 1px, 1px);-webkit-clip-path: inset(50%);clip-path: inset(50%);border: 0;word-wrap: normal !important;"
-        aria-live="assertive" aria-relevant="additions text" aria-atomic="true"></div>
-    <div id="a11y-speak-polite" class="a11y-speak-region"
-        style="position: absolute;margin: -1px;padding: 0;height: 1px;width: 1px;overflow: hidden;clip: rect(1px, 1px, 1px, 1px);-webkit-clip-path: inset(50%);clip-path: inset(50%);border: 0;word-wrap: normal !important;"
-        aria-live="polite" aria-relevant="additions text" aria-atomic="true"></div>
-    <div id="lightboxOverlay" tabindex="-1" class="lightboxOverlay" style="display: none;"></div>
-    <div id="lightbox" tabindex="-1" class="lightbox" style="display: none;">
-        <div class="lb-outerContainer">
-            <div class="lb-container"><img class="lb-image"
-                    src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
-                    alt="">
-                <div class="lb-nav"><a class="lb-prev" aria-label="Previous image" href=""></a><a
-                        class="lb-next" aria-label="Next image" href=""></a></div>
-                <div class="lb-loader"><a class="lb-cancel"></a></div>
-            </div>
-        </div>
-        <div class="lb-dataContainer">
-            <div class="lb-data">
-                <div class="lb-details"><span class="lb-caption"></span><span class="lb-number"></span></div>
-                <div class="lb-closeContainer"><a class="lb-close"></a></div>
-            </div>
-        </div>
-    </div>
-</body>
-
-</html>
+@endsection

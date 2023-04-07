@@ -86,7 +86,7 @@
             <span class="h6 fw-bold">Sample intro video</span>
         </div>
         <div id="video-section" class="mb-2 ms-3">
-            <div class="radio-group">
+            {{-- <div class="radio-group">
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="language" id="hindi" value="hindi" checked
                         onclick="stopVideo(body)" />
@@ -98,7 +98,7 @@
                     <label class="form-check-label" for="english">English</label>
                 </div>
             </div>
-         
+          --}}
                 <div class="sample-yt-video mt-2">
                     <div id="intro_hindi">
                         <iframe class="video" style="width:75%;" src="https://www.youtube.com/embed/q22JrhzFEuQ"
@@ -106,13 +106,13 @@
                         </iframe>
                     </div>
                 </div>
-                <div class="sample-yt-video mt-2">
+                {{-- <div class="sample-yt-video mt-2">
                     <div id="intro_english">
                         <iframe class="video" style="width:75%;" src="https://www.youtube.com/embed/Tj1w86bw4EM"
                             allowfullscreen="true">
                         </iframe>
                     </div>
-                </div>
+                </div> --}}
             </div>     
         {{-- <div class="d-flex justify-content-between">
             <span class="h6 fw-bold">Sample intro video</span>

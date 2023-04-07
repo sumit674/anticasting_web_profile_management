@@ -1,6 +1,6 @@
 <style>
     .close-btn {
-        padding: .2rem .3rem;
+       
         position: absolute;
         /* You may need to change top and right. They depend on padding/widht of .badge */
         top: -10px;
@@ -96,7 +96,10 @@
         <div class="col-12">
             <div class="card-details">
                 <div class="card-body">
-                    <div class="btn-close text-right h4" id="close-yt">x</div>
+                  <a href="{{route('profile-detail',$actor->id)}}">
+                    <b><i class="fa-solid fa-up-right-from-square"></i></b>
+                  </a>  
+                 <div class="text-right h4" style="margin-top:-32px;" id="close-yt">x</div>
                     <div class="collapse show pt-0">
                         @if (isset($actor))
                             @isset($actor?->profile)

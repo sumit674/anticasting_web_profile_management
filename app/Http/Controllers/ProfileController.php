@@ -33,7 +33,7 @@ class ProfileController extends Controller
     }
     public function submitProfileStore(Request $request)
     {
-        // dd($request->all());
+    
         $request->validate(
             [
                 'first_name' => 'required',
@@ -111,6 +111,7 @@ class ProfileController extends Controller
             $user_profile->height = $request->height;
             $user_profile->current_location = $request->current_location;
             $user_profile->weight = $request->weight;
+            $user_profile->about_me = $request->about_me;
             $user_profile->user_id = $userId;
             $user_profile->save();
             return redirect()
@@ -199,5 +200,32 @@ class ProfileController extends Controller
         return redirect()
             ->back()
             ->with('message', 'Your intro video saved.');
+    }
+
+    /**
+     * Profile Detail
+     */
+    public function actorDetails($id)
+    {
+    
+     
+        $item = User::where('id',$id)
+            ->with('profile')
+            ->with('introVideo')
+            ->with('images')
+            ->first();
+      
+        return view('profile.detail',compact('item'));
+    }
+    public function viewProfileDetails()
+    {
+        $user_id = auth()->user()->id;
+        $item = User::where('id',$user_id)
+            ->with('profile')
+            ->with('introVideo')
+            ->with('images')
+            ->first();
+      
+        return view('view-profile-details',compact('item'));
     }
 }
