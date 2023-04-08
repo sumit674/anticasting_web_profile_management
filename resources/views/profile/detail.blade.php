@@ -1,9 +1,11 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="{{asset('assets/website/backend/css/actor-front-details.css')}}" rel="stylesheet"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
 </script>
+<<<<<<< HEAD
 
 <style>
     body {
@@ -335,6 +337,8 @@
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
 </style>
+=======
+>>>>>>> 2ca20a4eb5c62e31a794f64e6ef621a4736d575b
 <section class="bg-light">
     <div class="container">
         <div class="row">
@@ -344,14 +348,17 @@
                         <div class="row align-items-center">
                             <div class="col-lg-6 mt-b mb-lg-0 ">
                                 <div class="left-image">
-                                    <img src="{{ $item?->images[0]?->image }}"style="width:75%;height:75%; object-fit:fill;" onclick="openModal();currentSlide(1)" class="hover-shadow">
+                                    <img src="{{ $item?->images[0]?->image }}" style="width:240px; object-fit:contain;"
+                                        onclick="openModal();currentSlide(1)" class="hover-shadow">
                                 </div>
-                                <div class="d-flex justify-content-center p-3">
+                                <div class="d-flex justify-content-left p-3">
                                     <div class="column">
-                                        <img src="{{ $item?->images[1]?->image }}" style="width:100%;height:75%; object-fit:fill;" onclick="openModal();currentSlide(2)" class="hover-shadow">
+                                        <img src="{{ $item?->images[1]?->image }}"
+                                            onclick="openModal();currentSlide(2)" class="hover-shadow">
                                     </div>
                                     <div class="column">
-                                        <img src="{{ $item?->images[2]?->image }}" style="width:100%;height:75%; object-fit:fill;" onclick="openModal();currentSlide(3)" class="hover-shadow">
+                                        <img src="{{ $item?->images[2]?->image }}"
+                                            onclick="openModal();currentSlide(3)" class="hover-shadow">
                                     </div>
                                 </div>
                             </div>
@@ -385,6 +392,11 @@
                                         {{ $item?->profile?->height . ' ' . 'CM' }}
                                     </li>
                                 </ul>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12 px-xl-10">
+
                             </div>
                         </div>
                         <div class="row align-items-center">
@@ -428,7 +440,7 @@
                                                     <div class="tab-pane fade" id="tabs-text-2" role="tabpanel"
                                                         aria-labelledby="tabs-text-2-tab">
                                                         <div class="container">
-                                                            <h6 class="page-header" id="youtube-gallery">Intro video
+                                                            <h6 class="page-header mt-4" id="youtube-gallery">Intro video
                                                             </h6>
                                                             <div class="row p-2">
                                                                 <div class="col-md-12 col-12">
@@ -489,17 +501,17 @@
 
         <div class="mySlides">
             <div class="numbertext">1 / 3</div>
-            <img src="{{ $item?->images[0]?->image }}" style="width:100%;height:100%; object-fit:fill;">
+            <img src="{{ $item?->images[0]?->image }}">
         </div>
 
         <div class="mySlides">
             <div class="numbertext">2 / 3</div>
-            <img src="{{ $item?->images[1]?->image }}" style="width:100%;height:100%;object-fit:fill;">
+            <img src="{{ $item?->images[1]?->image }}">
         </div>
 
         <div class="mySlides">
             <div class="numbertext">3 / 3</div>
-            <img src="{{ $item?->images[2]?->image }}" style="width:100%;height:100%;object-fit:fill;">
+            <img src="{{ $item?->images[2]?->image }}">
         </div>
 
         <!-- Next/previous controls -->
@@ -544,7 +556,7 @@
         for (i = 0; i < slides.length; i++) {
             slides[i].style.display = "none";
         }
-       slides[slideIndex - 1].style.display = "block";
-       captionText.innerHTML = dots[slideIndex - 1].alt;
+        slides[slideIndex - 1].style.display = "block";
+        captionText.innerHTML = dots[slideIndex - 1].alt;
     }
 </script>
