@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Anticasting @yield('title')</title>
+    <link rel="icon" sizes="16x16" href="{{ asset('assets/website/images/favicon.ico') }}">
     @include('auth.include.head')
     @yield('style')
     {{-- @include('auth.include.header') --}}
@@ -13,12 +14,8 @@
     </script>
     @yield('header')
 </head>
-
 <body class="bg-body">
-  
     @yield('content')
-
-    
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
@@ -28,7 +25,17 @@
     integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous">
    </script>
   @yield('footer')
-
+  <script type="text/javascript">
+    $(document).ready(function () {
+        $(".form-disable").on("submit", function () {
+            var self = $(this),
+                button = self.find('input[type="submit"], button'),
+                submitValue = button.data("submit-value");
+            button
+                .attr("disabled", "disabled")
+                .val(submitValue ? submitValue : "Please wait...");
+        });
+    });
+</script>
 </body>
-
 </html>

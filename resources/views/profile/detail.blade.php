@@ -264,7 +264,7 @@
         padding: 0;
         width: 30%;
         max-width: 1200px;
-       
+
     }
 
     /* The Close Button */
@@ -446,17 +446,17 @@
                                                                     <div class="row">
                                                                         <div class="col-md-4 mt-3">
                                                                             <iframe width="100%" height="100%"
-                                                                                src="{{ $item?->profile->work_reel1 }}">
+                                                                                src="{{ @$item?->profile->work_reel1 }}">
                                                                             </iframe>
                                                                         </div>
                                                                         <div class="col-md-4 mt-3">
                                                                             <iframe width="100%" height="100%"
-                                                                                src="{{ $item?->profile->work_reel2 }}">
+                                                                                src="{{ @$item?->profile->work_reel2 }}">
                                                                             </iframe>
                                                                         </div>
                                                                         <div class="col-md-4 mt-3">
                                                                             <iframe width="100%" height="100%"
-                                                                                src="{{ $item?->profile->work_reel3 }}">
+                                                                                src="{{ @$item?->profile->work_reel3 }}">
                                                                             </iframe>
                                                                         </div>
                                                                     </div>

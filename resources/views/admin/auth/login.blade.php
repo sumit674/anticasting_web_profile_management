@@ -3,8 +3,8 @@
     Login
 @endsection
 @section('content')
-    <h4 class="text-danger">Administratior Login</h4>
-    <form action="{{ route('admin.loginPost') }}" method="POST">
+    <h4 class="text-danger">Administrator Login</h4>
+    <form class="form-disable" action="{{ route('admin.loginPost') }}" method="POST">
         @csrf
         <div class="form-group">
             <label for="email">Email address</label>
@@ -19,13 +19,12 @@
         <div class="form-group">
             <label>Password</label>
             <div class="input-group" id="show_hide_password">
-
                 <input class="form-control  password block mt-0 w-full    @error('password') is-invalid @enderror"
                     placeholder="Enter  password" type="password" name="password" id="password"
                     autocomplete="current-password" />
-                <span class="input-group-text togglePassword" id="">
-                    <i data-feather="eye" style="cursor: pointer"></i>
-                </span>
+                    <span class="input-group-text togglePassword" id="">
+                        <i data-feather="eye" style="cursor: pointer"></i>
+                    </span>
             </div>
             @error('password')
                 <span class="invalid-feedback alert-danger" role="alert">
@@ -42,9 +41,9 @@
             </label>
 
         </div> --}}
-        <button type="submit" class="btn btn-danger btn-flat m-b-10 m-t-10">Sign in</button>
+        <input type="submit" class="btn btn-danger btn-flat m-b-10 m-t-10" value="Login">
         <div class="register-link m-t-10 text-center">
-            <b><a class="text-danger" href="{{ route('admin.forgot-password') }}">Forgot password</a></b>
+            <b><a class="text-danger" href="{{ route('admin.forgot-password') }}">Forgot Password</a></b>
         </div>
     </form>
 @endsection

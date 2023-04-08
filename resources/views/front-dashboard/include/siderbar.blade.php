@@ -2,7 +2,7 @@
   <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ url('/') }}">
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-user"></i>
         </div>
@@ -38,7 +38,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Submit Profile:</h6>
                 <a class="collapse-item" href="{{route('users.submitProfile')}}">Profile</a>
-               
+
             </div>
         </div>
     </li>
@@ -51,7 +51,7 @@
     </div>
 
     <!-- Sidebar Message -->
-  
+
 
 </ul>
 <!-- End of Sidebar -->

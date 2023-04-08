@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'admin', 'middleware' => ['web', 'admin']], function () {
     Route::get('filter-actors', [ActorsController::class, 'filterActorList'])->name('admin.filter-actors');
-    Route::get('list-actors', [ManageActorController::class, 'ActorList'])->name('admin.actors.mange');
+    Route::get('list-actors', [ManageActorController::class, 'actorList'])->name('admin.actors.mange');
     Route::get('list-actors/create', [ManageActorController::class, 'ActorCreate'])->name('admin.actors.mange.create');
     Route::post('list-actors/store', [ManageActorController::class, 'ActorStroe'])->name('admin.actors.mange.store');
     Route::get('list-actors/{id}/edit', [ManageActorController::class, 'ActorEdit'])->name('admin.actors.mange.edit');
@@ -19,7 +19,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'admin']], function (
     Route::get('list-actors/{id}/delete', [ManageActorController::class, 'ActorDelete'])->name('admin.actors.mange.delete');
     Route::get('list-actors/{id}/delete', [ManageActorController::class, 'ActorDelete'])->name('admin.actors.mange.delete');
     Route::post('bucket-actors/store',[BucketController::class,'store'])->name('admin.actors.bucket.store');
-   
+
 });
 
 Route::any('actors', [ActorsController::class, 'listActors'])->name('admin.actors');

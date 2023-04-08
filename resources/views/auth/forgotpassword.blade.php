@@ -37,7 +37,7 @@
                                         how to reset your password.
                                     </span>
                                 </div>
-                                <form action="{{ route('users.forgotpassword-post') }}" method="post">
+                                <form class="form-disable" action="{{ route('users.forgotpassword-post') }}" method="post">
                                     @csrf
                                     <div class="form-group mt-3">
                                         <label for="email" class="form-label text-muted">
@@ -50,8 +50,7 @@
                                         @enderror
                                     </div>
                                     <div class="d-grid gap-2 mb-1 mt-4 col-6 mx-auto">
-                                        <input type="submit" class="btn btn-dark form-control" type="button"
-                                            value="Get New Password">
+                                        <input type="submit" class="btn btn-dark form-control" value="Get New Password">
                                     </div>
                                 </form>
                                 <br />
@@ -60,13 +59,7 @@
                         <div class="col-md-7">
                             <img src="{{ asset('assets/website/images/banner.jpg') }}" alt="login"
                                 class="login-card-img">
-                            {{-- <p
-                                class="text-white font-weight-medium text-center flex-grow align-self-end footer-link text-small">
-                                Free <a href="https://wordpress-923989-3206731.cloudwaysapps.com/" target="_blank"
-                                    class="text-white">Bootstrap dashboard templates</a> from Bootstrapdash
-                            </p> --}}
                         </div>
-
                     </div>
                 </div>
             </div>

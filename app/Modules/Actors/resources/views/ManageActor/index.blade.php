@@ -138,7 +138,7 @@
                                                                 with="100" height="75">
                                                         </td>
                                                         @endisset
-                                                       
+
                                                         {{-- @isset($item->introVideo)
                                                             <td class="text-center">
                                                                 <a href="{{ $item?->introVideo?->hindi_video }}">
@@ -171,7 +171,6 @@
                                                             <a href="{{ route('admin.actors.mange.delete', $item->id) }}" class="btn btn-danger btn-sm mb-2">
                                                                 <i class="fa-solid fa-trash-arrow-up"></i>
                                                             </a>
-                                                           
                                                         </td>
                                                     </tr>
                                                 @endisset
@@ -180,7 +179,6 @@
                                                     <td colspan="10" class="text-center">No Record</td>
                                                 </tr>
                                             @endforelse
-
                                         </tbody>
                                     </table>
                                     <div>

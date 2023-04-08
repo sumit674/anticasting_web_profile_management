@@ -12,4 +12,9 @@ class HomeController extends Controller
 
         return view('home');
     }
+    public function ourWork(){
+
+        return view('our-work');
+    }
+
 }

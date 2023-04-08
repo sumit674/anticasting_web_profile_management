@@ -1,23 +1,19 @@
   <!-- ======= Header ======= -->
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
-
       <a href="{{ url('/') }}" class="logo d-flex align-items-center">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-      <img src="" alt="">
-        <h1>{{ Config::get('name', 'Anti-Casting') }}</h1>
+        <img src="{{ asset('./assets/website/images/anticasting-logo.png') }}" alt="{{ Config::get('name', 'Anti-Casting') }}">
       </a>
-
       <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
       <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
       <nav id="navbar" class="navbar">
         <ul>
           <li><a href="{{ url('/') }}" class="active">Home</a></li>
           <li><a href="{{ url('/about')}}">About Us</a></li>
-          <li><a href="services.html">Our Work</a></li>
+          <li><a href="{{ route('our-work') }}">Our Work</a></li>
            <li><a href="{{ url('/contact')}}">Contact</a></li>
            {{-- <li><a href="{{ route('users.profile-detail')}}">View Profile</a></li> --}}
-       
+
            @auth
            {{-- <li><a href="{{ route('users.profile-detail')}}">View Profile</a></li> --}}
            <li><a class="get-a-quote" href="{{ route('users.submitProfile') }}">Submit Profile</a></li>
@@ -32,4 +28,3 @@
   </header><!-- End Header -->
   <!-- End Header -->
 
- 

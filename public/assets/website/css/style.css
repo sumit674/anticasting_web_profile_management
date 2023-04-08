@@ -1,3 +1,9 @@
+body{
+    font-family: 'Cairo', sans-serif;
+    font-family: 'Cormorant SC', serif;
+    font-family: 'Questrial', sans-serif;
+}
+
 .field-error > .iti__flag-container {
     height: 60% !important;
 }

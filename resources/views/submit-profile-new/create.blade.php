@@ -3,27 +3,21 @@
     <link rel="stylesheet" href="{{ asset('assets/website/css/image-gallery.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/auth/toastr.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/website/css/alertbox.css') }}" />
-    <style>
-        .btn {
-            color: #fff;
-        }
-    </style>
 @endsection
 @section('header')
     @include('include.submitprofile.image-header')
 @endsection
 @section('content')
     <section id="contact-us" class="contact-us section">
-
-        @if (Session::has('message'))
-            <div id="success" title="Success">
-                <p>{{ Session::get('message') }}</p>
-            </div>
-        @endif
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-12">
-                    <form id="profile-valdation" action="{{ route('users.submitProfile.store') }}" method="post">
+                    @if (Session::has('message'))
+                        <div id="success" title="Success">
+                            <p>{{ Session::get('message') }}</p>
+                        </div>
+                    @endif
+                    <form class="form-disable" id="profile-valdation" action="{{ route('users.submitProfile.store') }}" method="post">
                         @csrf
                         <div class="card mb-4">
                             <div class="card-body">
@@ -226,13 +220,13 @@
                                                     <span style="color:red;"><b>*</b></span>
                                                 </b>
                                             </label>
-                                             <textarea id="about_me" name="about_me" class="form-control"> 
+                                             <textarea id="about_me" name="about_me" class="form-control">
                                                 @isset($userProfile->about_me)
                                                    {{ $userProfile->about_me }}
                                                 @endisset
-                                             
+
                                              </textarea>
-                                          
+
                                         </div>
                                     </div>
                                 </div>
@@ -488,7 +482,7 @@
                         // if (file >= 4096) {
                         // $('#error2').slideDown("slow");
                         //   a = 0;
-                        // } 
+                        // }
                         if (file > 2048) {
                             $('#error3').slideDown("slow");
                             a = 0;

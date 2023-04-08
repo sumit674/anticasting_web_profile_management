@@ -3,15 +3,15 @@
     Login
 @endsection
 @section('content')
-    <h4>Administratior Reset Password</h4>
+    <h4>Administrator Reset Password</h4>
     <form action="{{ route('admin.resetpasswordpost') }}" method="POST">
         @csrf
         <input type="hidden" name="email"
         value="{{ old('email',$email) }}" />
-      
+
         <input type="hidden" name="token"
         value="{{ old('token',$token) }}" />
-       
+
         <div class="form-group">
             <label>Password</label>
             <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
@@ -44,11 +44,11 @@
 
         </div> --}}
         <button type="submit" class="btn btn-primary btn-flat m-b-10 m-t-10">Reset password</button>
-        {{-- 
+        {{--
             <div class="register-link m-t-10 text-center">
             <p><a href="{{ route('admin.forgot-password') }}"></a></p>
-           </div> 
+           </div>
         --}}
-       
+
     </form>
 @endsection

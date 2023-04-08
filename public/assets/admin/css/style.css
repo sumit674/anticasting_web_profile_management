@@ -79,12 +79,13 @@
   padding: 0;
 }
 .card {
-  background: #ffffff;
-  margin: 7.5px 0;
-  padding: 20px;
-  border: 1px solid #e7e7e7;
-  border-radius: 3px;
- 
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 0 3px 1px rgba(0,0,0,.4);
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+
   /* box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1); */
 }
 .card-subtitle {
@@ -708,7 +709,7 @@ a.dt-button.active:not(.disabled) {
   transition: margin-left 300ms ease-in-out 0s;
 }
 .logo {
-  background: #343957;
+  /* background: #343957; */
   display: inline-block;
   padding: 15px 0;
   text-align: center;
@@ -716,7 +717,7 @@ a.dt-button.active:not(.disabled) {
   transition: width 300ms ease-in-out;
 }
 .logo span {
-  color: rgba(160, 180, 200, 0.85);
+  color: #fff;
   font-size: 20px;
   font-weight: 700;
 }
@@ -2801,7 +2802,7 @@ tbody tr td:last-child {
   font-size: 24px;
 }
 .login-logo img {
-  height: 75px;
+  height: 200px;
 }
 .login-content {
   margin: 50px 0;
@@ -2832,7 +2833,7 @@ tbody tr td:last-child {
 }
 .login-form label {
   color: #373757;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
 }
 .login-form label a {
   color: #5873fe;

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Anticasting @yield('title')</title>
+    <link rel="icon" sizes="16x16" href="{{ asset('assets/website/images/favicon.ico') }}">
     @include('include.submitprofile.head')
     @yield('style')
     @include('include.submitprofile.header')
@@ -25,11 +26,21 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="{{ asset('assets/submitprofile/assets/js/bootstrap.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
-   
+
 </body>
 </html>
-
     @yield('footer')
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".form-disable").on("submit", function () {
+                var self = $(this),
+                    button = self.find('input[type="submit"], button'),
+                    submitValue = button.data("submit-value");
+                button
+                    .attr("disabled", "disabled")
+                    .val(submitValue ? submitValue : "Please wait...");
+            });
+        });
+    </script>
 </body>
-
 </html>

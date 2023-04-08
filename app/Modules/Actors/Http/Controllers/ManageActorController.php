@@ -7,7 +7,7 @@ use App\Models\{UserProfile, UserProfileImage, User, State};
 class ManageActorController extends Controller
 {
     //
-    public function ActorList(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+    public function actorList()
     {
         $items = User::where('user_type', '0')
             ->with('images')
@@ -44,7 +44,7 @@ class ManageActorController extends Controller
                 'gender.required' => 'Please select  gender',
                 'current_location.required' => 'Please enter a current location',
                 'mobile_no.required' => 'Please enter a mobile number',
-              
+
             ],
         );
         //  dd($request->all());

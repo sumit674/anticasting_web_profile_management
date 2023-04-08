@@ -14,11 +14,11 @@
                                 <div class="brand-wrapper">
                                     <a href="{{ route('users.home') }}">
                                         <img src="{{ asset('assets/website/images/anticasting-logo.png') }}" alt="logo"
-                                            class="logo" width="100" height="100">
+                                            class="logo" width="120" height="81">
                                     </a>
                                 </div>
                                 <p class="d-flex justify-content-center fs-4">Register into your account</p>
-                                <form method="post" id="frm_register" action="{{ route('users.registerpost') }}">
+                                <form class="form-disable" method="post" id="frm_register" action="{{ route('users.registerpost') }}">
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-6">
@@ -107,7 +107,7 @@
                                 </form>
                                 <div class="d-flex justify-content-center mt-2">
                                     <p class="login-card-footer-text"><b>Have an account?</b><a
-                                            href="{{ route('users.login') }}" class="text-reset">Login here</a></p>
+                                            href="{{ route('users.login') }}" class="text-reset"> Login here</a></p>
                                 </div>
                             </div>
                         </div>
@@ -129,7 +129,7 @@
 @endsection
 @section('footer')
     <!--Footer of Submit profile css -->
-    {{--  
+    {{--
 @include('include.submitprofile.footer')
 --}}
     <script src="{{ asset('assets/website/js/jquery.validate.min.js') }}"></script>

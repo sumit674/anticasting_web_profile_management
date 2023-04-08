@@ -13,7 +13,8 @@ body {
   font-family: "Spartan", sans-serif;
   font-weight: normal;
   font-style: normal;
-  color: #6e657e;
+  /* color: #6e657e; */
+  color:#000;
   overflow-x: hidden;
   font-size: 14px;
 }
@@ -847,7 +848,7 @@ ol {
 /* Bread Crumbs */
 .page-banner {
   /* padding: 80px 0 0; */
-  padding: 69px 0 0;
+  padding: 155px 0 0;
   /* background-color: #ff5b00; */
 }
 /* .breadcrumbs {
@@ -937,7 +938,7 @@ ol {
   color: #fff;
   font-size:21px;
   font-weight:bold;
-  font-family: "Times New Roman", Times, serif;
+  /* font-family: "Times New Roman", Times, serif; */
   /* text-transform: uppercase; */
   background-color: transparent;
 }
@@ -949,7 +950,8 @@ ol {
 }
 
 .breadcrumbs .breadcrumb-nav li span:hover {
-  color: #ff5b00;
+  /* color: #ff5b00; */
+  color: #000;
 }
 
 /* .breadcrumbs .breadcrumb-nav li span:after {
@@ -1572,9 +1574,9 @@ ol {
 }
 
 .navbar-nav .nav-item a {
-  font-size: 14px;
-  font-weight: 500;
-  color: #333;
+  font-size: 16px;
+  font-weight: 600;
+  color: #000;
   -webkit-transition: all 0.3s ease-out 0s;
   transition: all 0.3s ease-out 0s;
   /* padding: 30px 0; */
@@ -4591,7 +4593,7 @@ blockquote span {
 
 .footer .footer-bottom .inner p {
   color: #fff;
-  font-size: 13px;
+  font-size: 16px;
 }
 
 .footer .footer-bottom .inner p a {
@@ -5913,4 +5915,15 @@ blockquote span {
 .mail-success .siccess-text p {
   display: block;
   margin-bottom: 30px;
+}
+
+.btn {
+    color: #fff;
+    padding: 10px;
+    font-weight: 600;
+}
+
+.btn:hover {
+    color: #fff;
+    text-decoration: underline;
 }

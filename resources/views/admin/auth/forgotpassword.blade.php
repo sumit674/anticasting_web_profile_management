@@ -1,6 +1,6 @@
 @extends('admin.layouts.admin-auth-layouts')
 @section('title')
-    Forgotpassword
+    Forgot Password
 @endsection
 <br/>
 <br/>
@@ -15,20 +15,20 @@
          toastr.error("{{ Session::get('error') }}");
      @endif
   </script>
-    <h4 class="text-danger">Administratior Forgot Password</h4>
-    <form action="{{ route('admin.forgotpassword-post') }}" method="POST">
+    <h4 class="text-danger">Administrator Forgot Password</h4>
+    <form class="form-disable" action="{{ route('admin.forgotpassword-post') }}" method="POST">
         @csrf
         <div class="form-group">
             <label for="email">Email address</label>
             <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email" name="email"
                 value="{{ old('email') }}"  autocomplete="email" autofocus />
             @error('email')
-                <span class="invalid-feedback alert-danger" role="alert">
+                <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
             @enderror
         </div>
-      
+
         {{-- <div class="checkbox">
             <label>
                 <input type="checkbox"> Remember Me
@@ -38,11 +38,11 @@
             </label>
 
         </div> --}}
-        <button type="submit" class="btn-sm btn btn-danger">Get Reset Link</button>
-        {{-- 
+        <input type="submit" class="btn-sm btn btn-danger" value="Submit">
+        {{--
         <div class="register-link m-t-10 text-center">
             <p><a href="">Forgot password</a></p>
-         </div> 
+         </div>
          --}}
     </form>
 @endsection

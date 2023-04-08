@@ -2,10 +2,9 @@
     <div class="navbar-area shadow-sm bg-body rounded">
         <div class="container">
         <nav class="navbar navbar-expand-lg">
-            <a class="navbar-brand logo" href="index.html">
+            <a class="navbar-brand logo" href="{{ url('/') }}">
                 <!-- <img class=logo1 src="assets/images/logo/logo.svg" alt=Logo data-pagespeed-url-hash=1728553520 onload="pagespeed.CriticalImages.checkImageForCriticality(this);" /> -->
-                <img src="https://anticasting.in/wp-content/uploads/2022/06/Anti-Casting-Logo-120x81.jpg"
-                    class="logo1" alt="Anti Casting" style="height:69px;" />
+                <img src="{{ asset('./assets/website/images/anticasting-logo.png') }}" alt="{{ Config::get('name', 'Anti-Casting') }}">
             </a>
             <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
                 aria-expanded="false" aria-label="Toggle navigation">
@@ -22,7 +21,7 @@
                         <a href="{{ url('/about') }}">About Us</a>
                     </li>
                     <li class="nav-item">
-                        <a href="services.html">Our Work</a>
+                        <a href="{{ url('/our-work') }}">Our Work</a>
                     </li>
                     <li class="nav-item">
                         <a href="{{ url('/contact') }}">Contact</a>
@@ -41,7 +40,7 @@
                         <li class="nav-item">
                             <a href="{{ route('users.login') }}">Login</a>
                         </li>
-                    @endauth 
+                    @endauth
                 </ul>
             </div>
         </nav>

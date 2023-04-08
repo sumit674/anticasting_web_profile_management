@@ -15,7 +15,7 @@ body {
 }
 
 .brand-wrapper .logo {
-    height: 75px;
+    height: 100px;
 }
 
 .login-card {
@@ -136,3 +136,81 @@ font-weight: normal;
 }
 
 /*# sourceMappingURL=login.css.map */
+
+.text-muted{
+    color: #000 !important;
+}
+.form-label {
+    margin-bottom: 0px;
+}
+
+.form-group {
+    margin-bottom: 15px !important;
+}
+.card-body{
+    color: #000 !important;
+    font-weight: 600;
+}
+
+.text-danger{
+    color: #ff0000 !important;
+}
+.forg-pass{
+    float: right;
+}
+.get-a-quote{
+    font-weight: 600 !important;
+    border: 2px solid #000000 !important;
+}
+.btn{
+    font-weight: 600 !important;
+    border: 2px solid #ea5d5a !important;
+}
+.btn-dark{
+    background-color: #000000;
+    border-color: #fff;
+    font-size: 16px;
+    padding: 10px;
+    border: 2px solid #000000;
+}
+.btn:hover{
+    color: #e1380e;
+    background-color: rgba(0,0,0,0);
+    border-color: #e1380e;
+    font-weight: bold;
+    border: 2px solid #e1380e;
+}
+
+
+input.btn {
+	color: #fff;
+	border: 1px solid #ea5d5a;
+	background: #ea5d5a;
+	display: inline-block;
+	vertical-align: middle;
+	padding: 8px 12px;
+	line-height: 20px;
+	text-align: center;
+	min-width: 72px;
+	position: relative;
+	overflow: hidden;
+	cursor: pointer;
+	transition: color 0.3s;
+	z-index: 1;
+	text-decoration: none;
+	font-size: 16px;
+}
+
+input.btn::after {
+	content: '';
+	position: absolute;
+	transition: padding-left 0.3s;
+	height: 100%;
+	width: 0;
+	padding-top: 0;
+	top: 50%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%) skewX(-45deg);
+	background: #ffffff;
+	z-index: -1;
+}

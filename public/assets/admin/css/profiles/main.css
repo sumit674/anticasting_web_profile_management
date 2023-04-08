@@ -283,15 +283,16 @@ label {
 
 .card {
   /* padding: 10px; */
-  padding: 0px !important;
+  /* padding: 0px !important;
   cursor: pointer;
   transition: 0.3s all ease-in-out;
-  height: 280px;
+  height: 280px; */
 }
 
 .card:hover {
-  box-shadow: 2px 2px 15px #fd9a6ce5;
+  /* box-shadow: 2px 2px 15px #fd9a6ce5; */
   transform: scale(1.02);
+  box-shadow: 0 0 10px 0 #fd9a6ce5;
 }
 
 .card .product-name {
@@ -314,7 +315,7 @@ label {
   /* padding-top: 10px; */
   width: inherit;
   /* height: 180px; */
-  height: 150px;
+  /* height: 150px; */
   object-fit: contain;
   display: block;
 }
@@ -675,3 +676,224 @@ transform: rotate(45deg); */
 }
 
 /* Custom checkbox */
+
+.c-performers-grid__card {
+    margin-bottom: 30px;
+}
+
+.c-selectable-card {
+    height: 100%;
+    position: relative;
+    z-index: 0;
+}
+
+.c-selectable-card__checkbox {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 1;
+}
+
+
+.c-card__container {
+    display: flex;
+    flex-direction: column;
+}
+
+.c-card__image-container {
+    background-color: #d1d1d1;
+    overflow: hidden;
+    padding-top: 125%;
+    position: relative;
+    width: 100%;
+}
+
+.c-card__image {
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 100%;
+}
+.c-card__content{
+    width: 100%;
+    padding: 10px;
+}
+
+.card__content{
+    width: 100%;
+}
+.card__content label{
+    color: #26247b;
+    line-height: 10px;
+    font-weight: 600;
+    font-size: 12px;
+    margin-bottom: 0;
+}
+
+#close-yt{
+    cursor: pointer;
+}
+
+.c-card__name {
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    line-height: 18px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
+}
+.c-card__name-link {
+    color: #26247b;
+    display: inline;
+    font-size: 16px;
+    font-weight: 600;
+    vertical-align: top;
+}
+.c-card__title{
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    line-height: 18px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
+    color: #000;
+    font-weight: 500;
+}
+
+.card__title{
+    padding:10px 20px 10px 0px;
+}
+
+p.card__title{
+    margin-bottom: 0px;
+}
+
+.c-card__performer-agent-wrapper {
+    display: block;
+    padding-top: 5pt;
+}
+
+a.g-alternative-link {
+    color: #26247b;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.c-card__content label{
+    color: #26247b;
+    line-height: 10px;
+    font-weight: 600;
+    font-size: 12px;
+}
+
+.fa-2x {
+    font-size: 18px;
+}
+
+.popover-header{
+    background-color: #fff;
+}
+
+.c-performers-quick-view__links {
+    padding-bottom: 10px;
+}
+
+.c-icon-text-link--primary {
+    color: #26247b;
+}
+.c-icon-text-link__icon {
+    height: 25px;
+    margin: 10px 0 0;
+    position: absolute;
+    width: 25px;
+}
+
+.c-icon-text-link__icon-font {
+    font-size: 25px;
+}
+
+.icon-messages:before {
+    content: "";
+}
+
+.icon-Print:before {
+    content: "";
+}
+
+.icon-notes:before {
+    content: "";
+}
+.icon-showreel:before {
+    content: "";
+}
+
+.icon-audio:before {
+    content: "";
+}
+
+.c-icon-text-link__text {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    overflow: hidden;
+    padding: 10px 20px 10px 25px;
+    text-overflow: ellipsis;
+    transition: all .2s ease-in-out;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.c-basic-info-section__edit-panel {
+    padding-bottom: 5px;
+}
+.c-edit-panel {
+    align-items: center;
+    border-bottom: 1px solid #dadada;
+    display: flex;
+    justify-content: space-between;
+}
+.c-edit-panel__header {
+    font-size: inherit;
+    font-weight: 400;
+    line-height: inherit;
+    margin: 0;
+    padding: 10px;
+}
+.c-basic-info-section__edit-panel .c-edit-panel__header {
+    padding-left: 0;
+}
+.c-edit-panel__controls {
+    display: flex;
+}
+
+.p-main-page__content {
+    background-color: #f5f4f9;
+    margin-bottom: 10px;
+    padding: 10px 7px 10px 0;
+}
+.p-main-page__about-me-section, .p-main-page__credits-section, .p-main-page__skills-section, .p-main-page__training-section {
+    background-color: #fff;
+}
+.c-edit-panel {
+    align-items: center;
+    border-bottom: 1px solid #dadada;
+    display: flex;
+    justify-content: space-between;
+}
+.c-edit-panel__header {
+    font-size: inherit;
+    font-weight: 400;
+    line-height: inherit;
+    margin: 0;
+    padding: 10px;
+}
+.c-further-information {
+    font-size: 14px;
+    padding: 10px;
+    word-break: break-word;
+}

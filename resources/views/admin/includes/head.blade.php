@@ -2,6 +2,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="csrf-token" content="{{csrf_token()}}">
 <title>Anticasting | @yield('title', 'Dashboard')</title>
+<link rel="icon" sizes="16x16" href="{{ asset('assets/website/images/favicon.ico') }}">
 <!-- ================= Favicon ================== -->
 <!-- Standard -->
 <link rel="shortcut icon" href="http://placehold.it/64.png/000/fff">

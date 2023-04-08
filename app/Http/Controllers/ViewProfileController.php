@@ -16,7 +16,7 @@ class ViewProfileController extends Controller
             ->with('introVideo')
             ->with('images')
             ->first();
-    
+
         return view('dashboard-new1',compact('item'));
     }
 }

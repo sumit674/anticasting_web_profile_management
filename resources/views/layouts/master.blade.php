@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Anticasting @yield('title')</title>
+    <link rel="icon" href="{{ asset('assets/website/images/favicon.ico') }}">
     @include('include.head')
 </head>
 
@@ -32,8 +33,7 @@
 
     <!-- Template Main JS File -->
     <script src="{{ asset('assets/users/assets/js/main.js') }}"></script>
-
-    <script>
+    <script type="text/javascript">
         $("body").on('click', '.toggle-password', function() {
             $(this).toggleClass("fa-eye fa-eye-slash");
             var input = $("#pass_log_id");
@@ -44,8 +44,16 @@
             }
 
         });
+        $(document).ready(function () {
+            $(".form-disable").on("submit", function () {
+                var self = $(this),
+                    button = self.find('input[type="submit"], button'),
+                    submitValue = button.data("submit-value");
+                button
+                    .attr("disabled", "disabled")
+                    .val(submitValue ? submitValue : "Please wait...");
+            });
+        });
     </script>
-
 </body>
-
 </html>

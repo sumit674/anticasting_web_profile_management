@@ -670,7 +670,7 @@
                                                     <li><img src="{{ $item?->images[0]?->image }}"></li>
                                                     <li><img src="{{ $item?->images[1]?->image }}"></li>
                                                     <li><img src="{{ $item?->images[2]?->image }}"></li>
-                                                  
+
                                                 </ul>
                                             </div>
                                         </div>
@@ -1086,7 +1086,7 @@
                                                                     <div class="um-field-value" id="youtubevideo1_38-8">
                                                                         <div class="um-youtube">
                                                                             <iframe width="600" height="450"
-                                                                                src="{{ $item?->profile->work_reel1 }}"
+                                                                                src="{{ @$item?->profile->work_reel1 }}"
                                                                                 frameborder="0"
                                                                                 allowfullscreen=""></iframe>
                                                                         </div>
@@ -1104,7 +1104,7 @@
                                                                     <div class="um-field-value" id="youtubevideo1_38-8">
                                                                         <div class="um-youtube">
                                                                             <iframe width="600" height="450"
-                                                                                src="{{ $item?->profile->work_reel2 }}"
+                                                                                src="{{ @$item?->profile->work_reel2 }}"
                                                                                 frameborder="0"
                                                                                 allowfullscreen=""></iframe>
                                                                         </div>
@@ -1122,7 +1122,7 @@
                                                                     <div class="um-field-value" id="youtubevideo1_38-8">
                                                                         <div class="um-youtube">
                                                                             <iframe width="600" height="450"
-                                                                                src="{{ $item?->profile->work_reel3 }}"
+                                                                                src="{{ @$item?->profile->work_reel3 }}"
                                                                                 frameborder="0"
                                                                                 allowfullscreen=""></iframe>
                                                                         </div>

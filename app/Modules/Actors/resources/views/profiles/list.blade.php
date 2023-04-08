@@ -31,9 +31,9 @@
         }
 
         .popover {
-            max-width: 600px !important;
-            max-height: 600px !important;
+            max-width: 80% !important;
         }
+
     </style>
 @endsection
 @section('content')
@@ -44,7 +44,7 @@
                     alert("{{ Session::get('success') }}")
                 </script>
             @endif
-            <div class="row">
+            <div class="">
                 <div class="col-lg-6 p-r-0 title-margin-right">
                     <div class="page-header">
                         <div class="page-title">
@@ -76,46 +76,47 @@
                                 @foreach ($actors as $k => $item)
                                     @php
                                         $dateOfBirth = $item?->profile?->date_of_birth;
-                                        $age = \Carbon\Carbon::parse($dateOfBirth)->age;
+                                        //$age = \Carbon\Carbon::parse($dateOfBirth)->diff(\Carbon\Carbon::now())->format('%y years, %m months and %d days'); //\Carbon\Carbon::parse($dateOfBirth)->age;
+                                        $age = \Carbon\Carbon::parse($dateOfBirth)->diff(\Carbon\Carbon::now())->format('%y years');
                                     @endphp
                                     <div class="col-lg-3 col-md-6 pt-md-0 pt-3">
                                         <div class="card d-flex flex-column align-items-center actor-grid">
-
-                                            {{-- <div class="product-name">Torn Jeans for Men</div> --}}
-                                            <div class="card-img">
-                                                @isset($item->images[0]->image)
-                                                    <img class="" src="{{ $item->images[0]?->image }}" />
-                                                    {{-- <img class="pic-2 actor-img" src="{{ $item->images[0]?->image }}" /> --}}
-                                                @else
-                                                    <img class=""
-                                                        src="https://source.unsplash.com/random/234x156/?nature" />
-                                                @endisset
-
+                                            <div class="card-img c-card__image-container">
+                                                <div style="cursor: pointer;" data-toggle="popover" data-poload="{{ route('admin.actors.detail', $item->id) }}">
+                                                    @isset($item->images[0]->image)
+                                                        <img class="c-card__image" src="{{ $item->images[0]?->image }}" />
+                                                    @else
+                                                        <img class="c-card__image" src="https://source.unsplash.com/random/234x156/?nature" />
+                                                    @endisset
+                                                </div>
                                             </div>
-                                            <div class="card-body pt-1">
-                                                <div class="text-muted text-center mt-auto">
-                                                    <h6>{{ $item?->first_name . ' ' . $item?->last_name }}</h6>
+                                            <div class="c-card__content">
+                                                <div class="c-card__name">
+                                                    <label><a href="{{ route('profile-detail',[$item?->id])}}"class="c-card__name-link" target="_blank">{{ $item?->first_name . ' ' . $item?->last_name }}</a></label>
                                                 </div>
-                                                <div class="text-muted text-center mt-auto">
-                                                    Mobile no : {{ $item?->mobile_no }}
+                                                <div class="c-card__title">
+                                                    <label>Mobile no:</label> {{ $item?->mobile_no }}
                                                 </div>
-                                                <div class="text-muted text-center mt-auto">
-                                                    Age: {{ $age . ', ' }} Height:
+                                                <div class="c-card__title">
+                                                    <label>Age:</label> {{ $age }}
+                                                </div>
+                                                <div class="c-card__title">
+                                                    <label>Height:</label>
                                                     {{ $item?->profile?->height . ' ' . ' ' }} cm
                                                 </div>
-                                                <div class="text-muted text-center mt-auto">
-                                                    Weight: {{ $item?->profile?->weight . ' ' . ' ' }}kg
+                                                <div class="c-card__title">
+                                                    <label>Weight:</label> {{ $item?->profile?->weight . ' ' . ' ' }}kg
                                                 </div>
                                                 <div class="d-flex align-items-center justify-content-center colors my-2">
                                                     <div class="price">
                                                         <span style="cursor: pointer;" data-toggle="popover"
                                                             data-poload="{{ route('admin.actors.video', $item->id) }}">
-                                                            <i class="fa fa-video-camera fa-1x" aria-hidden="true"></i>
+                                                            <i class="fa fa-video-camera fa-2x" aria-hidden="true"></i>
                                                         </span>
                                                         &nbsp;&nbsp;
                                                         <span style="cursor: pointer;" data-toggle="popover"
                                                             data-poload="{{ route('admin.actors.detail', $item->id) }}">
-                                                            <i class="fa-solid fa-eye fa-1x" aria-hidden="true"></i>
+                                                            <i class="fa-solid fa-eye fa-2x" aria-hidden="true"></i>
                                                         </span>
                                                     </div>
                                                 </div>

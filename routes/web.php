@@ -56,7 +56,7 @@ Route::group(['prefix' => 'users', 'middleware' => ['web', 'user']], function ()
 
     Route::post('/changepassword-post', [ChangePasswordController::class, 'changePasswordPost'])->name('users.changepassword-post');
 
-    
+
     Route::get('/view-profile', [\App\Http\Controllers\ViewProfileController::class, 'profileDetails'])->name('users.view.profile');
     /*Logout User */
     Route::get('/logout', [LoginController::class, 'logout'])->name('users.logout');
@@ -119,3 +119,6 @@ Route::get('/about', [AboutUsController::class, 'about']);
 Route::get('/contact', [ContactUsController::class, 'contact']);
 /* Home */
 Route::get('/', [HomeController::class, 'index'])->name('users.home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+Route::get('/our-work', [HomeController::class, 'ourWork'])->name('our-work');

@@ -10,11 +10,17 @@
 # Learn more about CSS variables at https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties
 --------------------------------------------------------------*/
 /* Fonts */
-:root {
+/*:root {
   --font-default: "Open Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-primary: "Inter", sans-serif;
   --font-secondary: "Poppins", sans-serif;
-}
+}*/
+
+:root {
+    --font-default: "Open Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --font-primary: "Open Sans", sans-serif;
+    --font-secondary: "Poppins", sans-serif;
+  }
 
 /* Colors */
 :root {
@@ -32,7 +38,7 @@
 # General
 --------------------------------------------------------------*/
 body {
-  font-family: var(--font-default);
+  font-family: 'Open Sans',sans-serif;
   color: var(--color-default);
 }
 
@@ -201,7 +207,8 @@ section {
   right: 15px;
   bottom: 15px;
   z-index: 99999;
-  background: var(--color-primary);
+  /* background: var(--color-primary); */
+  background: #ff0000;
   width: 40px;
   height: 40px;
   border-radius: 4px;
@@ -213,10 +220,18 @@ section {
   color: #fff;
   line-height: 0;
 }
+.scroll-top i:hover {
+    color: #e1380e;
+}
 
 .scroll-top:hover {
-  background: rgba(13, 66, 255, 0.8);
-  color: #fff;
+  /* background: rgba(13, 66, 255, 0.8);
+  color: #fff; */
+  color: #e1380e;
+    background-color: rgba(0,0,0,0);
+    border-color: #e1380e;
+    font-weight: bold;
+    border: 2px solid #e1380e;
 }
 
 .scroll-top.active {
@@ -304,18 +319,20 @@ section {
 .header {
   transition: all 0.5s;
   z-index: 997;
-  padding: 30px 0;
-  background: rgba(0, 0, 0, 0.5);;
+  /* padding: 30px 0; */
+  /* background: rgba(0, 0, 0, 0.5);; */
+  background: #fff;
 }
 
 .header.sticked {
-  background: rgba(14, 29, 52, 0.9);
-  padding: 15px 0;
+  /* background: rgba(14, 29, 52, 0.9); */
+  background: #fff;
+  /* padding: 15px 0; */
   box-shadow: 0px 2px 20px rgba(14, 29, 52, 0.1);
 }
 
 .header .logo img {
-  max-height: 40px;
+  max-height: 100px;
   margin-right: 6px;
 }
 
@@ -355,8 +372,9 @@ section {
     padding: 10px 0 10px 30px;
     font-family: var(--font-primary);
     font-size: 16px;
-    font-weight: 400;
-    color: rgba(255, 255, 255, 0.6);
+    font-weight: 600;
+    /* color: rgba(255, 255, 255, 0.6); */
+    color: #000;
     white-space: nowrap;
     transition: 0.3s;
   }
@@ -372,12 +390,13 @@ section {
   .navbar .active,
   .navbar .active:focus,
   .navbar li:hover>a {
-    color: #fff;
+    color: #000;
   }
 
   .navbar .get-a-quote,
   .navbar .get-a-quote:focus {
-    background: var(--color-primary);
+    /* background: var(--color-primary); */
+    background: #000;
     padding: 8px 20px;
     margin-left: 30px;
     border-radius: 4px;
@@ -386,8 +405,11 @@ section {
 
   .navbar .get-a-quote:hover,
   .navbar .get-a-quote:focus:hover {
-    color: #fff;
-    background: #2756ff;
+    color: #e1380e;
+    background-color: rgba(0,0,0,0);
+    border-color: #e1380e;
+    font-weight: bold;
+    border: 2px solid #e1380e;
   }
 
   .navbar .dropdown ul {
@@ -1751,23 +1773,25 @@ section {
 # Hero Section
 --------------------------------------------------------------*/
 .hero {
-  width: 100%;
-  min-height: 50vh;
-  background-color: var(--color-secondary);
   background-image: url("../../../website/images/banner.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
-  position: relative;
-  padding: 120px 0 60px 0;
-  color: rgba(255, 255, 255, 0.8);
+  transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
+  padding: 15% 0% 15% 0%;
 }
 
-.hero h2 {
+.hero h1 {
   margin-bottom: 20px;
   padding: 0;
   font-size: 48px;
-  font-weight: 700;
   color: #fff;
+  font-size: 72px;
+    font-size: 4.5rem;
+    font-weight: 700;
+    font-family: 'Poppins',sans-serif;
+    line-height: 1.4;
+    text-transform: none;
 }
 
 @media (max-width: 575px) {
@@ -1854,7 +1878,8 @@ section {
 --------------------------------------------------------------*/
 .footer {
   font-size: 14px;
-  background-color: var(--color-secondary);
+  /* background-color: var(--color-secondary); */
+  background-color: #000;
   padding: 50px 0;
   color: white;
 }
@@ -1865,7 +1890,7 @@ section {
 }
 
 .footer .footer-info .logo img {
-  max-height: 40px;
+  max-height: 100px;
   margin-right: 6px;
 }
 
@@ -1936,14 +1961,16 @@ section {
 }
 
 .footer .footer-links ul a {
-  color: rgba(255, 255, 255, 0.6);
+  /* color: rgba(255, 255, 255, 0.6); */
+  color: #fff;
   transition: 0.3s;
   display: inline-block;
   line-height: 1;
 }
 
 .footer .footer-links ul a:hover {
-  color: #fff;
+  /* color: #fff; */
+  text-decoration: underline;
 }
 
 .footer .footer-contact p {
@@ -1962,4 +1989,28 @@ section {
 
 .footer .credits a {
   color: #fff;
+}
+
+.get-a-quote{
+    font-weight: 600 !important;
+    border: 2px solid #000000 !important;
+}
+.btn{
+    font-weight: 600 !important;
+}
+
+.btn-primary{
+    fill: #fff;
+    color: #fff;
+    background-color: #000;
+    padding: 10px;
+    border: 2px solid #fff;
+}
+
+.btn-primary:hover{
+    color: #e1380e;
+    background-color: rgba(0,0,0,0);
+    border-color: #e1380e;
+    font-weight: bold;
+    border: 2px solid #e1380e;
 }
