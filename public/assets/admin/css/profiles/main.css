@@ -314,8 +314,7 @@ label {
 .card-img img {
   /* padding-top: 10px; */
   width: inherit;
-  /* height: 180px; */
-  /* height: 150px; */
+  height: 330px;
   object-fit: contain;
   display: block;
 }
@@ -789,6 +788,7 @@ a.g-alternative-link {
     line-height: 10px;
     font-weight: 600;
     font-size: 12px;
+    cursor: none;
 }
 
 .fa-2x {
@@ -858,7 +858,7 @@ a.g-alternative-link {
     justify-content: space-between;
 }
 .c-edit-panel__header {
-    font-size: inherit;
+    font-size: 18px;
     font-weight: 400;
     line-height: inherit;
     margin: 0;
@@ -885,13 +885,7 @@ a.g-alternative-link {
     display: flex;
     justify-content: space-between;
 }
-.c-edit-panel__header {
-    font-size: inherit;
-    font-weight: 400;
-    line-height: inherit;
-    margin: 0;
-    padding: 10px;
-}
+
 .c-further-information {
     font-size: 14px;
     padding: 10px;

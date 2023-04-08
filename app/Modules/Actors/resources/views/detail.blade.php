@@ -21,8 +21,8 @@
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
     .image-container {
-        width: 150px !important;
-        height: 245px !important;
+        width: 330px !important;
+        height: 400px !important;
         background-color: #fff;
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -33,46 +33,38 @@
     }
 
     .gallary-image img {
-        width: 100%;
         display: block;
         box-shadow: 2px 2px 2px 1px rgb(87, 88, 88);
-
+        width: 330px !important;
     }
     .gallary-image img:hover{
-
         object-fit: fill;
         opacity: 0.5;
-
-
     }
     .card-left {
-        width: 180px !important;
+        width: 325px !important;
         overflow: hidden;
     }
 
     .main-image {
         display: flex;
         transition: all 0.5s ease;
-
     }
 
     .img-select {
         display: flex;
         margin-top: 2px;
         height: 30px;
-        width: 180px !important;
-
+        width: 325px !important;
     }
 
     .img-select-container {
-
         border: 2px solid white;
     }
 
     .img-select-container img{
         width: 100% !important;
         display: inline-block;
-
     }
     .img-select-container img:hover{
         width: 100% !important;
@@ -94,7 +86,7 @@
     }
 
     .card-body{
-        max-height: 380px;
+        max-height: 500px;
         overflow-y: scroll;
         overflow-x: hidden;
     }
@@ -123,68 +115,41 @@
                         @if (isset($actor))
                             @isset($actor?->profile)
                                 <div class="row">
-                                    <div class="col-2">
+                                    <div class="col-3">
                                         <div class="pt-1 ms-1">
                                             <div class="image-container">
                                                 <div class="card-left">
                                                     <div class="main-image gallary-image border border-dark rounded-6">
-                                                        @isset($actor?->images[0]?->image)
-                                                            <img src="{{ $actor?->images[0]?->image }}" />
-                                                        @else
-                                                            <img src="{{ asset('assets/images/default-user.jfif') }}" />
-                                                        @endisset
-                                                        @isset($actor?->images[1]?->image)
-                                                            <img src="{{ $actor?->images[1]?->image }}" />
-                                                        @else
-                                                            <img src="{{ asset('assets/images/default-user.jfif') }}" />
-                                                        @endisset
-                                                        @isset($actor?->images[2]?->image)
-                                                            <img src="{{ $actor?->images[2]?->image }}" />
-                                                        @else
-                                                            <img src="{{ asset('assets/images/default-user.jfif') }}" />
-                                                        @endisset
-
+                                                        @foreach ( $actor?->images as $image)
+                                                            @isset($image->image)
+                                                                <img height="330" src="{{ $image->image }}" />
+                                                            @else
+                                                                <img src="{{ asset('assets/images/default-user.jfif') }}" />
+                                                            @endisset
+                                                        @endforeach
                                                     </div>
                                                     <div class="img-select">
-                                                        <div class="img-select-container active">
-                                                            <a  href="#" data-id="1">
-                                                                @isset($actor?->images[0]?->image)
-                                                                    <img height="50" width="60"
-                                                                        src="{{ $actor?->images[0]?->image }}" />
-                                                                @else
-                                                                    <img height="50" width="60"
-                                                                        src="{{ asset('assets/images/default-user.jfif') }}" />
-                                                                @endisset
-                                                            </a>
-                                                        </div>
-                                                        <div class="img-select-container">
-                                                            <a   href="#" data-id="2">
-                                                                @isset($actor?->images[1]?->image)
-                                                                    <img  height="50" width="60"
-                                                                        src="{{ $actor?->images[1]?->image }}" />
-                                                                @else
-                                                                    <img height="50" width="60"
-                                                                        src="{{ asset('assets/images/default-user.jfif') }}" />
-                                                                @endisset
-                                                            </a>
-                                                        </div>
-                                                        <div class="img-select-container">
-                                                            <a   href="#" data-id="3">
-                                                                @isset($actor?->images[2]?->image)
-                                                                    <img  height="50" width="60"
-                                                                        src="{{ $actor?->images[2]?->image }}" />
-                                                                @else
-                                                                    <img height="50" width="60"
-                                                                        src="{{ asset('assets/images/default-user.jfif') }}" />
-                                                                @endisset
-                                                            </a>
-                                                        </div>
+                                                        @foreach ( $actor?->images as $img_key => $image)
+                                                            <div class="img-select-container active">
+                                                                <a  href="#" data-id="{{ ++$img_key }}">
+                                                                    @isset($image->image)
+                                                                        <img height="50" width="60"
+                                                                            src="{{ $image->image }}" />
+                                                                    @else
+                                                                        <img height="50" width="60"
+                                                                            src="{{ asset('assets/images/default-user.jfif') }}" />
+                                                                    @endisset
+                                                                </a>
+                                                            </div>
+                                                        @endforeach
+
+
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-10">
+                                    <div class="col-9">
                                         <div class="row">
                                             <div class="col-4">
                                                 <div class="c-performers-quick-view__links g-hidden-sm g-col-md-4 g-col-lg-4">
