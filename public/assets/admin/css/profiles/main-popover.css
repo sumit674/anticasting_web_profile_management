@@ -720,7 +720,8 @@ transform: rotate(45deg); */
 }
 
 .card__content{
-    width: 100%;
+    width: 80%;
+    margin-left:50px;
 }
 .card__content label{
     color: #26247b;
@@ -801,6 +802,7 @@ a.g-alternative-link {
 
 .c-performers-quick-view__links {
     padding-bottom: 10px;
+    margin-left: 100px;
 }
 
 .c-icon-text-link--primary {
@@ -875,6 +877,7 @@ a.g-alternative-link {
     background-color: #f5f4f9;
     margin-bottom: 10px;
     padding: 10px 7px 10px 0;
+    margin-left:80px;
 }
 .p-main-page__about-me-section, .p-main-page__credits-section, .p-main-page__skills-section, .p-main-page__training-section {
     background-color: #fff;

@@ -1497,10 +1497,11 @@ ol {
 
 .navbar-brand {
   padding: 0;
+  height: 94px;
 }
 
 .navbar-brand img {
-  width: 150px;
+  width: 94px;
 }
 
 .navbar-toggler {

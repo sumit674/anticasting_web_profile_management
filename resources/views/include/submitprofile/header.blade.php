@@ -28,7 +28,7 @@
                     </li>
                       @auth
                       <li class="nav-item">
-                        <a  href="{{ route('view-profile') }}">View Profile</a>
+                        <a  href="{{ route('users.view-profile') }}">View Profile</a>
                     </li>
                         <li class="nav-item">
                             <a  href="{{ route('users.submitProfile') }}">Submit Profile</a>

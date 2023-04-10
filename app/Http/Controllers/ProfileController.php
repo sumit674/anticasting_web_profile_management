@@ -202,21 +202,7 @@ class ProfileController extends Controller
             ->with('message', 'Your intro video saved.');
     }
 
-    /**
-     * Profile Detail
-     */
-    public function actorDetails($id)
-    {
-    
-     
-        $item = User::where('id',$id)
-            ->with('profile')
-            ->with('introVideo')
-            ->with('images')
-            ->first();
-      
-        return view('profile.detail',compact('item'));
-    }
+   
     public function viewProfileDetails()
     {
         $user_id = auth()->user()->id;

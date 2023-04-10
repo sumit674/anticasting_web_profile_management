@@ -119,7 +119,7 @@ class ActorsController extends Controller
             ->where('id', $id)
             ->first();
         //dd($actor);
-        return view('Actors::detail', compact(var_name: 'actor'))->render();
+        return view('Actors::detail-popover', compact(var_name: 'actor'))->render();
     }
     public function actorVideo($id)
     {
@@ -131,7 +131,7 @@ class ActorsController extends Controller
         //dd($actor);
         return view('Actors::show-video', compact(var_name: 'actor'))->render();
     }
-    public function actorNewDetails($id)
+    public function actorDetails($id)
     {
         $actor = User::with('images')
             ->with('profile')
@@ -139,5 +139,15 @@ class ActorsController extends Controller
             ->where('id', $id)
             ->first();
         return view('Actors::New-Actor.new-details', compact('actor'));
+    }
+    public function actorProfileDetails($id)
+    {
+        $item = User::where('id',$id)
+            ->with('profile')
+            ->with('introVideo')
+            ->with('images')
+            ->first();
+      
+        return view('Actors::profiles.detail',compact('item'));
     }
 }

@@ -1,36 +1,132 @@
-@extends('front-dashboard.layouts.app')
+@extends('admin.layouts.admin_master')
+@section('title')
+    Manage Actors | Details
+@endsection
 @section('header')
-    <link rel="stylesheet" href="{{ asset('assets/front-dashboard/css/view-profile/main-details.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/admin/css/profiles/main-details.css') }}" />
     <style>
-        /*Image Gallary*/
-        .imgStyle {
-            width: 70px;
-            height: 60px;
-            padding: 3px;
-
+        /*Light box css*/
+        .row>.column {
+            padding: 0 8px;
         }
 
-        .mainImage {
-            margin-right: 120px;
-            margin-top: 5px;
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        /* Create four equal columns that floats next to eachother */
+        .column {
+            float: left;
+            width: 155px;
+        }
+
+        .column img {
+
+            width: 150px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* The Modal (background) */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
             width: 100%;
-            border: 1px solid black;
+            height: 100%;
+            overflow: auto;
+            background-color: #0000008c;
         }
 
-        .divId {
-            margin: 0 40px;
-            display: inline-flex;
-            width: 212px;
-            border: 1px solid #b3aeae;
+        /* Modal Content */
+        .modal-content {
+            position: relative;
+            background-color: #fefefe;
+            margin: auto;
+            padding: 0;
+            width: 40% !important;
+            height:33% !important;
+            max-width: 1200px;
+
+        }
+
+        /* The Close Button */
+        .close {
+            color: white;
+            position: absolute;
+            top: 10px;
+            right: 25px;
+            font-size: 35px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #999;
+            text-decoration: none;
             cursor: pointer;
         }
 
-        .divId.imgStyle {
-            display: flex;
-            opacity: 0.4;
-            transition: 0.4s;
-            height: 100px;
-            box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19)
+        /* Hide the slides by default */
+        .mySlides {
+            display: none;
+        }
+        .mySlides img{
+            width:100%;
+            height:100%;
+            object-fit:cover;
+        }
+        /* Next & previous buttons */
+        .prev,
+        .next {
+            cursor: pointer;
+            position: absolute;
+            top: 100%;
+            bottom:65%;
+            width: auto;
+            padding: 16px;
+            margin-top: -50px;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        /* Position the "next button" to the right */
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        /* On hover, add a black background color with a little bit see-through */
+        .prev:hover,
+        .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        /* Number text (1/3 etc) */
+        .numbertext {
+            color: #f2f2f2;
+            font-size: 12px;
+            padding: 8px 12px;
+            position: absolute;
+            top: 0;
+        }
+
+        img.hover-shadow {
+            transition: 0.3s;
+        }
+
+        .hover-shadow:hover {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
         }
 
         /*Intro Video*/
@@ -62,7 +158,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
         .image-container {
-            width: 308px !important;
+            width: 330px !important;
             height: 650px !important;
             background-color: #fff;
             display: grid;
@@ -85,7 +181,7 @@
         }
 
         .card-left {
-            width: 295px !important;
+            width: 325px !important;
             overflow: hidden;
         }
 
@@ -95,7 +191,7 @@
         }
 
         .img-select {
-            margin-top:15px;
+            margin-top: 2px;
             height: 30px;
             width: 100px !important;
         }
@@ -117,12 +213,12 @@
         }
 
         /* .img-select-container img hover:{
-                                        width: 100% !important;
-                                        display: inline-block;
-                                        border: 1px solid black;
-                                        opacity: 0.4;
+                            width: 100% !important;
+                            display: inline-block;
+                            border: 1px solid black;
+                            opacity: 0.4;
 
-                                    } */
+                        } */
         .img-select .active {
             border: 1px dotted black;
             height: 50px !important;
@@ -145,7 +241,32 @@
     </style>
 @endsection
 @section('content')
-<div class="container">
+    <div class="main">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6 p-r-0 title-margin-right">
+                    <div class="page-header">
+                        <div class="page-title">
+                            <h1>Manage Actor</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 p-l-0 title-margin-left">
+                    <div class="page-header">
+                        <div class="page-title">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+                                <li class="breadcrumb-item active">Manage Actor</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <section id="main-content">
+        <div id="popover-content">
             <div class="row">
                 <div class="col-12">
                     <div class="card-details">
@@ -157,61 +278,47 @@
                                             <div class="image-container">
                                                 <div class="card-left">
                                                     <div class="main-image gallary-image border border-dark rounded-6">
-                                                        @if (isset($item?->images[0]?->image))
-                                                            <img id="mainImage" src="{{ $item?->images[0]?->image }}"
-                                                                height="200" width="190" />
-                                                        @else
-                                                            <img class="imgStyle"
-                                                                src="{{ asset('assets/images/actor-image-thumbnail.jpg') }}"
-                                                                height="200" width="200" />
-                                                        @endif
+                                                        <img src="{{ $item?->images[0]?->image }}"
+                                                            style="width:240px; object-fit:contain;"
+                                                            onclick="openModal();currentSlide(1)" class="hover-shadow">
                                                     </div>
                                                     <div class="img-select">
-                                                        <div class="divId" onmouseover="changeImageOnClick(event)">
-                                                            @if (isset($item?->images[0]?->image))
-                                                                <img class="imgStyle" src="{{ $item?->images[0]?->image }}" />
-                                                            @else
-                                                                <img class="imgStyle"
-                                                                    src="{{ asset('assets/images/actor-image-thumbnail.jpg') }}" />
-                                                            @endif
-                                                            @if (isset($item?->images[1]?->image))
-                                                                <img class="imgStyle" src="{{ $item?->images[1]?->image }}" />
-                                                            @else
-                                                                <img class="imgStyle"
-                                                                    src="{{ asset('assets/images/actor-image-thumbnail.jpg') }}" />
-                                                            @endif
-                                                            @if (isset($item?->images[2]?->image))
-                                                                <img class="imgStyle" src="{{ $item?->images[2]?->image }}" />
-                                                            @else
-                                                                <img class="imgStyle"
-                                                                    src="{{ asset('assets/images/actor-image-thumbnail.jpg') }}" />
-                                                            @endif
-                            
+                                                        <div class=" d-flex p-3">
+                                                            <div class="column">
+                                                                <img src="{{ $item?->images[1]?->image }}"
+                                                                    onclick="openModal();currentSlide(2)"
+                                                                    class="hover-shadow">
+                                                            </div>
+                                                            <div class="column">
+                                                                <img src="{{ $item?->images[2]?->image }}"
+                                                                    onclick="openModal();currentSlide(3)"
+                                                                    class="hover-shadow">
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <div class="intro_video">
                                                         <div class="c-edit-panel">
                                                             <h4 class="c-edit-panel__header">Intro Video</h4>
                                                             <div class="c-edit-panel__controls"></div>
-
-                                                        </div>
-                                                        <div class="c-further-information">
-                                                            @if ($item?->introVideo?->intro_video_link != null)
-                                                                <div>
-                                                                    <iframe width="100%"
-                                                                        src="{{ $item?->introVideo?->intro_video_link }}"
-                                                                        frameborder="0"
-                                                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                                                        allowfullscreen>
-                                                                    </iframe>
-                                                                </div>
-                                                            @else
-                                                                <div class="d-flex justify-content-center">
-                                                                    <img src="{{ asset('assets/website/images/youtube.png') }}"
-                                                                        alt="" width="70%">
-                                                                </div>
-                                                            @endif
-                                                        </div>
+                                                          
+                                                       </div>
+                                                       <div class="c-further-information">
+                                                        @if ($item?->introVideo?->intro_video_link != null)
+                                                            <div>
+                                                                <iframe width="100%"
+                                                                    src="{{ $item?->introVideo?->intro_video_link }}"
+                                                                    frameborder="0"
+                                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                                    allowfullscreen>
+                                                                </iframe>
+                                                            </div>
+                                                        @else
+                                                            <div class="d-flex justify-content-center">
+                                                                <img src="{{ asset('assets/website/images/youtube.png') }}"
+                                                                    alt="" width="70%">
+                                                            </div>
+                                                        @endif
+                                                    </div>
                                                     </div>
 
                                                 </div>
@@ -406,268 +513,262 @@
                                     </div>
                                 </div>
                             </div>
+
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+       <!-- The Modal/Lightbox -->
+        <div id="myModal" class="modal">
+            <span class="close cursor" onclick="closeModal()">&times;</span>
+            <div class="modal-content">
+
+                <div class="mySlides">
+                    <div class="numbertext">1 / 3</div>
+                    <img src="{{ $item?->images[0]?->image }}">
+                </div>
+
+                <div class="mySlides">
+                    <div class="numbertext">2 / 3</div>
+                    <img src="{{ $item?->images[1]?->image }}">
+                </div>
+
+                <div class="mySlides">
+                    <div class="numbertext">3 / 3</div>
+                    <img src="{{ $item?->images[2]?->image }}">
+                </div>
+
+                <!-- Next/previous controls -->
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            </div>
+        </div>
+
+    </section>
 @endsection
-    @section('footer')
-        <script>
-            var images = document.getElementsByTagName("img");
+@section('footer')
+    <script>
+        // Open the Modal
+        function openModal() {
+            document.getElementById("myModal").style.display = "block";
+        }
 
-            for (var i = 0; i < images.length; i++) {
-                images[i].onmouseover = function() {
-                    this.style.cursor = "hand";
-                    this.style.borderColor = "red";
-                };
-                images[i].onmouseout = function() {
-                    this.style.cursor = "pointer";
-                    this.style.borderColor = "grey";
-                };
-            }
+        // Close the Modal
+        function closeModal() {
+            document.getElementById("myModal").style.display = "none";
+        }
 
-            function changeImageOnClick(event) {
-                // debugger;
-                var targetElement = event.srcElement;
-                // debugger;
-                if (targetElement.tagName === "IMG") {
-                    mainImage.src = targetElement.getAttribute("src");
-                }
+        var slideIndex = 1;
+        showSlides(slideIndex);
+
+        // Next/previous controls
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        // Thumbnail image controls
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            var captionText = document.getElementById("caption");
+            if (n > slides.length) {
+                slideIndex = 1
             }
-        </script>
-    @endsection
-    {{-- <div class="container">
-    <div class="row">
-        <div class="col-lg-4">
-            <div class="profile-card-4 z-depth-3">
-                <div class="card">
-                    <div class="card-body text-center bg-body rounded-top">
-                        <div class="user-box">
-                            @if (isset($item?->images[0]?->image))
-                                <img id="mainImage" src="{{ $item?->images[0]?->image }}" height="200" width="200" />
-                            @else
-                                <img class="imgStyle" src="{{ asset('assets/images/actor-image-thumbnail.jpg') }}"
-                                    height="200" width="200" />
-                            @endif
-                            <br />
-                            <div class="divId" onmouseover="changeImageOnClick(event)">
-                                @if (isset($item?->images[0]?->image))
-                                    <img class="imgStyle" src="{{ $item?->images[0]?->image }}" />
-                                @else
-                                    <img class="imgStyle"
-                                        src="{{ asset('assets/images/actor-image-thumbnail.jpg') }}" />
-                                @endif
-                                @if (isset($item?->images[1]?->image))
-                                    <img class="imgStyle" src="{{ $item?->images[1]?->image }}" />
-                                @else
-                                    <img class="imgStyle"
-                                        src="{{ asset('assets/images/actor-image-thumbnail.jpg') }}" />
-                                @endif
-                                @if (isset($item?->images[2]?->image))
-                                    <img class="imgStyle" src="{{ $item?->images[2]?->image }}" />
-                                @else
-                                    <img class="imgStyle"
-                                        src="{{ asset('assets/images/actor-image-thumbnail.jpg') }}" />
-                                @endif
+            if (n < 1) {
+                slideIndex = slides.length
+            }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slides[slideIndex - 1].style.display = "block";
+            captionText.innerHTML = dots[slideIndex - 1].alt;
+        }
+    </script>
+@endsection
+{{-- <section class="bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 mb-4 mb-sm-5">
+                <div class="card card-style1 border-0">
+                    <div class="card-body p-1-9 p-sm-2-3 p-md-6 p-lg-7">
+                        <div class="row align-items-center">
+                            <div class="col-lg-6 mt-b mb-lg-0 ">
+                                <div class="left-image">
+                                    <img src="{{ $item?->images[0]?->image }}" style="width:240px; object-fit:contain;"
+                                        onclick="openModal();currentSlide(1)" class="hover-shadow">
+                                </div>
+                                <div class="d-flex justify-content-left p-3">
+                                    <div class="column">
+                                        <img src="{{ $item?->images[1]?->image }}" onclick="openModal();currentSlide(2)"
+                                            class="hover-shadow">
+                                    </div>
+                                    <div class="column">
+                                        <img src="{{ $item?->images[2]?->image }}" onclick="openModal();currentSlide(3)"
+                                            class="hover-shadow">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 px-xl-10">
+                                <div class="bg-secondary d-lg-inline-block py-1-9 px-1-9 px-sm-6 mb-1-9 rounded">
+                                    <h3 class="h2 text-white mb-0">{{ $item?->first_name . ' ' . $item?->last_name }}
+                                    </h3>
+                                    <span class="text-primary">Actor</span>
+                                </div>
+                                @php
+                                    $dateOfBirth = $item?->profile?->date_of_birth;
+                                    $age = \Carbon\Carbon::parse($dateOfBirth)->age;
+                                @endphp
+                                <ul class="list-unstyled mb-1-9">
+                                    <li class="mb-2 mb-xl-3 display-28"><span
+                                            class="display-26 text-secondary me-2 font-weight-600">Ethnicity:</span>{{ $item?->profile?->ethnicity }}
+                                    </li>
+                                    <li class="mb-2 mb-xl-3 display-28"><span
+                                            class="display-26 text-secondary me-2 font-weight-600">Age:</span>
+                                        {{ $age }} Years
+                                    </li>
+                                    <li class="mb-2 mb-xl-3 display-28"><span
+                                            class="display-26 text-secondary me-2 font-weight-600">Email:</span>
+                                        {{ $item?->email }}</li>
+                                    <li class="mb-2 mb-xl-3 display-28"><span
+                                            class="display-26 text-secondary me-2 font-weight-600">Phone:</span>
+                                        {{ $item?->mobile_no }}
+                                    </li>
+                                    <li class="mb-2 mb-xl-3 display-28"><span
+                                            class="display-26 text-secondary me-2 font-weight-600">Height:</span>
+                                        {{ $item?->profile?->height . ' ' . 'CM' }}
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12 px-xl-10">
 
                             </div>
                         </div>
-                    </div>
-                    <div class="card-body">
-                        <ul class="list-group shadow-none">
-                            <li class="list-group-item">
-                                <div class="list-icon">
-                                    <i class="fa fa-phone-square"></i>
-                                </div>
-                                <div class="list-details">
-                                    <span>{{ $item?->countryCode . ' ' . $item?->mobile_no }}</span>
-                                    <small>Mobile Number</small>
-                                </div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="list-icon">
-                                    <i class="fa fa-envelope"></i>
-                                </div>
-                                <div class="list-details">
-                                    <span>{{ $item?->email }}</span>
-                                    <small>Email Address</small>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-8">
-            <div class="card z-depth-3">
-                <div class="card-body">
-                    <ul class="nav nav-pills nav-pills-primary nav-justified">
-                        <li class="nav-item">
-                            <a href="javascript:void();" data-target="#profile" data-toggle="pill"
-                                class="nav-link active show"><i class="icon-user"></i> <span class="hidden-xs">About
-                                    Me</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="javascript:void();" data-target="#messages" data-toggle="pill" class="nav-link"><i
-                                    class="icon-envelope-open"></i> <span class="hidden-xs">Videos</span></a>
-                        </li>
-                      
-                    </ul>
-                    <div class="tab-content p-3">
-                        <div class="tab-pane active show" id="profile">
-                            <h5 class="mb-3">User Profile</h5>
-                            <div class="row">
-
-                                <div class="col-lg-12 col-md-12">
-                                    <div class="team-single-text padding-50px-left sm-no-padding-left">
-                                        <div class="contact-info-section margin-40px-tb">
-                                            <ul class="list-style9 no-margin">
-                                                <li>
-                                                    <div class="row">
-                                                        <div class="col-md-5 col-5">
-                                                            <strong class="margin-10px-left text-orange">Name:</strong>
-                                                        </div>
-                                                        <div class="col-md-7 col-7">
-                                                            <p>{{ $item?->first_name . ' ' . $item?->last_name }}</p>
-                                                        </div>
-                                                    </div>
-
+                        <div class="row align-items-center">
+                            <div class="col-lg-12 px-xl-10">
+                                <div class="container">
+                                    <div class="row">
+                                        <!-- Tab Nav -->
+                                        <div class="nav-wrapper position-relative mb-2">
+                                            <ul class="nav nav-pills nav-fill flex-column flex-md-row" id="tabs-text"
+                                                role="tablist">
+                                                <li class="nav-item">
+                                                    <button class="nav-link mb-sm-3 mb-md-0 active" id="tabs-text-1-tab"
+                                                        data-bs-toggle="tab" href="#tabs-text-1" role="tab"
+                                                        aria-controls="tabs-text-1" aria-selected="true">About
+                                                        me</button>
                                                 </li>
-                                                <li>
-
-                                                    <div class="row">
-                                                        <div class="col-md-5 col-5">
-
-                                                            <strong
-                                                                class="margin-10px-left text-yellow">Ethnicity.:</strong>
-                                                        </div>
-                                                        <div class="col-md-7 col-7">
-                                                            <p>{{ $item?->profile?->ethnicity }}</p>
-                                                        </div>
-                                                    </div>
-
-                                                </li>
-                                                <li>
-
-                                                    <div class="row">
-                                                        <div class="col-md-5 col-5">
-                                                            @php
-                                                                $dateOfBirth = $item?->profile?->date_of_birth;
-                                                                $age = \Carbon\Carbon::parse($dateOfBirth)->age;
-                                                            @endphp
-                                                            <strong class="margin-10px-left text-yellow">Age:</strong>
-                                                        </div>
-                                                        <div class="col-md-7 col-7">
-                                                            <p>{{ $age }}</p>
-                                                        </div>
-                                                    </div>
-
-                                                </li>
-                                                <li>
-
-                                                    <div class="row">
-                                                        <div class="col-md-5 col-5">
-
-                                                            <strong
-                                                                class="margin-10px-left text-lightred">Email:</strong>
-                                                        </div>
-                                                        <div class="col-md-7 col-7">
-                                                            <p>{{ $item->email }}</p>
-                                                        </div>
-                                                    </div>
-
-                                                </li>
-                                                <li>
-
-                                                    <div class="row">
-                                                        <div class="col-md-5 col-5">
-
-                                                            <strong class="margin-10px-left text-green">Current
-                                                                Location:</strong>
-                                                        </div>
-                                                        <div class="col-md-7 col-7">
-                                                            <p>{{ $item?->profile?->current_location }}</p>
-                                                        </div>
-                                                    </div>
-
-                                                </li>
-                                                <li>
-
-                                                    <div class="row">
-                                                        <div class="col-md-5 col-5">
-
-                                                            <strong
-                                                                class="margin-10px-left xs-margin-four-left text-purple">Phone:</strong>
-                                                        </div>
-                                                        <div class="col-md-7 col-7">
-                                                            <p> {{ $item?->countryCode . ' ' . $item?->mobile_no }}</p>
-                                                        </div>
-                                                    </div>
-
-                                                </li>
-                                                <li>
-                                                    <div class="row">
-                                                        <div class="col-md-5 col-5">
-
-                                                            <strong
-                                                                class="margin-10px-left xs-margin-four-left text-pink">Gender:</strong>
-                                                        </div>
-                                                        <div class="col-md-7 col-7">
-                                                            <p>{{ $item?->profile?->gender }}</p>
-                                                        </div>
-                                                    </div>
+                                                <li class="nav-item">
+                                                    <a class="nav-link mb-sm-3 mb-md-0" id="tabs-text-2-tab"
+                                                        data-bs-toggle="tab" href="#tabs-text-2" role="tab"
+                                                        aria-controls="tabs-text-2" aria-selected="false">Video</a>
                                                 </li>
                                             </ul>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane" id="messages">
+                                        <!-- End of Tab Nav -->
+                                        <!-- Tab Content -->
+                                        <div class="card border-0">
+                                            <div class="card-body p-0">
+                                                <div class="tab-content" id="tabcontent1">
+                                                    <div class="tab-pane fade show active" id="tabs-text-1"
+                                                        role="tabpanel" aria-labelledby="tabs-text-1-tab">
+                                                        <div class="col-lg-12 mb-4 mb-sm-5">
+                                                            <div>
+                                                                <span
+                                                                    class="section-title text-primary mb-3 mb-sm-4">About
+                                                                    Me</span>
 
-                            <div class="container">
-                                <h6 class="page-header" id="youtube-gallery">Intro video</h6>
-                                <div class="row p-2">
-                                    <div class="col-md-12 col-12">
+                                                                <p class="mb-0">{!! $item?->profile?->about_me !!}</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="tab-pane fade" id="tabs-text-2" role="tabpanel"
+                                                        aria-labelledby="tabs-text-2-tab">
+                                                        <div class="container">
+                                                            <h6 class="page-header mt-4" id="youtube-gallery">Intro
+                                                                video
+                                                            </h6>
+                                                            <div class="row p-2">
+                                                                <div class="col-md-12 col-12">
 
-                                        <iframe width="100%" height="120%"
-                                            src="{{ $item?->introVideo?->intro_video_link }}">
-                                        </iframe>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="container  mt-5">
-                                <h6 class="page-header" id="youtube-gallery">Work Reels</h6>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="row">
-                                            <div class="col-md-4 mt-3">
-                                                <iframe width="100%" height="100%"
-                                                    src="{{ @$item?->profile->work_reel1 }}">
-                                                </iframe>
-                                            </div>
-                                            <div class="col-md-4 mt-3">
-                                                <iframe width="100%" height="100%"
-                                                    src="{{ @$item?->profile->work_reel2 }}">
-                                                </iframe>
-                                            </div>
-                                            <div class="col-md-4 mt-3">
-                                                <iframe width="100%" height="100%"
-                                                    src="{{ @$item?->profile->work_reel3 }}">
-                                                </iframe>
+                                                                    <iframe width="100%" height="120%"
+                                                                        src="{{ $item?->introVideo?->intro_video_link }}">
+                                                                    </iframe>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="container  mt-5">
+                                                            <h6 class="page-header" id="youtube-gallery">Work Reels</h6>
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <div class="row">
+                                                                        <div class="col-md-4 mt-3">
+                                                                            <iframe width="100%" height="100%"
+                                                                                src="{{ @$item?->profile->work_reel1 }}">
+                                                                            </iframe>
+                                                                        </div>
+                                                                        <div class="col-md-4 mt-3">
+                                                                            <iframe width="100%" height="100%"
+                                                                                src="{{ @$item?->profile->work_reel2 }}">
+                                                                            </iframe>
+                                                                        </div>
+                                                                        <div class="col-md-4 mt-3">
+                                                                            <iframe width="100%" height="100%"
+                                                                                src="{{ @$item?->profile->work_reel3 }}">
+                                                                            </iframe>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
                                             </div>
                                         </div>
+                                        <!-- End of Tab Content -->
                                     </div>
-
                                 </div>
                             </div>
-
                         </div>
-                      </div>
+                    </div>
                 </div>
             </div>
+
+        </div>
+    </div>
+</section> --}}
+<!-- The Modal/Lightbox -->
+{{-- <div id="myModal" class="modal">
+    <span class="close cursor" onclick="closeModal()">&times;</span>
+    <div class="modal-content">
+
+        <div class="mySlides">
+            <div class="numbertext">1 / 3</div>
+            <img src="{{ $item?->images[0]?->image }}">
         </div>
 
+        <div class="mySlides">
+            <div class="numbertext">2 / 3</div>
+            <img src="{{ $item?->images[1]?->image }}">
+        </div>
+
+        <div class="mySlides">
+            <div class="numbertext">3 / 3</div>
+            <img src="{{ $item?->images[2]?->image }}">
+        </div>
+
+        <!-- Next/previous controls -->
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
     </div>
 </div> --}}

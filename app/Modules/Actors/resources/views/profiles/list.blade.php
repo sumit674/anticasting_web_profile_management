@@ -3,7 +3,7 @@
     Manage Actors
 @endsection
 @section('header')
-    <link rel="stylesheet" href="{{ asset('assets/admin/css/profiles/main.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/admin/css/profiles/main-popover.css') }}" />
     {{-- <link rel="stylesheet" href="{{ asset('assets/admin/css/actors.css') }}" /> --}}
     <style>
         .main .page-header {
@@ -44,7 +44,7 @@
                     alert("{{ Session::get('success') }}")
                 </script>
             @endif
-            <div class="">
+            <div class="row">
                 <div class="col-lg-6 p-r-0 title-margin-right">
                     <div class="page-header">
                         <div class="page-title">
@@ -63,6 +63,9 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+    <section id="main-content">
             <!-- /# .container -->
             <div class="container">
                 <div class="bg-white rounded d-flex align-items-center justify-content-between" id="header">
@@ -92,7 +95,7 @@
                                             </div>
                                             <div class="c-card__content">
                                                 <div class="c-card__name">
-                                                    <label><a href="{{ route('profile-detail',[$item?->id])}}"class="c-card__name-link" target="_blank">{{ $item?->first_name . ' ' . $item?->last_name }}</a></label>
+                                                    <label><a href="{{ route('admin.profile-detail',[$item?->id])}}"class="c-card__name-link" target="_blank">{{ $item?->first_name . ' ' . $item?->last_name }}</a></label>
                                                 </div>
                                                 <div class="c-card__title">
                                                     <label>Mobile no:</label> {{ $item?->mobile_no }}
@@ -155,8 +158,7 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+    </section>
 @endsection
 @section('footer')
     <script src="{{ asset('assets/admin/js/profiles/main.js') }}"></script>

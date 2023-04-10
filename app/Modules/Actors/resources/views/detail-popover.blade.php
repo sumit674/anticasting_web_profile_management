@@ -56,6 +56,7 @@
         margin-top: 2px;
         height: 30px;
         width: 325px !important;
+        margin-left:60px;
     }
 
     .img-select-container {
@@ -101,7 +102,7 @@
 <div id="popover-content">
     <div class="popover-header-section" id="popoverHeader">
         <div class="popover-header">
-            <a href="{{route('profile-detail',$actor->id)}}">
+            <a href="{{route('admin.profile-detail',$actor->id)}}">
                 <b><span class="actor-name">{{ $actor->first_name . ' ' . $actor->last_name }}</span> <i class="fa-solid fa-up-right-from-square"></i></b>
             </a>
             <div class="text-right h4" style="margin-top:-32px;" id="close-yt">x</div>
@@ -151,7 +152,7 @@
                                     </div>
                                     <div class="col-9">
                                         <div class="row">
-                                            <div class="col-4">
+                                            <div class="col-6">
                                                 <div class="c-performers-quick-view__links g-hidden-sm g-col-md-4 g-col-lg-4">
                                                     <div class="c-basic-info-section__edit-panel"><div class="c-edit-panel"><h4 class="c-edit-panel__header">Details</h4><div class="c-edit-panel__controls"></div></div></div>
                                                     <a href="#" target="_blank" class="c-icon-text-link c-icon-text-link--primary" tabindex="0" aria-label="Email profile">
@@ -186,7 +187,7 @@
                                                     </a>
                                                 </div>
                                             </div>
-                                            <div class="col-8">
+                                            <div class="col-6">
                                                 <div class="card__content">
                                                     <div class="c-basic-info-section__edit-panel"><div class="c-edit-panel"><h4 class="c-edit-panel__header">Details</h4><div class="c-edit-panel__controls"></div></div></div>
                                                     <p class="card__title"><label class="fw-bold"><b>Email: </b></label><span
