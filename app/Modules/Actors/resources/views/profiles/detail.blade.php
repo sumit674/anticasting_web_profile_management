@@ -25,6 +25,7 @@
         .column img {
 
             width: 150px;
+            height:150px;
             object-fit: cover;
             display: block;
         }
@@ -78,16 +79,15 @@
         }
         .mySlides img{
             width:100%;
-            height:100%;
-            object-fit:cover;
+            height:80%;
+            object-fit:fill;
         }
         /* Next & previous buttons */
         .prev,
         .next {
             cursor: pointer;
             position: absolute;
-            top: 100%;
-            bottom:65%;
+            top:100%;
             width: auto;
             padding: 16px;
             margin-top: -50px;
@@ -267,6 +267,11 @@
     </div>
     <section id="main-content">
         <div id="popover-content">
+            <div class="popover-header-section" id="popoverHeader">
+                <div class="popover-header">
+                   <b><span class="actor-name">{{ $item->first_name . ' ' . $item->last_name }}</span></b>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-12">
                     <div class="card-details">

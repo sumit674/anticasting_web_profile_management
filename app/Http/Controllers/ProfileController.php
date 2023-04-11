@@ -205,6 +205,10 @@ class ProfileController extends Controller
    
     public function viewProfileDetails()
     {
+        $profile = UserProfile::where('user_id', auth()->user()->id)->first();
+        if (!isset($profile)) {
+            return redirect()->route('users.submitProfile');
+        }
         $user_id = auth()->user()->id;
         $item = User::where('id',$user_id)
             ->with('profile')

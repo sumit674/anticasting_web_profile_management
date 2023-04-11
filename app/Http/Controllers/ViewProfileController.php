@@ -4,19 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Models\{UserProfile,User};
 class ViewProfileController extends Controller
 {
     //
-    public function profileDetails()
+    public function viewProfile()
     {
-        $user_id = auth()->user()->id;
-        $item = User::where('id', $user_id)
-            ->with('profile')
-            ->with('introVideo')
-            ->with('images')
-            ->first();
-
-        return view('dashboard-new1',compact('item'));
+        $profile = UserProfile::where('user_id', auth()->user()->id)->first();
+     
+        if (!isset($profile)) {
+            return redirect()->route('users.submitProfile');
+        }
+        return view('view-profile-details');
     }
 }

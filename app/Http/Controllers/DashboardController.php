@@ -17,7 +17,6 @@ class DashboardController extends Controller
         if (!isset($profile)) {
             return redirect()->route('users.submitProfile');
         }
-     
         return view('dashboard');
     }
 }

@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Anticasting | Dashboard</title>
     <!-- Custom fonts for this template-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"  referrerpolicy="no-referrer" />
     <link href="{{ asset('assets/front-dashboard/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet"
         type="text/css">
     <link

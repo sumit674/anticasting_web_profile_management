@@ -95,7 +95,7 @@
         }
 
         .img-select {
-            margin-top:15px;
+            margin-top: 15px;
             height: 30px;
             width: 100px !important;
         }
@@ -117,12 +117,12 @@
         }
 
         /* .img-select-container img hover:{
-                                        width: 100% !important;
-                                        display: inline-block;
-                                        border: 1px solid black;
-                                        opacity: 0.4;
+                                                width: 100% !important;
+                                                display: inline-block;
+                                                border: 1px solid black;
+                                                opacity: 0.4;
 
-                                    } */
+                                            } */
         .img-select .active {
             border: 1px dotted black;
             height: 50px !important;
@@ -145,7 +145,19 @@
     </style>
 @endsection
 @section('content')
-<div class="container">
+    <div class="container">
+        <div id="popover-content">
+            <div class="popover-header-section" id="popoverHeader">
+                <div class="popover-header">
+                    <b><span class="actor-name">{{ $item->first_name . ' ' . $item->last_name }}</span> </b>
+
+                    <div class="text-right h4" style="margin-top:-23px;" id="close-yt">
+                        <a href="{{ route('users.submitProfile') }}">
+                            <i class="fa-solid fa-pencil"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-12">
                     <div class="card-details">
@@ -169,24 +181,27 @@
                                                     <div class="img-select">
                                                         <div class="divId" onmouseover="changeImageOnClick(event)">
                                                             @if (isset($item?->images[0]?->image))
-                                                                <img class="imgStyle" src="{{ $item?->images[0]?->image }}" />
+                                                                <img class="imgStyle"
+                                                                    src="{{ $item?->images[0]?->image }}" />
                                                             @else
                                                                 <img class="imgStyle"
                                                                     src="{{ asset('assets/images/actor-image-thumbnail.jpg') }}" />
                                                             @endif
                                                             @if (isset($item?->images[1]?->image))
-                                                                <img class="imgStyle" src="{{ $item?->images[1]?->image }}" />
+                                                                <img class="imgStyle"
+                                                                    src="{{ $item?->images[1]?->image }}" />
                                                             @else
                                                                 <img class="imgStyle"
                                                                     src="{{ asset('assets/images/actor-image-thumbnail.jpg') }}" />
                                                             @endif
                                                             @if (isset($item?->images[2]?->image))
-                                                                <img class="imgStyle" src="{{ $item?->images[2]?->image }}" />
+                                                                <img class="imgStyle"
+                                                                    src="{{ $item?->images[2]?->image }}" />
                                                             @else
                                                                 <img class="imgStyle"
                                                                     src="{{ asset('assets/images/actor-image-thumbnail.jpg') }}" />
                                                             @endif
-                            
+
                                                         </div>
                                                     </div>
                                                     <div class="intro_video">
@@ -411,33 +426,34 @@
                 </div>
             </div>
         </div>
+    </div>
 @endsection
-    @section('footer')
-        <script>
-            var images = document.getElementsByTagName("img");
+@section('footer')
+    <script>
+        var images = document.getElementsByTagName("img");
 
-            for (var i = 0; i < images.length; i++) {
-                images[i].onmouseover = function() {
-                    this.style.cursor = "hand";
-                    this.style.borderColor = "red";
-                };
-                images[i].onmouseout = function() {
-                    this.style.cursor = "pointer";
-                    this.style.borderColor = "grey";
-                };
-            }
+        for (var i = 0; i < images.length; i++) {
+            images[i].onmouseover = function() {
+                this.style.cursor = "hand";
+                this.style.borderColor = "red";
+            };
+            images[i].onmouseout = function() {
+                this.style.cursor = "pointer";
+                this.style.borderColor = "grey";
+            };
+        }
 
-            function changeImageOnClick(event) {
-                // debugger;
-                var targetElement = event.srcElement;
-                // debugger;
-                if (targetElement.tagName === "IMG") {
-                    mainImage.src = targetElement.getAttribute("src");
-                }
+        function changeImageOnClick(event) {
+            // debugger;
+            var targetElement = event.srcElement;
+            // debugger;
+            if (targetElement.tagName === "IMG") {
+                mainImage.src = targetElement.getAttribute("src");
             }
-        </script>
-    @endsection
-    {{-- <div class="container">
+        }
+    </script>
+@endsection
+{{-- <div class="container">
     <div class="row">
         <div class="col-lg-4">
             <div class="profile-card-4 z-depth-3">

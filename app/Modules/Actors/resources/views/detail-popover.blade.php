@@ -123,7 +123,9 @@
                                                     <div class="main-image gallary-image border border-dark rounded-6">
                                                         @foreach ( $actor?->images as $image)
                                                             @isset($image->image)
+                                                            <a href="{{route('admin.profile-detail',$actor->id)}}">
                                                                 <img height="330" src="{{ $image->image }}" />
+                                                            </a>   
                                                             @else
                                                                 <img src="{{ asset('assets/images/default-user.jfif') }}" />
                                                             @endisset
