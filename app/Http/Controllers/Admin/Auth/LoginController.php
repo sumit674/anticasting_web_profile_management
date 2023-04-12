@@ -17,13 +17,14 @@ class LoginController extends Controller
             [
                 'email' => 'required',
                 'password' => ['required','string','regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$/','min:8'],
-                //'password' => ['required'],
+                'captcha' => 'required|captcha'
             ],
             [
                 'email.required' => 'Please enter registerd email',
                 'password.required' => 'Please enter password',
                 'password.regex'=>'Password must be at least one specific symbols,one number and one capital letter,one small letter',
                 'password.min'=>'Password must be at least 8 character',
+                'captcha.captcha' => 'Captcha text incorrect.'
             ],
         );
         

@@ -22,9 +22,9 @@
                 <input class="form-control  password block mt-0 w-full    @error('password') is-invalid @enderror"
                     placeholder="Enter  password" type="password" name="password" id="password"
                     autocomplete="current-password" />
-                    <span class="input-group-text togglePassword" id="">
-                        <i data-feather="eye" style="cursor: pointer"></i>
-                    </span>
+                <span class="input-group-text togglePassword" id="">
+                    <i data-feather="eye" style="cursor: pointer"></i>
+                </span>
             </div>
             @error('password')
                 <span class="invalid-feedback alert-danger" role="alert">
@@ -32,6 +32,21 @@
                 </span>
             @enderror
         </div>
+        <div class="form-group  mb-3">
+            <div class="captcha">
+                <span>{!! captcha_img() !!}</span>
+                <button type="button" class="btn-danger" class="reload" id="reload">
+                    &#x21bb;
+                </button>
+            </div>
+        </div>
+        <div class="form-group mb-3">
+            <input id="captcha" type="text" class="form-control" placeholder="Enter Captcha" name="captcha">
+            @error('captcha')
+                <span class="text-danger">{{ $message }}</span>
+            @enderror
+        </div>
+     
         {{-- <div class="checkbox">
             <label>
                 <input type="checkbox"> Remember Me
@@ -68,6 +83,17 @@
                 $("svg.feather.feather-eye-off").replaceWith(feather.icons["eye"].toSvg());
                 $(this).parent().parent().find(".password").attr("type", "password");
             }
+        });
+    </script>
+     <script type="text/javascript">
+        $('#reload').click(function() {
+            $.ajax({
+                type: 'GET',
+                url: 'reload-captcha',
+                success: function(data) {
+                    $(".captcha span").html(data.captcha);
+                }
+            });
         });
     </script>
 @endsection

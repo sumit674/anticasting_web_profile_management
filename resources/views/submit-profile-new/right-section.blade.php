@@ -82,63 +82,18 @@
 </div>
 <div class="card mb-3">
     <div class="card-body ms-1">
-        <div class="d-flex justify-content-between">
-            <span class="h6 fw-bold">Sample intro video</span>
-        </div>
-        <div id="video-section" class="mb-2 ms-3">
-            {{-- <div class="radio-group">
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="language" id="hindi" value="hindi" checked
-                        onclick="stopVideo(body)" />
-                    <label class="form-check-label" for="hindi">Hindi</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="language" id="english" value="english"
-                        onclick="stopVideo(body)" />
-                    <label class="form-check-label" for="english">English</label>
-                </div>
-            </div>
-          --}}
-                <div class="sample-yt-video mt-2">
-                    <div id="intro_hindi">
-                        <iframe class="video" style="width:75%;" src="https://www.youtube.com/embed/q22JrhzFEuQ"
-                            allowfullscreen="true">
-                        </iframe>
-                    </div>
-                </div>
-                {{-- <div class="sample-yt-video mt-2">
-                    <div id="intro_english">
-                        <iframe class="video" style="width:75%;" src="https://www.youtube.com/embed/Tj1w86bw4EM"
-                            allowfullscreen="true">
-                        </iframe>
-                    </div>
-                </div> --}}
-            </div>     
-        {{-- <div class="d-flex justify-content-between">
-            <span class="h6 fw-bold">Sample intro video</span>
-        </div>
 
-        <div id="video-section" class="mb-2 ms-3">
-            <div class="radio-group">
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="sample_video" id="hide" value="hide" checked
-                        onclick="stopVideo(body)" />
-                    <label class="form-check-label" for="hide">Hide</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="sample_video" id="show" value="show"
-                        onclick="stopVideo(body)" />
-                    <label class="form-check-label" for="show">Show</label>
-                </div>
-            </div>
-            <div class="sample-yt-video mt-2">
-                <div id="intro_video">
-                    <iframe class="video" style="width:75%;" src="https://www.youtube.com/embed/CTcoCHKnkT8"
-                        allowfullscreen="true">
-                    </iframe>
-                </div>
-            </div>
-        </div> --}}
+        <div class="d-flex justify-content-between">
+            <span class="h6 fw-bold">Upload Intro video</span>
+        </div>
+        <div class="form-group mb-3 ms-3">
+            @if (isset($userIntroVideo) && $userIntroVideo != null)
+                <iframe style="width:75%;" src="{{ $userIntroVideo->intro_video_link }}" allowfullscreen="true">
+                </iframe>
+            @else
+                <img src="{{ asset('assets/images/video-thumb.png') }}" alt="" style="width:75%;">
+            @endif
+        </div>
 
         <div class="row" style="margin-top:20px;">
             <form action="{{ route('users.introvideos') }}" method="post">
@@ -161,16 +116,17 @@
         <div class="row">
             <div class="col-md-12 col-lg-12 col-sm-12 mt-3">
                 <div class="d-flex justify-content-between">
-                    <span class="h6 fw-bold">Intro video show</span>
+                    <span class="h6 fw-bold">Sample intro video</span>
                 </div>
-                <div class="form-group mb-3 ms-3">
-                    @if (isset($userIntroVideo) && $userIntroVideo != null)
-                        <iframe style="width:75%;" src="{{ $userIntroVideo->intro_video_link }}"
-                            allowfullscreen="true">
-                        </iframe>
-                    @else
-                        <img src="{{ asset('assets/images/video-thumb.png') }}" alt="" style="width:75%;">
-                    @endif
+                <div id="video-section" class="mb-2 ms-3">
+                    <div class="sample-yt-video mt-2">
+                        <div id="intro_hindi">
+                            <iframe class="video" style="width:75%;" src="https://www.youtube.com/embed/q22JrhzFEuQ"
+                                allowfullscreen="true">
+                            </iframe>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>

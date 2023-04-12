@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Facade;
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Application Name
@@ -155,7 +154,6 @@ return [
     */
 
     'providers' => [
-
         /*
          * Laravel Framework Service Providers...
          */
@@ -186,6 +184,11 @@ return [
          * Package Service Providers...
          */
 
+        /**
+         * Third party
+         */
+        Mews\Captcha\CaptchaServiceProvider::class,
+
         /*
          * Application Service Providers...
          */
@@ -194,7 +197,6 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-
     ],
 
     /*
@@ -208,8 +210,14 @@ return [
     |
     */
 
-    'aliases' => Facade::defaultAliases()->merge([
-        // 'ExampleClass' => App\Example\ExampleClass::class,
-    ])->toArray(),
-
+    'aliases' => Facade::defaultAliases()
+        ->merge([
+            // 'ExampleClass' => App\Example\ExampleClass::class,
+            
+            /**
+             * Third party
+             */
+            'Captcha' => Mews\Captcha\Facades\Captcha::class,
+        ])
+        ->toArray(),
 ];

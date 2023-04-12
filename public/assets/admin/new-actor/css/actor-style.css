@@ -1,314 +1,314 @@
-#kaya-header-content-wrapper {
-background-color: #f9f9f9 !important;
-}
-
-.kaya-page-titlebar-wrapper .page-title {
-background-color: #f4f4f4;
-}
-
-.kaya-page-titlebar-wrapper .page-title,
-.main-menu-btn-icon {
-color: #101010;
-}
-
-.main-menu-btn-icon,
-.main-menu-btn-icon:before,
-.main-menu-btn-icon:after {
-background-color: #222222;
-}
-
-#header-navigation {
-background-color: #000000 !important;
-border-bottom-color: #ff5722 !important;
-}
-
-nav#header-navigation a {
-color: #ffffff;
-}
-
-nav#header-navigation a:hover {
-color: #e63f19;
-}
-
-nav#header-navigation ul#main-menu li.current-menu-parent,
-nav#header-navigation ul#main-menu li.current-menu-item,
-nav#header-navigation ul#main-menu li.current-menu-ancestor {
-background-color: #ff5722 !important;
-}
-
-nav#header-navigation ul#main-menu li.current-menu-parent a,
-nav#header-navigation ul#main-menu li.current-menu-item a,
-nav#header-navigation ul#main-menu li.current-menu-ancestor a,
-{
-color: #ff5722;
-}
-
-nav#header-navigation ul#main-menu li ul.sub-menu li {
-background-color: #000000 !important;
-}
-
-nav#header-navigation ul#main-menu li ul.sub-menu li a {
-color: #ffffff !important;
-}
-
-nav#header-navigation ul#main-menu li ul.sub-menu li:hover {
-background-color: #222222 !important;
-}
-
-nav#header-navigation ul#main-menu li ul.sub-menu li a:hover {
-color: #ffffff !important;
-}
-
-nav#header-navigation ul#main-menu li ul.sub-menu li.current-menu-item a {
-background-color: #ff5722 !important;
-color: #ffffff !important;
-}
-
-.footer_bottom_position_fix span.copyright {
-color: #ccc;
-}
-
-.um-member-name,
-.um-member-name a {
-color: #303030 !important;
-}
-
-.um-directory .um-members-wrapper .um-members-grid-wrapper .um-members.um-members-list .um-member .um-member-meta-main {
-background-color: #ff5722;
-}
-
-.um-members-wrapper .um-members-grid-wrapper .um-members.um-members-list .um-member-card,
-.um-members-wrapper .um-members-grid-wrapper .um-members.um-members-list .um-member-card a {
-color: #ffffff;
-}
-
-.um-members-wrapper .um-members.um-members-list .um-member-card,
-.um-members-wrapper .um-members.um-members-list .um-member-card a,
-.um-directory .um-members-wrapper .um-members.um-members-list .um-member .um-member-card-container .um-member-card
-.um-member-card-content .um-member-card-header .um-member-name a {
-color: #666666;
-}
-
-.kaya-um-row .um-field-divider-text span {
-color: #333 !important;
-}
-
-.um-profile.um-viewing .um-field-label,
-.um-field-label,
-.um-account-main div.um-account-heading,
-.um-name a {
-color: #303030 !important;
-}
-
-.um-profile.um-viewing .um-field .um-field-value,
-.um-profile-body,
-.um-meta-text,
-.um-meta,
-.um {
-color: #606060 !important;
-}
-
-.um-profile-meta a,
-.um-field-value a {
-color: #303030 !important;
-}
-
-.um-profile-meta a:hover,
-.um-field-value a:hover {
-color: #303030 !important;
-}
-
-.um-profile-nav a,
-.um-profile-nav-item a,
-.um-row-heading,
-.kaya-um-row-heading {
-background-color: #333333 !important;
-}
-
-.um-profile-nav-item a,
-.um-row-heading,
-.kaya-um-row-heading {
-color: #ffffff !important;
-}
-
-.um-profile-nav a:hover,
-.um-profile-nav-item a:hover {
-background-color: #333333 !important;
-color: #ffffff !important;
-}
-
-.um .um-profile-nav-item.active a,
-.um .um-profile-nav-item.active a:hover,
-.um-viewing div.kaya-um-tabs-wrap .kaya_pt_active {
-background-color: #ffffff !important;
-}
-
-.um-profile-nav {
-border-bottom-color: #ffffff !important;
-}
-
-div.kaya-um-tabs {
-border-top-color: #ffffff !important;
-}
-
-.um .um-profile-nav-item.active a,
-.um .um-profile-nav-item.active a:hover a,
-.um-viewing div.kaya-um-tabs-wrap .kaya_pt_active {
-color: #444444 !important;
-}
-
-.search_filter_header_wrap,
-.search_filter_header_wrap_sidebar,
-.toggle_search_wrapper .um-member-directory-header {
-background-color: #eeeeee !important;
-}
-
-.search_filter_header_wrap,
-.search_filter_header_wrap_sidebar,
-.um-member-directory-filters-a um-member-directory-filters-visible,
-.um-member-directory-filters-a a,
-.um-clear-filters-a,
-.overlay_toggle_search_icon,
-.toggle_search_wrapper .um-member-directory-header .searchbox_toggle_close {
-color: #888888 !important;
-}
-
-.um-do-search {
-background-color: #ff3918 !important;
-}
-
-.um-member-directory-search-line button,
-.um-member-directory-search-line input[type="button"],
-.um-member-directory-search-line input[type="reset"],
-.um-member-directory-search-line input[type="submit"] {
-color: #ffffff;
-}
-
-.ui-state-default,
-.ui-widget-content .ui-state-default,
-.ui-widget-header .ui-state-default,
-.ui-button,
-html .ui-button.ui-state-disabled:hover,
-html .ui-button.ui-state-disabled:active {
-background-color: #ffffff !important;
-border-color: #ffffff !important;
-}
-
-.um a.um-link,
-.um .um-tip:hover,
-.um .um-field-radio.active:not(.um-field-radio-state-disabled) i,
-.um .um-field-checkbox.active:not(.um-field-radio-state-disabled) i,
-.um .um-member-name a:hover,
-.um .um-member-more a:hover,
-.um .um-member-less a:hover,
-.um .um-members-pagi a:hover,
-.um .um-cover-add:hover,
-.um .um-profile-subnav a.active,
-.um .um-item-meta a,
-.um-account-name a:hover,
-.um-account-nav a.current,
-.um-account-side li a.current span.um-account-icon,
-.um-account-side li a.current:hover span.um-account-icon,
-.um-dropdown li a:hover,
-i.um-active-color,
-span.um-active-color {
-color: #ff5722 !important;
-}
-
-.um a.um-link:hover,
-.um a.um-link-hvr:hover {
-color: #dd3333 !important;
-}
-
-.um .um-field-group-head,
-.picker__box,
-.picker__nav--prev:hover,
-.picker__nav--next:hover,
-.um .um-members-pagi span.current,
-.um .um-members-pagi span.current:hover,
-.upload,
-.um-modal-header,
-.um-modal-btn,
-.um-modal-btn.disabled,
-.um-modal-btn.disabled:hover,
-div.uimob800 .um-account-side li a.current,
-div.uimob800 .um-account-side li a.current:hover,
-.um .um-button,
-.um a.um-button,
-.um a.um-button.um-disabled:hover,
-.um a.um-button.um-disabled:focus,
-.um a.um-button.um-disabled:active,
-.um input[type=submit].um-button,
-.um input[type=submit].um-button:focus,
-.um input[type=submit]:disabled:hover,
-.cc_print_button,
-.um-request-button,
-span#sndmailusers,
-span#sndmailfrnds,
-div#send_friends span#sendmail_friends,
-div#send_users span#sendmail_members,
-.overlay_toggle_search_icon,
-.um-member-photo .talent-btn,
-.search_close,
-.customemediauploader {
-background-color: #ff5722 !important;
-color: #ffffff !important;
-}
-
-.um .um-field-group-head:hover,
-.picker__footer,
-.picker__header,
-.picker__day--infocus:hover,
-.picker__day--outfocus:hover,
-.picker__day--highlighted:hover,
-.picker--focused .picker__day--highlighted,
-.picker__list-item:hover,
-.picker__list-item--highlighted:hover,
-.picker--focused .picker__list-item--highlighted,
-.picker__list-item--selected,
-.picker__list-item--selected:hover,
-.picker--focused .picker__list-item--selected,
-.um .um-button:hover,
-.um a.um-button:hover,
-.um input[type=submit].um-button:hover,
-.um-request-button:hover,
-span#sndmailusers:hover,
-span#sndmailfrnds:hover,
-div#send_friends span#sendmail_friends:hover {
-background-color: #dd3333 !important;
-}
-
-.um .um-field-group-head:hover,
-.picker__footer,
-.picker__header,
-.picker__day--infocus:hover,
-.picker__day--outfocus:hover,
-.picker__day--highlighted:hover,
-.picker--focused .picker__day--highlighted,
-.picker__list-item:hover,
-.picker__list-item--highlighted:hover,
-.picker--focused .picker__list-item--highlighted,
-.picker__list-item--selected,
-.picker__list-item--selected:hover,
-.picker--focused .picker__list-item--selected,
-.um .um-button:hover,
-.um a.um-button:hover,
-.um input[type=submit].um-button:hover,
-.um-request-button:hover,
-span#sndmailusers:hover,
-span#sndmailfrnds:hover,
-div#send_friends span#sendmail_friends:hover,
-div#send_users span#sendmail_members:hover {
-color: ##eeeeee !important;
-}
-
-.um .um-button.um-alt,
-.um input[type=submit].um-button.um-alt {
-background-color: #eeeeee !important;
-color: #333333 !important;
-}
-
-.um .um-button.um-alt:hover,
-.um input[type=submit].um-button.um-alt:hover {
-background-color: #e5e5e5 !important;
-}
+#kaya-header-content-wrapper {
+background-color: #f9f9f9 !important;
+}
+
+.kaya-page-titlebar-wrapper .page-title {
+background-color: #f4f4f4;
+}
+
+.kaya-page-titlebar-wrapper .page-title,
+.main-menu-btn-icon {
+color: #101010;
+}
+
+.main-menu-btn-icon,
+.main-menu-btn-icon:before,
+.main-menu-btn-icon:after {
+background-color: #222222;
+}
+
+#header-navigation {
+background-color: #000000 !important;
+border-bottom-color: #ff5722 !important;
+}
+
+nav#header-navigation a {
+color: #ffffff;
+}
+
+nav#header-navigation a:hover {
+color: #e63f19;
+}
+
+nav#header-navigation ul#main-menu li.current-menu-parent,
+nav#header-navigation ul#main-menu li.current-menu-item,
+nav#header-navigation ul#main-menu li.current-menu-ancestor {
+background-color: #ff5722 !important;
+}
+
+nav#header-navigation ul#main-menu li.current-menu-parent a,
+nav#header-navigation ul#main-menu li.current-menu-item a,
+nav#header-navigation ul#main-menu li.current-menu-ancestor a,
+{
+color: #ff5722;
+}
+
+nav#header-navigation ul#main-menu li ul.sub-menu li {
+background-color: #000000 !important;
+}
+
+nav#header-navigation ul#main-menu li ul.sub-menu li a {
+color: #ffffff !important;
+}
+
+nav#header-navigation ul#main-menu li ul.sub-menu li:hover {
+background-color: #222222 !important;
+}
+
+nav#header-navigation ul#main-menu li ul.sub-menu li a:hover {
+color: #ffffff !important;
+}
+
+nav#header-navigation ul#main-menu li ul.sub-menu li.current-menu-item a {
+background-color: #ff5722 !important;
+color: #ffffff !important;
+}
+
+.footer_bottom_position_fix span.copyright {
+color: #ccc;
+}
+
+.um-member-name,
+.um-member-name a {
+color: #303030 !important;
+}
+
+.um-directory .um-members-wrapper .um-members-grid-wrapper .um-members.um-members-list .um-member .um-member-meta-main {
+background-color: #ff5722;
+}
+
+.um-members-wrapper .um-members-grid-wrapper .um-members.um-members-list .um-member-card,
+.um-members-wrapper .um-members-grid-wrapper .um-members.um-members-list .um-member-card a {
+color: #ffffff;
+}
+
+.um-members-wrapper .um-members.um-members-list .um-member-card,
+.um-members-wrapper .um-members.um-members-list .um-member-card a,
+.um-directory .um-members-wrapper .um-members.um-members-list .um-member .um-member-card-container .um-member-card
+.um-member-card-content .um-member-card-header .um-member-name a {
+color: #666666;
+}
+
+.kaya-um-row .um-field-divider-text span {
+color: #333 !important;
+}
+
+.um-profile.um-viewing .um-field-label,
+.um-field-label,
+.um-account-main div.um-account-heading,
+.um-name a {
+color: #303030 !important;
+}
+
+.um-profile.um-viewing .um-field .um-field-value,
+.um-profile-body,
+.um-meta-text,
+.um-meta,
+.um {
+color: #606060 !important;
+}
+
+.um-profile-meta a,
+.um-field-value a {
+color: #303030 !important;
+}
+
+.um-profile-meta a:hover,
+.um-field-value a:hover {
+color: #303030 !important;
+}
+
+.um-profile-nav a,
+.um-profile-nav-item a,
+.um-row-heading,
+.kaya-um-row-heading {
+background-color: #333333 !important;
+}
+
+.um-profile-nav-item a,
+.um-row-heading,
+.kaya-um-row-heading {
+color: #ffffff !important;
+}
+
+.um-profile-nav a:hover,
+.um-profile-nav-item a:hover {
+background-color: #333333 !important;
+color: #ffffff !important;
+}
+
+.um .um-profile-nav-item.active a,
+.um .um-profile-nav-item.active a:hover,
+.um-viewing div.kaya-um-tabs-wrap .kaya_pt_active {
+background-color: #ffffff !important;
+}
+
+.um-profile-nav {
+border-bottom-color: #ffffff !important;
+}
+
+div.kaya-um-tabs {
+border-top-color: #ffffff !important;
+}
+
+.um .um-profile-nav-item.active a,
+.um .um-profile-nav-item.active a:hover a,
+.um-viewing div.kaya-um-tabs-wrap .kaya_pt_active {
+color: #444444 !important;
+}
+
+.search_filter_header_wrap,
+.search_filter_header_wrap_sidebar,
+.toggle_search_wrapper .um-member-directory-header {
+background-color: #eeeeee !important;
+}
+
+.search_filter_header_wrap,
+.search_filter_header_wrap_sidebar,
+.um-member-directory-filters-a um-member-directory-filters-visible,
+.um-member-directory-filters-a a,
+.um-clear-filters-a,
+.overlay_toggle_search_icon,
+.toggle_search_wrapper .um-member-directory-header .searchbox_toggle_close {
+color: #888888 !important;
+}
+
+.um-do-search {
+background-color: #ff3918 !important;
+}
+
+.um-member-directory-search-line button,
+.um-member-directory-search-line input[type="button"],
+.um-member-directory-search-line input[type="reset"],
+.um-member-directory-search-line input[type="submit"] {
+color: #ffffff;
+}
+
+.ui-state-default,
+.ui-widget-content .ui-state-default,
+.ui-widget-header .ui-state-default,
+.ui-button,
+html .ui-button.ui-state-disabled:hover,
+html .ui-button.ui-state-disabled:active {
+background-color: #ffffff !important;
+border-color: #ffffff !important;
+}
+
+.um a.um-link,
+.um .um-tip:hover,
+.um .um-field-radio.active:not(.um-field-radio-state-disabled) i,
+.um .um-field-checkbox.active:not(.um-field-radio-state-disabled) i,
+.um .um-member-name a:hover,
+.um .um-member-more a:hover,
+.um .um-member-less a:hover,
+.um .um-members-pagi a:hover,
+.um .um-cover-add:hover,
+.um .um-profile-subnav a.active,
+.um .um-item-meta a,
+.um-account-name a:hover,
+.um-account-nav a.current,
+.um-account-side li a.current span.um-account-icon,
+.um-account-side li a.current:hover span.um-account-icon,
+.um-dropdown li a:hover,
+i.um-active-color,
+span.um-active-color {
+color: #ff5722 !important;
+}
+
+.um a.um-link:hover,
+.um a.um-link-hvr:hover {
+color: #dd3333 !important;
+}
+
+.um .um-field-group-head,
+.picker__box,
+.picker__nav--prev:hover,
+.picker__nav--next:hover,
+.um .um-members-pagi span.current,
+.um .um-members-pagi span.current:hover,
+.upload,
+.um-modal-header,
+.um-modal-btn,
+.um-modal-btn.disabled,
+.um-modal-btn.disabled:hover,
+div.uimob800 .um-account-side li a.current,
+div.uimob800 .um-account-side li a.current:hover,
+.um .um-button,
+.um a.um-button,
+.um a.um-button.um-disabled:hover,
+.um a.um-button.um-disabled:focus,
+.um a.um-button.um-disabled:active,
+.um input[type=submit].um-button,
+.um input[type=submit].um-button:focus,
+.um input[type=submit]:disabled:hover,
+.cc_print_button,
+.um-request-button,
+span#sndmailusers,
+span#sndmailfrnds,
+div#send_friends span#sendmail_friends,
+div#send_users span#sendmail_members,
+.overlay_toggle_search_icon,
+.um-member-photo .talent-btn,
+.search_close,
+.customemediauploader {
+background-color: #ff5722 !important;
+color: #ffffff !important;
+}
+
+.um .um-field-group-head:hover,
+.picker__footer,
+.picker__header,
+.picker__day--infocus:hover,
+.picker__day--outfocus:hover,
+.picker__day--highlighted:hover,
+.picker--focused .picker__day--highlighted,
+.picker__list-item:hover,
+.picker__list-item--highlighted:hover,
+.picker--focused .picker__list-item--highlighted,
+.picker__list-item--selected,
+.picker__list-item--selected:hover,
+.picker--focused .picker__list-item--selected,
+.um .um-button:hover,
+.um a.um-button:hover,
+.um input[type=submit].um-button:hover,
+.um-request-button:hover,
+span#sndmailusers:hover,
+span#sndmailfrnds:hover,
+div#send_friends span#sendmail_friends:hover {
+background-color: #dd3333 !important;
+}
+
+.um .um-field-group-head:hover,
+.picker__footer,
+.picker__header,
+.picker__day--infocus:hover,
+.picker__day--outfocus:hover,
+.picker__day--highlighted:hover,
+.picker--focused .picker__day--highlighted,
+.picker__list-item:hover,
+.picker__list-item--highlighted:hover,
+.picker--focused .picker__list-item--highlighted,
+.picker__list-item--selected,
+.picker__list-item--selected:hover,
+.picker--focused .picker__list-item--selected,
+.um .um-button:hover,
+.um a.um-button:hover,
+.um input[type=submit].um-button:hover,
+.um-request-button:hover,
+span#sndmailusers:hover,
+span#sndmailfrnds:hover,
+div#send_friends span#sendmail_friends:hover,
+div#send_users span#sendmail_members:hover {
+color: ##eeeeee !important;
+}
+
+.um .um-button.um-alt,
+.um input[type=submit].um-button.um-alt {
+background-color: #eeeeee !important;
+color: #333333 !important;
+}
+
+.um .um-button.um-alt:hover,
+.um input[type=submit].um-button.um-alt:hover {
+background-color: #e5e5e5 !important;
+}

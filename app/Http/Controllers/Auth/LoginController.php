@@ -20,7 +20,13 @@ class LoginController extends Controller
         $request->validate([
             'email' => 'required',
             'password' => ['required', 'string', 'regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$/', 'min:8'],
-        ]);
+            'captcha' => 'required|captcha'
+        ],[
+            'email.required'=>'Please enter email',
+            'password.required'=>'Please enter password',
+            'captcha.captcha' => 'Captcha text incorrect.'
+        ]
+    );
         $credentials = $request->only(['email', 'password']);
         $remember_me = $request->has('remeber_me') ? true : false;
        

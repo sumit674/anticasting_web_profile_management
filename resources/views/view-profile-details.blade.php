@@ -173,7 +173,7 @@
                                                             <img id="mainImage" src="{{ $item?->images[0]?->image }}"
                                                                 height="200" width="190" />
                                                         @else
-                                                            <img class="imgStyle"
+                                                            <img id="mainImage"
                                                                 src="{{ asset('assets/images/actor-image-thumbnail.jpg') }}"
                                                                 height="200" width="200" />
                                                         @endif
@@ -341,17 +341,7 @@
                                                             <div class="c-edit-panel__controls"></div>
                                                         </div>
                                                         <div class="c-further-information">
-                                                            I was born and raised in Stockholm, Sweden, by
-                                                            Transylvanian-Hungarian parents. Knowing early on that acting
-                                                            was in my future I made sure to learn the accents from my
-                                                            favorite films. Later I went on to study in Vancouver,
-                                                            Stockholm, and Bristol, where I'm currently based.<br><br>I've
-                                                            been in films, TV, and commercials, but acting is not my only
-                                                            creative outlet. I'm teaching a scene study, I've directed short
-                                                            films, and done stand up. In 2019 I got to open for one of
-                                                            Sweden’s biggest comedians, Magnus Betnér. <br><br>I'm fully
-                                                            vaccinated, can legally work both in the UK and in the EU,
-                                                            up-to-date passport.
+                                                           {!!$item?->profile?->about_me!!}
                                                         </div>
                                                     </div>
                                                 </div>

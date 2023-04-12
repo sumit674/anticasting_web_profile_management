@@ -45,6 +45,23 @@
                                             <span class="text-danger"><b>{{ $message }}</b></span>
                                         @enderror
                                     </div>
+                                    <div class="col-md-12 my-2">
+                                        <div class="captcha">
+                                            <span>{!! captcha_img() !!}</span>
+                                            <button type="button" class="btn btn-danger" class="reload"
+                                                id="reload">
+                                                &#x21bb;
+                                            </button>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group mb-3">
+                                        <input id="captcha" type="text" class="form-control"
+                                            placeholder="Enter Captcha" name="captcha">
+                                        @error('captcha')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
                                     <div class="form-group mb-3">
                                         <input type="checkbox" name="remeber_me" id="rember-me" />
                                         <label for="rember-me" class="form-label text-muted">&nbsp;<b>Remember Me</b></label>
@@ -159,6 +176,17 @@
                 $("svg.feather.feather-eye-off").replaceWith(feather.icons["eye"].toSvg());
                 $(this).parent().parent().find(".password").attr("type", "password");
             }
+        });
+    </script>
+     <script type="text/javascript">
+        $('#reload').click(function() {
+            $.ajax({
+                type: 'GET',
+                url: 'reload-captcha',
+                success: function(data) {
+                    $(".captcha span").html(data.captcha);
+                }
+            });
         });
     </script>
 @endsection

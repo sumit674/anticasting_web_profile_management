@@ -18,13 +18,14 @@
                                     </a>
                                 </div>
                                 <p class="d-flex justify-content-center fs-4">Register into your account</p>
-                                <form class="form-disable" method="post" id="frm_register" action="{{ route('users.registerpost') }}">
+                                <form class="form-disable" method="post" id="frm_register"
+                                    action="{{ route('users.registerpost') }}">
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="inputFirstName" class="form-label text-muted"><b>First
-                                                    name</b>&nbsp;<span style="color:red;"><b>*</b></span>
+                                                        name</b>&nbsp;<span style="color:red;"><b>*</b></span>
                                                 </label>
                                                 <input type="text" name="first_name" id="inputFirstName"
                                                     class="form-control" placeholder="First name">
@@ -37,7 +38,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group  mb-1">
                                                 <label for="inputLastName" class="form-label text-muted"><b>Last
-                                                    name</b>&nbsp;<span style="color:red;"><b>*</b></span>
+                                                        name</b>&nbsp;<span style="color:red;"><b>*</b></span>
                                                 </label>
                                                 <input type="text" name="last_name" id="inputLastName"
                                                     class="form-control" placeholder="Last name">
@@ -60,7 +61,8 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group  mb-1">
-                                                <label for="password" class="form-label text-muted"><b>Password</b>&nbsp;<span
+                                                <label for="password"
+                                                    class="form-label text-muted"><b>Password</b>&nbsp;<span
                                                         style="color:red;"><b>*</b></span>
                                                 </label>
                                                 <input class="form-control" id="password" class="block mt-1 w-full"
@@ -73,7 +75,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group mb-1">
                                                 <label for="confirm_password" class="form-label text-muted"><b>Confiram
-                                                    Password</b>&nbsp;<span style="color:red;"><b>*</b></span></label>
+                                                        Password</b>&nbsp;<span style="color:red;"><b>*</b></span></label>
                                                 <div class="input-group">
                                                     <input class="form-control password" id="confirm_password"
                                                         class="block mt-1 w-full" type="password" name="confirm_password"
@@ -85,9 +87,9 @@
                                             </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <div class="form-group  mb-1">
+                                            <div class="form-group mb-1">
                                                 <label for="inputmobileNumber" class="form-label text-muted"><b>Moblile
-                                                    Number</b>&nbsp;<span style="color:red;"><b>*</b></span></label>
+                                                        Number</b>&nbsp;<span style="color:red;"><b>*</b></span></label>
                                                 <div class="input-group input-span mb-3">
                                                     <input type="hidden" id="code" name="countryCode" />
                                                     <input type="text" class="form-control" id="mobile_number"
@@ -98,10 +100,27 @@
 
                                             </div>
                                         </div>
+                                        <div class="col-md-6 my-2">
+                                            <div class="captcha">
+                                                <span>{!! captcha_img() !!}</span>
+                                                <button type="button" class="btn btn-danger" class="reload"
+                                                    id="reload">
+                                                    &#x21bb;
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 my-2">
+                                            <input id="captcha" type="text" class="form-control"
+                                                placeholder="Enter Captcha" name="captcha">
+                                            @error('captcha')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
                                     </div>
                                     <div class="d-grid gap-2 col-6 mx-auto">
-                                        <input type="submit" class="btn btn-dark form-control" type="button"
-                                            value="Register" />
+                                        {{-- <input type="submit" class="btn btn-dark form-control" type="button"
+                                            value="Register" /> --}}
+                                            <button type="submit" class="btn btn-dark form-control" >Register</button>
                                     </div>
 
                                 </form>
@@ -185,6 +204,17 @@
                 $("svg.feather.feather-eye-off").replaceWith(feather.icons["eye"].toSvg());
                 $(this).parent().parent().find(".password").attr("type", "password");
             }
+        });
+    </script>
+    <script type="text/javascript">
+        $('#reload').click(function() {
+            $.ajax({
+                type: 'GET',
+                url: 'reload-captcha',
+                success: function(data) {
+                    $(".captcha span").html(data.captcha);
+                }
+            });
         });
     </script>
 @endsection

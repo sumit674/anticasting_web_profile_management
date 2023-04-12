@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\ChangePasswordController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CommonController;
 
 /*
 |--------------------------------------------------------------------------
@@ -119,3 +120,8 @@ Route::get('/', [HomeController::class, 'index'])->name('users.home');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::get('/our-work', [HomeController::class, 'ourWork'])->name('our-work');
+
+/**
+ * Captcha
+ */
+Route::get('/reload-captcha', [CommonController::class, 'reloadCaptcha']);
