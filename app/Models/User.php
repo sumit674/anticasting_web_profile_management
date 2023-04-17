@@ -155,6 +155,13 @@ class User extends Authenticatable
             }
         }
     }
+    /*Ajax Rating Filter */
+    public function scopeFilterRating($query){
+        if (isset($_GET['rating']) && !empty($_GET['rating'])) {
+            $rating = (int) $_GET['rating'];
+            $query->where('rating', 'like', '%'.$rating.'%');
+        }
+    }
     // public function scopeFilterHeight($query)
     // {
     //     if (isset($_GET['max_height']) && !empty($_GET['max_height']) && isset($_GET['min_height']) && !empty($_GET['min_height'])) {

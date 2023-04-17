@@ -117,12 +117,12 @@
         }
 
         /* .img-select-container img hover:{
-                                                width: 100% !important;
-                                                display: inline-block;
-                                                border: 1px solid black;
-                                                opacity: 0.4;
+                                                            width: 100% !important;
+                                                            display: inline-block;
+                                                            border: 1px solid black;
+                                                            opacity: 0.4;
 
-                                            } */
+                                                        } */
         .img-select .active {
             border: 1px dotted black;
             height: 50px !important;
@@ -137,9 +137,20 @@
 
         .popover-header-section {
             position: sticky;
+          
         }
-
+       
         .actor-name {
+            color: #26247b;
+            font-size:24px;
+        }
+        .fa-brands{
+            padding-left: 20px;
+            font-size:24px;
+            color: #26247b;
+        }
+        .fa-solid{
+            font-size:24px;
             color: #26247b;
         }
     </style>
@@ -150,7 +161,8 @@
             <div class="popover-header-section" id="popoverHeader">
                 <div class="popover-header">
                     <b><span class="actor-name">{{ $item->first_name . ' ' . $item->last_name }}</span> </b>
-
+                    <b><span class="fa-brands fa-facebook"></span></b>
+                    <b><span class="fa-brands fa-square-instagram"></span></b>
                     <div class="text-right h4" style="margin-top:-23px;" id="close-yt">
                         <a href="{{ route('users.submitProfile') }}">
                             <i class="fa-solid fa-pencil"></i>
@@ -236,100 +248,85 @@
                                     </div>
                                     <div class="col-9">
                                         <div class="row">
-                                            <div class="col-6">
-                                                <div
-                                                    class="c-performers-quick-view__links g-hidden-sm g-col-md-4 g-col-lg-4">
-                                                    <div class="c-basic-info-section__edit-panel">
-                                                        <div class="c-edit-panel">
-                                                            <h4 class="c-edit-panel__header">Details</h4>
-                                                            <div class="c-edit-panel__controls"></div>
-                                                        </div>
-                                                    </div>
-                                                    <a href="#" target="_blank"
-                                                        class="c-icon-text-link c-icon-text-link--primary" tabindex="0"
-                                                        aria-label="Email profile">
-                                                        <span class="c-icon-text-link__icon">
-                                                            <i class="fa fa-envelope" aria-hidden="true"></i>
-                                                        </span>
-                                                        <span
-                                                            class="c-icon-text-link__text c-icon-text-link__text--icon">Email
-                                                            profile</span>
-                                                    </a>
-                                                    <a href="https://www.spotlight.com/2696-7866-2777?action=print"
-                                                        target="_blank" class="c-icon-text-link c-icon-text-link--primary"
-                                                        tabindex="0" aria-label="Print profile">
-                                                        <span class="c-icon-text-link__icon">
-                                                            <i class="fa fa-print" aria-hidden="true"></i>
-                                                        </span>
-                                                        <span
-                                                            class="c-icon-text-link__text c-icon-text-link__text--icon">Print
-                                                            profile</span>
-                                                    </a>
-                                                    <a href="#" target="_blank"
-                                                        class="c-icon-text-link c-icon-text-link--primary" tabindex="0"
-                                                        aria-label="View/Add notes">
-                                                        <span class="c-icon-text-link__icon">
-                                                            <i class="fa fa-sticky-note" aria-hidden="true"></i>
-                                                        </span>
-                                                        <span
-                                                            class="c-icon-text-link__text c-icon-text-link__text--icon">View/Add
-                                                            notes</span>
-                                                    </a>
-                                                    <a href="https://mediaviewer.spotlight.com/artist/showreels?artistRef=F291388"
-                                                        target="_blank" class="c-icon-text-link c-icon-text-link--primary"
-                                                        tabindex="0" aria-label="2 Showreels">
-                                                        <span class="c-icon-text-link__icon">
-                                                            <i class="fa fa-video" aria-hidden="true"></i>
-                                                        </span>
-                                                        <span class="c-icon-text-link__text c-icon-text-link__text--icon">2
-                                                            Showreels</span>
-                                                    </a>
-                                                    <a href="https://mediaviewer.spotlight.com/artist/audioclips?artistRef=F291388"
-                                                        target="_blank" class="c-icon-text-link c-icon-text-link--primary"
-                                                        tabindex="0" aria-label="5 Audio">
-                                                        <span class="c-icon-text-link__icon">
-                                                            <i class="fas fa-microphone" aria-hidden="true"></i>
-                                                        </span>
-                                                        <span class="c-icon-text-link__text c-icon-text-link__text--icon">5
-                                                            Audio</span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
+                                           <div class="col-md-12 col-sm-12">
                                                 <div class="card__content">
                                                     <div class="c-basic-info-section__edit-panel">
-                                                        <div class="c-edit-panel">
-                                                            <h4 class="c-edit-panel__header">Details</h4>
+                                                        <div class="c-edit-panel  justify-content-center">
+                                                            <h4 class="c-edit-panel__header ">Details</h4>
                                                             <div class="c-edit-panel__controls"></div>
                                                         </div>
                                                     </div>
-                                                    <p class="card__title"><label class="fw-bold"><b>Email:
-                                                            </b></label><span class="c-green text-break text-truncate">
-                                                            {{ $item?->profile?->email }}</span>
-
-                                                    </p>
-                                                    <p class="card__title"><label class="fw-bold"><b>Ethnicity:
-                                                            </b></label><span class="c-green text-break text-truncate">
-                                                            {{ $item?->profile?->ethnicity }}</span>
-
-                                                    </p>
-                                                    <p class="card__title">
-                                                        <label class="fw-bold"><b>Gender: </b></label>
-                                                        <span class="c-green text-break text-truncate">
-                                                            {{ $item?->profile?->gender }}</span>
-                                                    </p>
-                                                    <p class="card__title">
-                                                        <label class="fw-bold"><b>Date Of Birth: </b></label>
-                                                        <span class="c-green text-break text-truncate">
-                                                            {{ $item?->profile?->date_of_birth }}</span>
-                                                    </p>
-
-                                                    <p class="card__title">
-                                                        <label class="fw-bold "><b>Current Location: </b></label>
-                                                        <span class="c-green text-break text-truncate">
-                                                            {{ $item?->profile?->current_location }}</span>
-                                                    </p>
                                                 </div>
+                                                <div class="row">
+                                                    <div class="col-md-6 col-sm-6">
+                                                        <div class="card__content">
+
+                                                            <p class="card__title"><label class="fw-bold"><b>Email:
+                                                                    </b></label><span
+                                                                    class="c-green text-break text-truncate">
+                                                                    {{ $item?->profile?->email }}</span>
+
+                                                            </p>
+                                                            <p class="card__title"><label class="fw-bold"><b>Ethnicity:
+                                                                    </b></label><span
+                                                                    class="c-green text-break text-truncate">
+                                                                    {{ $item?->profile?->ethnicity }}</span>
+
+                                                            </p>
+                                                            <p class="card__title">
+                                                                <label class="fw-bold"><b>Gender: </b></label>
+                                                                <span class="c-green text-break text-truncate">
+                                                                    {{ $item?->profile?->gender }}</span>
+                                                            </p>
+                                                            <p class="card__title">
+                                                                <label class="fw-bold"><b>Date Of Birth: </b></label>
+                                                                <span class="c-green text-break text-truncate">
+                                                                    {{ $item?->profile?->date_of_birth }}</span>
+                                                            </p>
+
+                                                            <p class="card__title">
+                                                                <label class="fw-bold "><b>Current Location: </b></label>
+                                                                <span class="c-green text-break text-truncate">
+                                                                    {{ $item?->profile?->current_location }}</span>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-6">
+                                                        <div class="card__content">
+
+                                                            <p class="card__title"><label class="fw-bold"><b>Mobile:
+                                                                    </b></label><span
+                                                                    class="c-green text-break text-truncate">
+                                                                    {{ $item?->mobile_no }}</span>
+
+                                                            </p>
+                                                            @php
+                                                                $dateOfBirth = $item?->profile?->date_of_birth;
+                                                                //$age = \Carbon\Carbon::parse($dateOfBirth)->diff(\Carbon\Carbon::now())->format('%y years, %m months and %d days'); //\Carbon\Carbon::parse($dateOfBirth)->age;
+                                                                $age = \Carbon\Carbon::parse($dateOfBirth)
+                                                                    ->diff(\Carbon\Carbon::now())
+                                                                    ->format('%y years');
+                                                            @endphp
+                                                            <p class="card__title"><label class="fw-bold"><b>Age:
+                                                                    </b></label><span
+                                                                    class="c-green text-break text-truncate">
+                                                                    {{$age}}</span>
+
+                                                            </p>
+                                                            <p class="card__title">
+                                                                <label class="fw-bold"><b>Weight: </b></label>
+                                                                <span class="c-green text-break text-truncate">
+                                                                    {{ $item?->profile?->weight . ' ' . 'KG'}} </span>
+                                                            </p>
+                                                            <p class="card__title">
+                                                                <label class="fw-bold"><b>Height: </b></label>
+                                                                <span class="c-green text-break text-truncate">
+                                                                    {{ $item?->profile?->height. ' '.'CM' }}</span>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
                                             </div>
                                         </div>
                                         <div class="row">
@@ -341,7 +338,7 @@
                                                             <div class="c-edit-panel__controls"></div>
                                                         </div>
                                                         <div class="c-further-information">
-                                                           {!!$item?->profile?->about_me!!}
+                                                            {!! $item?->profile?->about_me !!}
                                                         </div>
                                                     </div>
                                                 </div>

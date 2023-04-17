@@ -37,12 +37,13 @@
         </div>
     </div>
     <section id="main-content">
-        @if(Session::has('error')){
+        @if (Session::has('error'))
+            {
             <script>
-                alert("{{Session::get('error')}}");
+                alert("{{ Session::get('error') }}");
             </script>
-          }
-          @endif
+            }
+        @endif
         <div class="row">
             <div class="col-lg-12">
                 <div class="card">
@@ -59,12 +60,12 @@
                                         <label class="form-label" id="contact"><b>First name
                                             </b><span style="color:red;">*</span>
                                         </label>
-                                        <input type="text" name="first_name" class="form-control" 
+                                        <input type="text" name="first_name" class="form-control"
                                             value="{{ old('first_name') }}" placeholder="Enter firstname" />
-                                            @error('first_name')
+                                        @error('first_name')
                                             <span style="color:red;"><b>{{ $message }}</b></span>
-                                            @enderror
-                                         
+                                        @enderror
+
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -72,11 +73,11 @@
                                         <label class="form-label"><b>Last name
                                             </b><span style="color:red;">*</span>
                                         </label>
-                                        <input type="text" name="last_name" class="form-control" 
+                                        <input type="text" name="last_name" class="form-control"
                                             value="{{ old('last_name') }}" placeholder="Enter lastname" />
-                                            @error('last_name')
-                                             <span style="color:red;"><b>{{ $message }}</b></span>
-                                            @enderror
+                                        @error('last_name')
+                                            <span style="color:red;"><b>{{ $message }}</b></span>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
@@ -85,12 +86,12 @@
                                     <div class="form-group">
                                         <label class="form-label" id="contact"><b>Mobile No</label>
                                         </b><span style="color:red;">*</span>
-                                         <input type="tel" class="form-control" id="mobile_number" name="mobile_no"
-                                                placeholder="Mobile number" />
+                                        <input type="tel" class="form-control" id="mobile_number" name="mobile_no"
+                                            placeholder="Mobile number" />
                                         <input type="hidden" name="iso2" id="phone_country_code" value="+91" />
                                         @error('mobile_no')
-                                        <span style="color:red;"><b>{{ $message }}</b></span>
-                                      @enderror
+                                            <span style="color:red;"><b>{{ $message }}</b></span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -157,9 +158,9 @@
                                             </span></label>
                                         <input type="date" name="date_of_birth" class="form-control"
                                             id="date_of_birth" value="{{ old('date_of_birth') }}">
-                                            @error('date_of_birth')
+                                        @error('date_of_birth')
                                             <span style="color:red;"><b>{{ $message }}</b></span>
-                                           @enderror
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-lg-6 col-sm-6">
@@ -170,10 +171,28 @@
                                         <input type="text" name="current_location" class="form-control"
                                             id="current_location" value="{{ old('current_location') }}"
                                             placeholder="Enter current location">
-                                            @error('current_location')
+                                        @error('current_location')
                                             <span style="color:red;"><b>{{ $message }}</b></span>
-                                           @enderror
+                                        @enderror
                                     </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="mb-3">
+                                        <label class="form-label">
+                                            <b>
+                                                About me
+                                                <span style="color:red;"><b>*</b></span>
+                                            </b>
+                                        </label>
+                                        <textarea id="about_me" name="about_me" class="form-control">
+                                            
+                                         </textarea>
+                                         @error('about_me')
+                                         <span style="color:red;"><b>{{ $message }}</b></span>
+                                         @enderror
+                                        </div>
                                 </div>
                             </div>
                             <div class="row">
@@ -182,7 +201,7 @@
                                         <label class="form-label" for="height"><b>Height (CM)</b></label>
                                         <input type="text" name="height" class="form-control" id="height"
                                             value="{{ old('height') }}" placeholder="Enter height">
-                                        
+
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-lg-6 col-sm-6">
@@ -199,24 +218,56 @@
                                         <label class="form-label" for="images"><b>Image </b>&nbsp;<span
                                                 style="color:red;">*
                                             </span></label>
-                                        <input type="file" name="images[]"  multiple class="form-control" 
-                                            >
-                                            @error('images')
+                                        <input type="file" name="images[]" multiple class="form-control">
+                                        @error('images')
                                             <span style="color:red;"><b>{{ $message }}</b></span>
-                                           @enderror
+                                        @enderror
                                     </div>
                                 </div>
-                                {{-- <div class="col-md-6 col-lg-6 col-sm-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="status"><b>Active</b>&nbsp;<span
-                                                style="color:red;">*
-                                            </span></label>
-                                        <input type="checkbox" name="status"  id="status"
-                                        />
-                        
-                                    </div>
-                                </div> --}}
+                                  {{-- <div class="col-md-6 col-lg-6 col-sm-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="images"><b>Work Reel 1</b></label>
+                                            <input type="text" class="form-control" name="work_reel1"
+                                                placeholder="Work Reel 1"
+                                                value="{{ old('work_reel1')}}"/>
+                                            @error('work_reel1')
+                                                <span class="text-danger">
+                                                    {{ $message }}
+                                                </span>
+                                            @enderror
+                                        </div>
+                                  </div> --}}
+                               
                             </div>
+                            {{-- <div class="row">
+                                <div class="col-md-6 col-lg-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="images"><b>Work Reel 2</b></label>
+                                        <input type="text" class="form-control" name="work_reel2"
+                                            placeholder="Work Reel 2"
+                                            value="{{ old('work_reel2')}}" />
+                                        @error('work_reel2')
+                                            <span class="text-danger">
+                                                {{ $message }}
+                                            </span>
+                                        @enderror
+                                    </div>
+                              </div>
+                               <div class="col-md-6 col-lg-6 col-sm-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="images"><b>Work Reel 3</b></label>
+                                            <input type="text" class="form-control" name="work_reel3"
+                                                placeholder="Work Reel 3"
+                                                value="{{ old('work_reel3')}}" />
+                                            @error('work_reel3')
+                                                <span class="text-danger">
+                                                    {{ $message }}
+                                                </span>
+                                            @enderror
+                                        </div>
+                                </div>
+                               
+                            </div> --}}
                             <center>
                                 <input type="submit" class="btn btn-danger" value="Save" />
                             </center>
@@ -224,10 +275,10 @@
                         <hr />
                         <div class="row">
                             <div class="col-lg-6">
-                             
+
                             </div>
                             <div class="col-lg-6">
-                              
+
                             </div>
                         </div>
                     </div>
@@ -237,7 +288,7 @@
     </section>
     <script src="{{ asset('assets/intl-telephone/js/intlTelInput.js') }}" type="text/javascript"></script>
     <script>
-         var selectedFlag = 'in'
+        var selectedFlag = 'in'
         $("#mobile_number").intlTelInput({
             //preferredCountries: ['in','ae', 'us'],
             preferredCountries: ['in', 'ae', 'us'],
@@ -250,6 +301,52 @@
         $("#mobile_number").on("countrychange", function(e, countryData) {
             $("#phone_country_code").val(countryData.dialCode);
         });
- 
-   </script>
+
+        /*Summernotes*/
+           $(document).ready(function() {
+            $('#about_me').summernote({
+                placeholder: 'Enter movie description goes here..',
+                // tabsize: 2,
+                height: 300,
+                // followingToolbar: true,
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'underline', 'clear']],
+                    ['fontname', ['fontname']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'picture', 'video']],
+                    ['view', ['fullscreen', 'codeview', 'help']],
+                ],
+                popover: {
+                    image: [
+                        ['image', ['resizeFull', 'resizeHalf', 'resizeQuarter', 'resizeNone']],
+                        ['float', ['floatLeft', 'floatRight', 'floatNone']],
+                        ['remove', ['removeMedia']]
+                    ],
+                    link: [
+                        ['link', ['linkDialogShow', 'unlink']]
+                    ],
+                    table: [
+                        ['add', ['addRowDown', 'addRowUp', 'addColLeft', 'addColRight']],
+                        ['delete', ['deleteRow', 'deleteCol', 'deleteTable']],
+                    ],
+                    air: [
+                        ['color', ['color']],
+                        ['font', ['bold', 'underline', 'clear']],
+                        ['para', ['ul', 'paragraph']],
+                        ['table', ['table']],
+                        ['insert', ['link', 'picture']]
+                    ]
+                }
+
+            })
+            //.summernote("code", '{!! old('policy', isset($item->policy) ? $item->policy : '') !!}');
+
+            // var postForm = function() {
+            //     var content = $('textarea[name="policy"]').html($('#policycontent').code());
+            // }
+        });
+    </script>
 @endsection

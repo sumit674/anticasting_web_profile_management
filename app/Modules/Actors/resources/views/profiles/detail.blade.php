@@ -161,7 +161,7 @@
 
         .image-container {
             width: 330px !important;
-            height: 650px !important;
+            height: 730px !important;
             background-color: #fff;
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -215,12 +215,12 @@
         }
 
         /* .img-select-container img hover:{
-                                        width: 100% !important;
-                                        display: inline-block;
-                                        border: 1px solid black;
-                                        opacity: 0.4;
+                                                                width: 100% !important;
+                                                                display: inline-block;
+                                                                border: 1px solid black;
+                                                                opacity: 0.4;
 
-                                    } */
+                                                            } */
         .img-select .active {
             border: 1px dotted black;
             height: 50px !important;
@@ -239,6 +239,100 @@
 
         .actor-name {
             color: #26247b;
+            font-size:24px;
+        }
+        .fa-brands{
+            padding-left: 20px;
+            font-size:24px;
+            color: #26247b;
+        }
+
+        /*Rateing Css*/
+
+        * {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        *:before,
+        *:after {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        .clearfix {
+            clear: both;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        pre {
+            display: block;
+            padding: 9.5px;
+            margin: 0 0 10px;
+            font-size: 13px;
+            line-height: 1.42857143;
+            color: #333;
+            word-break: break-all;
+            word-wrap: break-word;
+            background-color: #F5F5F5;
+            border: 1px solid #CCC;
+            border-radius: 4px;
+        }
+        .success-box {
+            margin: 0px 0;
+            border: 1px solid #eee;
+            background: #f9f9f9;
+        }
+
+        .success-box img {
+            margin-right: 10px;
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .success-box>div {
+            vertical-align: top;
+            display: inline-block;
+            color: #888;
+        }
+
+
+
+        /* Rating Star Widgets Style */
+        .rating-stars ul {
+            list-style-type: none;
+            padding: 0;
+
+            -moz-user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .rating-stars ul>li.star {
+            display: inline-block;
+
+        }
+
+        /* Idle State of the stars */
+        .rating-stars ul>li.star>i.fa {
+            font-size:24px;
+            /* Change the size of the stars */
+            color: #ccc;
+            /* Color on idle state */
+        }
+
+        /* Hover state of the stars */
+        .rating-stars ul>li.star.hover>i.fa {
+            color: red;
+        }
+
+        /* Selected state of the stars */
+        .rating-stars ul>li.star.selected>i.fa {
+            color: #FF912C;
         }
     </style>
 @endsection
@@ -263,7 +357,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
@@ -271,7 +364,36 @@
         <div id="popover-content">
             <div class="popover-header-section" id="popoverHeader">
                 <div class="popover-header">
-                    <b><span class="actor-name">{{ $item->first_name . ' ' . $item->last_name }}</span></b>
+                    <b><span class="actor-name">{{ $item->first_name . ' ' . $item->last_name }}</span> </b>
+                    <b><span class="fa-brands fa-facebook"></span></b>
+                    <b><span class="fa-brands fa-square-instagram"></span></b>
+                    <div class='text-message text-center' style="margin-top:-23px;">
+                        <b></b>
+                    </div>
+                    <div class="text-right rating-widget h4 " style="margin-top:-23px;" id="close-yt">
+                       
+                            <!-- Rating Stars Box -->
+                            <div class='rating-stars text-right'>
+                               
+                                <ul id='stars'>
+                                    <li class='star' title='Poor' data-value='1'>
+                                        <i class='fa fa-star fa-fw'></i>
+                                    </li>
+                                    <li class='star' title='Fair' data-value='2'>
+                                        <i class='fa fa-star fa-fw'></i>
+                                    </li>
+                                    <li class='star' title='Good' data-value='3'>
+                                        <i class='fa fa-star fa-fw'></i>
+                                    </li>
+                                    <li class='star' title='Excellent' data-value='4'>
+                                        <i class='fa fa-star fa-fw'></i>
+                                    </li>
+                                    <li class='star' title='WOW!!!' data-value='5'>
+                                        <i class='fa fa-star fa-fw'></i>
+                                    </li>
+                                </ul>
+                            </div>
+                    </div>
                 </div>
             </div>
             <div class="row">
@@ -342,7 +464,7 @@
                                                             @else
                                                                 <div class="d-flex justify-content-center">
                                                                     <img src="{{ asset('assets/website/images/youtube.png') }}"
-                                                                        alt="" width="100%">
+                                                                        alt="" width="40%">
                                                                 </div>
                                                             @endif
                                                         </div>
@@ -355,102 +477,87 @@
                                     </div>
                                     <div class="col-9">
                                         <div class="row">
-                                            <div class="col-6">
-                                                <div
-                                                    class="c-performers-quick-view__links g-hidden-sm g-col-md-4 g-col-lg-4">
-                                                    <div class="c-basic-info-section__edit-panel">
-                                                        <div class="c-edit-panel">
-                                                            <h4 class="c-edit-panel__header">Details</h4>
-                                                            <div class="c-edit-panel__controls"></div>
-                                                        </div>
-                                                    </div>
-                                                    <a href="#" target="_blank"
-                                                        class="c-icon-text-link c-icon-text-link--primary" tabindex="0"
-                                                        aria-label="Email profile">
-                                                        <span class="c-icon-text-link__icon">
-                                                            <i class="fa fa-envelope" aria-hidden="true"></i>
-                                                        </span>
-                                                        <span
-                                                            class="c-icon-text-link__text c-icon-text-link__text--icon">Email
-                                                            profile</span>
-                                                    </a>
-                                                    <a href="https://www.spotlight.com/2696-7866-2777?action=print"
-                                                        target="_blank" class="c-icon-text-link c-icon-text-link--primary"
-                                                        tabindex="0" aria-label="Print profile">
-                                                        <span class="c-icon-text-link__icon">
-                                                            <i class="fa fa-print" aria-hidden="true"></i>
-                                                        </span>
-                                                        <span
-                                                            class="c-icon-text-link__text c-icon-text-link__text--icon">Print
-                                                            profile</span>
-                                                    </a>
-                                                    <a href="#" target="_blank"
-                                                        class="c-icon-text-link c-icon-text-link--primary" tabindex="0"
-                                                        aria-label="View/Add notes">
-                                                        <span class="c-icon-text-link__icon">
-                                                            <i class="fa fa-sticky-note" aria-hidden="true"></i>
-                                                        </span>
-                                                        <span
-                                                            class="c-icon-text-link__text c-icon-text-link__text--icon">View/Add
-                                                            notes</span>
-                                                    </a>
-                                                    <a href="https://mediaviewer.spotlight.com/artist/showreels?artistRef=F291388"
-                                                        target="_blank" class="c-icon-text-link c-icon-text-link--primary"
-                                                        tabindex="0" aria-label="2 Showreels">
-                                                        <span class="c-icon-text-link__icon">
-                                                            <i class="fa fa-video" aria-hidden="true"></i>
-                                                        </span>
-                                                        <span class="c-icon-text-link__text c-icon-text-link__text--icon">2
-                                                            Showreels</span>
-                                                    </a>
-                                                    <a href="https://mediaviewer.spotlight.com/artist/audioclips?artistRef=F291388"
-                                                        target="_blank" class="c-icon-text-link c-icon-text-link--primary"
-                                                        tabindex="0" aria-label="5 Audio">
-                                                        <span class="c-icon-text-link__icon">
-                                                            <i class="fas fa-microphone" aria-hidden="true"></i>
-                                                        </span>
-                                                        <span class="c-icon-text-link__text c-icon-text-link__text--icon">5
-                                                            Audio</span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <div class="card__content">
-                                                    <div class="c-basic-info-section__edit-panel">
-                                                        <div class="c-edit-panel">
-                                                            <h4 class="c-edit-panel__header">Details</h4>
-                                                            <div class="c-edit-panel__controls"></div>
-                                                        </div>
-                                                    </div>
-                                                    <p class="card__title"><label class="fw-bold"><b>Email:
-                                                            </b></label><span class="c-green text-break text-truncate">
-                                                            {{ $item?->profile?->email }}</span>
-
-                                                    </p>
-                                                    <p class="card__title"><label class="fw-bold"><b>Ethnicity:
-                                                            </b></label><span class="c-green text-break text-truncate">
-                                                            {{ $item?->profile?->ethnicity }}</span>
-
-                                                    </p>
-                                                    <p class="card__title">
-                                                        <label class="fw-bold"><b>Gender: </b></label>
-                                                        <span class="c-green text-break text-truncate">
-                                                            {{ $item?->profile?->gender }}</span>
-                                                    </p>
-                                                    <p class="card__title">
-                                                        <label class="fw-bold"><b>Date Of Birth: </b></label>
-                                                        <span class="c-green text-break text-truncate">
-                                                            {{ $item?->profile?->date_of_birth }}</span>
-                                                    </p>
-
-                                                    <p class="card__title">
-                                                        <label class="fw-bold "><b>Current Location: </b></label>
-                                                        <span class="c-green text-break text-truncate">
-                                                            {{ $item?->profile?->current_location }}</span>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
+                                            <div class="col-md-12 col-sm-12">
+                                                 <div class="card__content">
+                                                     <div class="c-basic-info-section__edit-panel">
+                                                         <div class="c-edit-panel  justify-content-center">
+                                                             <h4 class="c-edit-panel__header ">Details</h4>
+                                                             <div class="c-edit-panel__controls"></div>
+                                                         </div>
+                                                     </div>
+                                                 </div>
+                                                 <div class="row">
+                                                     <div class="col-md-6 col-sm-6">
+                                                         <div class="card__content">
+ 
+                                                             <p class="card__title"><label class="fw-bold"><b>Email:
+                                                                     </b></label><span
+                                                                     class="c-green text-break text-truncate">
+                                                                     {{ $item?->profile?->email }}</span>
+ 
+                                                             </p>
+                                                             <p class="card__title"><label class="fw-bold"><b>Ethnicity:
+                                                                     </b></label><span
+                                                                     class="c-green text-break text-truncate">
+                                                                     {{ $item?->profile?->ethnicity }}</span>
+ 
+                                                             </p>
+                                                             <p class="card__title">
+                                                                 <label class="fw-bold"><b>Gender: </b></label>
+                                                                 <span class="c-green text-break text-truncate">
+                                                                     {{ $item?->profile?->gender }}</span>
+                                                             </p>
+                                                             <p class="card__title">
+                                                                 <label class="fw-bold"><b>Date Of Birth: </b></label>
+                                                                 <span class="c-green text-break text-truncate">
+                                                                     {{ $item?->profile?->date_of_birth }}</span>
+                                                             </p>
+ 
+                                                             <p class="card__title">
+                                                                 <label class="fw-bold "><b>Current Location: </b></label>
+                                                                 <span class="c-green text-break text-truncate">
+                                                                     {{ $item?->profile?->current_location }}</span>
+                                                             </p>
+                                                         </div>
+                                                     </div>
+                                                     <div class="col-md-6 col-sm-6">
+                                                         <div class="card__content">
+ 
+                                                             <p class="card__title"><label class="fw-bold"><b>Mobile:
+                                                                     </b></label><span
+                                                                     class="c-green text-break text-truncate">
+                                                                     {{ $item?->mobile_no }}</span>
+ 
+                                                             </p>
+                                                             @php
+                                                                 $dateOfBirth = $item?->profile?->date_of_birth;
+                                                                 //$age = \Carbon\Carbon::parse($dateOfBirth)->diff(\Carbon\Carbon::now())->format('%y years, %m months and %d days'); //\Carbon\Carbon::parse($dateOfBirth)->age;
+                                                                 $age = \Carbon\Carbon::parse($dateOfBirth)
+                                                                     ->diff(\Carbon\Carbon::now())
+                                                                     ->format('%y years');
+                                                             @endphp
+                                                             <p class="card__title"><label class="fw-bold"><b>Age:
+                                                                     </b></label><span
+                                                                     class="c-green text-break text-truncate">
+                                                                     {{$age}}</span>
+ 
+                                                             </p>
+                                                             <p class="card__title">
+                                                                 <label class="fw-bold"><b>Weight: </b></label>
+                                                                 <span class="c-green text-break text-truncate">
+                                                                     {{ $item?->profile?->weight . ' ' . 'KG'}} </span>
+                                                             </p>
+                                                             <p class="card__title">
+                                                                 <label class="fw-bold"><b>Height: </b></label>
+                                                                 <span class="c-green text-break text-truncate">
+                                                                     {{ $item?->profile?->height. ' '.'CM' }}</span>
+                                                             </p>
+                                                         </div>
+                                                     </div>
+                                                 </div>
+ 
+                                             </div>
+                                         </div>
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class="g-content-area p-main-page__content">
@@ -460,7 +567,7 @@
                                                             <div class="c-edit-panel__controls"></div>
                                                         </div>
                                                         <div class="c-further-information">
-                                                            {{ $item?->profile?->about_me }}
+                                                            {!! $item?->profile?->about_me !!}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -618,6 +725,81 @@
             }
             slides[slideIndex - 1].style.display = "block";
             captionText.innerHTML = dots[slideIndex - 1].alt;
+        }
+    </script>
+    <script>
+        $(document).ready(function() {
+
+            /* 1. Visualizing things on Hover - See next part for action on click */
+            $('#stars li').on('mouseover', function() {
+                var onStar = parseInt($(this).data('value'), 10); // The star currently mouse on
+
+                // Now highlight all the stars that's not after the current hovered star
+                $(this).parent().children('li.star').each(function(e) {
+                    if (e < onStar) {
+                        $(this).addClass('hover');
+                    } else {
+                        $(this).removeClass('hover');
+                    }
+                });
+
+            }).on('mouseout', function() {
+                $(this).parent().children('li.star').each(function(e) {
+                    $(this).removeClass('hover');
+                });
+            });
+
+
+            /* 2. Action to perform on click */
+            $('#stars li').on('click', function() {
+                var onStar = parseInt($(this).data('value'), 10); // The star currently selected
+                var stars = $(this).parent().children('li.star');
+
+                for (i = 0; i < stars.length; i++) {
+                    $(stars[i]).removeClass('selected');
+                }
+
+                for (i = 0; i < onStar; i++) {
+                    $(stars[i]).addClass('selected');
+                }
+
+                // JUST RESPONSE (Not needed)
+                var ratingValue = parseInt($('#stars li.selected').last().data('value'), 10);
+                var msg = "";
+                if (ratingValue > 1) {
+                    msg = "Thanks! You rated this " + ratingValue + " stars.";
+                } else {
+                    msg = "You rated this " + ratingValue + " stars.";
+                }
+                responseMessage(msg, ratingValue);
+
+            });
+
+
+        });
+
+
+        function responseMessage(msg, ratingValue) {
+            $('.text-message b').html("<span>" + msg + "</span>");
+
+            $.ajax({
+                url: "{{ route('admin.rating') }}",
+                type: "GET",
+                data: {
+                    'rateingValue': ratingValue,
+                    'user_id':'{{$item->id}}',
+
+                },
+                dataType:'json',
+                success: function(resp) {
+                   alert(resp.message);
+                },
+                error: function(xhr, ajaxOptions, thrownError) {
+                    console.log(xhr.status);
+                    console.log(thrownError);
+                }
+            })
+
         }
     </script>
 @endsection

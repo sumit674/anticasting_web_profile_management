@@ -182,25 +182,7 @@
     //         }
     //     });
     // });
-    /*Add a Actor Id for bucket list*/
-    var array = [];
 
-    function GetBucketId(id) {
-        if (array.indexOf(id) === -1) {
-            array.push(id);
-            $('#bucket-form').show();
-        } else {
-            let index = array.indexOf(id);
-            array.splice(index, 1);
-        }
-        document.getElementById('actor-ids').innerHTML = array.length;
-        document.querySelector('#bucket-item').value = array.join(',');
-
-        //  alert(array.join(','))
-        if (array.length === 0) {
-            $('#bucket-form').hide();
-        }
-    }
     $("#selecter2").select2({
         tags: true
     });
@@ -263,5 +245,25 @@
         //Setting Value
         $(".ethnicity-value-text").text(selValue);
     });
+    /*Add a Actor Id for bucket list*/
+    var array = [];
+
+    function GetBucketId(id) {
+        alert("Mahesh")
+        if (array.indexOf(id) === -1) {
+            array.push(id);
+            $('#bucket-form').show();
+        } else {
+            let index = array.indexOf(id);
+            array.splice(index, 1);
+        }
+        document.getElementById('actor-ids').innerHTML = array.length;
+        document.querySelector('#bucket-item').value = array.join(',');
+
+        //  alert(array.join(','))
+        if (array.length === 0) {
+            $('#bucket-form').hide();
+        }
+    }
 </script>
 @endsection

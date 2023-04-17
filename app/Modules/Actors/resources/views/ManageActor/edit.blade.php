@@ -184,6 +184,26 @@
                                 </div>
                             </div>
                             <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="mb-3">
+                                        <label class="form-label">
+                                            <b>
+                                                About me
+                                                <span style="color:red;"><b>*</b></span>
+                                            </b>
+                                        </label>
+                                        <textarea id="about_me" name="about_me" class="form-control">
+                                            @isset($items?->profile?->about_me)
+                                              {!!$items?->profile?->about_me!!}
+                                            @endisset
+                                         </textarea>
+                                         @error('about_me')
+                                         <span style="color:red;"><b>{{ $message }}</b></span>
+                                         @enderror
+                                        </div>
+                                </div>
+                            </div>
+                            <div class="row">
                                 <div class="col-md-6 col-lg-6 col-sm-6">
                                     <div class="form-group">
                                         <label class="form-label" for="height"><b>Height (CM)</b></label>
@@ -218,15 +238,58 @@
                                            @enderror
                                     </div>
                                 </div>
-                                <div class="col-md-6 col-lg-6 col-sm-6">
+                                {{-- <div class="col-md-6 col-lg-6 col-sm-6">
                                     <div>
                                         @isset($items?->images[0]?->image)
                                         <img src="{{$items?->images[0]?->image}}"  alt="no image" width="100" height="75">
                                         @endisset
                                       
                                     </div>
-                                </div>
+                                </div> --}}
+                                {{-- <div class="col-md-6 col-lg-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="images"><b>Work Reel 1</b></label>
+                                        <input type="text" class="form-control" name="work_reel1"
+                                            placeholder="Work Reel 1"
+                                            value="{{ old('work_reel1')}}"/>
+                                        @error('work_reel1')
+                                            <span class="text-danger">
+                                                {{ $message }}
+                                            </span>
+                                        @enderror
+                                    </div>
+                              </div> --}}
                             </div>
+                            {{-- <div class="row">
+                                <div class="col-md-6 col-lg-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="images"><b>Work Reel 2</b></label>
+                                        <input type="text" class="form-control" name="work_reel2"
+                                            placeholder="Work Reel 2"
+                                            value="{{ old('work_reel2')}}" />
+                                        @error('work_reel2')
+                                            <span class="text-danger">
+                                                {{ $message }}
+                                            </span>
+                                        @enderror
+                                    </div>
+                              </div>
+                               <div class="col-md-6 col-lg-6 col-sm-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="images"><b>Work Reel 3</b></label>
+                                            <input type="text" class="form-control" name="work_reel3"
+                                                placeholder="Work Reel 3"
+                                                value="{{ old('work_reel3')}}" />
+                                            @error('work_reel3')
+                                                <span class="text-danger">
+                                                    {{ $message }}
+                                                </span>
+                                            @enderror
+                                        </div>
+                                </div>
+                               
+                            </div> --}}
+                           
                             <center>
                                 <input type="submit" class="btn btn-success" value="Update" />
                             </center>
@@ -260,6 +323,53 @@
         $("#mobile_number").on("countrychange", function(e, countryData) {
             $("#phone_country_code").val(countryData.dialCode);
             // $("#mobile_number").val('{{ $item->mobile_no }}')
+        });
+
+         /*Summernotes*/
+         $(document).ready(function() {
+            $('#about_me').summernote({
+                placeholder: 'Enter movie description goes here..',
+                // tabsize: 2,
+                height: 300,
+                // followingToolbar: true,
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'underline', 'clear']],
+                    ['fontname', ['fontname']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'picture', 'video']],
+                    ['view', ['fullscreen', 'codeview', 'help']],
+                ],
+                popover: {
+                    image: [
+                        ['image', ['resizeFull', 'resizeHalf', 'resizeQuarter', 'resizeNone']],
+                        ['float', ['floatLeft', 'floatRight', 'floatNone']],
+                        ['remove', ['removeMedia']]
+                    ],
+                    link: [
+                        ['link', ['linkDialogShow', 'unlink']]
+                    ],
+                    table: [
+                        ['add', ['addRowDown', 'addRowUp', 'addColLeft', 'addColRight']],
+                        ['delete', ['deleteRow', 'deleteCol', 'deleteTable']],
+                    ],
+                    air: [
+                        ['color', ['color']],
+                        ['font', ['bold', 'underline', 'clear']],
+                        ['para', ['ul', 'paragraph']],
+                        ['table', ['table']],
+                        ['insert', ['link', 'picture']]
+                    ]
+                }
+
+            })
+            //.summernote("code", '{!! old('policy', isset($item->policy) ? $item->policy : '') !!}');
+
+            // var postForm = function() {
+            //     var content = $('textarea[name="policy"]').html($('#policycontent').code());
+            // }
         });
     </script>
 @endsection

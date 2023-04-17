@@ -33,7 +33,6 @@
         .popover {
             max-width: 80% !important;
         }
-
     </style>
 @endsection
 @section('content')
@@ -63,67 +62,110 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-lg-12 p-r-0 title-margin-right">
+                    @include('Actors::bucket')
+                </div>
+            </div>
         </div>
     </div>
+    <br />
     <section id="main-content">
-            <!-- /# .container -->
-            <div class="container">
-                <div class="bg-white rounded d-flex align-items-center justify-content-between" id="header">
-                    @include('Actors::profiles.topbar')
-                </div>
-                <div id="content" class="my-3">
-                    @include('Actors::profiles.filter')
-                    <div id="products">
-                        <div class="row mx-0">
-                            @if (isset($actors))
-                                @foreach ($actors as $k => $item)
-                                    @php
-                                        $dateOfBirth = $item?->profile?->date_of_birth;
-                                        //$age = \Carbon\Carbon::parse($dateOfBirth)->diff(\Carbon\Carbon::now())->format('%y years, %m months and %d days'); //\Carbon\Carbon::parse($dateOfBirth)->age;
-                                        $age = \Carbon\Carbon::parse($dateOfBirth)->diff(\Carbon\Carbon::now())->format('%y years');
-                                    @endphp
-                                    <div class="col-lg-3 col-md-6 pt-md-0 pt-3">
-                                        <div class="card d-flex flex-column align-items-center actor-grid">
-                                            <div class="card-img c-card__image-container">
-                                                <div style="cursor: pointer;" data-toggle="popover" data-poload="{{ route('admin.actors.detail', $item->id) }}">
-                                                    @isset($item->images[0]->image)
+        <!-- /# .container -->
+        <div class="container">
+            <div class="bg-white rounded d-flex align-items-center justify-content-between" id="header">
+                @include('Actors::profiles.topbar')
+            </div>
+            <div id="content" class="my-3">
+                @include('Actors::profiles.filter')
+                <div id="products">
+                    <div class="row mx-0">
+                        @php
+                            $avgrating = 0;
+                        @endphp
+                        @if (isset($actors))
+                            @foreach ($actors as $k => $item)
+                                @php
+                                    $dateOfBirth = $item?->profile?->date_of_birth;
+                                    //$age = \Carbon\Carbon::parse($dateOfBirth)->diff(\Carbon\Carbon::now())->format('%y years, %m months and %d days'); //\Carbon\Carbon::parse($dateOfBirth)->age;
+                                    $age = \Carbon\Carbon::parse($dateOfBirth)
+                                        ->diff(\Carbon\Carbon::now())
+                                        ->format('%y years');
+                                @endphp
+                                <div class="col-lg-3 col-sm-6 col-md-6 pt-md-0 pt-3">
+                                    <div class="card d-flex flex-column align-items-center actor-grid">
+                                        <div class="card-img c-card__image-container">
+                                            <div style="cursor: pointer;" data-toggle="popover" {{-- data-poload="{{ route('admin.actors.detail', $item->id) }}" --}}>
+                                                @isset($item->images[0]->image)
+                                                    <a href="{{ route('admin.profile-detail', $item->id) }}" target="__blank">
                                                         <img class="c-card__image" src="{{ $item->images[0]?->image }}" />
-                                                    @else
-                                                        <img class="c-card__image" src="https://source.unsplash.com/random/234x156/?nature" />
-                                                    @endisset
+                                                    </a>
+                                                @else
+                                                    <a href="{{ route('admin.profile-detail', $item->id) }}">
+                                                        <img class="c-card__image"
+                                                            src="https://source.unsplash.com/random/234x156/?nature" />
+                                                    </a>
+                                                @endisset
+
+                                            </div>
+                                            <div>
+                                                <label class="product-discount-label check-container"
+                                                    for="actor-{{ $item->id }}">
+                                                    {{-- <span class="product-discount-label"> --}}
+                                                    <input type="checkbox" name="actor" id="actor-{{ $item->id }}"
+                                                        value="{{ $item->id }}" class="actor-item"
+                                                        data-id="{{ $item->id }}" onclick="GetBucketId({{$item->id}})"/>
+                                                    {{-- </span> --}}
+                                                    <span class="mark"></span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="c-card__content">
+                                            <div class="c-card__name">
+                                                <label><a
+                                                        href="{{ route('admin.profile-detail', [$item?->id]) }}"class="c-card__name-link"
+                                                        target="_blank">{{ $item?->first_name . ' ' . $item?->last_name }}</a></label>
+                                            </div>
+                                            <div class="c-card__title">
+                                                <label>Mobile no:</label> {{ $item?->mobile_no }}
+                                            </div>
+                                            <div class="c-card__title">
+                                                <label>Age:</label> {{ $age }}
+                                            </div>
+                                            <div class="c-card__title">
+                                                <label>Height:</label>
+                                                {{ $item?->profile?->height . ' ' . ' ' }} cm
+                                            </div>
+                                            <div class="c-card__title">
+                                                <label>Weight:</label> {{ $item?->profile?->weight . ' ' . ' ' }}kg
+                                            </div>
+                                            <div class="c-card__title">
+                                                @if (isset($item?->rating))
+                                                    <i class="fa-solid fa-star text-warning"></i>{{ ' ' . $item?->rating }}
+                                                @else
+                                                    <i class="fa-solid fa-star"></i>
+                                                @endif
+
+                                            </div>
+                                            <div class="d-flex align-items-center justify-content-center colors my-2">
+                                                <div class="price">
+                                                    <span style="cursor: pointer;" data-toggle="popover"
+                                                        data-poload="{{ route('admin.actors.video', $item->id) }}">
+                                                        <i class="fa fa-video-camera fa-2x" aria-hidden="true"></i>
+                                                    </span>
+                                                    &nbsp;&nbsp;
+                                                    <span style="cursor: pointer;" data-toggle="popover"
+                                                        {{-- data-poload="{{ route('admin.actors.detail', $item->id) }}" --}}>
+                                                        <a href="{{ route('admin.profile-detail', $item->id) }}"
+                                                            target="__blank">
+                                                            <i class="fa-solid fa-eye fa-2x" aria-hidden="true"></i>
+                                                        </a>
+                                                    </span>
                                                 </div>
                                             </div>
-                                            <div class="c-card__content">
-                                                <div class="c-card__name">
-                                                    <label><a href="{{ route('admin.profile-detail',[$item?->id])}}"class="c-card__name-link" target="_blank">{{ $item?->first_name . ' ' . $item?->last_name }}</a></label>
-                                                </div>
-                                                <div class="c-card__title">
-                                                    <label>Mobile no:</label> {{ $item?->mobile_no }}
-                                                </div>
-                                                <div class="c-card__title">
-                                                    <label>Age:</label> {{ $age }}
-                                                </div>
-                                                <div class="c-card__title">
-                                                    <label>Height:</label>
-                                                    {{ $item?->profile?->height . ' ' . ' ' }} cm
-                                                </div>
-                                                <div class="c-card__title">
-                                                    <label>Weight:</label> {{ $item?->profile?->weight . ' ' . ' ' }}kg
-                                                </div>
-                                                <div class="d-flex align-items-center justify-content-center colors my-2">
-                                                    <div class="price">
-                                                        <span style="cursor: pointer;" data-toggle="popover"
-                                                            data-poload="{{ route('admin.actors.video', $item->id) }}">
-                                                            <i class="fa fa-video-camera fa-2x" aria-hidden="true"></i>
-                                                        </span>
-                                                        &nbsp;&nbsp;
-                                                        <span style="cursor: pointer;" data-toggle="popover"
-                                                            data-poload="{{ route('admin.actors.detail', $item->id) }}">
-                                                            <i class="fa-solid fa-eye fa-2x" aria-hidden="true"></i>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                                {{-- <div
+
+
+                                            {{-- <div
                                                         class="d-flex align-items-center justify-content-center colors my-2">
                                                         <div class="btn-group" data-toggle="buttons" data-tooltip="tooltip"
                                                             data-placement="right" title="choose color">
@@ -149,21 +191,41 @@
                                                             </label>
                                                         </div>
                                                     </div> --}}
-                                            </div>
                                         </div>
                                     </div>
-                                @endforeach
-                            @endif
-                        </div>
+                                </div>
+                            @endforeach
+                        @endif
                     </div>
                 </div>
             </div>
+        </div>
     </section>
 @endsection
 @section('footer')
     <script src="{{ asset('assets/admin/js/profiles/main.js') }}"></script>
 
     <script>
+        /*bucket List*/
+        var array = [];
+
+        function GetBucketId(id) {
+           
+            if (array.indexOf(id) === -1) {
+                array.push(id);
+                $('#bucket-form').show();
+            } else {
+                let index = array.indexOf(id);
+                array.splice(index, 1);
+            }
+            document.getElementById('actor-ids').innerHTML = array.length;
+            document.querySelector('#bucket-item').value = array.join(',');
+
+            //  alert(array.join(','))
+            if (array.length === 0) {
+                $('#bucket-form').hide();
+            }
+        }
         $('body').on('click', function(e) {
             $('[data-toggle="popover"]').each(function() {
                 if (!$(this).is(e.target) &&
@@ -207,11 +269,18 @@
             document.querySelector('#max_age').value = $("#slider-range").slider("values", 1);
             document.querySelector('#min_age').value = $("#slider-range").slider("values", 0);
         });
+        /*Select box list dropdown */
+        $("#selecter2").select2({
+            tags: true
+        });
         $(function() {
             $('.ethnicity').fSelect();
         });
         $(function() {
             $('.gender').fSelect();
+        });
+        $(function() {
+            $('.rating').fSelect();
         });
     </script>
 @endsection

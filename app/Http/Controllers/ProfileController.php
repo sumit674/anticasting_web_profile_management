@@ -144,6 +144,7 @@ class ProfileController extends Controller
 
     public function uploadUserImage(Request $request)
     {
+       
       
         $userId = auth()->user()->id;
         if ($request->file('picture')) {
@@ -157,7 +158,7 @@ class ProfileController extends Controller
             }
             $images = $request->file('picture');
            
-         //dd($images);
+    
             $filename = $images->getClientOriginalName();
             $image_name = time() . '-' . str_replace(' ', '-', $filename);
             $image_name = str_replace(['(', ')'], '', $image_name);

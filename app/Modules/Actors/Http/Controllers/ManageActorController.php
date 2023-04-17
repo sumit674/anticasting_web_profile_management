@@ -34,6 +34,7 @@ class ManageActorController extends Controller
                 'email' => 'required|unique:users,email',
                 'current_location' => 'required',
                 'mobile_no' => 'required',
+                'about_me'=>'required'
             ],
             [
                 'first_name.required' => 'Please enter a firstname',
@@ -44,6 +45,7 @@ class ManageActorController extends Controller
                 'gender.required' => 'Please select  gender',
                 'current_location.required' => 'Please enter a current location',
                 'mobile_no.required' => 'Please enter a mobile number',
+                'about_me.required' => 'Please enter a about me',
 
             ],
         );
@@ -64,6 +66,7 @@ class ManageActorController extends Controller
         $user_profile->ethnicity = $request->ethnicity;
         $user_profile->email = $request->email;
         $user_profile->current_location = $request->current_location;
+        $user_profile->about_me = $request->about_me;
         $user_profile->gender = $request->gender;
         $user_profile->height = $request->height;
         $user_profile->weight = $request->weight;
@@ -116,6 +119,7 @@ class ManageActorController extends Controller
                 'email' => 'required|unique:users,email,' . $user_id,
                 'current_location' => 'required',
                 'mobile_number' => 'required',
+                'about_me'=>'required'
             ],
             [
                 'first_name.required' => 'Please enter a firstname',
@@ -127,6 +131,7 @@ class ManageActorController extends Controller
                 'current_location.required' => 'Please enter a current location',
                 'mobile_number.required' => 'Please enter a mobile number',
                 // 'mobile_number.max' => 'Mobile number should be 10 digit.',
+                'about_me.required' => 'Please enter a about me',
             ],
         );
         $user = User::where('id', $user_id)->first();
@@ -144,6 +149,7 @@ class ManageActorController extends Controller
         $user_profile->ethnicity = $request->ethnicity;
         $user_profile->email = $request->email;
         $user_profile->current_location = $request->current_location;
+        $user_profile->about_me = $request->about_me;
         $user_profile->gender = $request->gender;
         $user_profile->height = $request->height;
         $user_profile->weight = $request->weight;

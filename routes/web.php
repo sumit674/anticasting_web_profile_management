@@ -64,14 +64,13 @@ Route::group(['prefix' => 'users', 'middleware' => ['web', 'user']], function ()
     Route::post('/userintrovideo', [ProfileController::class, 'IntroVideo'])->name('users.introvideos');
     Route::post('/delete/single/{id}/{user_id}/image', [ImageController::class, 'deleteHeadShotImageSingle'])->name('user.single.image');
     Route::get('/delete/all/{user_id}/image', [ImageController::class, 'deleteHeadShotImageAll'])->name('user.delete-all-headshots');
-
-    Route::get('/view-profile', [\App\Http\Controllers\ViewProfileController::class, 'profileDetails'])->name('users.view.profile');
+    /*View User Profile */
+    Route::get('/view-profile', [ProfileController::class, 'viewProfileDetails'])->name('users.view-profile');
     /*Logout User */
     Route::get('/logout', [LoginController::class, 'logout'])->name('users.logout');
     /* Message*/
     Route::post('message-post', [MessageController::class, 'storeMessage'])->name('users.message');
-    /*View User Profile */
-     Route::get('/view-profile', [ProfileController::class, 'viewProfileDetails'])->name('users.view-profile');
+   
     // Route::get('/message-show',[MessageController::class, 'showMessage'])->name('users.message.show');
 });
 /*
@@ -125,3 +124,5 @@ Route::get('/our-work', [HomeController::class, 'ourWork'])->name('our-work');
  * Captcha
  */
 Route::get('/reload-captcha', [CommonController::class, 'reloadCaptcha']);
+
+ 

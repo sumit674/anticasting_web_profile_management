@@ -7,7 +7,8 @@
     
     <div class="row">
         <div class="col-md-12 col-lg-12 ">
-            <form id="bucket-form" style="display:none" action="{{ route('admin.actors.bucket.store') }}" method="post">
+            <form id="bucket-form" style="display:none;" action="{{ route('admin.actors.bucket.store') }}" method="post">
+                @csrf
                 <div class="row">
                     <div class="col-md-1 col-sm-1 col-lg-1 ">
                         <div class="form-group">
@@ -21,7 +22,6 @@
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-4 col-lg-4">
-                        @csrf
                         <div class="form-group">
                             <label class="form-label">
                                 <b>
@@ -32,13 +32,6 @@
                                 <option value="actor">Actor</option>
                                 <option value="artist">Artist</option>
                             </select>
-                        </div>
-                    </div>
-                    <div class="col-md-1 col-sm-1 col-lg-1">
-                        @csrf
-                        <div class="form-group">
-                            <label class="form-label"><b>Active</b></label>
-                            <input type="checkbox" name="status">
                         </div>
                     </div>
                     <div class="col-md-2 col-sm-2 col-lg-2">

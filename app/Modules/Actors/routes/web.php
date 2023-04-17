@@ -8,7 +8,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'admin']], function (
     Route::any('actors', [ActorsController::class, 'listActors'])->name('admin.actors');
     Route::get('actors/{id}/detail', [ActorsController::class, 'actorDetail'])->name('admin.actors.detail');
     Route::get('actors/{id}/video', [ActorsController::class, 'actorVideo'])->name('admin.actors.video');
-    Route::get('/profile/{id}', [ActorsController::class, 'actorProfileDetails'])->name('admin.profile-detail');
     Route::get('filter-actors', [ActorsController::class, 'filterActorList'])->name('admin.filter-actors');
     Route::get('list-actors', [ManageActorController::class, 'actorList'])->name('admin.actors.mange');
     Route::get('list-actors/create', [ManageActorController::class, 'ActorCreate'])->name('admin.actors.mange.create');
@@ -20,4 +19,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'admin']], function (
     Route::get('list-actors/{id}/delete', [ManageActorController::class, 'ActorDelete'])->name('admin.actors.mange.delete');
     Route::get('list-actors/{id}/delete', [ManageActorController::class, 'ActorDelete'])->name('admin.actors.mange.delete');
     Route::post('bucket-actors/store', [BucketController::class, 'store'])->name('admin.actors.bucket.store');
+    /*Actor Details Page */
+    Route::get('/profile/{id}', [ActorsController::class, 'actorProfileDetails'])->name('admin.profile-detail');
+    Route::get('/rating', [ActorsController::class, 'actorRating'])->name('admin.rating');
+  
 });
+

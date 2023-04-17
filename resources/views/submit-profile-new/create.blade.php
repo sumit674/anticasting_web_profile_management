@@ -63,33 +63,6 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="mb-3">
-                                            <label class="form-label"><b>Email</b></label>
-                                            <input type="email" class="form-control" placeholder="Email" name="email"
-                                                readonly value="{{ old('email', $userInfo->email) }}" />
-
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="mb-3">
-                                            <label class="form-label"><b>Phone number</b></label>
-                                            <div class="input-group mb-3">
-                                                <!--
-                                                                         <span class="input-group-text" style="width:10px;">+</span>
-                                                                                        -->
-                                                <input type="text" class="form-control" name="countryCode" readonly
-                                                    style="width:15px;"
-                                                    value="{{ old('countryCode', $userInfo->countryCode) }}" />
-                                                <input type="text" class="form-control d-flex text-left" name="mobile_no"
-                                                    readonly style="width:248px;"
-                                                    value="{{ old('mobile_no', $userInfo->mobile_no) }}" />
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="mb-3">
                                             <label class="form-label">
                                                 <b>
                                                     Date Of Birth
@@ -112,7 +85,7 @@
                                         <div class="mb-3">
                                             <label class="form-label">
                                                 <b>
-                                                    First name
+                                                   Gender
                                                     <span style="color:red;"><b>*</b></span>
                                                 </b>
                                             </label>
@@ -129,34 +102,6 @@
                                                     Prefer not to say</option>
                                             </select>
                                             @error('gender')
-                                                <span class="text-danger">
-                                                    {{ $message }}
-                                                </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="mb-3">
-                                            <label class="form-label"><b>Height (CM)</b></label>
-                                            <input type="text" class="form-control" placeholder="Enter height"
-                                                name="height"
-                                                value="{{ old('height', isset($userProfile->height) ? $userProfile->height : ' ') }}" />
-                                            @error('height')
-                                                <span class="text-danger">
-                                                    {{ $message }}
-                                                </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="mb-3">
-                                            <label class="form-label"><b>Weight (KG)</b></label>
-                                            <input type="text" class="form-control" placeholder="Enter weight"
-                                                name="weight"
-                                                value="{{ old('weight', isset($userProfile->weight) ? $userProfile->weight : ' ') }}" />
-                                            @error('weight')
                                                 <span class="text-danger">
                                                     {{ $message }}
                                                 </span>
@@ -212,13 +157,65 @@
                                     </div>
                                 </div>
                                 <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <label class="form-label"><b>Email</b></label>
+                                            <input type="email" class="form-control" placeholder="Email" name="email"
+                                                readonly value="{{ old('email', $userInfo->email) }}" />
+
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <label class="form-label"><b>Phone number</b></label>
+                                            <div class="input-group mb-3">
+                                                <!--
+                                                                         <span class="input-group-text" style="width:10px;">+</span>
+                                                                                        -->
+                                                <input type="text" class="form-control" name="countryCode" readonly
+                                                    style="width:15px;"
+                                                    value="{{ old('countryCode', $userInfo->countryCode) }}" />
+                                                <input type="text" class="form-control d-flex text-left" name="mobile_no"
+                                                    readonly style="width:248px;"
+                                                    value="{{ old('mobile_no', $userInfo->mobile_no) }}" />
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <label class="form-label"><b>Height (CM)</b></label>
+                                            <input type="text" class="form-control" placeholder="Enter height"
+                                                name="height"
+                                                value="{{ old('height', isset($userProfile->height) ? $userProfile->height : ' ') }}" />
+                                            @error('height')
+                                                <span class="text-danger">
+                                                    {{ $message }}
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <label class="form-label"><b>Weight (KG)</b></label>
+                                            <input type="text" class="form-control" placeholder="Enter weight"
+                                                name="weight"
+                                                value="{{ old('weight', isset($userProfile->weight) ? $userProfile->weight : ' ') }}" />
+                                            @error('weight')
+                                                <span class="text-danger">
+                                                    {{ $message }}
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
                                     <div class="col-lg-12">
                                         <div class="mb-3">
                                             <label class="form-label">
-                                                <b>
-                                                    About me
-                                                    <span style="color:red;"><b>*</b></span>
-                                                </b>
+                                                <b>About me</b>
                                             </label>
                                              <textarea id="about_me" name="about_me" class="form-control">
                                                 @isset($userProfile->about_me)

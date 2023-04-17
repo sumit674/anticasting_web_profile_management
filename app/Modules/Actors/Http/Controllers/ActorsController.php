@@ -17,6 +17,7 @@ class ActorsController extends Controller
      */
     public function listActors(Request $request)
     {
+       
         $items = User::query();
         $items
             ->where('user_type', '0')
@@ -24,6 +25,7 @@ class ActorsController extends Controller
             ->FilterEthnicty()
             ->FilterGender()
             ->FilterProfile()
+            ->FilterRating()
             ->with('images')
             ->with('profile');
         if ($request->has('sort') && $request->sort == 'oldest') {
@@ -149,5 +151,15 @@ class ActorsController extends Controller
             ->first();
       
         return view('Actors::profiles.detail',compact('item'));
+    }
+    public function actorRating(Request $request){
+        if ($request->user_id && $request->ajax()) {
+              $user = User::where('id',$request->user_id)->first();
+              $user->rating = $request->rateingValue;
+              $user->save();
+              return response()->json(['success' => true, 'message' =>'Thanks for your rating added' ]);
+
+        }
+
     }
 }
