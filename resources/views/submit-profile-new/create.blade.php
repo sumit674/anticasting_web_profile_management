@@ -10,15 +10,35 @@
 @section('content')
     <section id="contact-us" class="contact-us section">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-12">
-                    @if (Session::has('message'))
-                        <div id="success" title="Success">
-                            <p>{{ Session::get('message') }}</p>
-                        </div>
-                    @endif
-                    <form class="form-disable" id="profile-valdation" action="{{ route('users.submitProfile.store') }}" method="post">
-                        @csrf
+            <form class="form-disable" id="profile-valdation" action="{{ route('users.submitProfile.store') }}"
+                method="post">
+                @csrf
+                <input type="hidden" name="image1" id="picture1" />
+                <input type="hidden" name="image2" id="picture2" />
+                <input type="hidden" name="image3" id="picture3" />
+                {{-- @error('image1')
+                    <span class="text-danger">
+                        {{ $message }}
+                    </span>
+                @enderror
+                @error('image2')
+                    <span class="text-danger">
+                        {{ $message }}
+                    </span>
+                @enderror
+                @error('image3')
+                    <span class="text-danger">
+                        {{ $message }}
+                    </span>
+                @enderror --}}
+                <input type="hidden" name="capture_image" id="capture_image" />
+                <div class="row">
+                    <div class="col-lg-8 col-12">
+                        @if (Session::has('message'))
+                            <div id="success" title="Success">
+                                <p>{{ Session::get('message') }}</p>
+                            </div>
+                        @endif
                         <div class="card mb-4">
                             <div class="card-body">
                                 <h3 class="h6 mb-4 fw-bold">Personal Information</h3>
@@ -85,7 +105,7 @@
                                         <div class="mb-3">
                                             <label class="form-label">
                                                 <b>
-                                                   Gender
+                                                    Gender
                                                     <span style="color:red;"><b>*</b></span>
                                                 </b>
                                             </label>
@@ -159,25 +179,38 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="mb-3">
-                                            <label class="form-label"><b>Email</b></label>
-                                            <input type="email" class="form-control" placeholder="Email" name="email"
-                                                readonly value="{{ old('email', $userInfo->email) }}" />
+                                            <label class="form-label"><b>Email
+                                                    <span style="color:red;"><b>*</b></span>
+                                                </b></label>
+                                            <input type="email" class="form-control" placeholder="Email"
+                                                name="email" readonly value="{{ old('email', $userInfo->email) }}" />
 
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="mb-3">
-                                            <label class="form-label"><b>Phone number</b></label>
+                                            <label for="inputmobileNumber" class="form-label"><b>Moblile
+                                                    Number</b>&nbsp;<span style="color:red;"><b>*</b></span></label>
                                             <div class="input-group mb-3">
                                                 <!--
-                                                                         <span class="input-group-text" style="width:10px;">+</span>
-                                                                                        -->
-                                                <input type="text" class="form-control" name="countryCode" readonly
+                                                                                                  <span class="input-group-text" style="width:10px;">+</span>
+                                                                                                 -->
+                                                {{-- <input type="text" class="form-control" name="countryCode" readonly
                                                     style="width:15px;"
                                                     value="{{ old('countryCode', $userInfo->countryCode) }}" />
-                                                <input type="text" class="form-control d-flex text-left" name="mobile_no"
-                                                    readonly style="width:248px;"
-                                                    value="{{ old('mobile_no', $userInfo->mobile_no) }}" />
+                                                <input type="text" class="form-control d-flex text-left"
+                                                    name="mobile_no" readonly style="width:248px;"
+                                                    value="{{ old('mobile_no', $userInfo->mobile_no) }}" /> --}}
+
+                                                <input type="tel" class="form-control" id="mobile_number"
+                                                    name="mobile_no"
+                                                    value="{{ old('mobile_no', isset($userInfo->mobile_no) ? $userInfo->mobile_no : ' ') }}"
+                                                    placeholder="Mobile number" />
+                                                <input type="hidden" name="iso2" id="phone_country_code"
+                                                    value="+91" />
+                                                @error('mobile_no')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
 
                                             </div>
                                         </div>
@@ -217,10 +250,10 @@
                                             <label class="form-label">
                                                 <b>About me</b>
                                             </label>
-                                             <textarea id="about_me" name="about_me" class="form-control">
+                                            <textarea id="about_me" name="about_me" class="form-control">
                                                 @isset($userProfile->about_me)
-                                                   {{ $userProfile->about_me }}
-                                                @endisset
+{{ $userProfile->about_me }}
+@endisset
 
                                              </textarea>
 
@@ -276,14 +309,20 @@
                                 </div>
                             </div>
                         </div>
-                        <input type="submit" style="background-color: #ff5b00; margin-bottom:10px;" class="btn btn-sm"
+                        <input type="submit" style="background-color: #ff5b00;margin-bottom:10px;" class="btn btn-sm"
                             id="btn" value="Submit" tabindex="75">
-                    </form>
+
+                    </div>
+                    <div class="col-lg-4 col-12 mb-3">
+                        @error('image1')
+                            <span class="text-danger">
+                                Please select at-least one headshot image.
+                            </span>
+                        @enderror
+                        @include('submit-profile-new.right-section')
+                    </div>
                 </div>
-                <div class="col-lg-4 col-12 mb-3">
-                    @include('submit-profile-new.right-section')
-                </div>
-            </div>
+            </form>
         </div>
     </section>
 @endsection
@@ -292,8 +331,25 @@
         var images = @json($userInfo?->images?->pluck('image')?->toArray());
     </script>
     <script src="{{ asset('assets/website/js/submit-profile/image-gallery.js') }}"></script>
+    <script src="{{ asset('assets/intl-telephone/js/intlTelInput.js') }}" type="text/javascript"></script>
+    </script>
     <script>
-      $(document).ready(function() {
+        var selectedFlag = 'in'
+        $("#mobile_number").intlTelInput({
+            //preferredCountries: ['in','ae', 'us'],
+            preferredCountries: ['in', 'ae', 'us'],
+            autoPlaceholder: true,
+            separateDialCode: true,
+            // onlyCountries: ['in','ae', 'us'],
+            initialCountry: selectedFlag,
+            utilsScript: '{{ asset('assets/intl-telephone/js/utils.js') }}'
+        });
+        $("#mobile_number").on("countrychange", function(e, countryData) {
+            $("#phone_country_code").val(countryData.dialCode);
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
             $('#about_me').summernote({
                 placeholder: 'Enter movie description goes here..',
                 // tabsize: 2,
@@ -334,6 +390,53 @@
             })
             $('.dropdown-toggle').dropdown();
         });
+        // Configure a few settings and attach camera
+        function configure() {
+            Webcam.set({
+                width: 210,
+                height: 215,
+                image_format: 'jpeg',
+                jpeg_quality: 90,
+                force_flash: false
+            });
+            Webcam.attach('#my_camera');
+        }
+        // A button for taking snaps
+
+
+        // preload shutter audio clip
+        var shutter = new Audio();
+        shutter.autoplay = false;
+        shutter.src = navigator.userAgent.match(/Firefox/) ? 'shutter.ogg' : 'shutter.mp3';
+
+        function take_snapshot() {
+            // play sound effect
+            shutter.play();
+
+            // take snapshot and get image data
+            Webcam.snap(function(data_uri) {
+
+                // display results in page
+                document.getElementById('results').innerHTML =
+                    '<img  id="imageprev" src="' + data_uri + '" class="image-snapshot"/>';
+
+                document.querySelector('#capture_image').value = data_uri;
+
+            });
+
+            Webcam.reset();
+        }
+
+        function saveSnap() {
+            // Get base64 value from <img id='imageprev'> source
+            var base64image = document.getElementById("imageprev").src;
+
+            Webcam.upload(base64image, 'upload.php', function(code, text) {
+                console.log('Save successfully');
+                //console.log(text);
+            });
+
+        }
     </script>
     <script>
         $(function() {
@@ -480,7 +583,7 @@
                         // $('#error2').slideDown("slow");
                         //   a = 0;
                         // }
-                        if (file > 2048) {
+                        if (file > 4096) {
                             $('#error3').slideDown("slow");
                             a = 0;
                         } else {
@@ -515,9 +618,11 @@
         });
         @if (count($userInfo?->images) == 0)
             let defaultUpload = document.querySelector('#upload-default');
+
             defaultUpload.addEventListener('click', () => {
                 $('#upload-image-modal').modal('show');
                 $('#upload-image-modal').appendTo('body');
+                $('#image_number').val(1);
             })
         @endif
         function deleteAllHeadShotImages(url) {
@@ -525,5 +630,41 @@
                 document.location.href = url;
             }
         }
+    </script>
+    <script>
+        $('#profile-valdation').validate({
+            debug: false,
+            errorClass: 'text-danger',
+            errorElement: "span",
+            rules: {
+                mobile_no: {
+                    required: true, // field is mandatory
+                    intlTelNumber: true, // must contain a valid phone number
+                    minlength: 10,
+                },
+            },
+            messages: {
+                mobile_no: {
+
+                    required: "Please enter your mobile number",
+                    // remote:"Mobile number already exist",
+                    minlength: "Mobile number must be at least 10 digit long"
+                },
+            },
+            highlight: function(element) {
+                $(element).parent().addClass("field-error");
+            },
+            unhighlight: function(element) {
+                $(element).parent().removeClass("field-error");
+            },
+            submitHandler: function(form) {
+                form.submit();
+            }
+
+        });
+
+        jQuery.validator.addMethod("intlTelNumber", function(value, element) {
+            return this.optional(element) || $(element).intlTelInput("isValidNumber");
+        }, "Please enter a valid phone number 10 digits");
     </script>
 @endsection

@@ -1,4 +1,3 @@
-
 <div id="filterbar" class="collapse col-lg-3">
     <form method="get">
 
@@ -43,8 +42,9 @@
                 </div>
                 <div class="col-md-12">
                     <label class="form-label" for="gender">Rating</label>
-                    <select name="rating" id="rating" class="form-control rating" multiple="multiple">
-                      <optgroup label="Rating Number">
+                    <select name="rating[]" id="rating" class="form-control rating" multiple="multiple">
+                        <optgroup label="Rating Number">
+                            
                             <option value='1'>One
                             </option>
                             <option value='2'>Two
@@ -57,13 +57,13 @@
                             </option>
                             <option value='5'>
                                 Five
-                             </option>
+                            </option>
                         </optgroup>
                     </select>
-                 </div>
+                </div>
                 <div class="col-md-12">
                     {{-- <label class="form-label" for="age">Age</label> --}}
-                    <div class="d-flex justify-content-between">
+                    <div class="d-flex justify-content-center mt-1">
                         <div>
                             <input type="hidden" name="min_age" id="min_age"
                                 value="{{ old('min_age', request()->min_age) }}" />
@@ -78,7 +78,7 @@
                         </div>
                     </div>
                 </div>
-                
+
             </div>
         </div>
     </form>

@@ -43,6 +43,9 @@
 //             required: true,
 //           },intro_video_link:{
 //             required: true,
+//           },
+//           mobile_no:{
+//             required: true,
 //           }
 //         },
 //         messages: {
@@ -82,7 +85,11 @@
 //               },
 //               current_location:{
 //                 required:"Please enter your current location",
+//               },
+//               mobile_no:{
+//                   required:"Please enter phone number",
 //               }
+
 
 //         },
 //     });

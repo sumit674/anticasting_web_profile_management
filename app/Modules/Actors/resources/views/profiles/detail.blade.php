@@ -238,13 +238,18 @@
         }
 
         .actor-name {
-            color: #26247b;
+            color: hsl(0, 0%, 99%);
             font-size:24px;
         }
         .fa-brands{
             padding-left: 20px;
             font-size:24px;
-            color: #26247b;
+            color: hsl(0, 0%, 99%);
+        }
+        .c-further-information p{
+            color: black;
+            font-size:15px;
+            font-weight:400;
         }
 
         /*Rateing Css*/
@@ -321,7 +326,7 @@
         .rating-stars ul>li.star>i.fa {
             font-size:24px;
             /* Change the size of the stars */
-            color: #ccc;
+            color: #fff;
             /* Color on idle state */
         }
 
@@ -367,7 +372,7 @@
                     <b><span class="actor-name">{{ $item->first_name . ' ' . $item->last_name }}</span> </b>
                     <b><span class="fa-brands fa-facebook"></span></b>
                     <b><span class="fa-brands fa-square-instagram"></span></b>
-                    <div class='text-message text-center' style="margin-top:-23px;">
+                    <div class='text-message text-center' style="margin-top:-23px;color:hsl(0, 0%, 99%);">
                         <b></b>
                     </div>
                     <div class="text-right rating-widget h4 " style="margin-top:-23px;" id="close-yt">
@@ -413,7 +418,7 @@
                                                                 onclick="openModal();currentSlide(1)" class="hover-shadow">
                                                         @else
                                                             <img src="{{ asset('assets/images/actor-image-thumbnail.jpg') }}"
-                                                                style="width:240px; object-fit:contain;"
+                                                                style="width:200px; object-fit:contain;"
                                                                 onclick="openModal();currentSlide(1)" class="hover-shadow">
                                                         @endif
                                                     </div>
@@ -481,7 +486,7 @@
                                                  <div class="card__content">
                                                      <div class="c-basic-info-section__edit-panel">
                                                          <div class="c-edit-panel  justify-content-center">
-                                                             <h4 class="c-edit-panel__header ">Details</h4>
+                                                             <h4 class="c-edit-panel__main_header">Details</h4>
                                                              <div class="c-edit-panel__controls"></div>
                                                          </div>
                                                      </div>
@@ -526,7 +531,7 @@
                                                              <p class="card__title"><label class="fw-bold"><b>Mobile:
                                                                      </b></label><span
                                                                      class="c-green text-break text-truncate">
-                                                                     {{ $item?->mobile_no }}</span>
+                                                                     {{$item->countryCode.'  '. $item?->mobile_no }}</span>
  
                                                              </p>
                                                              @php
@@ -567,7 +572,10 @@
                                                             <div class="c-edit-panel__controls"></div>
                                                         </div>
                                                         <div class="c-further-information">
-                                                            {!! $item?->profile?->about_me !!}
+                                                            <p>
+                                                                {!! $item?->profile?->about_me !!}
+                                                            </p>
+                                                           
                                                         </div>
                                                     </div>
                                                 </div>

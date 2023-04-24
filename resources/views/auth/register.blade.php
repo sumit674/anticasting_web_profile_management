@@ -28,7 +28,7 @@
                                                         name</b>&nbsp;<span style="color:red;"><b>*</b></span>
                                                 </label>
                                                 <input type="text" name="first_name" id="inputFirstName"
-                                                    class="form-control" placeholder="First name">
+                                                    class="form-control" placeholder="First name" value="{{old('first_name')}}">
                                                 @error('first_name')
                                                     <span class="text-danger"><b>{{ $message }}</b></span>
                                                 @enderror
@@ -41,7 +41,7 @@
                                                         name</b>&nbsp;<span style="color:red;"><b>*</b></span>
                                                 </label>
                                                 <input type="text" name="last_name" id="inputLastName"
-                                                    class="form-control" placeholder="Last name">
+                                                    class="form-control" placeholder="Last name" value="{{old('last_name')}}">
                                                 @error('last_name')
                                                     <span class="text-danger"><b>{{ $message }}</b></span>
                                                 @enderror
@@ -53,7 +53,7 @@
                                                         style="color:red;"><b>*</b></span>
                                                 </label>
                                                 <input type="email" name="email" id="email" class="form-control"
-                                                    placeholder="Email address">
+                                                    placeholder="Email address" value="{{old('email')}}">
                                                 @error('email')
                                                     <span class="text-danger"><b>{{ $message }}</b></span>
                                                 @enderror
@@ -66,7 +66,7 @@
                                                         style="color:red;"><b>*</b></span>
                                                 </label>
                                                 <input class="form-control" id="password" class="block mt-1 w-full"
-                                                    type="password" name="password" placeholder="Enter a password" />
+                                                    type="password" name="password" placeholder="Enter a password" value="{{old('password')}}" />
                                                 @error('password')
                                                     <span class="text-danger"><b>{{ $message }}</b></span>
                                                 @enderror

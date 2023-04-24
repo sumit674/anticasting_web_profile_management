@@ -634,7 +634,7 @@ background-color: mintcream;
 .card-img img {
     padding-top: 10px;
     width: inherit;
-    height: 185px;
+    height: 178px;
     object-fit: contain;
     display: block;
 }
@@ -1495,7 +1495,7 @@ vertical-align: top;
 
 display: -webkit-box;
 
-line-height: 18px;
+line-height:18px;
 
 overflow: hidden;
 

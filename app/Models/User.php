@@ -51,7 +51,7 @@ class User extends Authenticatable
     }
     public function scopeFilterProfile($query)
     {
-        $query->whereHas('profile', function($q) {
+        $query->whereHas('profile', function ($q) {
             $q->where('user_id', '<>', null);
         });
     }
@@ -156,10 +156,14 @@ class User extends Authenticatable
         }
     }
     /*Ajax Rating Filter */
-    public function scopeFilterRating($query){
+    public function scopeFilterRating($query)
+    {
         if (isset($_GET['rating']) && !empty($_GET['rating'])) {
-            $rating = (int) $_GET['rating'];
-            $query->where('rating', 'like', '%'.$rating.'%');
+            $rating = $_GET['rating'];
+
+            if (is_array($rating) && isset($rating)) {
+                return $query->whereIn('rating',$rating);
+            }
         }
     }
     // public function scopeFilterHeight($query)

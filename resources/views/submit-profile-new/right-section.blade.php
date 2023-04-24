@@ -23,6 +23,42 @@
         width: 20px;
         height: 20px;
     }
+    #my_camera video{
+
+         width:210px;
+         height:232px;
+         margin-left:51px;
+    }
+  .image-thumbnail{
+    padding: .25rem;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: .25rem;
+    max-width: 64%;
+    height: auto
+}
+.image-snapshot{
+    padding: .25rem;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: .25rem;
+    max-width: 60%;
+    height: auto
+}
+.fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: large;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.text-webcam-text{
+    font-family: "Times New Roman", Times, serif;
+    font-size:18px;
+    font-weight: 600;
+    color: #1b1c1c;
+}
 </style>
 <div class="card mb-4">
     <div class="card-body">
@@ -54,11 +90,10 @@
                 </ul>
             </div>
         </div>
-
         <div class="feature" @if (count($userInfo?->images) == 0) id="upload-default" @endif>
             <figure class="featured-item r-3-2 transition main-img">
                 @if (count($userInfo?->images) == 0)
-                    <img src="{{ asset('assets/images/default-user.jfif') }}" alt="User"
+                    <img id="default-img" src="{{ asset('assets/images/default-user.jfif') }}" alt="User"
                         title="Please select an image" style="width:100%; cursor: pointer;">
                 @endif
             </figure>
@@ -67,16 +102,44 @@
             <div class="gallery">
                 <div class="item-wrapper">
                     {{-- <div class="delete-single-btn">x</div> --}}
-                    <figure class="gallery-item image-holder r-3-2 active transition"></figure>
+                    <figure class="gallery-item image-holder r-3-2 active transition" id="image1" data-value="1">
+                    </figure>
                 </div>
                 <div class="item-wrapper">
-                    <figure class="gallery-item image-holder r-3-2 transition"></figure>
+                    <figure class="gallery-item image-holder r-3-2 transition" id="image2" data-value="2"></figure>
                 </div>
                 <div class="item-wrapper">
-                    <figure class="gallery-item image-holder r-3-2 transition"></figure>
+                    <figure class="gallery-item image-holder r-3-2 transition" id="image3" data-value="3"></figure>
                 </div>
 
             </div>
+        </div>
+        <div class="mt-3">
+             <div class="text-center">
+                @if (isset($userInfo?->images[3]))
+                    <img src="{{ $userInfo?->images[3]?->image }}" class="image-thumbnail" alt="...">
+               @endif
+              
+            </div>
+             <div class="justify-content-center">
+                <div id="my_camera">
+
+                </div>
+             </div>
+              <div class="mt-3">
+                <div class=" d-flex justify-content-center">
+                    <div>
+                        <span class="fa fa-camera fa-2xl" onClick="configure()"></span>
+                        <p  class="text-webcam-text" onClick="configure()">Configure Image</p>
+                    </div>
+                    <div style="margin-left:170px;">
+                        <span class="fa fa-camera-retro fa-2xl" onClick="take_snapshot()"></span>
+                        <p class="text-webcam-text" onClick="take_snapshot()">Take Snapshot</p>
+                    </div>
+                </div>
+            </div>
+            {{-- <input type=button value="Save Snapshot" onClick="saveSnap()"> --}}
+            <div class="text-center mt-3" id="results"></div>
         </div>
     </div>
 </div>
@@ -96,22 +159,22 @@
         </div>
 
         <div class="row" style="margin-top:20px;">
-            <form action="{{ route('users.introvideos') }}" method="post">
-                @csrf
-                <div class="col-md-12 col-lg-12 col-sm-6">
-                    <div class="input-group">
-                        <input type="text" class="form-control" name="intro_video_link"
-                            placeholder="Please enter  intro video"
-                            value="{{ old('intro_video_link', isset($userIntroVideo->intro_video_link) ? $userIntroVideo->intro_video_link : '') }}" />
-                        <button class="btn btn-sm" style="background-color: #ff5b00;" type="submit">Save</button>
-                    </div>
-                    @error('intro_video_link')
-                        <span class="text-danger">
-                            {{ $message }}
-                        </span>
-                    @enderror
+            {{-- <form action="{{ route('users.introvideos') }}" method="post">
+                @csrf --}}
+            <div class="col-md-12 col-lg-12 col-sm-6">
+                <div class="input-group">
+                    <input type="text" class="form-control" name="intro_video_link"
+                        placeholder="Please enter  intro video"
+                        value="{{ old('intro_video_link', isset($userIntroVideo->intro_video_link) ? $userIntroVideo->intro_video_link : '') }}" />
+                    {{-- <button class="btn btn-sm" style="background-color: #ff5b00;" type="submit">Save</button> --}}
                 </div>
-            </form>
+                @error('intro_video_link')
+                    <span class="text-danger">
+                        {{ $message }}
+                    </span>
+                @enderror
+            </div>
+            {{-- </form> --}}
         </div>
         <div class="row">
             <div class="col-md-12 col-lg-12 col-sm-12 mt-3">

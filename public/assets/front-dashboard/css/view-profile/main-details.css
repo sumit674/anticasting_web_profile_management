@@ -441,13 +441,16 @@ transform: rotate(45deg); */
     margin-left:80px;
 }
 .card__content label{
-    color: #26247b;
+    color: #4e041c;
     line-height: 10px;
     font-weight: 600;
-    font-size: 12px;
+    font-size: 15px;
     margin-bottom: 0;
 }
-
+.card__content span{
+  color: #4e041c;
+  line-height: 10px;
+}
 #close-yt{
     cursor: pointer;
 }
@@ -514,7 +517,10 @@ a.g-alternative-link {
 }
 
 .popover-header{
-    background-color: #c6aff1;
+    background: linear-gradient(to right, #bf4e4e , #c663cd);
+}
+.actor-name {
+  color: #fff;
 }
 
 .c-performers-quick-view__links {
@@ -577,11 +583,21 @@ a.g-alternative-link {
     justify-content: space-between;
 }
 .c-edit-panel__header {
-    font-size: 18px;
-    font-weight: 400;
+    font-size: 20px;
     line-height: inherit;
     margin: 0;
     padding: 10px;
+    color: #4e041c;
+    font-weight:800;
+}
+.c-edit-panel__main_header{
+  font-size: 27px;
+  font-weight:700;
+  line-height: inherit;
+  margin: 0;
+  padding: 10px;
+  color:#400404;
+
 }
 .c-basic-info-section__edit-panel .c-edit-panel__header {
     padding-left: 0;

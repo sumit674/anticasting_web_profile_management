@@ -47,6 +47,7 @@ class CreateUserProfilesTable extends Migration
         Schema::create('user_profiles_image', function (Blueprint $table) {
             $table->id();
             $table->string('image')->nullable();
+            $table->string('field_name')->nullable();
             $table
                 ->unsignedBigInteger('user_id')
                 ->unsigned()

@@ -5,7 +5,7 @@
         /*Image Gallary*/
         .imgStyle {
             width: 70px;
-            height: 60px;
+            height: 82px;
             padding: 3px;
 
         }
@@ -77,6 +77,7 @@
             display: block;
             box-shadow: 2px 2px 2px 1px rgb(87, 88, 88);
             width: 330px !important;
+            object-fit:fill;
         }
 
         .gallary-image img:hover {
@@ -141,17 +142,22 @@
         }
        
         .actor-name {
-            color: #26247b;
+            color: #fff;
             font-size:24px;
         }
         .fa-brands{
             padding-left: 20px;
             font-size:24px;
-            color: #26247b;
+            color: #fff;
         }
         .fa-solid{
             font-size:24px;
-            color: #26247b;
+            color: #fff;
+        }
+        .c-further-information p{
+            color: black;
+            font-size:15px;
+            font-weight:600;
         }
     </style>
 @endsection
@@ -183,13 +189,14 @@
                                                     <div class="main-image gallary-image border border-dark rounded-6">
                                                         @if (isset($item?->images[0]?->image))
                                                             <img id="mainImage" src="{{ $item?->images[0]?->image }}"
-                                                                height="200" width="190" />
+                                                                height="200" width="200" />
                                                         @else
                                                             <img id="mainImage"
                                                                 src="{{ asset('assets/images/actor-image-thumbnail.jpg') }}"
                                                                 height="200" width="200" />
                                                         @endif
                                                     </div>
+    
                                                     <div class="img-select">
                                                         <div class="divId" onmouseover="changeImageOnClick(event)">
                                                             @if (isset($item?->images[0]?->image))
@@ -252,7 +259,7 @@
                                                 <div class="card__content">
                                                     <div class="c-basic-info-section__edit-panel">
                                                         <div class="c-edit-panel  justify-content-center">
-                                                            <h4 class="c-edit-panel__header ">Details</h4>
+                                                            <h4 class="c-edit-panel__main_header">Details</h4>
                                                             <div class="c-edit-panel__controls"></div>
                                                         </div>
                                                     </div>
@@ -297,7 +304,7 @@
                                                             <p class="card__title"><label class="fw-bold"><b>Mobile:
                                                                     </b></label><span
                                                                     class="c-green text-break text-truncate">
-                                                                    {{ $item?->mobile_no }}</span>
+                                                                    {{ $item?->countryCode.' ' .$item?->mobile_no }}</span>
 
                                                             </p>
                                                             @php
@@ -338,7 +345,10 @@
                                                             <div class="c-edit-panel__controls"></div>
                                                         </div>
                                                         <div class="c-further-information">
-                                                            {!! $item?->profile?->about_me !!}
+                                                            <p>
+                                                                {!! $item?->profile?->about_me !!}
+                                                            </p>
+                                                         
                                                         </div>
                                                     </div>
                                                 </div>
