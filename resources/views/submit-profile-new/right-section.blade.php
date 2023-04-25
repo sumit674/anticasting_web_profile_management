@@ -23,47 +23,12 @@
         width: 20px;
         height: 20px;
     }
-    #my_camera video{
-
-         width:210px;
-         height:232px;
-         margin-left:51px;
-    }
-  .image-thumbnail{
-    padding: .25rem;
-    background-color: #fff;
-    border: 1px solid #dee2e6;
-    border-radius: .25rem;
-    max-width: 64%;
-    height: auto
-}
-.image-snapshot{
-    padding: .25rem;
-    background-color: #fff;
-    border: 1px solid #dee2e6;
-    border-radius: .25rem;
-    max-width: 60%;
-    height: auto
-}
-.fa {
-    display: inline-block;
-    font: normal normal normal 14px/1 FontAwesome;
-    font-size: large;
-    text-rendering: auto;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-.text-webcam-text{
-    font-family: "Times New Roman", Times, serif;
-    font-size:18px;
-    font-weight: 600;
-    color: #1b1c1c;
-}
+  
 </style>
 <div class="card mb-4">
     <div class="card-body">
         <div class="d-flex justify-content-between">
-            <h3 class="h6 fw-bold">Headshot Images</h3>
+            <h3 class="h6 fw-bold">Headshot Images <b><span style="color:red;">*</span></b></h3>
             <div class="info" style="cursor:pointer;" tabindex="0" data-bs-placement="top" data-bs-toggle="popover"
                 data-bs-content-id="popover-content" data-bs-trigger="focus" title="Headshot Image">
                 <i class="fa fa-info-circle"></i>
@@ -114,40 +79,14 @@
 
             </div>
         </div>
-        <div class="mt-3">
-             <div class="text-center">
-                @if (isset($userInfo?->images[3]))
-                    <img src="{{ $userInfo?->images[3]?->image }}" class="image-thumbnail" alt="...">
-               @endif
-              
-            </div>
-             <div class="justify-content-center">
-                <div id="my_camera">
-
-                </div>
-             </div>
-              <div class="mt-3">
-                <div class=" d-flex justify-content-center">
-                    <div>
-                        <span class="fa fa-camera fa-2xl" onClick="configure()"></span>
-                        <p  class="text-webcam-text" onClick="configure()">Configure Image</p>
-                    </div>
-                    <div style="margin-left:170px;">
-                        <span class="fa fa-camera-retro fa-2xl" onClick="take_snapshot()"></span>
-                        <p class="text-webcam-text" onClick="take_snapshot()">Take Snapshot</p>
-                    </div>
-                </div>
-            </div>
-            {{-- <input type=button value="Save Snapshot" onClick="saveSnap()"> --}}
-            <div class="text-center mt-3" id="results"></div>
-        </div>
+       
     </div>
 </div>
 <div class="card mb-3">
     <div class="card-body ms-1">
 
         <div class="d-flex justify-content-between">
-            <span class="h6 fw-bold">Upload Intro video</span>
+            <span class="h6 fw-bold">Upload Intro video <b><span style="color:red;">*</span></b></span>
         </div>
         <div class="form-group mb-3 ms-3">
             @if (isset($userIntroVideo) && $userIntroVideo != null)
