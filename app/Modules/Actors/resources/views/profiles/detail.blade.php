@@ -483,14 +483,6 @@
                                     <div class="col-9">
                                         <div class="row">
                                             <div class="col-md-12 col-sm-12">
-                                                 <div class="card__content">
-                                                     <div class="c-basic-info-section__edit-panel">
-                                                         <div class="c-edit-panel  justify-content-center">
-                                                             <h4 class="c-edit-panel__main_header">Details</h4>
-                                                             <div class="c-edit-panel__controls"></div>
-                                                         </div>
-                                                     </div>
-                                                 </div>
                                                  <div class="row">
                                                      <div class="col-md-6 col-sm-6">
                                                          <div class="card__content">
@@ -785,9 +777,7 @@
 
 
         });
-
-
-        function responseMessage(msg, ratingValue) {
+     function responseMessage(msg, ratingValue) {
             $('.text-message b').html("<span>" + msg + "</span>");
 
             $.ajax({

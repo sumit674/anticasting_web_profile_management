@@ -8,8 +8,8 @@
                     </a>
                 </div>
                 {{-- <li class="label">Main</li> --}}
-                
-                <li><a href="{{ route('admin.dashboard') }}"><i class="ti-home"></i> Dashboard </a></li>
+                <li><a href="{{ route('admin.actors') }}"><i class="ti-user"></i>Actors Profiles</a></li>
+                {{-- <li><a href="{{ route('admin.dashboard') }}"><i class="ti-home"></i> Dashboard </a></li> --}}
                 <li><a href="{{ route('admin.settings')}}"><i class="ti-settings"></i> Settings </a></li>
                 {{-- <li><a href="{{ route('admin.users') }}"><i class="ti-user"></i> Users </a></li> --}}
                 {{-- 
@@ -28,10 +28,10 @@
                     </ul>
                 </li> --}}
                 {{-- <li><a href="{{ route('admin.manageuser') }}"><i class="ti-user"></i>Manage User</a></li> --}}
-                <li><a href="{{ route('admin.bucket.manage') }}"><i class="ti-user"></i>Manage Bucket</a></li>
+                <li><a href="{{ route('admin.bucket.manage') }}"><i class="fa-solid fa-list"></i></i>Shortlist</a></li>
                 <li><a href="{{ route('admin.actors.mange') }}"><i class="ti-user"></i>Manage Actors</a></li>
-                <li><a href="#"><i class="ti-user"></i>Camping</a></li>
-                <li><a href="{{ route('admin.actors') }}"><i class="ti-user"></i>Actors Profiles</a></li>
+                <li><a href="#"><i class='fa-solid fa-campground'></i></i>Camping</a></li>
+               
                 {{-- <li><a href="{{ route('admin.changePassword') }}"><i class="ti-user"></i> Change Password</a></li> --}}
                 <li><a href="{{ route('admin.logout') }} "><i class="ti-close"></i> Logout</a></li>
             </ul>

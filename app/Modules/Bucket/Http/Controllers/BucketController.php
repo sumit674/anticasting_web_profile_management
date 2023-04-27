@@ -16,7 +16,9 @@ class BucketController extends Controller
     public function index()
     {
         $items = Bucket::paginate(10);
-        return view('Bucket::index', compact('items'));
+        $allItems = Bucket::count();
+       // dd($items);
+        return view('Bucket::index', compact('items','allItems'));
     }
     public function create()
     {

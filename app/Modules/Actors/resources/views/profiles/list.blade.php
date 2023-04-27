@@ -33,6 +33,25 @@
         .popover {
             max-width: 80% !important;
         }
+
+        /* .bucket-wrapper {
+                    height: 50px;
+                    border-top: 1px solid rgba(255, 255, 255, .2);
+                    border-bottom: 1px solid rgba(255, 255, 255, .2);
+                    position: sticky;
+                    bottom: 0;
+                    width: 100%;
+                } */
+        .bucket-wrapper {
+            position: fixed;
+            /* left: 0; */
+            bottom: 0;
+            /* width: 100%; */
+            width: 80%;
+            /* background-color: red; */
+            color: white;
+            /* text-align: center; */
+        }
     </style>
 @endsection
 @section('content')
@@ -62,11 +81,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-12 p-r-0 title-margin-right">
-                    @include('Actors::bucket')
-                </div>
-            </div>
+
         </div>
     </div>
     <br />
@@ -114,7 +129,8 @@
                                                     {{-- <span class="product-discount-label"> --}}
                                                     <input type="checkbox" name="actor" id="actor-{{ $item->id }}"
                                                         value="{{ $item->id }}" class="actor-item"
-                                                        data-id="{{ $item->id }}" onclick="GetBucketId({{$item->id}})"/>
+                                                        data-id="{{ $item->id }}"
+                                                        onclick="GetBucketId({{ $item->id }})" />
                                                     {{-- </span> --}}
                                                     <span class="mark"></span>
                                                 </label>
@@ -155,11 +171,8 @@
                                                     </span>
                                                     &nbsp;&nbsp;
                                                     <span style="cursor: pointer;" data-toggle="popover"
-                                                        {{-- data-poload="{{ route('admin.actors.detail', $item->id) }}" --}}>
-                                                        <a href="{{ route('admin.profile-detail', $item->id) }}"
-                                                            target="__blank">
-                                                            <i class="fa-solid fa-eye fa-2x" aria-hidden="true"></i>
-                                                        </a>
+                                                        data-poload="{{ route('admin.actors.detail', $item->id) }}">
+                                                        <i class="fa-solid fa-eye fa-2x" aria-hidden="true"></i>
                                                     </span>
                                                 </div>
                                             </div>
@@ -199,7 +212,16 @@
                     </div>
                 </div>
             </div>
+            <div class="bucket-wrapper">
+                <div class="row ">
+                    <div class="col-lg-12 title-margin-right">
+                        @include('Actors::bucket')
+                    </div>
+                </div>
+            </div>
         </div>
+
+
     </section>
 @endsection
 @section('footer')
@@ -210,7 +232,7 @@
         var array = [];
 
         function GetBucketId(id) {
-           
+
             if (array.indexOf(id) === -1) {
                 array.push(id);
                 $('#bucket-form').show();
@@ -218,7 +240,7 @@
                 let index = array.indexOf(id);
                 array.splice(index, 1);
             }
-            document.getElementById('actor-ids').innerHTML = array.length;
+            document.getElementById('actor-ids').innerHTML = array.length;;
             document.querySelector('#bucket-item').value = array.join(',');
 
             //  alert(array.join(','))
@@ -270,9 +292,12 @@
             document.querySelector('#min_age').value = $("#slider-range").slider("values", 0);
         });
         /*Select box list dropdown */
+
         $("#selecter2").select2({
-            tags: true
+            placeholder: "Shortlist name",
+            allowClear: true
         });
+
         $(function() {
             $('.ethnicity').fSelect();
         });

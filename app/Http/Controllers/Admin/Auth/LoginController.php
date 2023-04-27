@@ -35,7 +35,7 @@ class LoginController extends Controller
               
                 
                 return redirect()
-                    ->route('admin.dashboard')
+                    ->route('admin.actors')
                     ->with('message', 'Login successfully.');
             }
         }
