@@ -121,7 +121,6 @@ class ActorsController extends Controller
             ->where('user_type', '0')
             ->where('id', $id)
             ->first();
-        //dd($actor);
         return view('Actors::detail-popover', compact(var_name: 'actor'))->render();
     }
     public function actorVideo($id)

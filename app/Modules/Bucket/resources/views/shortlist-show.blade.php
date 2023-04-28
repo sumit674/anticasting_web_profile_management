@@ -67,7 +67,8 @@
         padding: 10px 83px 10px 84px;
     }
 </style>
-<div class="card dark card-container">
+@if ($allItems !== 0)
+<div class="card dark card-container" style="display:none;" id="shortlist-page">
     <div class="card-body">
         <form id="bucket-form" action="{{ route('admin.actors.bucket.store') }}" method="post">
             @csrf
@@ -94,3 +95,4 @@
         </form>
     </div>
 </div>
+@endif

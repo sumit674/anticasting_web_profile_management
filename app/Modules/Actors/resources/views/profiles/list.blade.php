@@ -31,17 +31,18 @@
         }
 
         .popover {
-            max-width: 80% !important;
+            max-width: 100% !important;
+            margin: 18px 0 0 100px;
         }
 
         /* .bucket-wrapper {
-                    height: 50px;
-                    border-top: 1px solid rgba(255, 255, 255, .2);
-                    border-bottom: 1px solid rgba(255, 255, 255, .2);
-                    position: sticky;
-                    bottom: 0;
-                    width: 100%;
-                } */
+                        height: 50px;
+                        border-top: 1px solid rgba(255, 255, 255, .2);
+                        border-bottom: 1px solid rgba(255, 255, 255, .2);
+                        position: sticky;
+                        bottom: 0;
+                        width: 100%;
+                    } */
         .bucket-wrapper {
             position: fixed;
             /* left: 0; */
@@ -212,13 +213,13 @@
                     </div>
                 </div>
             </div>
-            <div class="bucket-wrapper">
+            {{-- <div class="bucket-wrapper">
                 <div class="row ">
                     <div class="col-lg-12 title-margin-right">
                         @include('Actors::bucket')
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
 
 

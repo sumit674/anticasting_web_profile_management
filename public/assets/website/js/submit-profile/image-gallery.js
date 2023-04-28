@@ -17,6 +17,9 @@ function selectItem(e) {
 	if (e.target.classList.contains('active')) {
 		// if (e.target.style.backgroundImage == 'url("undefined")') {
 		e.target.addEventListener("click", function () {
+			// document.getElementById('results').innerHTML = '';
+			document.getElementById('image-upload').checked = true;
+			Webcam.reset();
 			$('#old_image').val(e.target.getAttribute("data-fileurl"));
 			$('#upload-image-modal').modal('show');
 			$('#upload-image-modal').appendTo('body');

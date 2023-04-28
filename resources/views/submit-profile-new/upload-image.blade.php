@@ -1,11 +1,23 @@
 <style>
     #my_camera video {
 
-        width: 306px;
-        height: 232px;
-        margin-left: 40px;
+        /* width: 306px; */
+        width:530px;
+        height: 190px;
+        margin-left:80px;
+        padding-left: 22px;
+        padding-top:0px;
+        object-fit:contain;
     }
-
+    .modal-content{
+       width: 75%;
+       margin-left: 43px;
+    }
+    #my_camera{
+        width:530px;
+        height:190px;
+        transform: scaleX(-1);
+    }
     #results img {
         width: 306px;
         height: 232px;
@@ -108,7 +120,7 @@
                             <div class="text-center" id="results"></div>
                         </div>
                         <div class="mt-1">
-                            <div class="d-flex">
+                            <div class="d-flex mt-3">
                                 <div class="justify-content-start take-snap-first" id="take">
 
                                     <p class="text-webcam-text act-btn"  onClick="take_snapshot()"><i
@@ -123,7 +135,7 @@
                                     </p>
                                 </div>
                                 <div class="take-snap-second" id="take-btn">
-                                    <button class="btn btn-sm btn-success text-webcam-text" onClick="Retake_snapshot()">
+                                    <button class="btn btn-sm btn-success text-webcam-text" data-bs-dismiss="modal" onClick="Retake_snapshot()">
                                         <span class="fa fa-check fa-2xl"></span>
                                     </button>
                                 </div>

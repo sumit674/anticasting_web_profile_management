@@ -438,7 +438,7 @@
                 this.style.cursor = "pointer";
                 this.style.borderColor = "grey";
             };
-        }
+        }   
 
         function changeImageOnClick(event) {
             // debugger;

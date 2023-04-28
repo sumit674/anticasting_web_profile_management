@@ -193,8 +193,8 @@
                                                     Number</b>&nbsp;<span style="color:red;"><b>*</b></span></label>
                                             <div class="input-group mb-3">
                                                 <!--
-                                                                                                                      <span class="input-group-text" style="width:10px;">+</span>
-                                                                                                                     -->
+                                                                                                                                  <span class="input-group-text" style="width:10px;">+</span>
+                                                                                                                                 -->
                                                 {{-- <input type="text" class="form-control" name="countryCode" readonly
                                                     style="width:15px;"
                                                     value="{{ old('countryCode', $userInfo->countryCode) }}" />
@@ -626,26 +626,40 @@
 
         $('.upload-capture').hide()
         $('#image-upload').on('click', function() {
-            $('.upload-picture').show()
-            $('.upload-capture').hide()
+            Webcam.reset();
+            $('.upload-picture').show();
+            $('.upload-capture').hide();
         })
         $('#image-capture').on('click', function() {
-            $('.upload-capture').show()
-            $('.upload-picture').hide()
+            $('.upload-capture').show();
+            $('.upload-picture').hide();
+            
+            Webcam.set({
+                width:530,
+                height:190,
+                image_format: 'jpeg',
+                jpeg_quality:108,
+                flip_horiz: true
+            });
+            Webcam.attach('#my_camera');
         })
     </script>
     <script>
         /*Upload web cam on pop up*/
         $('.take-snap-configuration').hide();
         $('.take-snap-second').hide();
-        Webcam.set({
-            width: 306,
-            height: 215,
+        /* Webcam.set({
+            width:530,
+            height:190,
             image_format: 'jpeg',
-            jpeg_quality: 90
+            jpeg_quality:108,
+            flip_horiz: true
         });
-        Webcam.attach('#my_camera');
+        Webcam.attach('#my_camera'); */
         function take_snapshot() {
+            alert("Snap-shot")
+            let imgId = $('#image_number').val();
+
             $('#take').hide();
             $('#retake').show();
             $('#my_camera').hide();
@@ -653,23 +667,42 @@
             $('#take-btn').show();
             // $('.take-snap-first').hide();
             $('.take-snap-configuration').show();
-           $('.take-snap-second').show();
-          Webcam.snap(function(data_uri) {
+            $('.take-snap-second').show();
+            Webcam.snap(function(data_uri) {
                 $(".image-tag").val(data_uri);
                 document.getElementById('results').innerHTML = '<img src="' + data_uri +
                     '"  class="image-snapshot"/>';
-                document.querySelector('#capture_image').value = data_uri;
+                // document.querySelector('#capture_image').value = data_uri;
+
+                // $('#upload-image-modal').modal('hide');
+                if (imgId == 1) {
+                    // document.querySelector("#default-img").src = evt.target.result;
+                    $("#default-img").attr('src', data_uri);
+                    // document.querySelector("#image1").style.backgroundImage = 'url(' + data_uri + ')';
+                    $('#image1').css("background-image", 'url(' + data_uri + ')');
+                    document.querySelector("#picture1").value = data_uri;
+                }
+                if (imgId == 2) {
+                    document.querySelector("#image2").style.backgroundImage = 'url(' + data_uri + ')';
+                    document.querySelector("#picture2").value = data_uri;
+                }
+                if (imgId == 3) {
+                    document.querySelector("#image3").style.backgroundImage = 'url(' + data_uri + ')';
+                    document.querySelector("#picture3").value = data_uri;
+                }
+
             });
         }
 
         function ReConfigureCamera() {
             Webcam.reset();
-          
+
             Webcam.set({
-                width: 306,
+                width: 489,
                 height: 215,
                 image_format: 'jpeg',
-                jpeg_quality: 90
+                jpeg_quality: 90,
+                flip_horiz: true
             });
             $('#my_camera').show();
             $('#take').show();
@@ -677,12 +710,13 @@
             $('#results').hide();
             $('#take-btn').hide();
             Webcam.attach('#my_camera');
-          }
-       function Retake_snapshot() {
+        }
+
+        function Retake_snapshot() {
             Webcam.snap(function(data_uri) {
                 $(".image-tag").val(data_uri);
                 document.getElementById('results').innerHTML = '<img src="' + data_uri +
-                    '"  class="image-snapshot"/>';
+                    '"class="image-snapshot"/>';
                 document.querySelector('#capture_image').value = data_uri;
             });
         }

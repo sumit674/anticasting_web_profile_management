@@ -222,6 +222,7 @@ class ProfileController extends Controller
             }
             /*Capture Image */
             if ($request->has('capture_image') && $request->capture_image != '') {
+                //dd($request->capture_image);
                 $profile_image = UserProfileImage::where('user_id', $userId)
                     ->where('field_name', 'capture_image')
                     ->first();
