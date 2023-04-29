@@ -10,8 +10,8 @@ class BucketController extends Controller
 {
     //
     public function store(Request $request){
-  
-    
+     
+          // dd($request->all());
       $bucket = new Bucket();
       $bucket->bucket_name=$request->bucket_name;
       $bucket->status = $request->status==true ? 1 : 0;

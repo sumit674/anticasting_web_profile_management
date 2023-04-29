@@ -1,9 +1,9 @@
 @extends('admin.layouts.admin-auth-layouts')
 @section('title')
-    Change Password
+   Admin | Change Password
 @endsection
 @section('content')
-    <h4 class="text-danger">Administrator Change Password</h4>
+    <h4 class="text-danger">Change Password</h4>
     <form class="form-disable" action="{{ route('admin.changePasswordPost') }}" method="POST">
         @csrf
         <div class="form-group">

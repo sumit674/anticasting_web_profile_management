@@ -7,6 +7,7 @@
             width: 70px;
             height: 82px;
             padding: 3px;
+            object-fit: cover;
 
         }
 
@@ -77,7 +78,7 @@
             display: block;
             box-shadow: 2px 2px 2px 1px rgb(87, 88, 88);
             width: 330px !important;
-            object-fit:fill;
+            object-fit: fill;
         }
 
         .gallary-image img:hover {
@@ -118,12 +119,12 @@
         }
 
         /* .img-select-container img hover:{
-                                                            width: 100% !important;
-                                                            display: inline-block;
-                                                            border: 1px solid black;
-                                                            opacity: 0.4;
+                                                                width: 100% !important;
+                                                                display: inline-block;
+                                                                border: 1px solid black;
+                                                                opacity: 0.4;
 
-                                                        } */
+                                                            } */
         .img-select .active {
             border: 1px dotted black;
             height: 50px !important;
@@ -138,26 +139,29 @@
 
         .popover-header-section {
             position: sticky;
-          
+
         }
-       
+
         .actor-name {
             color: #fff;
-            font-size:24px;
+            font-size: 24px;
         }
-        .fa-brands{
+
+        .fa-brands {
             padding-left: 20px;
-            font-size:24px;
+            font-size: 24px;
             color: #fff;
         }
-        .fa-solid{
-            font-size:24px;
+
+        .fa-solid {
+            font-size: 24px;
             color: #fff;
         }
-        .c-further-information p{
+
+        .c-further-information p {
             color: black;
-            font-size:15px;
-            font-weight:600;
+            font-size: 15px;
+            font-weight: 600;
         }
     </style>
 @endsection
@@ -186,43 +190,51 @@
                                         <div class="pt-1 ms-1">
                                             <div class="image-container">
                                                 <div class="card-left">
-                                                    <div class="main-image gallary-image border border-dark rounded-6">
-                                                        @if (isset($item?->images[0]?->image))
-                                                            <img id="mainImage" src="{{ $item?->images[0]?->image }}"
-                                                                height="200" width="200" />
-                                                        @else
-                                                            <img id="mainImage"
-                                                                src="{{ asset('assets/images/actor-image-thumbnail.jpg') }}"
-                                                                height="200" width="200" />
-                                                        @endif
-                                                    </div>
-    
-                                                    <div class="img-select">
-                                                        <div class="divId" onmouseover="changeImageOnClick(event)">
+                                                    @if (isset($item?->images[0]?->image) && count($item?->images))
+                                                        <div class="main-image gallary-image border border-dark rounded-6">
                                                             @if (isset($item?->images[0]?->image))
-                                                                <img class="imgStyle"
-                                                                    src="{{ $item?->images[0]?->image }}" />
+                                                                <img id="mainImage" src="{{ $item?->images[0]?->image }}"
+                                                                    height="200" width="200" />
                                                             @else
-                                                                <img class="imgStyle"
-                                                                    src="{{ asset('assets/images/actor-image-thumbnail.jpg') }}" />
+                                                                <img id="mainImage"
+                                                                    src="{{ asset('assets/images/actor-image-thumbnail.jpg') }}"
+                                                                    height="200" width="200" />
                                                             @endif
-                                                            @if (isset($item?->images[1]?->image))
-                                                                <img class="imgStyle"
-                                                                    src="{{ $item?->images[1]?->image }}" />
-                                                            @else
-                                                                <img class="imgStyle"
-                                                                    src="{{ asset('assets/images/actor-image-thumbnail.jpg') }}" />
-                                                            @endif
-                                                            @if (isset($item?->images[2]?->image))
-                                                                <img class="imgStyle"
-                                                                    src="{{ $item?->images[2]?->image }}" />
-                                                            @else
-                                                                <img class="imgStyle"
-                                                                    src="{{ asset('assets/images/actor-image-thumbnail.jpg') }}" />
-                                                            @endif
-
                                                         </div>
+
+                                                        <div class="img-select">
+                                                            <div class="divId" onmouseover="changeImageOnClick(event)">
+                                                                @if (isset($item?->images[0]?->image))
+                                                                    <img class="imgStyle"
+                                                                        src="{{ $item?->images[0]?->image }}" />
+                                                                @else
+                                                                    <img class="imgStyle"
+                                                                        src="{{ asset('assets/images/actor-image-thumbnail.jpg') }}" />
+                                                                @endif
+                                                                @if (isset($item?->images[1]?->image))
+                                                                    <img class="imgStyle"
+                                                                        src="{{ $item?->images[1]?->image }}" />
+                                                                @else
+                                                                    <img class="imgStyle"
+                                                                        src="{{ asset('assets/images/actor-image-thumbnail.jpg') }}" />
+                                                                @endif
+                                                                @if (isset($item?->images[2]?->image))
+                                                                    <img class="imgStyle"
+                                                                        src="{{ $item?->images[2]?->image }}" />
+                                                                @else
+                                                                    <img class="imgStyle"
+                                                                        src="{{ asset('assets/images/actor-image-thumbnail.jpg') }}" />
+                                                                @endif
+
+                                                            </div>
+                                                        </div>
+                                                    @else
+                                                    <div class="d-flex justify-content-center align-items-center mt-3">
+                                                        <img id="mainImage"
+                                                            src="{{ asset('assets/images/actor-image-thumbnail.jpg') }}"
+                                                            height="250" width="250" style="object-fit:fill;" />
                                                     </div>
+                                                    @endif
                                                     <div class="intro_video">
                                                         <div class="c-edit-panel">
                                                             <h4 class="c-edit-panel__header">Intro Video</h4>
@@ -255,7 +267,7 @@
                                     </div>
                                     <div class="col-9">
                                         <div class="row">
-                                           <div class="col-md-12 col-sm-12">
+                                            <div class="col-md-12 col-sm-12">
                                                 <div class="card__content">
                                                     <div class="c-basic-info-section__edit-panel">
                                                         <div class="c-edit-panel  justify-content-center">
@@ -304,7 +316,7 @@
                                                             <p class="card__title"><label class="fw-bold"><b>Mobile:
                                                                     </b></label><span
                                                                     class="c-green text-break text-truncate">
-                                                                    {{ $item?->countryCode.' ' .$item?->mobile_no }}</span>
+                                                                    {{ $item?->countryCode . ' ' . $item?->mobile_no }}</span>
 
                                                             </p>
                                                             @php
@@ -317,18 +329,18 @@
                                                             <p class="card__title"><label class="fw-bold"><b>Age:
                                                                     </b></label><span
                                                                     class="c-green text-break text-truncate">
-                                                                    {{$age}}</span>
+                                                                    {{ $age }}</span>
 
                                                             </p>
                                                             <p class="card__title">
                                                                 <label class="fw-bold"><b>Weight: </b></label>
                                                                 <span class="c-green text-break text-truncate">
-                                                                    {{ $item?->profile?->weight . ' ' . 'KG'}} </span>
+                                                                    {{ $item?->profile?->weight . ' ' . 'KG' }} </span>
                                                             </p>
                                                             <p class="card__title">
                                                                 <label class="fw-bold"><b>Height: </b></label>
                                                                 <span class="c-green text-break text-truncate">
-                                                                    {{ $item?->profile?->height. ' '.'CM' }}</span>
+                                                                    {{ $item?->profile?->height . ' ' . 'CM' }}</span>
                                                             </p>
                                                         </div>
                                                     </div>
@@ -348,7 +360,7 @@
                                                             <p>
                                                                 {!! $item?->profile?->about_me !!}
                                                             </p>
-                                                         
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -438,7 +450,7 @@
                 this.style.cursor = "pointer";
                 this.style.borderColor = "grey";
             };
-        }   
+        }
 
         function changeImageOnClick(event) {
             // debugger;

@@ -50,7 +50,7 @@
             background-color: #fefefe;
             margin: auto;
             padding: 0;
-            width: 40% !important;
+            width: 35% !important;
             height: 33% !important;
             max-width: 1200px;
 
@@ -80,7 +80,6 @@
 
         .mySlides img {
             width: 100%;
-            height: 80%;
             object-fit: fill;
         }
 
@@ -139,6 +138,9 @@
         /*Form text css*/
         #popover-content {
             background: #f5f4f9;
+            width: 98%;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .close-btn {
@@ -215,12 +217,12 @@
         }
 
         /* .img-select-container img hover:{
-                                                                width: 100% !important;
-                                                                display: inline-block;
-                                                                border: 1px solid black;
-                                                                opacity: 0.4;
+                                                                                        width: 100% !important;
+                                                                                        display: inline-block;
+                                                                                        border: 1px solid black;
+                                                                                        opacity: 0.4;
 
-                                                            } */
+                                                                                    } */
         .img-select .active {
             border: 1px dotted black;
             height: 50px !important;
@@ -239,17 +241,19 @@
 
         .actor-name {
             color: hsl(0, 0%, 99%);
-            font-size:24px;
+            font-size: 24px;
         }
-        .fa-brands{
+
+        .fa-brands {
             padding-left: 20px;
-            font-size:24px;
+            font-size: 24px;
             color: hsl(0, 0%, 99%);
         }
-        .c-further-information p{
+
+        .c-further-information p {
             color: black;
-            font-size:15px;
-            font-weight:400;
+            font-size: 15px;
+            font-weight: 400;
         }
 
         /*Rateing Css*/
@@ -288,6 +292,7 @@
             border: 1px solid #CCC;
             border-radius: 4px;
         }
+
         .success-box {
             margin: 0px 0;
             border: 1px solid #eee;
@@ -306,6 +311,37 @@
             color: #888;
         }
 
+        /*Image Gallary*/
+        .imgStyle {
+            width: 70px;
+            height: 82px;
+            padding: 3px;
+            object-fit: cover;
+
+        }
+
+        .mainImage {
+            margin-right: 120px;
+            margin-top: 5px;
+            width: 100%;
+            border: 1px solid black;
+        }
+
+        .divId {
+            margin: 0 40px;
+            display: inline-flex;
+            width: 212px;
+            border: 1px solid #b3aeae;
+            cursor: pointer;
+        }
+
+        .divId.imgStyle {
+            display: flex;
+            opacity: 0.4;
+            transition: 0.4s;
+            height: 100px;
+            box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19)
+        }
 
 
         /* Rating Star Widgets Style */
@@ -324,7 +360,7 @@
 
         /* Idle State of the stars */
         .rating-stars ul>li.star>i.fa {
-            font-size:24px;
+            font-size: 24px;
             /* Change the size of the stars */
             color: #fff;
             /* Color on idle state */
@@ -376,28 +412,28 @@
                         <b></b>
                     </div>
                     <div class="text-right rating-widget h4 " style="margin-top:-23px;" id="close-yt">
-                       
-                            <!-- Rating Stars Box -->
-                            <div class='rating-stars text-right'>
-                               
-                                <ul id='stars'>
-                                    <li class='star' title='Poor' data-value='1'>
-                                        <i class='fa fa-star fa-fw'></i>
-                                    </li>
-                                    <li class='star' title='Fair' data-value='2'>
-                                        <i class='fa fa-star fa-fw'></i>
-                                    </li>
-                                    <li class='star' title='Good' data-value='3'>
-                                        <i class='fa fa-star fa-fw'></i>
-                                    </li>
-                                    <li class='star' title='Excellent' data-value='4'>
-                                        <i class='fa fa-star fa-fw'></i>
-                                    </li>
-                                    <li class='star' title='WOW!!!' data-value='5'>
-                                        <i class='fa fa-star fa-fw'></i>
-                                    </li>
-                                </ul>
-                            </div>
+
+                        <!-- Rating Stars Box -->
+                        <div class='rating-stars text-right'>
+
+                            <ul id='stars'>
+                                <li class='star' title='Poor' data-value='1'>
+                                    <i class='fa fa-star fa-fw'></i>
+                                </li>
+                                <li class='star' title='Fair' data-value='2'>
+                                    <i class='fa fa-star fa-fw'></i>
+                                </li>
+                                <li class='star' title='Good' data-value='3'>
+                                    <i class='fa fa-star fa-fw'></i>
+                                </li>
+                                <li class='star' title='Excellent' data-value='4'>
+                                    <i class='fa fa-star fa-fw'></i>
+                                </li>
+                                <li class='star' title='WOW!!!' data-value='5'>
+                                    <i class='fa fa-star fa-fw'></i>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -411,45 +447,53 @@
                                         <div class="pt-1 ms-1">
                                             <div class="image-container">
                                                 <div class="card-left">
-                                                    <div class="main-image gallary-image border border-dark rounded-6">
-                                                        @if (isset($item?->images[0]?->image))
-                                                            <img src="{{ $item?->images[0]?->image }}"
-                                                                style="width:240px; object-fit:contain;"
-                                                                onclick="openModal();currentSlide(1)" class="hover-shadow">
-                                                        @else
-                                                            <img src="{{ asset('assets/images/actor-image-thumbnail.jpg') }}"
-                                                                style="width:200px; object-fit:contain;"
-                                                                onclick="openModal();currentSlide(1)" class="hover-shadow">
-                                                        @endif
-                                                    </div>
-                                                    <div class="img-select">
-                                                        <div class=" d-flex p-3">
-                                                            <div class="column">
+                                                    @if (isset($item?->images) && count($item?->images) > 0)
+                                                        <div class="main-image gallary-image border border-dark rounded-6">
+                                                            @if (isset($item?->images[0]?->image))
+                                                                <img id="mainImage" src="{{ $item?->images[0]?->image }}"
+                                                                    height="200" width="200" />
+                                                            @else
+                                                                <img id="mainImage"
+                                                                    src="{{ asset('assets/images/actor-image-thumbnail.jpg') }}"
+                                                                    height="200" width="200" />
+                                                            @endif
+                                                        </div>
+
+                                                        <div class="img-select">
+                                                            <div class="divId" onmouseover="changeImageOnClick(event)">
+                                                                @if (isset($item?->images[0]?->image))
+                                                                    <img class="imgStyle"
+                                                                        src="{{ $item?->images[0]?->image }}" />
+                                                                @else
+                                                                    <img class="imgStyle"
+                                                                        src="{{ asset('assets/images/actor-image-thumbnail.jpg') }}" />
+                                                                @endif
                                                                 @if (isset($item?->images[1]?->image))
-                                                                    <img src="{{ $item?->images[1]?->image }}"
-                                                                        onclick="openModal();currentSlide(2)"
-                                                                        class="hover-shadow">
+                                                                    <img class="imgStyle"
+                                                                        src="{{ $item?->images[1]?->image }}" />
                                                                 @else
-                                                                    <img src="{{ asset('assets/images/actor-image-thumbnail.jpg') }}"
-                                                                        style="width:240px; object-fit:contain;"
-                                                                        onclick="openModal();currentSlide(2)"
-                                                                        class="hover-shadow">
+                                                                    <img class="imgStyle"
+                                                                        src="{{ asset('assets/images/actor-image-thumbnail.jpg') }}" />
                                                                 @endif
-                                                            </div>
-                                                            <div class="column">
                                                                 @if (isset($item?->images[2]?->image))
-                                                                    <img src="{{ $item?->images[2]?->image }}"
-                                                                        onclick="openModal();currentSlide(3)"
-                                                                        class="hover-shadow">
+                                                                    <img class="imgStyle"
+                                                                        src="{{ $item?->images[2]?->image }}" />
                                                                 @else
-                                                                    <img src="{{ asset('assets/images/actor-image-thumbnail.jpg') }}"
-                                                                        style="width:240px; object-fit:contain;"
-                                                                        onclick="openModal();currentSlide(3)"
-                                                                        class="hover-shadow">
+                                                                    <img class="imgStyle"
+                                                                        src="{{ asset('assets/images/actor-image-thumbnail.jpg') }}" />
                                                                 @endif
+
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    @else
+                                                        <div class="d-flex justify-content-center align-items-center">
+                                                            <img id="mainImage"
+                                                                src="{{ asset('assets/images/actor-image-thumbnail.jpg') }}"
+                                                                height="200" width="200" />
+                                                        </div>
+                                                    @endif
+
+
                                                     <div class="intro_video">
                                                         <div class="c-edit-panel">
                                                             <h4 class="c-edit-panel__header">Intro Video</h4>
@@ -483,78 +527,78 @@
                                     <div class="col-9">
                                         <div class="row">
                                             <div class="col-md-12 col-sm-12">
-                                                 <div class="row">
-                                                     <div class="col-md-6 col-sm-6">
-                                                         <div class="card__content">
- 
-                                                             <p class="card__title"><label class="fw-bold"><b>Email:
-                                                                     </b></label><span
-                                                                     class="c-green text-break text-truncate">
-                                                                     {{ $item?->profile?->email }}</span>
- 
-                                                             </p>
-                                                             <p class="card__title"><label class="fw-bold"><b>Ethnicity:
-                                                                     </b></label><span
-                                                                     class="c-green text-break text-truncate">
-                                                                     {{ $item?->profile?->ethnicity }}</span>
- 
-                                                             </p>
-                                                             <p class="card__title">
-                                                                 <label class="fw-bold"><b>Gender: </b></label>
-                                                                 <span class="c-green text-break text-truncate">
-                                                                     {{ $item?->profile?->gender }}</span>
-                                                             </p>
-                                                             <p class="card__title">
-                                                                 <label class="fw-bold"><b>Date Of Birth: </b></label>
-                                                                 <span class="c-green text-break text-truncate">
-                                                                     {{ $item?->profile?->date_of_birth }}</span>
-                                                             </p>
- 
-                                                             <p class="card__title">
-                                                                 <label class="fw-bold "><b>Current Location: </b></label>
-                                                                 <span class="c-green text-break text-truncate">
-                                                                     {{ $item?->profile?->current_location }}</span>
-                                                             </p>
-                                                         </div>
-                                                     </div>
-                                                     <div class="col-md-6 col-sm-6">
-                                                         <div class="card__content">
- 
-                                                             <p class="card__title"><label class="fw-bold"><b>Mobile:
-                                                                     </b></label><span
-                                                                     class="c-green text-break text-truncate">
-                                                                     {{$item->countryCode.'  '. $item?->mobile_no }}</span>
- 
-                                                             </p>
-                                                             @php
-                                                                 $dateOfBirth = $item?->profile?->date_of_birth;
-                                                                 //$age = \Carbon\Carbon::parse($dateOfBirth)->diff(\Carbon\Carbon::now())->format('%y years, %m months and %d days'); //\Carbon\Carbon::parse($dateOfBirth)->age;
-                                                                 $age = \Carbon\Carbon::parse($dateOfBirth)
-                                                                     ->diff(\Carbon\Carbon::now())
-                                                                     ->format('%y years');
-                                                             @endphp
-                                                             <p class="card__title"><label class="fw-bold"><b>Age:
-                                                                     </b></label><span
-                                                                     class="c-green text-break text-truncate">
-                                                                     {{$age}}</span>
- 
-                                                             </p>
-                                                             <p class="card__title">
-                                                                 <label class="fw-bold"><b>Weight: </b></label>
-                                                                 <span class="c-green text-break text-truncate">
-                                                                     {{ $item?->profile?->weight . ' ' . 'KG'}} </span>
-                                                             </p>
-                                                             <p class="card__title">
-                                                                 <label class="fw-bold"><b>Height: </b></label>
-                                                                 <span class="c-green text-break text-truncate">
-                                                                     {{ $item?->profile?->height. ' '.'CM' }}</span>
-                                                             </p>
-                                                         </div>
-                                                     </div>
-                                                 </div>
- 
-                                             </div>
-                                         </div>
+                                                <div class="row">
+                                                    <div class="col-md-6 col-sm-6">
+                                                        <div class="card__content">
+
+                                                            <p class="card__title"><label class="fw-bold"><b>Email:
+                                                                    </b></label><span
+                                                                    class="c-green text-break text-truncate">
+                                                                    {{ $item?->profile?->email }}</span>
+
+                                                            </p>
+                                                            <p class="card__title"><label class="fw-bold"><b>Ethnicity:
+                                                                    </b></label><span
+                                                                    class="c-green text-break text-truncate">
+                                                                    {{ $item?->profile?->ethnicity }}</span>
+
+                                                            </p>
+                                                            <p class="card__title">
+                                                                <label class="fw-bold"><b>Gender: </b></label>
+                                                                <span class="c-green text-break text-truncate">
+                                                                    {{ $item?->profile?->gender }}</span>
+                                                            </p>
+                                                            <p class="card__title">
+                                                                <label class="fw-bold"><b>Date Of Birth: </b></label>
+                                                                <span class="c-green text-break text-truncate">
+                                                                    {{ $item?->profile?->date_of_birth }}</span>
+                                                            </p>
+
+                                                            <p class="card__title">
+                                                                <label class="fw-bold "><b>Current Location: </b></label>
+                                                                <span class="c-green text-break text-truncate">
+                                                                    {{ $item?->profile?->current_location }}</span>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-6">
+                                                        <div class="card__content">
+
+                                                            <p class="card__title"><label class="fw-bold"><b>Mobile:
+                                                                    </b></label><span
+                                                                    class="c-green text-break text-truncate">
+                                                                    {{ $item->countryCode . '  ' . $item?->mobile_no }}</span>
+
+                                                            </p>
+                                                            @php
+                                                                $dateOfBirth = $item?->profile?->date_of_birth;
+                                                                //$age = \Carbon\Carbon::parse($dateOfBirth)->diff(\Carbon\Carbon::now())->format('%y years, %m months and %d days'); //\Carbon\Carbon::parse($dateOfBirth)->age;
+                                                                $age = \Carbon\Carbon::parse($dateOfBirth)
+                                                                    ->diff(\Carbon\Carbon::now())
+                                                                    ->format('%y years');
+                                                            @endphp
+                                                            <p class="card__title"><label class="fw-bold"><b>Age:
+                                                                    </b></label><span
+                                                                    class="c-green text-break text-truncate">
+                                                                    {{ $age }}</span>
+
+                                                            </p>
+                                                            <p class="card__title">
+                                                                <label class="fw-bold"><b>Weight: </b></label>
+                                                                <span class="c-green text-break text-truncate">
+                                                                    {{ $item?->profile?->weight . ' ' . 'KG' }} </span>
+                                                            </p>
+                                                            <p class="card__title">
+                                                                <label class="fw-bold"><b>Height: </b></label>
+                                                                <span class="c-green text-break text-truncate">
+                                                                    {{ $item?->profile?->height . ' ' . 'CM' }}</span>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class="g-content-area p-main-page__content">
@@ -567,7 +611,7 @@
                                                             <p>
                                                                 {!! $item?->profile?->about_me !!}
                                                             </p>
-                                                           
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -644,89 +688,9 @@
                 </div>
             </div>
         </div>
-        <!-- The Modal/Lightbox -->
-        <div id="myModal" class="modal">
-            <span class="close cursor" onclick="closeModal()">&times;</span>
-            <div class="modal-content">
-
-                <div class="mySlides">
-
-                    <div class="numbertext">1 / 3</div>
-                    @if (isset($item?->images[0]?->image))
-                        <img src="{{ $item?->images[0]?->image }}">
-                    @else
-                        <img src="{{ asset('assets/images/actor-image-thumbnail.jpg') }}">
-                    @endif
-                </div>
-
-                <div class="mySlides">
-                    <div class="numbertext">2 / 3</div>
-                    @if (isset($item?->images[1]?->image))
-                        <img src="{{ $item?->images[1]?->image }}">
-                    @else
-                        <img src="{{ asset('assets/images/actor-image-thumbnail.jpg') }}">
-                    @endif
-                </div>
-
-                <div class="mySlides">
-                    <div class="numbertext">3 / 3</div>
-                    @if (isset($item?->images[2]?->image))
-                        <img src="{{ $item?->images[2]?->image }}">
-                    @else
-                        <img src="{{ asset('assets/images/actor-image-thumbnail.jpg') }}">
-                    @endif
-                </div>
-
-                <!-- Next/previous controls -->
-                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                <a class="next" onclick="plusSlides(1)">&#10095;</a>
-            </div>
-        </div>
-
     </section>
 @endsection
 @section('footer')
-    <script>
-        // Open the Modal
-        function openModal() {
-            document.getElementById("myModal").style.display = "block";
-        }
-
-        // Close the Modal
-        function closeModal() {
-            document.getElementById("myModal").style.display = "none";
-        }
-
-        var slideIndex = 1;
-        showSlides(slideIndex);
-
-        // Next/previous controls
-        function plusSlides(n) {
-            showSlides(slideIndex += n);
-        }
-
-        // Thumbnail image controls
-        function currentSlide(n) {
-            showSlides(slideIndex = n);
-        }
-
-        function showSlides(n) {
-            var i;
-            var slides = document.getElementsByClassName("mySlides");
-            var captionText = document.getElementById("caption");
-            if (n > slides.length) {
-                slideIndex = 1
-            }
-            if (n < 1) {
-                slideIndex = slides.length
-            }
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
-            slides[slideIndex - 1].style.display = "block";
-            captionText.innerHTML = dots[slideIndex - 1].alt;
-        }
-    </script>
     <script>
         $(document).ready(function() {
 
@@ -777,7 +741,8 @@
 
 
         });
-     function responseMessage(msg, ratingValue) {
+
+        function responseMessage(msg, ratingValue) {
             $('.text-message b').html("<span>" + msg + "</span>");
 
             $.ajax({
@@ -785,12 +750,12 @@
                 type: "GET",
                 data: {
                     'rateingValue': ratingValue,
-                    'user_id':'{{$item->id}}',
+                    'user_id': '{{ $item->id }}',
 
                 },
-                dataType:'json',
+                dataType: 'json',
                 success: function(resp) {
-                   alert(resp.message);
+                    alert(resp.message);
                 },
                 error: function(xhr, ajaxOptions, thrownError) {
                     console.log(xhr.status);
@@ -798,6 +763,28 @@
                 }
             })
 
+        }
+        /*Image Slider*/
+        var images = document.getElementsByTagName("img");
+
+        for (var i = 0; i < images.length; i++) {
+            images[i].onmouseover = function() {
+                this.style.cursor = "hand";
+                this.style.borderColor = "red";
+            };
+            images[i].onmouseout = function() {
+                this.style.cursor = "pointer";
+                this.style.borderColor = "grey";
+            };
+        }
+
+        function changeImageOnClick(event) {
+            // debugger;
+            var targetElement = event.srcElement;
+            // debugger;
+            if (targetElement.tagName === "IMG") {
+                mainImage.src = targetElement.getAttribute("src");
+            }
         }
     </script>
 @endsection

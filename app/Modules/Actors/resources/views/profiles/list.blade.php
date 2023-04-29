@@ -32,25 +32,26 @@
 
         .popover {
             max-width: 100% !important;
-            margin: 18px 0 0 100px;
+            margin: 18px 0 0 26px;
         }
 
         /* .bucket-wrapper {
-                        height: 50px;
-                        border-top: 1px solid rgba(255, 255, 255, .2);
-                        border-bottom: 1px solid rgba(255, 255, 255, .2);
-                        position: sticky;
-                        bottom: 0;
-                        width: 100%;
-                    } */
+                            height: 50px;
+                            border-top: 1px solid rgba(255, 255, 255, .2);
+                            border-bottom: 1px solid rgba(255, 255, 255, .2);
+                            position: sticky;
+                            bottom: 0;
+                            width: 100%;
+                        } */
         .bucket-wrapper {
-            position: fixed;
+            position: sticky;
             /* left: 0; */
             bottom: 0;
             /* width: 100%; */
-            width: 80%;
+            width: 100%;
             /* background-color: red; */
             color: white;
+            top: 320px;
             /* text-align: center; */
         }
     </style>
@@ -213,13 +214,13 @@
                     </div>
                 </div>
             </div>
-            {{-- <div class="bucket-wrapper">
+            <div class="bucket-wrapper" style="display: none;">
                 <div class="row ">
                     <div class="col-lg-12 title-margin-right">
                         @include('Actors::bucket')
                     </div>
                 </div>
-            </div> --}}
+            </div>
         </div>
 
 
@@ -233,7 +234,7 @@
         var array = [];
 
         function GetBucketId(id) {
-
+            $('.bucket-wrapper').show();
             if (array.indexOf(id) === -1) {
                 array.push(id);
                 $('#bucket-form').show();
@@ -246,7 +247,7 @@
 
             //  alert(array.join(','))
             if (array.length === 0) {
-                $('#bucket-form').hide();
+                $('.bucket-wrapper').hide();
             }
         }
         $('body').on('click', function(e) {

@@ -80,15 +80,15 @@
     /*bucket list css*/
 
     .card-container {
-        max-width: 100%;
-        flex-direction: row;
-        background-color: #141414;
-        border: 0;
-        box-shadow: 0 7px 7px rgba(0, 0, 0, 0.18);
-        margin: 3em auto;
-        /* max-height: 30%; */
-        max-height: 72px;
-    }
+    max-width: 100%;
+    flex-direction: row;
+    background-color: #141414;
+    border: 0;
+    box-shadow: 0 7px 7px rgba(0, 0, 0, 0.18);
+    margin: auto;
+    /* max-height: 30%; */
+    max-height: 88px;
+}
 
     .card-container.dark {
         color: #fff;

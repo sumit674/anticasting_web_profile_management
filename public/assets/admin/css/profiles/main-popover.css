@@ -611,7 +611,7 @@ object-fit: contain;
 display: block;
 } */
 .card-img img {
-padding-top: 10px;
+/* padding-top: 10px; */
 width: inherit;
 height: 178px;
 object-fit: contain;
@@ -1392,12 +1392,10 @@ width: 100%;
 
 }
 
-.c-card__content{
-
-width: 100%;
-
-padding: 10px;
-
+.c-card__content {
+    width: 100%;
+    /* padding: 10px; */
+    padding-top: 22px;
 }
 .card__content{
 
