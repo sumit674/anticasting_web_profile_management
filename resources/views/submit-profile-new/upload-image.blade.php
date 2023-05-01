@@ -1,71 +1,3 @@
-<style>
-    #my_camera video {
-
-        /* width: 306px; */
-        width:530px;
-        height: 190px;
-        margin-left:80px;
-        padding-left: 22px;
-        padding-top:0px;
-        object-fit:contain;
-    }
-    .modal-content{
-       width: 75%;
-       margin-left: 43px;
-    }
-    #my_camera{
-        width:530px;
-        height:190px;
-        transform: scaleX(-1);
-    }
-    #results img {
-        width: 306px;
-        height: 232px;
-        margin-right: 40px;
-    }
-
-    .image-thumbnail {
-        padding: .25rem;
-        background-color: #fff;
-        border: 1px solid #dee2e6;
-        border-radius: .25rem;
-        max-width: 64%;
-        height: auto
-    }
-
-    .image-snapshot {
-        padding: 0px;
-        background-color: #fff;
-        border: 1px solid #dee2e6;
-        border-radius: 1px;
-        width: 210px;
-        height: 215px;
-    }
-
-    .fa {
-        display: inline-block;
-        font: normal normal normal 14px/1 FontAwesome;
-        font-size: large;
-        text-rendering: auto;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-    }
-
-    .label-text {
-        font-family: "Times New Roman", Times, serif;
-        font-size: 18px;
-        font-weight: 800;
-        color: #272a2a;
-    }
-
-    /* .take-snap-second {
-        margin-left: 230px;
-    }
-
-    .take-snap-configuration {
-        margin-left: 20px;
-    } */
-</style>
 <div class="modal fade" id="upload-image-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
 
@@ -75,10 +7,10 @@
 
             <div class="modal-header">
                 <input type="hidden" id="image_number" />
-                <h5 class="modal-title" id="exampleModalLabel">Headshot Image</h5>
+                <h6 class="modal-title" id="exampleModalLabel">Headshot Image</h6>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="d-flex mt-3 m-3">
+            <div class="d-flex justify-content-center mt-2">
                 <input type="radio" class="ps-2" name="select-image" checked id="image-upload" />
                 &nbsp;
                 <label class="pe-2 label-text" for="image-upload">Upload</label>
@@ -87,7 +19,7 @@
                 &nbsp;
                 <label class="pe-2 label-text" for="image-capture">Capture</label>
             </div>
-            <div class="upload-picture">
+            <div class="upload-picture pt-0">
                 <div class="modal-body">
                     <p style="font-weight: bold;">Picture</p>
                     <input type="file" name="picture" class="form-control image mb-2" id="picture" />

@@ -40,11 +40,12 @@
 }
 
 .main-img {
-    background-size: cover;
+    /* background-size: cover; */
     background-position: center center;
     background-repeat: no-repeat;
     border: 2px ridge  black;
-    height: 280px;
+    /* height: 280px; */
+    height: 229px;
     width: 270px;
     object-fit: contain !important;
 }
@@ -71,7 +72,8 @@
     background-position: center center;
     background-repeat: no-repeat;
     border: 2px ridge  black;
-    height: 108px;
+    /* height: 108px; */
+    height: 75px;
     width: 80px;
     object-fit: contain !important;
 }

@@ -1,0 +1,105 @@
+.modal-title {
+    line-height: 1rem;
+}
+#my_camera video {
+
+    /* width: 306px; */
+    width: 100%;
+    height: 190px;
+    /* margin-left:80px; */
+    /* padding-left: 22px; */
+    /* padding-top:0px; */
+    object-fit:contain;
+}
+.modal-content{
+   width: 100%;
+}
+#my_camera{
+    /* width:530px; */
+    /* height:190px; */
+    /* transform: scaleX(-1); */
+    margin: 0 30px;
+}
+#results img {
+    /* width: 100%; */
+    width: 68%;
+    height: 232px;
+    /* margin-right: 40px; */
+    margin-right: 0;
+}
+
+.image-thumbnail {
+    padding: .25rem;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: .25rem;
+    max-width: 64%;
+    height: auto
+}
+
+.image-snapshot {
+    padding: 0px;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 1px;
+    width: 210px;
+    height: 215px;
+}
+
+.fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: large;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.label-text {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 18px;
+    font-weight: 800;
+    color: #272a2a;
+}
+
+@media screen and (min-width: 420px) and (max-width:768px) {
+    #my_camera{
+        margin: 0 39%;
+    }
+    #my_camera video {
+        max-width: 100%;
+        max-height: 100%;
+        margin-left: 150px !important;
+    }
+    #results img {
+        max-width: 100%;
+        max-height: 100%;
+        margin-left: 150px;
+    }
+}
+/* @media (max-width: 576px) {
+    #my_camera video {
+        max-width: 100%;
+        max-height: 100%;
+        margin-left: 116px;
+    }
+
+    #results img {
+        max-width: 100%;
+        max-height: 100%;
+        margin-left: 116px;
+    }
+} */
+@media only screen and (max-width: 768px) {
+    #my_camera video {
+        max-width: 100%;
+        max-height: 100%;
+        margin-left: 116px;
+    }
+
+    #results img {
+        max-width: 100%;
+        max-height: 100%;
+        margin-left: 0!important;
+    }
+}

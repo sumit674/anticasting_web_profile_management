@@ -189,9 +189,8 @@
 
 
 .sidebar .nano-content>ul li>a:hover {
-
-  background: linear-gradient(to right, #0c0c0c , #000000);
-
+  /* background: linear-gradient(to right, #0c0c0c , #000000); */
+  background: linear-gradient(to right, #d7930f4f , #d90d0d);
 }
 
 

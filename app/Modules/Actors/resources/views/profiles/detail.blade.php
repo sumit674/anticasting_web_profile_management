@@ -454,7 +454,7 @@
                                                                     height="200" width="200" />
                                                             @else
                                                                 <img id="mainImage"
-                                                                    src="{{ asset('assets/images/actor-image-thumbnail.jpg') }}"
+                                                                    src="{{ asset('assets/images/user-default-image.png') }}"
                                                                     height="200" width="200" />
                                                             @endif
                                                         </div>
@@ -466,21 +466,21 @@
                                                                         src="{{ $item?->images[0]?->image }}" />
                                                                 @else
                                                                     <img class="imgStyle"
-                                                                        src="{{ asset('assets/images/actor-image-thumbnail.jpg') }}" />
+                                                                        src="{{ asset('assets/images/user-default-image.png') }}" />
                                                                 @endif
                                                                 @if (isset($item?->images[1]?->image))
                                                                     <img class="imgStyle"
                                                                         src="{{ $item?->images[1]?->image }}" />
                                                                 @else
                                                                     <img class="imgStyle"
-                                                                        src="{{ asset('assets/images/actor-image-thumbnail.jpg') }}" />
+                                                                        src="{{ asset('assets/images/user-default-image.png') }}" />
                                                                 @endif
                                                                 @if (isset($item?->images[2]?->image))
                                                                     <img class="imgStyle"
                                                                         src="{{ $item?->images[2]?->image }}" />
                                                                 @else
                                                                     <img class="imgStyle"
-                                                                        src="{{ asset('assets/images/actor-image-thumbnail.jpg') }}" />
+                                                                        src="{{ asset('assets/images/user-default-image.png') }}" />
                                                                 @endif
 
                                                             </div>
@@ -488,7 +488,7 @@
                                                     @else
                                                         <div class="d-flex justify-content-center align-items-center">
                                                             <img id="mainImage"
-                                                                src="{{ asset('assets/images/actor-image-thumbnail.jpg') }}"
+                                                                src="{{ asset('assets/images/user-default-image.png') }}"
                                                                 height="200" width="200" />
                                                         </div>
                                                     @endif

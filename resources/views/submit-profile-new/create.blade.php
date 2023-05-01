@@ -1,11 +1,12 @@
 @extends('layouts.submit-profile-new')
+@section('header')
+    @include('include.submitprofile.image-header')
+@endsection
 @section('style')
     <link rel="stylesheet" href="{{ asset('assets/website/css/image-gallery.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/auth/toastr.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/website/css/alertbox.css') }}" />
-@endsection
-@section('header')
-    @include('include.submitprofile.image-header')
+    <link rel="stylesheet" href="{{ asset('assets/website/css/webcam.css') }}" />
 @endsection
 @section('content')
     <section id="contact-us" class="contact-us section">
@@ -328,6 +329,10 @@
 @section('footer')
     <script>
         var images = @json($userInfo?->images?->pluck('image')?->toArray());
+
+        let camWidth = 400;
+        let camHeight = 225;
+
     </script>
     <script src="{{ asset('assets/website/js/submit-profile/image-gallery.js') }}"></script>
     <script src="{{ asset('assets/intl-telephone/js/intlTelInput.js') }}" type="text/javascript"></script>
@@ -395,8 +400,8 @@
             $("#success").dialog({
                 autoOpen: true,
                 modal: true,
-                width: 350,
-                height: 150,
+                width: camWidth,
+                height: camHeight,
                 buttons: [
                     // {
                     //     text: 'Yes, proceed!',
@@ -635,8 +640,8 @@
             $('.upload-picture').hide();
             
             Webcam.set({
-                width:530,
-                height:190,
+                width: camWidth,
+                height: camHeight,
                 image_format: 'jpeg',
                 jpeg_quality:108,
                 flip_horiz: true
@@ -649,16 +654,15 @@
         $('.take-snap-configuration').hide();
         $('.take-snap-second').hide();
         /* Webcam.set({
-            width:530,
-            height:190,
+            width: camWidth,
+            height: camHeight,
             image_format: 'jpeg',
             jpeg_quality:108,
             flip_horiz: true
         });
         Webcam.attach('#my_camera'); */
         function take_snapshot() {
-            alert("Snap-shot")
-            let imgId = $('#image_number').val();
+            // let imgId = $('#image_number').val();
 
             $('#take').hide();
             $('#retake').show();
@@ -672,10 +676,7 @@
                 $(".image-tag").val(data_uri);
                 document.getElementById('results').innerHTML = '<img src="' + data_uri +
                     '"  class="image-snapshot"/>';
-                // document.querySelector('#capture_image').value = data_uri;
-
-                // $('#upload-image-modal').modal('hide');
-                if (imgId == 1) {
+                /* if (imgId == 1) {
                     // document.querySelector("#default-img").src = evt.target.result;
                     $("#default-img").attr('src', data_uri);
                     // document.querySelector("#image1").style.backgroundImage = 'url(' + data_uri + ')';
@@ -689,8 +690,7 @@
                 if (imgId == 3) {
                     document.querySelector("#image3").style.backgroundImage = 'url(' + data_uri + ')';
                     document.querySelector("#picture3").value = data_uri;
-                }
-
+                } */
             });
         }
 
@@ -698,8 +698,8 @@
             Webcam.reset();
 
             Webcam.set({
-                width: 489,
-                height: 215,
+                width: camWidth,
+                height: camHeight,
                 image_format: 'jpeg',
                 jpeg_quality: 90,
                 flip_horiz: true
@@ -716,8 +716,27 @@
             Webcam.snap(function(data_uri) {
                 $(".image-tag").val(data_uri);
                 document.getElementById('results').innerHTML = '<img src="' + data_uri +
-                    '"class="image-snapshot"/>';
+                    '"class="image-snapshot" id="img-result"/>';
                 document.querySelector('#capture_image').value = data_uri;
+
+                let imgId = $('#image_number').val();
+                // attach with field
+                if (imgId == 1) {
+                    // document.querySelector("#default-img").src = evt.target.result;
+                    $("#default-img").attr('src', data_uri);
+                    // document.querySelector("#image1").style.backgroundImage = 'url(' + data_uri + ')';
+                    $('#image1').css("background-image", 'url(' + data_uri + ')');
+                    document.querySelector("#picture1").value = data_uri;
+                }
+                if (imgId == 2) {
+                    document.querySelector("#image2").style.backgroundImage = 'url(' + data_uri + ')';
+                    document.querySelector("#picture2").value = data_uri;
+                }
+                if (imgId == 3) {
+                    document.querySelector("#image3").style.backgroundImage = 'url(' + data_uri + ')';
+                    document.querySelector("#picture3").value = data_uri;
+                }
+
             });
         }
     </script>

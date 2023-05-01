@@ -2,9 +2,13 @@
 @section('content')
     <section class="contact-us section">
         @if (Session::has('message'))
-            <div id="success" title="Success"><p>{{ Session::get('message') }}</p></div>
+            <div id="success" title="Success">
+                <p>{{ Session::get('message') }}</p>
+            </div>
         @elseif (Session::has('error'))
-            <div id="error" title="Error"><p>{{ Session::get('error') }}</p></div>
+            <div id="error" title="Error">
+                <p>{{ Session::get('error') }}</p>
+            </div>
         @endif
         <main class="d-flex align-items-center w-auto main-container">
             <div class="container">
@@ -14,7 +18,8 @@
                             <div class="card-body">
                                 <div class="brand-wrapper">
                                     <a href="{{ route('users.home') }}">
-                                        <img src="{{ asset('assets/website/images/anticasting-logo.png') }}" alt="logo" class="logo">
+                                        <img src="{{ asset('assets/website/images/anticasting-logo.png') }}" alt="logo"
+                                            class="logo">
                                     </a>
                                 </div>
                                 <p class="d-flex justify-content-center fs-4">Login into your account</p>
@@ -48,13 +53,12 @@
                                     <div class="col-md-12 my-2">
                                         <div class="captcha">
                                             <span>{!! captcha_img() !!}</span>
-                                            <button type="button" class="btn btn-danger" class="reload"
-                                                id="reload">
+                                            <button type="button" class="btn btn-danger" class="reload" id="reload">
                                                 &#x21bb;
                                             </button>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="form-group mb-3">
                                         <input id="captcha" type="text" class="form-control"
                                             placeholder="Enter Captcha" name="captcha">
@@ -64,10 +68,12 @@
                                     </div>
                                     <div class="form-group mb-3">
                                         <input type="checkbox" name="remeber_me" id="rember-me" />
-                                        <label for="rember-me" class="form-label text-muted">&nbsp;<b>Remember Me</b></label>
+                                        <label for="rember-me" class="form-label text-muted">&nbsp;<b>Remember
+                                                Me</b></label>
                                         <label class="forg-pass">
-                                            <a href="{{ route('users.forgot-password') }}" class="forgot-password-link"><b>Forgot
-                                                password?</b></a>
+                                            <a href="{{ route('users.forgot-password') }}"
+                                                class="forgot-password-link"><b>Forgot
+                                                    password?</b></a>
                                         </label>
                                     </div>
 
@@ -78,19 +84,23 @@
                                 </form>
                                 <div class="mt-3">
                                     <p class="login-card-footer-text"><b>Don't have an account?</b>
-                                        <a href="{{ route('users.register') }}" class="text-reset text-muted"> Register  here</a>
+                                        <a href="{{ route('users.register') }}" class="text-reset text-muted"> Register
+                                            here</a>
                                     </p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-7">
-                            <img src="{{ asset('assets/website/images/banner.jpg') }}" alt="login" class="login-card-img">
+                            <img src="{{ asset('assets/website/images/banner.jpg') }}" alt="login"
+                                class="login-card-img">
                         </div>
                     </div>
                 </div>
             </div>
         </main>
     </section>
+    {{-- otpless signin --}}
+    {{-- @include('auth.otpless') --}}
 @endsection
 @section('footer')
     <script type="text/javascript">
@@ -178,7 +188,7 @@
             }
         });
     </script>
-     <script type="text/javascript">
+    <script type="text/javascript">
         $('#reload').click(function() {
             $.ajax({
                 type: 'GET',
@@ -189,4 +199,5 @@
             });
         });
     </script>
+       
 @endsection

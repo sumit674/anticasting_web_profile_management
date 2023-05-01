@@ -80,15 +80,15 @@
     /*bucket list css*/
 
     .card-container {
-    max-width: 100%;
-    flex-direction: row;
-    background-color: #141414;
-    border: 0;
-    box-shadow: 0 7px 7px rgba(0, 0, 0, 0.18);
-    margin: auto;
-    /* max-height: 30%; */
-    max-height: 88px;
-}
+        max-width: 100%;
+        flex-direction: row;
+        background-color: #141414;
+        border: 0;
+        box-shadow: 0 7px 7px rgba(0, 0, 0, 0.18);
+        margin: auto;
+        /* max-height: 30%; */
+        max-height: 88px;
+    }
 
     .card-container.dark {
         color: #fff;
@@ -138,48 +138,6 @@
         font-weight: 500
     }
 </style>
-{{-- <div class="container">
-
-    <div class="row">
-        <div class="col-md-12 col-lg-12 ">
-            <form id="bucket-form" style="display:none;" action="{{ route('admin.actors.bucket.store') }}" method="post">
-                @csrf
-                <div class="row">
-                    <div class="col-md-1 col-sm-1 col-lg-1 ">
-                        <div class="form-group">
-                            <span>
-                                <i class="fa-solid fa-bucket fa-2xl mb-3"></i>
-                                <span>
-                                    <h4 class="fw-bold fs-3"></h4>
-                                </span>
-                            </span>
-                            <input type="hidden" name="user_id" class="form-control-sm" id="bucket-item" />
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-4 col-lg-4">
-                        <div class="form-group">
-                            <label class="form-label">
-                                <b>
-                                    Bucket Name
-                                </b>
-                            </label>
-                            <select name="bucket_name" class="form-control" id="selecter2">
-                                <option value="actor">Actor</option>
-                                <option value="artist">Artist</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-2 col-sm-2 col-lg-2">
-                        <button type="submit" id="bucket_list" class="btn btn-danger">Save</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-
-    </div>
-</div> --}}
-
-{{-- bucket list --}}
 <div class="card dark card-container position-static">
     <div class="card-body">
         <form id="bucket-form" action="{{ route('admin.actors.bucket.store') }}" method="post">
@@ -199,8 +157,12 @@
                 <div class=" col-md-6">
                     <div class="form-group select-list mt-2">
                         <select name="bucket_name" class="form-control" id="selecter2">
-                            <option value="actor">Actor</option>
-                            <option value="artist">Artist</option>
+                            @isset($bucket_list)
+                                @foreach ($bucket_list as $key => $bucket)
+                                    <option value="{{$bucket->id}}" @if(isset($bucket->id)) selected @endif >{{$bucket->bucket_name}}</option>
+                                @endforeach
+                            @endisset
+
                         </select>
                     </div>
                 </div>

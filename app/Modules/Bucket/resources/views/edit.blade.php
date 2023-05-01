@@ -70,7 +70,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="form-group">
+                                    {{-- <div class="form-group">
                                         <label class="form-label"><b>Movie name
                                             </b><span style="color:red;">*</span>
                                         </label>
@@ -79,10 +79,14 @@
                                         @error('movie_name')
                                             <span style="color:red;"><b>{{ $message }}</b></span>
                                         @enderror
-                                    </div>
+                                    </div> --}}
+                                    <div class="form-group mt-3">
+                                        <label class="form-label" id="status"><b>Status</b></label>
+                                        <input type="checkbox" name="status" value="1" @if(isset($item->status) && $item->status==true) checked @endif>
+                                    </div>   
                                 </div>
                             </div>
-                            <div class="row">
+                            {{-- <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="form-label" for="description"><b>Description
@@ -109,7 +113,7 @@
                                     </div>
                                 </div>
                             
-                            </div>
+                            </div> --}}
                                 <center>
                                     <input type="submit" class="btn btn-success" value="update" />
                                 </center>

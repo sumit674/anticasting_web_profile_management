@@ -67,3 +67,16 @@ output{
   .popup{
     margin-top:20px;
   }
+
+  @media (max-width: 576px) {
+    #my_camera video {
+        max-width: 80%;
+        max-height: 80%;
+    }
+
+    #results img {
+        max-width: 80%;
+        max-height: 80%;
+
+    }
+}

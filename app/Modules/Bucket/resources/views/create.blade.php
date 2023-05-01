@@ -56,7 +56,7 @@
                             enctype="multipart/form-data">
                             @csrf
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-6 col-lg-6 col-sm-6">
                                     <div class="form-group">
                                         <label class="form-label" id="bucket"><b>Bucket name
                                             </b><span style="color:red;">*</span>
@@ -69,7 +69,14 @@
 
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-6 col-lg-6 col-sm-6">
+                                    <div class="form-group mt-3">
+                                        <label class="form-label" id="status"><b>Status</b></label>
+                                        <input type="checkbox" name="status" />
+                                    </div>   
+                                </div>
+
+                                {{-- <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="form-label"><b>Movie name
                                             </b><span style="color:red;">*</span>
@@ -80,9 +87,9 @@
                                             <span style="color:red;"><b>{{ $message }}</b></span>
                                         @enderror
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
-                            <div class="row">
+                            {{-- <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="form-label" for="description"><b>Description
@@ -93,8 +100,8 @@
                                         @enderror
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
+                            </div> --}}
+                            {{-- <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="form-label"><b>Movie Link</label>
@@ -106,20 +113,12 @@
                                         @enderror
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                             <center>
                                 <input type="submit" class="btn btn-danger" value="Save" />
                             </center>
                         </form>
                         <hr />
-                        <div class="row">
-                            <div class="col-lg-6">
-
-                            </div>
-                            <div class="col-lg-6">
-
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

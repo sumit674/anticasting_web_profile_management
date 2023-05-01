@@ -273,9 +273,12 @@
                                                             height="200" width="200" />
                                                     </a>
                                                 @else
+                                                <a href="{{ route('admin.profile-detail', $actor->id) }}"
+                                                    target="__blank">
                                                     <img id="mainImage"
-                                                        src="{{ asset('assets/images/actor-image-thumbnail.jpg') }}"
+                                                        src="{{ asset('assets/images/user-default-image.png') }}"
                                                         height="200" width="200" />
+                                                </a>    
                                                 @endif
                                             </div>
                                             <div class="img-select">
@@ -284,19 +287,19 @@
                                                         <img class="imgStyle" src="{{ $actor?->images[0]?->image }}" />
                                                     @else
                                                         <img class="imgStyle"
-                                                            src="{{ asset('assets/images/actor-image-thumbnail.jpg') }}" />
+                                                            src="{{ asset('assets/images/user-default-image.png') }}" />
                                                     @endif
                                                     @if (isset($actor?->images[1]?->image))
                                                         <img class="imgStyle" src="{{ $actor?->images[1]?->image }}" />
                                                     @else
                                                         <img class="imgStyle"
-                                                            src="{{ asset('assets/images/actor-image-thumbnail.jpg') }}" />
+                                                            src="{{ asset('assets/images/user-default-image.png') }}" />
                                                     @endif
                                                     @if (isset($actor?->images[2]?->image))
                                                         <img class="imgStyle" src="{{ $actor?->images[2]?->image }}" />
                                                     @else
                                                         <img class="imgStyle"
-                                                            src="{{ asset('assets/images/actor-image-thumbnail.jpg') }}" />
+                                                            src="{{ asset('assets/images/user-default-image.png') }}" />
                                                     @endif
 
                                                 </div>
@@ -306,7 +309,7 @@
                                                 <a href="{{ route('admin.profile-detail', $actor->id) }}"
                                                     target="__blank">
                                                 <img id="mainImage"
-                                                    src="{{ asset('assets/images/actor-image-thumbnail.jpg') }}"
+                                                    src="{{ asset('assets/images/user-default-image.png') }}"
                                                     height="250" width="250" style="object-fit:fill;" />
                                                 </a>
                                             </div>

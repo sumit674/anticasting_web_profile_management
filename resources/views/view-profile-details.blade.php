@@ -1,169 +1,7 @@
 @extends('front-dashboard.layouts.app')
 @section('header')
     <link rel="stylesheet" href="{{ asset('assets/front-dashboard/css/view-profile/main-details.css') }}" />
-    <style>
-        /*Image Gallary*/
-        .imgStyle {
-            width: 70px;
-            height: 82px;
-            padding: 3px;
-            object-fit: cover;
-
-        }
-
-        .mainImage {
-            margin-right: 120px;
-            margin-top: 5px;
-            width: 100%;
-            border: 1px solid black;
-        }
-
-        .divId {
-            margin: 0 40px;
-            display: inline-flex;
-            width: 212px;
-            border: 1px solid #b3aeae;
-            cursor: pointer;
-        }
-
-        .divId.imgStyle {
-            display: flex;
-            opacity: 0.4;
-            transition: 0.4s;
-            height: 100px;
-            box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19)
-        }
-
-        /*Intro Video*/
-        .intro_video {
-            margin-top: 150px;
-        }
-
-        /*Form text css*/
-        #popover-content {
-            background: #f5f4f9;
-        }
-
-        .close-btn {
-
-            position: absolute;
-            /* You may need to change top and right. They depend on padding/widht of .badge */
-            top: -10px;
-            right: -10px;
-            background: red;
-            border-radius: 50%;
-            color: #fff;
-            cursor: pointer;
-        }
-
-        .work-reels {
-            margin-bottom: 10px;
-        }
-
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-
-        .image-container {
-            width: 308px !important;
-            height: 650px !important;
-            background-color: #fff;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            padding: 5px;
-            gap: 10px;
-            object-fit: contain;
-            /* position: fixed; */
-        }
-
-        .gallary-image img {
-            display: block;
-            box-shadow: 2px 2px 2px 1px rgb(87, 88, 88);
-            width: 330px !important;
-            object-fit: fill;
-        }
-
-        .gallary-image img:hover {
-            object-fit: fill;
-            opacity: 0.5;
-        }
-
-        .card-left {
-            width: 295px !important;
-            overflow: hidden;
-        }
-
-        .main-image {
-            display: flex;
-            transition: all 0.5s ease;
-        }
-
-        .img-select {
-            margin-top: 15px;
-            height: 30px;
-            width: 100px !important;
-        }
-
-        .img-select-container {
-            border: 2px solid white;
-        }
-
-        .img-select-container img {
-            width: 100% !important;
-            display: inline-block;
-        }
-
-        .img-select-container img:hover {
-            width: 100% !important;
-            display: inline-block;
-            object-fit: cover;
-            opacity: 0.5;
-        }
-
-        /* .img-select-container img hover:{
-                                                                width: 100% !important;
-                                                                display: inline-block;
-                                                                border: 1px solid black;
-                                                                opacity: 0.4;
-
-                                                            } */
-        .img-select .active {
-            border: 1px dotted black;
-            height: 50px !important;
-            width: 60px !important;
-        }
-
-        .card-body {
-            max-height: 500px;
-            overflow-y: scroll;
-            overflow-x: hidden;
-        }
-
-        .popover-header-section {
-            position: sticky;
-
-        }
-
-        .actor-name {
-            color: #fff;
-            font-size: 24px;
-        }
-
-        .fa-brands {
-            padding-left: 20px;
-            font-size: 24px;
-            color: #fff;
-        }
-
-        .fa-solid {
-            font-size: 24px;
-            color: #fff;
-        }
-
-        .c-further-information p {
-            color: black;
-            font-size: 15px;
-            font-weight: 600;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ asset('assets/website/css/view-profile.css') }}" />
 @endsection
 @section('content')
     <div class="container">
@@ -187,7 +25,7 @@
                             <div class="card-section">
                                 <div class="row">
                                     <div class="col-3">
-                                        <div class="pt-1 ms-1">
+                                        <div class="d-flex justify-content-center">
                                             <div class="image-container">
                                                 <div class="card-left">
                                                     @if (isset($item?->images[0]?->image) && count($item?->images))
@@ -197,7 +35,7 @@
                                                                     height="200" width="200" />
                                                             @else
                                                                 <img id="mainImage"
-                                                                    src="{{ asset('assets/images/actor-image-thumbnail.jpg') }}"
+                                                                    src="{{ asset('assets/images/user-default-image.png') }}"
                                                                     height="200" width="200" />
                                                             @endif
                                                         </div>
@@ -209,21 +47,21 @@
                                                                         src="{{ $item?->images[0]?->image }}" />
                                                                 @else
                                                                     <img class="imgStyle"
-                                                                        src="{{ asset('assets/images/actor-image-thumbnail.jpg') }}" />
+                                                                        src="{{ asset('assets/images/user-default-image.png') }}" />
                                                                 @endif
                                                                 @if (isset($item?->images[1]?->image))
                                                                     <img class="imgStyle"
                                                                         src="{{ $item?->images[1]?->image }}" />
                                                                 @else
                                                                     <img class="imgStyle"
-                                                                        src="{{ asset('assets/images/actor-image-thumbnail.jpg') }}" />
+                                                                        src="{{ asset('assets/images/user-default-image.png') }}" />
                                                                 @endif
                                                                 @if (isset($item?->images[2]?->image))
                                                                     <img class="imgStyle"
                                                                         src="{{ $item?->images[2]?->image }}" />
                                                                 @else
                                                                     <img class="imgStyle"
-                                                                        src="{{ asset('assets/images/actor-image-thumbnail.jpg') }}" />
+                                                                        src="{{ asset('assets/images/user-default-image.png') }}" />
                                                                 @endif
 
                                                             </div>
@@ -231,7 +69,7 @@
                                                     @else
                                                     <div class="d-flex justify-content-center align-items-center mt-3">
                                                         <img id="mainImage"
-                                                            src="{{ asset('assets/images/actor-image-thumbnail.jpg') }}"
+                                                            src="{{ asset('assets/images/user-default-image.png') }}"
                                                             height="250" width="250" style="object-fit:fill;" />
                                                     </div>
                                                     @endif

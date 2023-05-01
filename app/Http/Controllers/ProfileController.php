@@ -41,7 +41,7 @@ class ProfileController extends Controller
     }
     public function submitProfileStore(Request $request)
     {
-    //    dd($request->all());
+        //    dd($request->all());
         $request->validate(
             [
                 'first_name' => 'required',
@@ -103,7 +103,7 @@ class ProfileController extends Controller
                 // 'work_reel3.url' => 'The work reel three must be a valid URL.',
             ],
         );
-       
+        // dd($request->all());
         $userId = auth()->user()->id;
         if (auth()->user()) {
             $user = User::find($userId);
@@ -147,7 +147,6 @@ class ProfileController extends Controller
                     ->where('user_id', $userId)
                     ->where('field_name', 'image1')
                     ->first();
-                
 
                 if (@file_exists($folderPath . $existingImage?->image)) {
                     @unlink($folderPath . $existingImage->image);
@@ -221,7 +220,7 @@ class ProfileController extends Controller
                 $profile_image->save();
             }
             /*Capture Image */
-            if ($request->has('capture_image') && $request->capture_image != '') {
+            /* if ($request->has('capture_image') && $request->capture_image != '') {
                 //dd($request->capture_image);
                 $profile_image = UserProfileImage::where('user_id', $userId)
                     ->where('field_name', 'capture_image')
@@ -230,7 +229,6 @@ class ProfileController extends Controller
                     ->where('user_id', $userId)
                     ->where('field_name', 'capture_image')
                     ->first();
-                
 
                 if (@file_exists($folderPath . $existingImage?->image)) {
                     @unlink($folderPath . $existingImage->image);
@@ -249,7 +247,7 @@ class ProfileController extends Controller
                 $profile_image->field_name = 'capture_image';
                 $profile_image->image = $file;
                 $profile_image->save();
-            }
+            } */
             // save intro video
             $user_introvideo = IntroVideo::where('user_id', auth()->user()->id)->first();
             if (!isset($user_introvideo)) {

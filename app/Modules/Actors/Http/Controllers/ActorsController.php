@@ -5,6 +5,7 @@ namespace App\Modules\Actors\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\{User, State, UserProfile};
+use App\Modules\Actors\Models\{Bucket};
 use App\Helpers\PaginateCollection;
 use DB;
 
@@ -40,7 +41,8 @@ class ActorsController extends Controller
 
         // return view('Actors::New-Actor.index', compact('actors', 'state'));
         //  return view('Actors::index', compact('actors', 'state'));
-        return view('Actors::profiles.list', compact('actors', 'state'));
+         $bucket_list = Bucket::select('id','bucket_name')->where('status',1)->get();
+        return view('Actors::profiles.list', compact('actors', 'state','bucket_list'));
     }
 
     public function filterActorList(Request $request)
