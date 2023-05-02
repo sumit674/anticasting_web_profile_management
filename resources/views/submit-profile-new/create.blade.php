@@ -662,7 +662,8 @@
         });
         Webcam.attach('#my_camera'); */
         function take_snapshot() {
-            // let imgId = $('#image_number').val();
+            alert("Snap-shot")
+            let imgId = $('#image_number').val();
 
             $('#take').hide();
             $('#retake').show();
@@ -676,7 +677,10 @@
                 $(".image-tag").val(data_uri);
                 document.getElementById('results').innerHTML = '<img src="' + data_uri +
                     '"  class="image-snapshot"/>';
-                /* if (imgId == 1) {
+                // document.querySelector('#capture_image').value = data_uri;
+
+                // $('#upload-image-modal').modal('hide');
+                if (imgId == 1) {
                     // document.querySelector("#default-img").src = evt.target.result;
                     $("#default-img").attr('src', data_uri);
                     // document.querySelector("#image1").style.backgroundImage = 'url(' + data_uri + ')';
@@ -690,7 +694,8 @@
                 if (imgId == 3) {
                     document.querySelector("#image3").style.backgroundImage = 'url(' + data_uri + ')';
                     document.querySelector("#picture3").value = data_uri;
-                } */
+                }
+
             });
         }
 
@@ -716,27 +721,8 @@
             Webcam.snap(function(data_uri) {
                 $(".image-tag").val(data_uri);
                 document.getElementById('results').innerHTML = '<img src="' + data_uri +
-                    '"class="image-snapshot" id="img-result"/>';
+                    '"class="image-snapshot"/>';
                 document.querySelector('#capture_image').value = data_uri;
-
-                let imgId = $('#image_number').val();
-                // attach with field
-                if (imgId == 1) {
-                    // document.querySelector("#default-img").src = evt.target.result;
-                    $("#default-img").attr('src', data_uri);
-                    // document.querySelector("#image1").style.backgroundImage = 'url(' + data_uri + ')';
-                    $('#image1').css("background-image", 'url(' + data_uri + ')');
-                    document.querySelector("#picture1").value = data_uri;
-                }
-                if (imgId == 2) {
-                    document.querySelector("#image2").style.backgroundImage = 'url(' + data_uri + ')';
-                    document.querySelector("#picture2").value = data_uri;
-                }
-                if (imgId == 3) {
-                    document.querySelector("#image3").style.backgroundImage = 'url(' + data_uri + ')';
-                    document.querySelector("#picture3").value = data_uri;
-                }
-
             });
         }
     </script>

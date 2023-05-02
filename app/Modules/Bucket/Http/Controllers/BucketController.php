@@ -4,7 +4,7 @@ namespace App\Modules\Bucket\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Modules\Actors\Models\Bucket;
+use App\Modules\Actors\Models\{Bucket, BucketMembers};
 
 class BucketController extends Controller
 {
@@ -17,8 +17,8 @@ class BucketController extends Controller
     {
         $items = Bucket::paginate(10);
         $allItems = Bucket::count();
-       // dd($items);
-        return view('Bucket::index', compact('items','allItems'));
+        // dd($items);
+        return view('Bucket::index', compact('items', 'allItems'));
     }
     public function create()
     {
@@ -98,15 +98,29 @@ class BucketController extends Controller
         $bucket->save();
         return redirect()->route('admin.bucket.manage');
     }
-    public function details($id){
-        $item = Bucket::where('id',$id)->first();
-       // dd($item);
-        return view('Bucket::details',compact('item'));
+    public function details($id)
+    {
+        $item = Bucket::where('id', $id)->first();
+        $bucket_members = BucketMembers::where('bucket_id', $id)->get();
+        return view('Bucket::details', compact('item', 'bucket_members'));
     }
     public function delete($id)
     {
         $item = Bucket::findOrFail($id);
         $item->delete();
+        return redirect()->route('admin.bucket.manage');
+    }
+
+    /**
+     * Archive member
+     */
+    public function archive($id, $bucketId)
+    {
+        $item = BucketMembers::where('user_id', $id)
+            ->where('bucket_id', $bucketId)
+            ->first();
+        $item->status = 0;
+        $item->save();
         return redirect()->route('admin.bucket.manage');
     }
 }

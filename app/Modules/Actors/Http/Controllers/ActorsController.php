@@ -18,8 +18,6 @@ class ActorsController extends Controller
      */
     public function listActors(Request $request)
     {
-       
-       
         $items = User::query();
         $items
             ->where('user_type', '0')

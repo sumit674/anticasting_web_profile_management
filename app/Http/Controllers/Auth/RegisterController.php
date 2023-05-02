@@ -45,7 +45,7 @@ class RegisterController extends Controller
     }
     public function submitRegister(Request $request)
     {
-         
+      
          $request->validate(
             [
                 'first_name' => ['required'],
@@ -63,7 +63,7 @@ class RegisterController extends Controller
                     'regex:/[@$!%*#?&]/', // must contain a special character
                 ],
                 'confirm_password' => ['required', 'string', 'regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$/', 'min:8', 'same:password'],
-                'captcha' => 'required|captcha'
+                // 'captcha' => 'required|captcha'
             ],
             [
                 'first_name.required' => 'Please enter first name',
@@ -76,9 +76,10 @@ class RegisterController extends Controller
                 'confirm_password.regex' => 'Confirm password must be at least one specific,one number symbols and one capital letter,one small letter',
                 // 'password.min' => 'Password must be at least 8 character',
                 'confirm_password.min' => 'Confirm Password must be at least 8 character',
-                'captcha.captcha' => 'Captcha text incorrect.'
+                // 'captcha.captcha' => 'Captcha text incorrect.'
             ],
         );
+       
         $activation_code = GeneralHelper::generateReferenceNumber();
         $mobileNumber = str_replace(' ', '', $request->mobile_no);
         $user = new User();

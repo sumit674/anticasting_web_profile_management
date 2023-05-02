@@ -3,9 +3,7 @@
     Manage Bucket
 @endsection
 @section('content')
-    <div class="main">
-
-        <div class="container-fluid">
+    <div class="main"><div class="container-fluid">
             <div class="row">
                 <div class="col-lg-4 p-r-0 title-margin-right">
                     <div class="page-header">
@@ -131,58 +129,5 @@
         </div>
     </div>
 @endsection
-@section('footer')
-    <script>
-        /*Select all checkbox*/
-
-        // var collectionBucket = []
-
-        // function getBucket(id) {
-        //     if (collectionBucket.indexOf(id) === -1) {
-        //         collectionBucket.push(id);
-        //     } else {
-
-        //         let index = collectionBucket.indexOf(id);
-        //         collectionBucket.splice(index, 1)
-        //     }
-   
-        //     const bucketvalue = document.getElementById('bucket-ids').innerHTML = collectionBucket.length;
-        //     if(collectionBucket.length == 0){
-        //         $('#shortlist-page').hide();
-        //     }
-        //     else{
-        //         $('#shortlist-page').show();
-        //     }
-
-        // }
-
-        // function getAllBucket(getAllBucket) {
-
-        //     $('#check_all').on('click', function() {
-        //         if ($(this).is(':checked', true)) {
-        //             $(".select_all_list").prop('checked', true);
-        //             $('#shortlist-page').show();
-        //             document.getElementById('bucket-ids').innerHTML = getAllBucket;
-                 
-        //         } else {
-        //             $(".select_all_list").prop('checked', false);
-        //             document.getElementById('bucket-ids').innerHTML = 0;
-        //             $('#shortlist-page').hide();
-        //         }
-        //     })
-
-        // }
-
-        // $("#check_all").on("click", function() {
-
-        //     if ($(this).is(':checked', true)) {
-        //         $(".select_all_list").prop('checked', true);
 
 
-        //     } else {
-        //         $(".select_all_list").prop('checked', false);
-
-        //     }
-        // });
-    </script>
-@endsection

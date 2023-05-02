@@ -11,6 +11,6 @@ class Bucket extends Model
     protected $table = "buckets";
     protected $fillable = ['bucket_name','movie_name','movie_link','description','status'];
     public function bucket_member(){
-        return $this->hasMany(BucketMembers::class,'user_id','id');
+        return $this->hasOne(BucketMembers::class);
     }
 }

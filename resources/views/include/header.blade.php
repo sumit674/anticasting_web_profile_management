@@ -20,7 +20,8 @@
                       <li><a class="get-a-quote" href="{{ route('users.submitProfile') }}">Submit Profile</a></li>
                       <li><a class="get-a-quote" href="{{ route('users.logout') }}">Logout</a></li>
                   @else
-                      <li><a class="get-a-quote" href="{{ route('users.login') }}">Login</a></li>
+                      {{-- <li><a class="get-a-quote" href="{{ route('users.login') }}">Login</a></li> --}}
+                      <li><a class="get-a-quote" href="{{ route('users.submitProfile') }}">Submit Profile</a></li>
                   @endauth
                   
               </ul>

@@ -122,7 +122,7 @@ class ProfileController extends Controller
 
             if ($request->work_reel1 != null) {
                 $user_profile->work_reel1 = GeneralHelper::getYoutubeEmbedUrl($request->work_reel1);
-            }
+            }   
             if ($request->work_reel2 != null) {
                 $user_profile->work_reel2 = GeneralHelper::getYoutubeEmbedUrl($request->work_reel2);
             }
