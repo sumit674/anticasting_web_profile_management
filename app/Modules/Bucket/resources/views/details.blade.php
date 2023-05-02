@@ -83,7 +83,7 @@
                                 <div class="d-flex">
                                     <div class="card-block">
                                         <span class="text-muted"><b>Bucket Name:</b></span>
-                                        <span class="card-title">{{ $item->bucket_name }}</span>
+                                        <span class="card-title">{{ $item?->bucket_name }}</span>
                                     </div>
                                 </div>
                             </div>
@@ -110,66 +110,122 @@
                             </div>
                         </div>
                         <div class="row mt-5">
-                            <div class="col-md-8 col-sm-8 col-lg-8">
-                                <div class="justify-content-start" style="margin-left:8px;">
-                                    <input type="checkbox" class="ms-5" id="check_all" onclick="getAllBucket()" />
-                                    <span class="ms-1" style="margin-left:8px; font-size:16px;">Select all</span>
-                                </div>
-                                <div class="table-responsive">
-                                    @if (isset($bucket_members))
-                                        <table class="table table-striped table-borderless">
-                                            <thead>
-                                                <tr>
-                                                    <th></th>
-                                                    <th class="text-center">Id</th>
-                                                    <th class="text-center">Name</th>
-                                                    {{-- <th class="text-center">Movie</th>
+                            <div class="col-md-12">
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" data-toggle="tab" href="#activelist"
+                                            role="tab">Active</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-toggle="tab" href="#archivelist"
+                                            role="tab">Archived</a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="activelist" role="tabpanel">
+                                        <div class="justify-content-start" style="margin-left:8px;">
+                                            <input type="checkbox" class="mt-3 ms-5" id="check_all"
+                                                onclick="getAllBucketMember()" />
+                                            <span class="ms-1" style="margin-left:8px; font-size:16px;">Select all</span>
+                                        </div>
+                                        <div class="table-responsive">
+                                            @if (isset($bucket_members))
+                                                <table class="table table-striped table-borderless">
+                                                    <thead>
+                                                        <tr>
+                                                            <th></th>
+                                                            <th class="text-center">Id</th>
+                                                            <th class="text-center">Name</th>
+                                                            {{-- <th class="text-center">Movie</th>
                                                 <th class="text-center">Move Link</th>
                                                 <th class="text-center">Description</th> --}}
-                                                    <th class="text-center">Action</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @forelse ($bucket_members as $key=>$member)
-                                                    <tr>
-                                                        <td>
-                                                            <input type="checkbox" name="all_list_item"
-                                                                class="select_all_list"
-                                                                onclick="getBucket({{ $member->id }})" />
-                                                        </td>
-                                                        <td class="text-center">{{ $key + 1 }}</td>
-                                                        <td class="text-center">
+                                                            <th class="text-center">Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @forelse ($bucket_members as $key=>$member)
+                                                            <tr>
+                                                                <td>
+                                                                    <input type="checkbox" name="all_list_item[]"
+                                                                        class="select_all_list"
+                                                                        onclick="getBucket({{ $member->id }})"
+                                                                        value="{{ $member->id }}" />
+                                                                </td>
+                                                                <td class="text-center">{{ $key + 1 }}</td>
+                                                                <td class="text-center">
 
-                                                            {{ $member->user->first_name . ' ' . $member->user->last_name }}
-                                                        </td>
+                                                                    {{ $member?->user?->first_name . ' ' . $member?->user?->last_name }}
+                                                                </td>
 
-                                                        <td class="text-center">
-                                                            {{-- <a href="{{ route('admin.bucket.manage.edit', $member->id) }}"
-                                                            class="btn btn-success btn-sm">
-                                                            <i class="fa-solid fa-pen-to-square"></i>
-                                                        </a>
-                                                        <a href="{{ route('admin.bucket.manage.details', $member->id) }}"
-                                                            class="btn btn-primary btn-sm">
-                                                            <i class="fa-solid fa-eye"></i>
-                                                        </a> --}}
-                                                            <a onclick="return confirm('Do you really want to archive?');" 
-                                                            href="{{ route('admin.bucket.member.archive', [$member->user->id, $item->id]) }}"
-                                                                class="btn btn-danger btn-sm">
-                                                                <i class="fa-solid fa-trash-arrow-up"></i>
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-                                                @empty
-                                                    <tr>
-                                                        <td colspan="4" class="text-center">No Record</td>
-                                                    </tr>
-                                                @endforelse
-                                            </tbody>
-                                        </table>
-                                    @endif
+                                                                <td class="text-center">
+                                                                    <a onclick="return confirm('Do you really want to archive?');"
+                                                                        href="{{ route('admin.bucket.member.archive', [$member?->user?->id, $item->id]) }}"
+                                                                        class="btn btn-danger btn-sm">
+                                                                        <i class="fa-solid fa-trash-arrow-up"></i>
+                                                                    </a>
+                                                                </td>
+                                                            </tr>
+                                                        @empty
+                                                            <tr>
+                                                                <td colspan="4" class="text-center">No Record</td>
+                                                            </tr>
+                                                        @endforelse
+                                                    </tbody>
+                                                </table>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="archivelist" role="tabpanel">
+                                        <div class="table-responsive">
+                                            @if (isset($bucket_members))
+                                                <table class="table table-striped table-borderless">
+                                                    <thead>
+                                                        <tr>
+                                                            <th></th>
+                                                            <th class="text-center">Id</th>
+                                                            <th class="text-center">Name</th>
+                                                            {{-- <th class="text-center">Movie</th>
+                                                <th class="text-center">Move Link</th>
+                                                <th class="text-center">Description</th> --}}
+                                                            <th class="text-center">Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @forelse ($bucket_archive_members as $key=>$member)
+                                                            <tr>
+                                                                <td>
+                                                                    <input type="checkbox" name="all_list_item[]"
+                                                                        class="select_all_list"
+                                                                        onclick="getBucket({{ $member->id }})"
+                                                                        value="{{ $member->id }}" />
+                                                                </td>
+                                                                <td class="text-center">{{ $key + 1 }}</td>
+                                                                <td class="text-center">
+
+                                                                    {{ $member?->user?->first_name . ' ' . $member?->user?->last_name }}
+                                                                </td>
+
+                                                                <td class="text-center">
+                                                                    <a onclick="return confirm('Do you really want to move shortlist?');"
+                                                                        href="{{ route('admin.bucket.member.active', [$member?->user?->id, $item->id]) }}"
+                                                                        class="btn btn-success btn-sm">
+                                                                         Move Shortlist
+                                                                        <i class="fa-solid fa-arrow-right"></i>
+                                                                    </a>
+                                                                </td>
+                                                            </tr>
+                                                        @empty
+                                                            <tr>
+                                                                <td colspan="4" class="text-center">No Record</td>
+                                                            </tr>
+                                                        @endforelse
+                                                    </tbody>
+                                                </table>
+                                            @endif
+                                        </div>
+                                    </div>
+
                                 </div>
-                            </div>
-                            <div class="col-md-4 col-sm-4 col-lg-4">
                             </div>
                         </div>
                     </div>
@@ -185,6 +241,7 @@
         /*Select all checkbox*/
 
         var collectionBucket = []
+        var allBucketMember = [];
 
         function getBucket(id) {
 
@@ -197,6 +254,7 @@
             }
 
             const bucketvalue = document.getElementById('bucket-ids').innerHTML = collectionBucket.length;
+            document.querySelector('#archive-item').value = collectionBucket.join(',');
             if (collectionBucket.length == 0) {
                 $('#shortlist-page').hide();
             } else {
@@ -205,31 +263,52 @@
 
         }
 
-        function getAllBucket(getAllBucket) {
 
-            $('#check_all').on('click', function() {
+        function getAllBucketMember() {
+            $("#check_all").on("click", function() {
                 if ($(this).is(':checked', true)) {
                     $(".select_all_list").prop('checked', true);
-                    $('#shortlist-page').show();
-                    document.getElementById('bucket-ids').innerHTML = getAllBucket;
+                    $('.select_all_list').each(function(idx, el) {
+
+                        var selectedValue = $(el).val();
+                        if (allBucketMember.indexOf(el) === -1) {
+                            allBucketMember.push(el);
+                        }
+
+                        const bucketvalue = document.getElementById('bucket-ids').innerHTML =
+                            allBucketMember.length;
+                        document.querySelector('#archive-item').value = allBucketMember.join(',');
+                        if (allBucketMember.length == 0) {
+                            $('#shortlist-page').hide();
+                        } else {
+                            $('#shortlist-page').show();
+                        }
+
+
+
+                    });
 
                 } else {
                     $(".select_all_list").prop('checked', false);
-                    document.getElementById('bucket-ids').innerHTML = 0;
                     $('#shortlist-page').hide();
+                    document.getElementById('bucket-ids').innerHTML = 0;
+
+
+
                 }
-            })
+            });
+            // $('.select_all_list').change(function check() {
+
+            //     $('.select_all_list').each(function(idx, el) {
+            //         if ($(el).is(':checked')) {
+            //             var selectedValue = $(el).val();
+            //             document.getElementById('bucket-ids').innerHTML = selectedValue;
+            //         }
+
+            //     });
+
+            // });
 
         }
-
-        $("#check_all").on("click", function() {
-
-            if ($(this).is(':checked', true)) {
-                $(".select_all_list").prop('checked', true);
-            } else {
-                $(".select_all_list").prop('checked', false);
-
-            }
-        });
     </script>
 @endsection

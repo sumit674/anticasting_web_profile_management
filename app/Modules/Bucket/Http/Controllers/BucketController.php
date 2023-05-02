@@ -101,8 +101,10 @@ class BucketController extends Controller
     public function details($id)
     {
         $item = Bucket::where('id', $id)->first();
-        $bucket_members = BucketMembers::where('bucket_id', $id)->get();
-        return view('Bucket::details', compact('item', 'bucket_members'));
+         $bucket_members = BucketMembers::where('bucket_id', $id)->where('status',1)->get();
+         $bucket_archive_members = BucketMembers::where('bucket_id', $id)->where('status',0)->get();
+         $bucket_member_count = BucketMembers::where('bucket_id', $id)->count();
+        return view('Bucket::details', compact('item', 'bucket_members','bucket_archive_members'));
     }
     public function delete($id)
     {
@@ -122,5 +124,17 @@ class BucketController extends Controller
         $item->status = 0;
         $item->save();
         return redirect()->route('admin.bucket.manage');
+    }
+    /**
+     * Active member move to shortlist page
+     */
+    public function active($id, $bucketId)
+    {
+        $item = BucketMembers::where('user_id', $id)
+            ->where('bucket_id', $bucketId)
+            ->first();
+        $item->status = 1;
+        $item->save();
+        return redirect()->route('admin.actors');
     }
 }

@@ -194,8 +194,8 @@
                                                     Number</b>&nbsp;<span style="color:red;"><b>*</b></span></label>
                                             <div class="input-group mb-3">
                                                 <!--
-                                                                                                                                  <span class="input-group-text" style="width:10px;">+</span>
-                                                                                                                                 -->
+                                                                                                                                              <span class="input-group-text" style="width:10px;">+</span>
+                                                                                                                                             -->
                                                 {{-- <input type="text" class="form-control" name="countryCode" readonly
                                                     style="width:15px;"
                                                     value="{{ old('countryCode', $userInfo->countryCode) }}" />
@@ -309,8 +309,9 @@
                                 </div>
                             </div>
                         </div>
-                        <input type="submit" style="background-color: #ff5b00;margin-bottom:10px;" class="btn btn-sm"
-                            id="btn" value="Submit" tabindex="75">
+                        <input type="submit" style="background-color: #ff5b00;margin-bottom:10px;"
+                            class="btn btn-sm toster-show" id="btn" value="Submit" tabindex="75"
+                            onclick="toster()">
 
                     </div>
                     <div class="col-lg-4 col-12 mb-3">
@@ -332,7 +333,6 @@
 
         let camWidth = 400;
         let camHeight = 225;
-
     </script>
     <script src="{{ asset('assets/website/js/submit-profile/image-gallery.js') }}"></script>
     <script src="{{ asset('assets/intl-telephone/js/intlTelInput.js') }}" type="text/javascript"></script>
@@ -638,12 +638,12 @@
         $('#image-capture').on('click', function() {
             $('.upload-capture').show();
             $('.upload-picture').hide();
-            
+
             Webcam.set({
                 width: camWidth,
                 height: camHeight,
                 image_format: 'jpeg',
-                jpeg_quality:108,
+                jpeg_quality: 108,
                 flip_horiz: true
             });
             Webcam.attach('#my_camera');

@@ -28,7 +28,7 @@ class BucketController extends Controller
             }
             $bucket_member->user_id = $user_id;
             $bucket_member->bucket_id = $bucket->id;
-            // $bucket_member->status =  $request->status == true ? 1 : 0;
+            $bucket_member->status = 1;
             $bucket_member->save();
         }
 
