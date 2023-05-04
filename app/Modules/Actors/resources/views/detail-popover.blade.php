@@ -103,8 +103,8 @@
 
     .actor-name {
         color: #fafafa;
-        font-size:24px;
-        font-weight:700;
+        font-size: 24px;
+        font-weight: 700;
     }
 
     .fa-solid {
@@ -113,15 +113,17 @@
         font-weight: 600;
         margin-left: 10px;
     }
-    .fa-brands{
+
+    .fa-brands {
         color: #fafafa;
         font-size: 24px;
         margin-left: 10px;
     }
-    .close-popup {
+
+    .close-popup{
         margin-top: -44px;
         color: #fafafa;
-        font-size:35px;
+        font-size: 35px;
         font-weight: 600;
     }
 
@@ -177,7 +179,7 @@
     .rating-stars ul {
         list-style-type: none;
         padding: 0;
-        margin-right:80px;
+        margin-right: 80px;
         margin-top: -19px;
         -moz-user-select: none;
         -webkit-user-select: none;
@@ -215,9 +217,7 @@
             </a>
             <b><span class="fa-brands fa-facebook"></span></b>
             <b><span class="fa-brands fa-square-instagram"></span></b>
-            <div class='text-message text-center' style="margin-top:-23px;color:hsl(0, 0%, 99%);">
-                <b></b>
-            </div>
+            <i class="fa fa-trash" aria-hidden="true"></i>
             <div class='rating-stars text-right'>
 
                 <ul id='stars'>
@@ -238,21 +238,10 @@
                     </li>
                 </ul>
             </div>
-            <div class="text-right h4 close-popup" id="close-yt">x</div>
+         
+                <div class="text-right h4 close-popup" id="close-yt">x</div>
+         
         </div>
-        {{-- <div class="popover-header">
-            <b><span class="actor-name">{{ $actor->first_name . ' ' .  $actor->last_name }}</span> </b>
-            <b><span class="fa-brands fa-facebook"></span></b>
-            <b><span class="fa-brands fa-square-instagram"></span></b>
-            <div class='text-message text-center' style="margin-top:-23px;color:hsl(0, 0%, 99%);">
-                <b></b>
-            </div>
-            <div class="text-right rating-widget h4 " style="margin-top:-23px;" id="close-yt">
-
-                <!-- Rating Stars Box -->
-               
-            </div>
-        </div> --}}
     </div>
     <div class="card-details">
         <div class="card-body">
@@ -265,54 +254,54 @@
                                     <div class="image-container">
                                         <div class="card-left">
                                             @if (isset($actor?->images) && count($actor?->images) > 0)
-                                            <div class="main-image gallary-image border border-dark rounded-6">
-                                                @if (isset($actor?->images[0]?->image))
+                                                <div class="main-image gallary-image border border-dark rounded-6">
+                                                    @if (isset($actor?->images[0]?->image))
+                                                        <a href="{{ route('admin.profile-detail', $actor->id) }}"
+                                                            target="__blank">
+                                                            <img id="mainImage" src="{{ $actor?->images[0]?->image }}"
+                                                                height="200" width="200" />
+                                                        </a>
+                                                    @else
+                                                        <a href="{{ route('admin.profile-detail', $actor->id) }}"
+                                                            target="__blank">
+                                                            <img id="mainImage"
+                                                                src="{{ asset('assets/images/user-default-image.png') }}"
+                                                                height="200" width="200" />
+                                                        </a>
+                                                    @endif
+                                                </div>
+                                                <div class="img-select">
+                                                    <div class="divId" onmouseover="changeImageOnClick(event)">
+                                                        @if (isset($actor?->images[0]?->image))
+                                                            <img class="imgStyle" src="{{ $actor?->images[0]?->image }}" />
+                                                        @else
+                                                            <img class="imgStyle"
+                                                                src="{{ asset('assets/images/user-default-image.png') }}" />
+                                                        @endif
+                                                        @if (isset($actor?->images[1]?->image))
+                                                            <img class="imgStyle" src="{{ $actor?->images[1]?->image }}" />
+                                                        @else
+                                                            <img class="imgStyle"
+                                                                src="{{ asset('assets/images/user-default-image.png') }}" />
+                                                        @endif
+                                                        @if (isset($actor?->images[2]?->image))
+                                                            <img class="imgStyle" src="{{ $actor?->images[2]?->image }}" />
+                                                        @else
+                                                            <img class="imgStyle"
+                                                                src="{{ asset('assets/images/user-default-image.png') }}" />
+                                                        @endif
+
+                                                    </div>
+                                                </div>
+                                            @else
+                                                <div class="d-flex justify-content-center align-items-center mt-3">
                                                     <a href="{{ route('admin.profile-detail', $actor->id) }}"
                                                         target="__blank">
-                                                        <img id="mainImage" src="{{ $actor?->images[0]?->image }}"
-                                                            height="200" width="200" />
+                                                        <img id="mainImage"
+                                                            src="{{ asset('assets/images/user-default-image.png') }}"
+                                                            height="250" width="250" style="object-fit:fill;" />
                                                     </a>
-                                                @else
-                                                <a href="{{ route('admin.profile-detail', $actor->id) }}"
-                                                    target="__blank">
-                                                    <img id="mainImage"
-                                                        src="{{ asset('assets/images/user-default-image.png') }}"
-                                                        height="200" width="200" />
-                                                </a>    
-                                                @endif
-                                            </div>
-                                            <div class="img-select">
-                                                <div class="divId" onmouseover="changeImageOnClick(event)">
-                                                    @if (isset($actor?->images[0]?->image))
-                                                        <img class="imgStyle" src="{{ $actor?->images[0]?->image }}" />
-                                                    @else
-                                                        <img class="imgStyle"
-                                                            src="{{ asset('assets/images/user-default-image.png') }}" />
-                                                    @endif
-                                                    @if (isset($actor?->images[1]?->image))
-                                                        <img class="imgStyle" src="{{ $actor?->images[1]?->image }}" />
-                                                    @else
-                                                        <img class="imgStyle"
-                                                            src="{{ asset('assets/images/user-default-image.png') }}" />
-                                                    @endif
-                                                    @if (isset($actor?->images[2]?->image))
-                                                        <img class="imgStyle" src="{{ $actor?->images[2]?->image }}" />
-                                                    @else
-                                                        <img class="imgStyle"
-                                                            src="{{ asset('assets/images/user-default-image.png') }}" />
-                                                    @endif
-
                                                 </div>
-                                            </div>
-                                            @else
-                                            <div class="d-flex justify-content-center align-items-center mt-3">
-                                                <a href="{{ route('admin.profile-detail', $actor->id) }}"
-                                                    target="__blank">
-                                                <img id="mainImage"
-                                                    src="{{ asset('assets/images/user-default-image.png') }}"
-                                                    height="250" width="250" style="object-fit:fill;" />
-                                                </a>
-                                            </div>
                                             @endif
                                         </div>
                                     </div>
@@ -483,6 +472,7 @@
     $('#close-yt').on('click', function(e) {
         if (($('.popover').has(e.target).length != 0) || $(e.target).is('.close')) {
             $('.popover').popover('hide');
+            window.location.reload()
         }
     });
 </script>
@@ -512,26 +502,26 @@
 <script>
     /* 2. Action to perform on click */
     $('#stars li').on('click', function() {
-    var onStar = parseInt($(this).data('value'), 10); // The star currently selected
-    var stars = $(this).parent().children('li.star');
+        var onStar = parseInt($(this).data('value'), 10); // The star currently selected
+        var stars = $(this).parent().children('li.star');
 
-    for (i = 0; i < stars.length; i++) {
-        $(stars[i]).removeClass('selected');
-    }
+        for (i = 0; i < stars.length; i++) {
+            $(stars[i]).removeClass('selected');
+        }
 
-    for (i = 0; i < onStar; i++) {
-        $(stars[i]).addClass('selected');
-    }
+        for (i = 0; i < onStar; i++) {
+            $(stars[i]).addClass('selected');
+        }
 
-    // JUST RESPONSE (Not needed)
-    var ratingValue = parseInt($('#stars li.selected').last().data('value'), 10);
-    var msg = "";
-    if (ratingValue > 1) {
-        msg = "Thanks! You rated this " + ratingValue + " stars.";
-    } else {
-        msg = "You rated this " + ratingValue + " stars.";
-    }
-    responseMessage(msg, ratingValue);
+        // JUST RESPONSE (Not needed)
+        var ratingValue = parseInt($('#stars li.selected').last().data('value'), 10);
+        var msg = "";
+        if (ratingValue > 1) {
+            msg = "Thanks! You rated this " + ratingValue + " stars.";
+        } else {
+            msg = "You rated this " + ratingValue + " stars.";
+        }
+        responseMessage(msg, ratingValue);
 
     });
 
@@ -548,7 +538,7 @@
             },
             dataType: 'json',
             success: function(resp) {
-                alert(resp.message);
+
             },
             error: function(xhr, ajaxOptions, thrownError) {
                 console.log(xhr.status);

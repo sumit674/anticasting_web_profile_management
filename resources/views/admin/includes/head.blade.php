@@ -25,6 +25,7 @@
 <link href="{{ asset('assets/admin/css/lib/weather-icons.css') }}" rel="stylesheet" />
 <link href="{{ asset('assets/admin/css/lib/menubar/sidebar.css') }}" rel="stylesheet">
 <link href="{{ asset('assets/admin/css/lib/bootstrap.min.css') }}" rel="stylesheet">
+
 <link href="{{ asset('assets/admin/css/lib/helper.css') }}" rel="stylesheet">
 <link href="{{ asset('assets/admin/css/style.css') }}" rel="stylesheet">
 <link href="{{ asset('assets/admin/css/fSelect.css') }}" rel="stylesheet">

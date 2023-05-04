@@ -36,13 +36,13 @@
         }
 
         /* .bucket-wrapper {
-                            height: 50px;
-                            border-top: 1px solid rgba(255, 255, 255, .2);
-                            border-bottom: 1px solid rgba(255, 255, 255, .2);
-                            position: sticky;
-                            bottom: 0;
-                            width: 100%;
-                        } */
+                                    height: 50px;
+                                    border-top: 1px solid rgba(255, 255, 255, .2);
+                                    border-bottom: 1px solid rgba(255, 255, 255, .2);
+                                    position: sticky;
+                                    bottom: 0;
+                                    width: 100%;
+                                } */
         .bucket-wrapper {
             position: sticky;
             /* left: 0; */
@@ -54,10 +54,16 @@
             top: 320px;
             /* text-align: center; */
         }
+
+        #content {
+            height: 500px;
+            overflow-y: scroll;
+            overflow-x: scroll;
+        }
     </style>
 @endsection
 @section('content')
-    <div class="main">
+    {{-- <div class="main">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-6 p-r-0 title-margin-right">
@@ -80,7 +86,7 @@
             </div>
 
         </div>
-    </div>
+    </div> --}}
     <br />
     <section id="main-content">
         <!-- /# .container -->
@@ -140,7 +146,7 @@
                                                         target="_blank">{{ $item?->first_name . ' ' . $item?->last_name }}</a></label>
                                             </div>
                                             <div class="c-card__title">
-                                                <label>Mobile no:</label> {{ $item?->mobile_no }}
+                                                <label>Mobile no:</label> {{$item?->countryCode.' '.$item?->mobile_no }}
                                             </div>
                                             <div class="c-card__title">
                                                 <label>Age:</label> {{ $age }}
@@ -154,11 +160,12 @@
                                             </div>
                                             <div class="c-card__title">
                                                 @if (isset($item?->rating))
-                                                    <i class="fa-solid fa-star text-warning"></i>{{ ' ' . $item?->rating }}
+                                                    @for ($i = 0; $i < $item?->rating; $i++)
+                                                        <i class="fa-solid fa-star text-warning"></i>
+                                                    @endfor
                                                 @else
-                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star text-white"></i>
                                                 @endif
-
                                             </div>
                                             <div class="d-flex align-items-center justify-content-center colors my-2">
                                                 <div class="price">

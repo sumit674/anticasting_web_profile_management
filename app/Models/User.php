@@ -54,6 +54,25 @@ class User extends Authenticatable
         $query->whereHas('profile', function ($q) {
             $q->where('user_id', '<>', null);
         });
+        /* elseif ($request->has('sort') && $request->sort == 'age_asc') {
+            $items->select(DB::raw('floor(DATEDIFF(CURDATE(), up.date_of_birth) /365) as age'))->orderBy('age', 'asc');
+        } elseif ($request->has('sort') && $request->sort == 'age_desc') {
+            // $query->orderBy('created_at', 'asc');
+            $items->select(DB::raw('floor(DATEDIFF(CURDATE(), up.date_of_birth) /365) as age'))->orderBy('age', 'desc');
+        } */
+    }
+
+    public function scopeSortAge($query)
+    {
+        $query->whereHas('profile', function ($q) {
+            // dd(request()->has('sort'));
+            if (request()->has('sort') && request()->sort == 'age_asc') {
+                $q->select(\DB::raw('floor(DATEDIFF(CURDATE(), date_of_birth) /365) as age'))->orderBy('age', 'asc');
+            } elseif (request()->has('sort') && request()->sort == 'age_desc') {
+                // $query->orderBy('created_at', 'asc');
+                $q->select(\DB::raw('floor(DATEDIFF(CURDATE(), date_of_birth) /365) as age'))->orderBy('age', 'desc');
+            }
+        });
     }
     /* Ajax Age Filter */
     // public function scopeFilterAge($query)

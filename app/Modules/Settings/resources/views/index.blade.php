@@ -14,7 +14,7 @@
          @endif
       </script>
     <div class="container-fluid">
-        <div class="row">
+        {{-- <div class="row">
             <div class="col-lg-8 p-r-0 title-margin-right">
                 <div class="page-header">
                     <div class="page-title">
@@ -34,7 +34,7 @@
                 </div>
             </div>
 
-        </div>
+        </div> --}}
 
         <!-- /# row -->
         <section id="main-content">
@@ -42,7 +42,7 @@
             <div class="row">
 
                 <div class="col-lg-12">
-                    <div class="card">
+                    <div class="card mt-5">
                         <div class="card-title">
                             <h4>Setting : Main Information</h4>
                         </div>

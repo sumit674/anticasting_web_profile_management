@@ -14,7 +14,7 @@
 @section('content')
     <div class="main">
         <div class="container-fluid">
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-lg-6 p-r-0 title-margin-right">
                     <div class="page-header">
                         <div class="page-title">
@@ -33,7 +33,7 @@
                     </div>
                 </div>
 
-            </div>
+            </div> --}}
         </div>
     </div>
     <section id="main-content">
@@ -46,7 +46,7 @@
         @endif
         <div class="row">
             <div class="col-lg-12">
-                <div class="card">
+                <div class="card mt-5">
                     <div class="card-title pr">
                         <h6><b class="breadcrumb-item">Update</b></h6>
                     </div>
@@ -115,7 +115,7 @@
                             
                             </div> --}}
                                 <center>
-                                    <input type="submit" class="btn btn-success" value="update" />
+                                    <input type="submit" class="btn btn-success" value="Update" />
                                 </center>
                         </form>
                         <hr />

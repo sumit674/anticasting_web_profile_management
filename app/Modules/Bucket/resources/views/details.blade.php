@@ -30,7 +30,7 @@
                 </script>
                 }
             @endif
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-lg-6 p-r-0 title-margin-right">
                     <div class="page-header">
                         <div class="page-title">
@@ -48,13 +48,13 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
     <section id="main-content">
         <div class="row">
             <div class="col-lg-12">
-                <div class="card">
+                <div class="card mt-5">
                     <div class="card-body">
                         <h5 class="card-title1 text-center text-muted"><b>Profile Member</b></h5>
                         <div class="row">

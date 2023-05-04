@@ -408,9 +408,6 @@
                     <b><span class="actor-name">{{ $item->first_name . ' ' . $item->last_name }}</span> </b>
                     <b><span class="fa-brands fa-facebook"></span></b>
                     <b><span class="fa-brands fa-square-instagram"></span></b>
-                    <div class='text-message text-center' style="margin-top:-23px;color:hsl(0, 0%, 99%);">
-                        <b></b>
-                    </div>
                     <div class="text-right rating-widget h4 " style="margin-top:-23px;" id="close-yt">
 
                         <!-- Rating Stars Box -->
@@ -755,8 +752,7 @@
                 },
                 dataType: 'json',
                 success: function(resp) {
-                    alert(resp.message);
-                },
+                 },
                 error: function(xhr, ajaxOptions, thrownError) {
                     console.log(xhr.status);
                     console.log(thrownError);

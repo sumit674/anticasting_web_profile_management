@@ -19,7 +19,9 @@
             <div class="col-lg-4">
                 <div class="login-content">
                     <div class="login-logo">
-                        <a href="{{ url('/admin') }}"><img src="{{ asset('assets/website/images/anticasting-logo.png') }}" alt="logo" class="logo"></a>
+                        <a href="{{ url('/admin') }}">
+                            <img src="{{ asset('assets/website/images/anticasting-logo.png') }}" alt="logo" class="logo"/>
+                        </a>
                     </div>
                     <div class="login-form">
                         @yield('content')

@@ -5,40 +5,21 @@
 @section('content')
     <div class="main">
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-4 p-r-0 title-margin-right">
-                    <div class="page-header">
-                        <div class="page-title">
-                            <h1>Manage Bucket</h1>
-                        </div>
+                <div class="page-header mt-3">
+                    <div class="page-title">
+                        <a href="{{ route('admin.bucket.manage.create') }}" class="btn btn-primary">
+                            <i class="fa-solid fa-plus"></i>&nbsp; Add
+                            </a>
                     </div>
                 </div>
-                <div class="col-lg-4 p-r-0 title-margin-right">
-                    <div class="page-header">
-                        <div class="page-title">
-                            <a href="{{ route('admin.bucket.manage.create') }}" class="btn btn-primary">Add Bucket</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 p-l-0 title-margin-left">
-                    <div class="page-header">
-                        <div class="page-title">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-                                <li class="breadcrumb-item active">Manage Bucket</li>
-                            </ol>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+            
             <!-- /# row -->
             <section id="main-content">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-title pr">
-                                <h6><b class="breadcrumb-item">Bucket</b></h6>
+                                <h6><b class="breadcrumb-item">Manage Bucket</b></h6>
                             </div>
                             {{-- <div class="justify-content-start" style="margin-left:8px;">
                                 <input type="checkbox" class="ms-5" id="check_all"

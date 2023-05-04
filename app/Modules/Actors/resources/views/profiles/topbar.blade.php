@@ -1,3 +1,11 @@
+<style>
+
+ select option {
+  color: #424146;
+  background: #ffffff;
+ }
+</style>
+
 <button class="btn btn-hide text-uppercase" type="button" data-toggle="collapse" data-target="#filterbar"
     aria-expanded="false" aria-controls="filterbar" id="filter-btn" {{-- onclick="changeBtnTxt()" --}}>
     {{-- <span class="fas fa-angle-left" id="filter-angle"></span> --}}
@@ -8,17 +16,20 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mynav" aria-controls="mynav"
         aria-expanded="false" aria-label="Toggle navigation" onclick="chnageIcon()" id="icon"> <span
             class="navbar-toggler-icon"></span> </button>
+       
     <div class="collapse navbar-collapse" id="mynav">
         <form action="" method="get">
             <ul class="navbar-nav d-lg-flex align-items-lg-center">
                 <li class="nav-item active">
                     <select name="sort" id="sort">
                         <option value="" hidden selected>Sort by</option>
-                        <option value="latest">Latest</option>
-                        <option value="oldest">Oldest</option>
+                        <option value="latest">Latest Profile</option>
+                        <option value="oldest">Oldest Profile</option>
+                        <option value="age_asc">Age : (0-100)</option>
+                        <option value="age_desc">Age : (100-0)</option>
                     </select>
-                </li>
-                <li class="nav-item d-inline-flex align-items-center justify-content-between mb-lg-0 mb-3">
+                  </li>
+                <li class="nav-item d-inline-flex align-items-center justify-content-between mb-lg-0  mb-3">
                     {{-- <div class="d-inline-flex align-items-center mx-lg-2" id="select2">
                     <div class="pl-2">Actors:</div>
                     <select name="pro" id="pro">

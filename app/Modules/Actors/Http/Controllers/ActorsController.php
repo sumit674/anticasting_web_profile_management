@@ -26,21 +26,79 @@ class ActorsController extends Controller
             ->FilterGender()
             ->FilterProfile()
             ->FilterRating()
-            ->with('images')
-            ->with('profile');
+            ->with('images');
+            // ->with('profile');
+            $items->with(['profile' => function ($query) use ($request) {
+                // $query->orderBy('name');
+                if ($request->has('sort') && $request->sort == 'age_asc') {
+                    // $items->select(DB::raw('floor(DATEDIFF(CURDATE(), up.date_of_birth) /365) as age'))->orderBy('age', 'asc');
+                    $query->orderBy('date_of_birth', 'asc');
+                } elseif ($request->has('sort') && $request->sort == 'age_desc') {
+                    $query->orderBy('date_of_birth', 'desc');
+                    // $items->select(DB::raw('floor(DATEDIFF(CURDATE(), up.date_of_birth) /365) as age'))->orderBy('age', 'desc');
+                }
+            }]);
         if ($request->has('sort') && $request->sort == 'oldest') {
-            $items->orderBy('created_at', 'asc');
-        } else {
-            $items->orderBy('created_at', 'desc');
+            $items->orderBy('users.created_at', 'asc');
+        } 
+        
+        // elseif ($request->has('sort') && $request->sort == 'age_asc') {
+        //     $items->orderBy('user_profiles.date_of_birth', 'asc');
+        // } elseif ($request->has('sort') && $request->sort == 'age_desc') {
+        //     $items->orderBy('user_profiles.date_of_birth', 'desc');
+        //     // $items->select(DB::raw('floor(DATEDIFF(CURDATE(), date_of_birth) /365) as age'))->orderBy('age', 'desc');
+        // } 
+        else {
+            $items->orderBy('users.created_at', 'desc');
         }
+
+        /* $items->with('profile', function ($query) use ($request) {
+            if ($request->has('age_asc') && $request->sort == 'age_asc') {
+                $query->select(DB::raw('floor(DATEDIFF(CURDATE(),date_of_birth) /365) as age'))->orderBy('age', 'asc');
+            } elseif ($request->has('age_desc') && $request->sort == 'age_desc') {
+                // $query->orderBy('created_at', 'asc');
+                $query->select(DB::raw('floor(DATEDIFF(CURDATE(),date_of_birth) /365) as age'))->orderBy('age', 'desc');
+            }
+        }); */
+        /* $items->where(function($q) use ($request) {
+            if ($request->has('age_asc') && $request->sort == 'age_asc') {
+                $q->orderBy('created_at', 'asc');
+            } elseif ($request->has('age_desc') && $request->sort == 'age_desc') {
+                $q->orderBy('created_at', 'asc');
+            }
+        }); */
+        // $items->orderBy(function($q) use ($request) {
+        //     // return $user->age;
+        //     if ($request->has('age_asc') && $request->sort == 'age_asc') {
+        //         $q->orderBy('age', 'asc');
+        //     } elseif ($request->has('age_desc') && $request->sort == 'age_desc') {
+        //         $q->orderBy('age', 'asc');
+        //     }
+        // });
+        /* if ($request->has('sort') && $request->sort == 'descrase_age') {
+            $items->with('profile', function ($query) {
+                $query
+                    ->orderBy('date_of_birth', 'ASC') // or DESC
+                    ->orderBy('created_at', 'DESC');
+            });
+        } else {
+            $items->with('profile', function ($query) {
+                $query
+                    ->orderBy('date_of_birth', 'DESC') // or DESC
+                    ->orderBy('created_at', 'ASC');
+            });
+        } */
         //
         $actors = $items->paginate(8);
+        // dd($actors);
         $state = State::all();
 
         // return view('Actors::New-Actor.index', compact('actors', 'state'));
         //  return view('Actors::index', compact('actors', 'state'));
-         $bucket_list = Bucket::select('id','bucket_name')->where('status',1)->get();
-        return view('Actors::profiles.list', compact('actors', 'state','bucket_list'));
+        $bucket_list = Bucket::select('id', 'bucket_name')
+            ->where('status', 1)
+            ->get();
+        return view('Actors::profiles.list', compact('actors', 'state', 'bucket_list'));
     }
 
     public function filterActorList(Request $request)
@@ -144,22 +202,21 @@ class ActorsController extends Controller
     }
     public function actorProfileDetails($id)
     {
-        $item = User::where('id',$id)
+        $item = User::where('id', $id)
             ->with('profile')
             ->with('introVideo')
             ->with('images')
             ->first();
-      
-        return view('Actors::profiles.detail',compact('item'));
+
+        return view('Actors::profiles.detail', compact('item'));
     }
-    public function actorRating(Request $request){
+    public function actorRating(Request $request)
+    {
         if ($request->user_id && $request->ajax()) {
-              $user = User::where('id',$request->user_id)->first();
-              $user->rating = $request->rateingValue;
-              $user->save();
-              return response()->json(['success' => true, 'message' =>'Thanks for your rating added' ]);
-
+            $user = User::where('id', $request->user_id)->first();
+            $user->rating = $request->rateingValue;
+            $user->save();
+            return response()->json(['success' => true, 'message' => 'Thanks for your rating added']);
         }
-
     }
 }
