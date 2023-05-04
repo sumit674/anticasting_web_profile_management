@@ -10,7 +10,7 @@
         margin: auto;
         /* max-height: 30%; */
         max-height: 80px;
-        float:right;
+        float: right;
         margin-bottom: 12px;
     }
 
@@ -52,8 +52,7 @@
             font-size: 0.9em;
         }
     }
-
-    .select-list {
+  .select-list {
         margin-bottom: 100px;
     }
 
@@ -61,13 +60,18 @@
         font-size: 17px;
         font-weight: 500
     }
-    .archive-btn{
+
+    .archive-btn {
         padding: 13px 80px 10px 86px;
+    }
+
+    .card-body {
+      padding: 0px 0px !important;
     }
 </style>
 <div class="card dark card-container position-static" id="shortlist-page" style="display:none;">
     <div class="card-body">
-        <form id="bucket-form" >
+        <form id="bucket-form" method="POST" action="{{ route('admin.bucket.member.archiveBulk', $item?->id) }}">
             @csrf
             <div class="row">
                 <div class="col-md-4">
@@ -79,14 +83,14 @@
                             Selected
                         </span>
                         <input type="hidden" name="user_id" class="form-control-sm" id="archive-item" />
-                       
+
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="">
                         <button type="submit" id="bucket_list" class="btn btn-danger archive-btn">Archive</button>
                     </div>
-                </div>   
+                </div>
             </div>
         </form>
     </div>

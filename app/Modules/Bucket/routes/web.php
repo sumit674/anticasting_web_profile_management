@@ -11,6 +11,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'admin']], function (
     Route::post('bucket/{id}/update', 'BucketController@update')->name('admin.bucket.manage.update');
     Route::get('bucket/{id}/delete', 'BucketController@delete')->name('admin.bucket.manage.delete');
     Route::get('bucket-member/archive/{id?}/{bId?}', 'BucketController@archive')->name('admin.bucket.member.archive');
-    Route::get('bucket-member/active/{id?}/{bId?}', 'BucketController@active')->name('admin.bucket.member.active');
+    Route::post('bucket-member/{bId}/archive-selected', 'BucketController@archiveBulk')->name('admin.bucket.member.archiveBulk');
+    Route::get('bucket-member/unarchive/{id?}/{bId?}', 'BucketController@unArchive')->name('admin.bucket.member.unarchive');
 });
 

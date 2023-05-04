@@ -25,15 +25,15 @@ class BucketController extends Controller
             if (!isset($bucket_member)) {
                 $bucket_member = new BucketMembers();
                 $bucket_member->status = 1;
+             
             }
             $bucket_member->user_id = $user_id;
             $bucket_member->bucket_id = $bucket->id;
-            $bucket_member->status = 1;
             $bucket_member->save();
         }
 
         return redirect()
-            ->back()
-            ->with('success', 'Your Bucket list saved.');
+            ->route('admin.bucket.manage');
+            
     }
 }

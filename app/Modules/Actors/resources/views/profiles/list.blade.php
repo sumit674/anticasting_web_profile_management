@@ -59,11 +59,6 @@
 @section('content')
     <div class="main">
         <div class="container-fluid">
-            @if (Session::has('success'))
-                <script>
-                    alert("{{ Session::get('success') }}")
-                </script>
-            @endif
             <div class="row">
                 <div class="col-lg-6 p-r-0 title-margin-right">
                     <div class="page-header">

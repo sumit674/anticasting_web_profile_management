@@ -3,7 +3,8 @@
     Manage Bucket
 @endsection
 @section('content')
-    <div class="main"><div class="container-fluid">
+    <div class="main">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-4 p-r-0 title-margin-right">
                     <div class="page-header">
@@ -99,10 +100,17 @@
                                                             class="btn btn-success btn-sm">
                                                             <i class="fa-solid fa-pen-to-square"></i>
                                                         </a>
-                                                        <a href="{{ route('admin.bucket.manage.details', $item->id) }}"
-                                                            class="btn btn-primary btn-sm">
-                                                            <i class="fa-solid fa-eye"></i>
-                                                        </a>
+                                                        @if (isset($item->status) && $item->status == 1)
+                                                            <a href="{{ route('admin.bucket.manage.details', $item->id) }}"
+                                                                class="btn btn-primary btn-sm">
+                                                                <i class="fa-solid fa-eye"></i>
+                                                            </a>
+                                                        @else
+                                                            <a href="{{ route('admin.bucket.manage.details', $item->id) }}"
+                                                                class="btn btn-primary btn-sm disabled">
+                                                                <i class="fa-solid fa-eye"></i>
+                                                            </a>
+                                                        @endif
                                                         {{-- <a href="{{ route('admin.bucket.manage.delete', $item->id) }}"
                                                             class="btn btn-danger btn-sm">
                                                             <i class="fa-solid fa-trash-arrow-up"></i>
@@ -129,5 +137,3 @@
         </div>
     </div>
 @endsection
-
-
