@@ -7,7 +7,7 @@
     <section class="contact-us section register-card">
         <main class="d-flex align-items-center w-auto main-container">
             <div class="container">
-                <div class="card login-card">
+                <div class="card register-card-page">
                     <div class="row no-gutters">
                         <div class="col-md-5">
                             <div class="card-body">

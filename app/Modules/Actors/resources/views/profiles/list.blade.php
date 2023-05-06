@@ -158,8 +158,8 @@
                                             <div class="c-card__title">
                                                 <label>Weight:</label> {{ $item?->profile?->weight . ' ' . ' ' }}kg
                                             </div>
-                                            <div class="c-card__title">
-                                                @if (isset($item?->rating))
+                                            <div class="c-card__title" id="actor-rating-{{ $item->id }}">
+                                                @if (isset($item?->rating) && $item?->rating !=' ' )
                                                     @for ($i = 0; $i < $item?->rating; $i++)
                                                         <i class="fa-solid fa-star text-warning"></i>
                                                     @endfor

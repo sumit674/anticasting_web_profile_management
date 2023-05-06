@@ -34,7 +34,7 @@ class RegisterController extends Controller
 
     public function validateUserMobileNumber(Request $request)
     {
-      $user = User::where('mobile_no', $request->mobile_no)->first('mobile_no');
+        $user = User::where('mobile_no', $request->mobile_no)->first('mobile_no');
         if ($user) {
             $return = false;
         } else {
@@ -45,8 +45,7 @@ class RegisterController extends Controller
     }
     public function submitRegister(Request $request)
     {
-      
-         $request->validate(
+        $request->validate(
             [
                 'first_name' => ['required'],
                 'last_name' => ['required'],
@@ -79,7 +78,7 @@ class RegisterController extends Controller
                 // 'captcha.captcha' => 'Captcha text incorrect.'
             ],
         );
-       
+      
         $activation_code = GeneralHelper::generateReferenceNumber();
         $mobileNumber = str_replace(' ', '', $request->mobile_no);
         $user = new User();
@@ -87,7 +86,7 @@ class RegisterController extends Controller
         $user->last_name = $request->last_name;
         $user->password = Hash::make($request->password);
         $user->mobile_no = $mobileNumber;
-        $user->countryCode =  $request->iso2;
+        $user->countryCode = $request->iso2;
         $user->activation_code = $activation_code;
         $user->email = $request->email;
         $user->status = 1;

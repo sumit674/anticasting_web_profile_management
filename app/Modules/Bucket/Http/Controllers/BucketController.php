@@ -26,7 +26,6 @@ class BucketController extends Controller
     }
     public function store(Request $request)
     {
-        //    dd($request->all());
         $request->validate(
             [
                 'bucket_name' => 'required',
@@ -50,53 +49,29 @@ class BucketController extends Controller
                 // 'movie_link.url' => 'The movie link must be a valid URL.',
             ],
         );
+        // $empData = ['first_name' => $request->fname, 'last_name' => $request->lname, 'email' => $request->email, 'phone' => $request->phone, 'post' => $request->post, 'avatar' => $fileName];
+
         $bucket = new Bucket();
         $bucket->bucket_name = $request->bucket_name;
-        // $bucket->movie_name = $request->movie_name;
-        // $bucket->movie_link = $request->movie_link;
-        // $bucket->description = $request->description;
-        $bucket->status = $request->status == true ? 1 : 0;
         $bucket->save();
-        return redirect()->route('admin.bucket.manage');
+        return response()->json([
+            'status' => 200,
+        ]);
     }
-    public function edit($id)
+    public function edit(Request $request)
     {
-        $item = Bucket::where('id', $id)->first();
-        return view('Bucket::edit', compact('item'));
+        $id = $request->id;
+        $bucket = Bucket::find($id);
+        return response()->json($bucket);
     }
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $request->validate(
-            [
-                'bucket_name' => 'required',
-                // 'movie_name' => 'required',
-                // 'description' => 'required',
-                // 'movie_link' => [
-                //     'required',
-                //     'url',
-                //     function ($attribute, $requesturl, $failed) {
-                //         if (!preg_match('/(youtube.com|youtu.be)\/(embed)?(\?v=)?(\S+)?/', $requesturl)) {
-                //             $failed(trans('Movie link should be youtube url', ['name' => trans('general.url')]));
-                //         }
-                //     },
-                // ],
-            ],
-            [
-                'bucket_name.required' => 'Please enter a bucket name',
-                // 'movie_name.required' => 'Please enter a movie name',
-                // 'description.required' => 'Please enter a move description',
-                // 'movie_link.required' => 'Please enter a movie link',
-                // 'movie_link.url' => 'The movie link must be a valid URL.',
-            ],
-        );
-        $bucket = Bucket::where('id', $id)->first();
+        $bucket = Bucket::where('id', $request->bucket_id)->first();
         $bucket->bucket_name = $request->bucket_name;
-        // $bucket->movie_name = $request->movie_name;
-        // $bucket->movie_link = $request->movie_link;
-        // $bucket->description = $request->description;
-        $bucket->status = $request->status == true ? 1 : 0;
         $bucket->save();
-        return redirect()->route('admin.bucket.manage');
+        return response()->json([
+            'status' => 200,
+        ]);
     }
     public function details($id)
     {
@@ -147,9 +122,9 @@ class BucketController extends Controller
     {
         $usersIds = explode(',', $request->user_id);
         $bucket = Bucket::where('id', $bucketId)->first();
-//    dd($usersIds);
-         foreach ($usersIds as $key => $user_id) {
-            $bucket_member = BucketMembers::where('bucket_id',$bucketId)
+        //    dd($usersIds);
+        foreach ($usersIds as $key => $user_id) {
+            $bucket_member = BucketMembers::where('bucket_id', $bucketId)
                 ->where('user_id', $user_id)
                 ->first();
             if (!isset($bucket_member)) {

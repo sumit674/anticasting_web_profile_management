@@ -7,6 +7,11 @@
     <title>Anticasting @yield('title')</title>
     <link rel="icon" sizes="16x16" href="{{ asset('assets/website/images/favicon.ico') }}">
     @include('auth.include.head')
+    <style>
+        body{
+            overflow-y: hidden !important;
+        }
+    </style>
     @yield('style')
     {{-- @include('auth.include.header') --}}
     <script>

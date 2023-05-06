@@ -12,6 +12,12 @@
     <link href="{{ asset('assets/admin/css/lib/helper.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/admin/css/style.css') }}" rel="stylesheet">
 </head>
+<style>
+   body{
+     overflow-y: hidden !important;
+   }
+
+</style>
 <body>
 <div class="unix-login">
     <div class="container-fluid">

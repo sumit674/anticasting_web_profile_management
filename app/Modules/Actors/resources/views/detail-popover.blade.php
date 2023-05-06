@@ -120,8 +120,8 @@
         margin-left: 10px;
     }
 
-    .close-popup{
-        margin-top: -44px;
+    .close-popup {
+        margin-top: -61px;
         color: #fafafa;
         font-size: 35px;
         font-weight: 600;
@@ -141,6 +141,18 @@
         color: white;
         font-size: 50px;
         cursor: pointer;
+    }
+
+    .refresh-icon {
+        margin-right: 10px;
+        cursor: pointer;
+        font-size: 19px;
+    }
+
+    .refresh-icon .fa-refresh {
+        color: white;
+        font-size: 20px;
+        padding-top: 3px;
     }
 
     /*Image Gallary*/
@@ -180,7 +192,7 @@
         list-style-type: none;
         padding: 0;
         margin-right: 80px;
-        margin-top: -19px;
+        /* margin-top: -35px; */
         -moz-user-select: none;
         -webkit-user-select: none;
     }
@@ -192,55 +204,69 @@
 
     /* Idle State of the stars */
     .rating-stars ul>li.star>i.fa {
-        font-size: 24px;
+        font-size: 18px;
         /* Change the size of the stars */
-        color: #fff;
+        color: #cc8fcd;
         /* Color on idle state */
     }
 
     /* Hover state of the stars */
     .rating-stars ul>li.star.hover>i.fa {
-        color: red;
+        color: rgb(230, 192, 26);
     }
 
     /* Selected state of the stars */
     .rating-stars ul>li.star.selected>i.fa {
-        color: #FF912C;
+        color: #f8f52d;
+    }
+
+    .user-dtl-head {
+        line-height: 38px;
+        height: 50px;
     }
 </style>
 <div id="popover-content">
     <div class="popover-header-section" id="popoverHeader">
         <div class="popover-header">
-            <a href="{{ route('admin.profile-detail', $actor->id) }}" target="__blank">
-                <b><span class="actor-name">{{ $actor->first_name . ' ' . $actor->last_name }}</span> <i
-                        class="fa-solid fa-up-right-from-square"></i></b>
-            </a>
-            <b><span class="fa-brands fa-facebook"></span></b>
-            <b><span class="fa-brands fa-square-instagram"></span></b>
-            <i class="fa fa-trash" aria-hidden="true"></i>
-            <div class='rating-stars text-right'>
+            <div class="d-flex justify-content-between align-middle user-dtl-head">
+                <div>
+                    <a href="{{ route('admin.profile-detail', $actor->id) }}" target="__blank">
+                        <b><span class="actor-name">{{ $actor->first_name . ' ' . $actor->last_name }}</span> <i
+                                class="fa-solid fa-up-right-from-square"></i></b>
+                    </a>
+                    <b><span class="fa-brands fa-facebook"></span></b>
+                    <b><span class="fa-brands fa-square-instagram"></span></b>
+                </div>
+                <div class='d-flex rating-stars'>
+                    <div class="text-right refresh-icon">
+                        <b><span class="fa fa-refresh" onclick="removeStar()"></span></b>
+                    </div>
+                    <ul id='stars'>
+                        <li class='star {{ $selectStar?->rating >= 1 ? 'selected' : '' }}' title='Poor'
+                            data-value='1'>
+                            <i class='fa fa-star fa-fw'></i>
+                        </li>
+                        <li class='star {{ $selectStar?->rating >= 2 ? 'selected' : '' }}' title='Fair'
+                            data-value='2'>
+                            <i class='fa fa-star fa-fw'></i>
+                        </li>
+                        <li class='star {{ $selectStar?->rating >= 3 ? 'selected' : '' }}' title='Good'
+                            data-value='3'>
+                            <i class='fa fa-star fa-fw'></i>
+                        </li>
+                        <li class='star {{ $selectStar?->rating >= 4 ? 'selected' : '' }}' title='Excellent'
+                            data-value='4'>
+                            <i class='fa fa-star fa-fw'></i>
+                        </li>
+                        <li class='star {{ $selectStar?->rating == 5 ? 'selected' : '' }}' title='WOW!!!'
+                            data-value='5'>
+                            <i class='fa fa-star fa-fw'></i>
+                        </li>
+                    </ul>
 
-                <ul id='stars'>
-                    <li class='star' title='Poor' data-value='1'>
-                        <i class='fa fa-star fa-fw'></i>
-                    </li>
-                    <li class='star' title='Fair' data-value='2'>
-                        <i class='fa fa-star fa-fw'></i>
-                    </li>
-                    <li class='star' title='Good' data-value='3'>
-                        <i class='fa fa-star fa-fw'></i>
-                    </li>
-                    <li class='star' title='Excellent' data-value='4'>
-                        <i class='fa fa-star fa-fw'></i>
-                    </li>
-                    <li class='star' title='WOW!!!' data-value='5'>
-                        <i class='fa fa-star fa-fw'></i>
-                    </li>
-                </ul>
+                </div>
             </div>
-         
-                <div class="text-right h4 close-popup" id="close-yt">x</div>
-         
+            <div class="text-right h4 close-popup" data-userid="{{ $actor->id }}" id="close-yt">x</div>
         </div>
     </div>
     <div class="card-details">
@@ -465,14 +491,21 @@
             @endif
         </div>
     </div>
-
+    {{ $selectStar->rating }}
 </div>
 </div>
+<input type="hidden" id="selected_rating" value="{{$selectStar->rating}}" />
 <script>
     $('#close-yt').on('click', function(e) {
         if (($('.popover').has(e.target).length != 0) || $(e.target).is('.close')) {
             $('.popover').popover('hide');
-            window.location.reload()
+            if ($('#selected_rating').val().length > 0) {
+                $('#actor-rating-' + e.target.dataset.userid).html("");
+                for (i = 0; i < $('#selected_rating').val(); i++) {
+                    $('#actor-rating-' + e.target.dataset.userid).append(
+                        '<i class="fa-solid fa-star text-warning"></i>');
+                }
+            }
         }
     });
 </script>
@@ -504,7 +537,6 @@
     $('#stars li').on('click', function() {
         var onStar = parseInt($(this).data('value'), 10); // The star currently selected
         var stars = $(this).parent().children('li.star');
-
         for (i = 0; i < stars.length; i++) {
             $(stars[i]).removeClass('selected');
         }
@@ -521,6 +553,7 @@
         } else {
             msg = "You rated this " + ratingValue + " stars.";
         }
+        $('#selected_rating').val(ratingValue);
         responseMessage(msg, ratingValue);
 
     });
@@ -539,6 +572,26 @@
             dataType: 'json',
             success: function(resp) {
 
+            },
+            error: function(xhr, ajaxOptions, thrownError) {
+                console.log(xhr.status);
+                console.log(thrownError);
+            }
+        })
+
+    }
+
+    function removeStar() {
+        $.ajax({
+            url: "{{ route('admin.rating.remove') }}",
+            type: "GET",
+            data: {
+                'user_id': '{{ $actor->id }}',
+
+            },
+            dataType: 'json',
+            success: function(resp) {
+             location.replace(location.href);
             },
             error: function(xhr, ajaxOptions, thrownError) {
                 console.log(xhr.status);

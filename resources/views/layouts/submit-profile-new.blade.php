@@ -8,14 +8,12 @@
     <title>Anticasting @yield('title')</title>
     <link rel="icon" sizes="16x16" href="{{ asset('assets/website/images/favicon.ico') }}">
     @include('include.submitprofile.head')
-    @yield('style')
-    @include('include.submitprofile.header')
-
+    @yield('header')     
 </head>
 
 <body>
     <!-- ======= Header ======= -->
-    @yield('header')
+    @include('include.submitprofile.header')
     <!-- ======= End Header ======= -->
     @yield('content')
 

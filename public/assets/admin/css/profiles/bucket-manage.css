@@ -1,0 +1,142 @@
+/* .card {
+margin: 5% 0%;
+} */
+
+.card-body {
+margin: 0% 0% 0% 3%;
+padding: 6% 0%;
+}
+
+.bg-gray-950 {
+background-color: #fafafa;
+}
+
+.bg-gradient-red-green {
+background: linear-gradient(45deg, #ad4ca6, #4e4bb3);
+color: #fff;
+}
+
+.card-title {
+margin-left: 11px;
+}
+
+/*tabs csss*/
+.nav-tabs {
+box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12),
+0 1px 5px 0 rgba(0, 0, 0, 0.2);
+border: none;
+height: 50px;
+}
+
+.nav-tabs .nav-link {
+border: none !important;
+border-radius: 0 !important;
+transition: color 0.2s ease-out !important;;
+}
+
+.tabs-dark .nav-link {
+color: #fff;
+}
+
+.tabs-light .nav-link {
+color: rgba(0, 0, 0, 0.5);
+}
+
+.tabs-dark .nav-link:not(.active):hover {
+color: #aeb0b3;
+}
+
+.tabs-light .nav-link:not(.active):hover {
+color: #495057;
+}
+
+.nav-pills .nav-link {
+border-radius: 2px;
+color: #495057;
+transition: color 0.2s ease-out, box-shadow 0.2s;
+}
+
+.nav-pills .nav-link:hover {
+box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12),
+0 1px 5px 0 rgba(0, 0, 0, 0.2);
+}
+
+.nav-pills .nav-item {
+margin: 0 5px;
+}
+
+.nav-pills.pills-dark .nav-link.active {
+background-color: #343a40 !important;
+box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12),
+0 1px 5px 0 rgba(0, 0, 0, 0.2);
+}
+
+.nav-pills.pills-dark .nav-link:not(.active):hover {
+color: #1d1e22;
+}
+
+.tabs-marker .nav-link {
+position: relative;
+height: 50px;
+width: 90px;
+line-height: 33px;
+}
+
+.tabs-marker .nav-link.active .marker {
+height: 30px;
+width: 30px;
+left: 50%;
+bottom: -30px;
+transform: translatex(-50%);
+position: absolute;
+overflow: hidden;
+}
+
+.tabs-marker .nav-link.active .marker:after {
+content: "";
+height: 15px;
+width: 15px;
+top: -8px;
+left: 50%;
+transform: rotate(45deg) translatex(-50%);
+transform-origin: left;
+background-color: #fff;
+box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12),
+0 1px 5px 0 rgba(0, 0, 0, 0.2);
+position: absolute;
+}
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+color: #4e041c !important;
+font-size: 16px !important;
+font-weight: 700 !important;
+padding-top: 10px !important;
+background-color: #fff;
+border-color: #dee2e6 #dee2e6 #fff;
+}
+.bg-dark{
+background-image: linear-gradient(to right, #bf4e4e , #c663cd) !important;
+}
+/*Add Bucket Button*/
+.btn-label {
+position: relative;
+left: -12px;
+display: inline-block;
+padding: 6px 12px;
+background: rgba(0, 0, 0, 0.15);
+border-radius: 3px 0 0 3px;
+}
+
+.btn-labeled {
+padding-top: 0;
+padding-bottom: 0;
+}
+
+.btn {
+margin-bottom: 10px;
+}
+/*Add Bucket Pop Up*/
+.modal-header .close {
+font-size: 38px !important;
+margin-right: 10px !important;
+margin-top: 0px !important;
+}

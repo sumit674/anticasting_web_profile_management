@@ -31,7 +31,7 @@ class RedirectIfAuthenticated
                 }
                 else if(auth()?->user()?->user_type=='1')
                 {
-                    return redirect()->route('admin.dashboard');
+                    return redirect()->route('admin.actors');
                 }
             }
         }

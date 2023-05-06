@@ -1,15 +1,13 @@
 @extends('layouts.submit-profile-new')
 @section('header')
-    @include('include.submitprofile.image-header')
-@endsection
-@section('style')
     <link rel="stylesheet" href="{{ asset('assets/website/css/image-gallery.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/auth/toastr.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/website/css/alertbox.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/website/css/webcam.css') }}" />
 @endsection
 @section('content')
-    <section id="contact-us" class="contact-us section">
+@include('include.submitprofile.image-header')
+    <section id="contact-us" class="contact-us section page-background">
         <div class="container">
             <form class="form-disable" id="profile-valdation" action="{{ route('users.submitProfile.store') }}"
                 method="post">
@@ -194,8 +192,8 @@
                                                     Number</b>&nbsp;<span style="color:red;"><b>*</b></span></label>
                                             <div class="input-group mb-3">
                                                 <!--
-                                                                                                                                              <span class="input-group-text" style="width:10px;">+</span>
-                                                                                                                                             -->
+                                                                                                                                                      <span class="input-group-text" style="width:10px;">+</span>
+                                                                                                                                                     -->
                                                 {{-- <input type="text" class="form-control" name="countryCode" readonly
                                                     style="width:15px;"
                                                     value="{{ old('countryCode', $userInfo->countryCode) }}" />
@@ -217,6 +215,10 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="card mb-4">
+                            <div class="card-body">
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="mb-3">
@@ -253,18 +255,14 @@
                                             </label>
                                             <textarea id="about_me" name="about_me" class="form-control">
                                                 @isset($userProfile->about_me)
-{{ $userProfile->about_me }}
-@endisset
+                                                    {{ $userProfile->about_me }}
+                                                @endisset
                                              </textarea>
 
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="card mb-4">
-                            <div class="card-body">
-                                <h3 class="h6 mb-4 fw-bold">Work Reels</h3>
+                                <h3 class="h6 mb-2 fw-bold">Work Reels</h3>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="mb-3">
@@ -357,7 +355,7 @@
             $('#about_me').summernote({
                 placeholder: 'Enter movie description goes here..',
                 // tabsize: 2,
-                height: 300,
+                height: 170,
                 // followingToolbar: true,
                 toolbar: [
                     ['style', ['style']],
@@ -725,5 +723,16 @@
                 document.querySelector('#capture_image').value = data_uri;
             });
         }
+
+        $(window).on('load', function() {
+            $('.featured-item').each(
+                function() { //you need to put this inside the window.onload-function (not document.ready), otherwise the image dimensions won't be available yet
+                    if ($(this).width() / $(this).height() >= 1) {
+                        $(this).addClass('landscape');
+                    } else {
+                        $(this).addClass('portrait');
+                    }
+                });
+            });
     </script>
 @endsection

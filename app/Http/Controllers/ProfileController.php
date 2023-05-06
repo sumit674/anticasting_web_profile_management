@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\DB;
-
+use Carbon\Carbon;
 class ProfileController extends Controller
 {
     public function submitProfile()
@@ -104,20 +104,23 @@ class ProfileController extends Controller
             ],
         );
         // dd($request->all());
-        $userId = auth()->user()->id;
-        if (auth()->user()) {
+         $userId = auth()->user()->id;
+         $dateOfBirth =  Carbon::parse($request->date_of_birth)->format('Y-m-d');
+         $age = Carbon::parse($dateOfBirth)->age;
+         if (auth()->user()) {
             $user = User::find($userId);
             $user->first_name = $request->first_name;
             $user->last_name = $request->last_name;
             $user->countryCode = $request->iso2;
             $user->mobile_no = str_replace(' ', '', $request->mobile_no);
+            $user->age = $age; 
             $user->save();
             $user_profile = UserProfile::where('user_id', auth()->user()->id)->first();
             if (!isset($user_profile)) {
                 $user_profile = new UserProfile();
             }
             $user_profile->email = $request->email;
-            $user_profile->date_of_birth = \Carbon\Carbon::parse($request->date_of_birth)->format('Y-m-d');
+            $user_profile->date_of_birth = Carbon::parse($request->date_of_birth)->format('Y-m-d');
             $user_profile->ethnicity = $request->ethnicity;
 
             if ($request->work_reel1 != null) {

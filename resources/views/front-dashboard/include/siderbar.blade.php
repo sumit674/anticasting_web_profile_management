@@ -39,6 +39,7 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Submit Profile:</h6>
                     <a class="collapse-item" href="{{route('users.submitProfile')}}">Profile</a>
+                       <a class="collapse-item" href="{{route('users.change-password')}}">ChangePassword</a>
     
                 </div>
             </div>

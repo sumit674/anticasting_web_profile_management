@@ -217,12 +217,12 @@
         }
 
         /* .img-select-container img hover:{
-                                                                                        width: 100% !important;
-                                                                                        display: inline-block;
-                                                                                        border: 1px solid black;
-                                                                                        opacity: 0.4;
+                                                                                                width: 100% !important;
+                                                                                                display: inline-block;
+                                                                                                border: 1px solid black;
+                                                                                                opacity: 0.4;
 
-                                                                                    } */
+                                                                                            } */
         .img-select .active {
             border: 1px dotted black;
             height: 50px !important;
@@ -348,7 +348,7 @@
         .rating-stars ul {
             list-style-type: none;
             padding: 0;
-
+            margin-top: -40px;
             -moz-user-select: none;
             -webkit-user-select: none;
         }
@@ -360,20 +360,26 @@
 
         /* Idle State of the stars */
         .rating-stars ul>li.star>i.fa {
-            font-size: 24px;
+            font-size: 20px;
             /* Change the size of the stars */
-            color: #fff;
+            color: #cc8fcd;
             /* Color on idle state */
         }
 
         /* Hover state of the stars */
         .rating-stars ul>li.star.hover>i.fa {
-            color: red;
+            color: rgb(230, 192, 26);
         }
 
         /* Selected state of the stars */
         .rating-stars ul>li.star.selected>i.fa {
-            color: #FF912C;
+            color: #f8f52d;
+        }
+
+        .refresh-icon .fa-refresh {
+            color: white;
+            font-size: 20px;
+            padding-top: 4px;
         }
     </style>
 @endsection
@@ -414,22 +420,25 @@
                         <div class='rating-stars text-right'>
 
                             <ul id='stars'>
-                                <li class='star' title='Poor' data-value='1'>
+                                <li class='star {{ $selectStar?->rating >= 1 ? "selected" : " "}}' title='Poor' data-value='1'>
                                     <i class='fa fa-star fa-fw'></i>
                                 </li>
-                                <li class='star' title='Fair' data-value='2'>
+                                <li class='star  {{ $selectStar?->rating >= 2 ? "selected" : " "}}' title='Fair' data-value='2'>
                                     <i class='fa fa-star fa-fw'></i>
                                 </li>
-                                <li class='star' title='Good' data-value='3'>
+                                <li class='star  {{ $selectStar?->rating >= 3 ? "selected" : " "}}' title='Good' data-value='3'>
                                     <i class='fa fa-star fa-fw'></i>
                                 </li>
-                                <li class='star' title='Excellent' data-value='4'>
+                                <li class='star  {{ $selectStar?->rating >= 4 ? "selected" : " "}}' title='Excellent' data-value='4'>
                                     <i class='fa fa-star fa-fw'></i>
                                 </li>
-                                <li class='star' title='WOW!!!' data-value='5'>
+                                <li class='star {{ $selectStar?->rating == 5 ? "selected" : " "}}' title='WOW!!!' data-value='5'>
                                     <i class='fa fa-star fa-fw'></i>
                                 </li>
                             </ul>
+                        </div>
+                        <div class="text-right refresh-icon">
+                            <b><span class="fa fa-refresh" onclick="removeStar()"></span></b>
                         </div>
                     </div>
                 </div>
@@ -751,8 +760,7 @@
 
                 },
                 dataType: 'json',
-                success: function(resp) {
-                 },
+                success: function(resp) {},
                 error: function(xhr, ajaxOptions, thrownError) {
                     console.log(xhr.status);
                     console.log(thrownError);
@@ -781,6 +789,26 @@
             if (targetElement.tagName === "IMG") {
                 mainImage.src = targetElement.getAttribute("src");
             }
+        }
+
+        function removeStar() {
+            $.ajax({
+                url: "{{ route('admin.rating.remove') }}",
+                type: "GET",
+                data: {
+                    'user_id': '{{ $item->id }}',
+
+                },
+                dataType: 'json',
+                success: function(resp) {
+                    
+                },
+                error: function(xhr, ajaxOptions, thrownError) {
+                    console.log(xhr.status);
+                    console.log(thrownError);
+                }
+            })
+
         }
     </script>
 @endsection

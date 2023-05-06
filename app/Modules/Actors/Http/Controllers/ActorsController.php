@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\{User, State, UserProfile};
 use App\Modules\Actors\Models\{Bucket};
 use App\Helpers\PaginateCollection;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class ActorsController extends Controller
 {
@@ -26,32 +26,39 @@ class ActorsController extends Controller
             ->FilterGender()
             ->FilterProfile()
             ->FilterRating()
-            ->with('images');
-            // ->with('profile');
-            $items->with(['profile' => function ($query) use ($request) {
-                // $query->orderBy('name');
-                if ($request->has('sort') && $request->sort == 'age_asc') {
-                    // $items->select(DB::raw('floor(DATEDIFF(CURDATE(), up.date_of_birth) /365) as age'))->orderBy('age', 'asc');
-                    $query->orderBy('date_of_birth', 'asc');
-                } elseif ($request->has('sort') && $request->sort == 'age_desc') {
-                    $query->orderBy('date_of_birth', 'desc');
-                    // $items->select(DB::raw('floor(DATEDIFF(CURDATE(), up.date_of_birth) /365) as age'))->orderBy('age', 'desc');
-                }
-            }]);
+            ->with('images')
+            ->with('profile');
+        // $items->with([
+        //     'profile' => function ($query) use ($request) {
+        //         // $query->orderBy('name');
+        //         if ($request->has('sort') && $request->sort == 'age_asc') {
+        //             // $items->select(DB::raw('floor(DATEDIFF(CURDATE(), up.date_of_birth) /365) as age'))->orderBy('age', 'asc');
+        //             $query->orderBy('date_of_birth', 'asc');
+        //         } elseif ($request->has('sort') && $request->sort == 'age_desc') {
+        //             $query->orderBy('date_of_birth', 'desc');
+        //             // $items->select(DB::raw('floor(DATEDIFF(CURDATE(), up.date_of_birth) /365) as age'))->orderBy('age', 'desc');
+        //         }
+        //     },
+        // ]);
         if ($request->has('sort') && $request->sort == 'oldest') {
             $items->orderBy('users.created_at', 'asc');
-        } 
-        
-        // elseif ($request->has('sort') && $request->sort == 'age_asc') {
-        //     $items->orderBy('user_profiles.date_of_birth', 'asc');
-        // } elseif ($request->has('sort') && $request->sort == 'age_desc') {
-        //     $items->orderBy('user_profiles.date_of_birth', 'desc');
-        //     // $items->select(DB::raw('floor(DATEDIFF(CURDATE(), date_of_birth) /365) as age'))->orderBy('age', 'desc');
-        // } 
-        else {
+        } elseif ($request->has('sort') && $request->sort == 'latest') {
             $items->orderBy('users.created_at', 'desc');
+        } elseif ($request->has('sort') && $request->sort == 'age_asc') {
+            // $items
+            //     ->orWhere(function ($query) {
+            //         $query->where('users.age', '>=', 0)->where('users.age', '<', 100);
+            //     })
+            //     ->orderBy('users.age', 'asc');
+            $items->orderBy('users.age','asc');
+        } else {
+            // $items
+            //     ->orWhere(function ($query) {
+            //         $query->where('users.age', '<', 100)->where('users.age', '>=', 0);
+            //     })
+            //     ->orderBy('users.age', 'desc');
+              $items->orderBy('users.age','desc');
         }
-
         /* $items->with('profile', function ($query) use ($request) {
             if ($request->has('age_asc') && $request->sort == 'age_asc') {
                 $query->select(DB::raw('floor(DATEDIFF(CURDATE(),date_of_birth) /365) as age'))->orderBy('age', 'asc');
@@ -179,7 +186,8 @@ class ActorsController extends Controller
             ->where('user_type', '0')
             ->where('id', $id)
             ->first();
-        return view('Actors::detail-popover', compact(var_name: 'actor'))->render();
+        $selectStar = User::where('id',$id)->first();
+        return view('Actors::detail-popover', compact('actor','selectStar'))->render();
     }
     public function actorVideo($id)
     {
@@ -207,8 +215,8 @@ class ActorsController extends Controller
             ->with('introVideo')
             ->with('images')
             ->first();
-
-        return view('Actors::profiles.detail', compact('item'));
+          $selectStar = User::where('id',$id)->first();
+        return view('Actors::profiles.detail', compact('item','selectStar'));
     }
     public function actorRating(Request $request)
     {
@@ -218,5 +226,15 @@ class ActorsController extends Controller
             $user->save();
             return response()->json(['success' => true, 'message' => 'Thanks for your rating added']);
         }
+    }
+    public function actorRemoveRatingStar(Request $request)
+    {
+        $rating = DB::table('users')
+            ->where('id', $request->user_id)
+            ->update([
+                'rating' => null,
+            ]);
+
+        return response()->json(['success' => true, 'message' => $request->user_id]);
     }
 }
