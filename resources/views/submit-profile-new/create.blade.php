@@ -212,8 +212,8 @@
                                                     name="mobile_no" readonly style="width:248px;"
                                                     value="{{ old('mobile_no', $userInfo->mobile_no) }}" /> --}}
 
-                                                <input type="tel" class="form-control" id="mobile_number"
-                                                    name="mobile_no"
+                                                <input type="tel" class="form-control intel-input-width" id="mobile_number"
+                                                    name="mobile_no" style="width:113%;"
                                                     value="{{ old('mobile_no', isset($userInfo->mobile_no) ? $userInfo->mobile_no : ' ') }}"
                                                     placeholder="Mobile number" />
                                                 <input type="hidden" name="iso2" id="phone_country_code"
@@ -279,7 +279,7 @@
                                     <div class="col-lg-12">
                                         <div class="mb-1">
                                             <input type="text" class="form-control" name="work_reel1"
-                                                placeholder="Work Reel 1"
+                                                placeholder="Only youtube links"
                                                 value="{{ old('work_reel1', isset($userProfile->work_reel1) ? $userProfile->work_reel1 : ' ') }}" />
                                             @error('work_reel1')
                                                 <span class="text-danger">
@@ -293,7 +293,7 @@
                                     <div class="col-lg-12">
                                         <div class="mb-1">
                                             <input type="text" class="form-control" name="work_reel2"
-                                                placeholder="Work Reel 2"
+                                                 placeholder="Only youtube links"
                                                 value="{{ old('work_reel2', isset($userProfile->work_reel2) ? $userProfile->work_reel2 : ' ') }}" />
                                             @error('work_reel2')
                                                 <span class="text-danger">
@@ -307,7 +307,7 @@
                                     <div class="col-lg-12">
                                         <div class="mb-1">
                                             <input type="text" class="form-control" name="work_reel3"
-                                                placeholder="Work Reel 3"
+                                                 placeholder="Only youtube links"
                                                 value="{{ old('work_reel3', isset($userProfile->work_reel3) ? $userProfile->work_reel3 : ' ') }}" />
                                             @error('work_reel3')
                                                 <span class="text-danger">
@@ -546,7 +546,7 @@
             } else {
                 const fi = document.getElementById('picture');
                 if (fi.files.length > 0) {
-                    for (const i = 0; i <= fi.files.length - 1; i++) {
+                    for (let i = 0; i <= fi.files.length - 1; i++) {
 
                         const fsize = fi.files.item(i).size;
                         const file = Math.round((fsize / 1024));
