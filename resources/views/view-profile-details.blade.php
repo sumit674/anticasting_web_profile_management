@@ -9,8 +9,6 @@
             <div class="popover-header-section" id="popoverHeader">
                 <div class="popover-header">
                     <b><span class="actor-name">{{ $item->first_name . ' ' . $item->last_name }}</span> </b>
-                    <b><span class="fa-brands fa-facebook"></span></b>
-                    <b><span class="fa-brands fa-square-instagram"></span></b>
                     <div class="text-right h4" style="margin-top:-23px;" id="close-yt">
                         <a href="{{ route('users.submitProfile') }}">
                             <i class="fa-solid fa-pencil"></i>
@@ -75,14 +73,14 @@
                                                     @endif
                                                     <div class="intro_video">
                                                         <div class="c-edit-panel">
-                                                            <h4 class="c-edit-panel__header">Intro Video</h4>
+                                                            <h4 class="c-edit-panel__header"> &nbsp; Intro Video</h4>
                                                             <div class="c-edit-panel__controls"></div>
 
                                                         </div>
                                                         <div class="c-further-information">
                                                             @if ($item?->introVideo?->intro_video_link != null)
                                                                 <div>
-                                                                    <iframe width="100%"
+                                                                    <iframe width="100%"  height="100"
                                                                         src="{{ $item?->introVideo?->intro_video_link }}"
                                                                         frameborder="0"
                                                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -92,7 +90,7 @@
                                                             @else
                                                                 <div class="d-flex justify-content-center">
                                                                     <img src="{{ asset('assets/website/images/youtube.png') }}"
-                                                                        alt="" width="70%">
+                                                                        alt="" width="100"  height="100">
                                                                 </div>
                                                             @endif
                                                         </div>
@@ -215,7 +213,7 @@
                                                                 <div class="col-md-4 mb-1">
                                                                     @if ($item?->profile?->work_reel1 != null)
                                                                         <div>
-                                                                            <iframe width="80%"
+                                                                            <iframe width="80%" height="100"
                                                                                 src="{{ $item?->profile?->work_reel1 }}"
                                                                                 frameborder="0"
                                                                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -225,14 +223,14 @@
                                                                     @else
                                                                         <div class="d-flex justify-content-center">
                                                                             <img src="{{ asset('assets/website/images/youtube.png') }}"
-                                                                                alt="" width="70%">
+                                                                                alt="" width="100"  height="100">
                                                                         </div>
                                                                     @endif
                                                                 </div>
                                                                 <div class="col-md-4 mb-3">
                                                                     @if ($item?->profile?->work_reel2 != null)
                                                                         <div>
-                                                                            <iframe width="80%"
+                                                                            <iframe width="80%" height="100"
                                                                                 src="{{ $item?->profile?->work_reel2 }}"
                                                                                 frameborder="0"
                                                                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -241,13 +239,13 @@
                                                                     @else
                                                                         <div class=" d-flex justify-content-center">
                                                                             <img src="{{ asset('assets/website/images/youtube.png') }}"
-                                                                                alt="" width="70%">
+                                                                                alt="" width="100"  height="100">
                                                                         </div>
                                                                     @endif
                                                                 </div>
                                                                 <div class="col-md-4 mb-3">
                                                                     @if ($item?->profile?->work_reel3 != null)
-                                                                        <iframe width="80%"
+                                                                        <iframe width="80%" height="100"
                                                                             src="{{ $item?->profile?->work_reel3 }}"
                                                                             frameborder="0"
                                                                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -255,7 +253,7 @@
                                                                     @else
                                                                         <div class="d-flex justify-content-center">
                                                                             <img src="{{ asset('assets/website/images/youtube.png') }}"
-                                                                                alt="" width="70%">
+                                                                                alt="" width="100"  height="100">
                                                                         </div>
                                                                     @endif
                                                                 </div>
@@ -375,7 +373,7 @@
                             <a href="javascript:void();" data-target="#messages" data-toggle="pill" class="nav-link"><i
                                     class="icon-envelope-open"></i> <span class="hidden-xs">Videos</span></a>
                         </li>
-                      
+
                     </ul>
                     <div class="tab-content p-3">
                         <div class="tab-pane active show" id="profile">

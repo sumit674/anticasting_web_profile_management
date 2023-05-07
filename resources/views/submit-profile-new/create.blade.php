@@ -273,13 +273,13 @@
                                         </div>
                                     </div>
                                 </div>
-                                <label class="form-label"><b>Work Reels</b>&nbsp; &nbsp;<span><b>(only youtube
+                                <label class="form-label"><b>Work Reels</b>&nbsp;<span><b>(only youtube
                                             links)</b></span></label>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="mb-1">
                                             <input type="text" class="form-control" name="work_reel1"
-                                                placeholder="Work Reel 1"
+                                                placeholder="Work Reel 1 - only youtube link"
                                                 value="{{ old('work_reel1', isset($userProfile->work_reel1) ? $userProfile->work_reel1 : ' ') }}" />
                                             @error('work_reel1')
                                                 <span class="text-danger">
@@ -293,7 +293,7 @@
                                     <div class="col-lg-12">
                                         <div class="mb-1">
                                             <input type="text" class="form-control" name="work_reel2"
-                                                placeholder="Work Reel 2"
+                                                placeholder="Work Reel 2 - only youtube link"
                                                 value="{{ old('work_reel2', isset($userProfile->work_reel2) ? $userProfile->work_reel2 : ' ') }}" />
                                             @error('work_reel2')
                                                 <span class="text-danger">
@@ -307,7 +307,7 @@
                                     <div class="col-lg-12">
                                         <div class="mb-1">
                                             <input type="text" class="form-control" name="work_reel3"
-                                                placeholder="Work Reel 3"
+                                                placeholder="Work Reel 3 - only youtube link"
                                                 value="{{ old('work_reel3', isset($userProfile->work_reel3) ? $userProfile->work_reel3 : ' ') }}" />
                                             @error('work_reel3')
                                                 <span class="text-danger">
@@ -325,7 +325,6 @@
                                 onclick="toster()" />
                             <a href="{{ route('users.view-profile') }}" class="btn btn-sm"
                                 style="background-color: #ff5b00;margin-bottom:10px;">Profile View</a>
-
 
                         </div>
                     </div>
