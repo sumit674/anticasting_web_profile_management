@@ -264,3 +264,14 @@ input.btn::after {
     box-shadow: 0 10px 30px 0 rgba(172, 168, 168, 0.43);
     overflow: hidden;
 }
+
+.captcha_div{
+    width: 120px;
+    display: inline-block;
+}
+.btn_captcha{
+    border-radius: 5px;
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+}

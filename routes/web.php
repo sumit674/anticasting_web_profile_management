@@ -70,7 +70,7 @@ Route::group(['prefix' => 'users', 'middleware' => ['web', 'user']], function ()
     Route::get('/logout', [LoginController::class, 'logout'])->name('users.logout');
     /* Message*/
     Route::post('message-post', [MessageController::class, 'storeMessage'])->name('users.message');
-   
+
     // Route::get('/message-show',[MessageController::class, 'showMessage'])->name('users.message.show');
 });
 /*
@@ -123,6 +123,6 @@ Route::get('/our-work', [HomeController::class, 'ourWork'])->name('our-work');
 /**
  * Captcha
  */
-Route::get('/reload-captcha', [CommonController::class, 'reloadCaptcha']);
+Route::get('/reload-captcha', [CommonController::class, 'reloadCaptcha'])->name('reload-captcha');
 
- 
+

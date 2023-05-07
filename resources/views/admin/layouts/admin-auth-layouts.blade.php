@@ -16,7 +16,6 @@
    body{
      overflow-y: hidden !important;
    }
-
 </style>
 <body>
 <div class="unix-login">
@@ -41,7 +40,7 @@
 <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
 @yield('footer')
 <script type="text/javascript">
-$(document).ready(function () {
+    $(document).ready(function () {
         $(".form-disable").on("submit", function () {
             var self = $(this),
                 button = self.find('input[type="submit"], button'),

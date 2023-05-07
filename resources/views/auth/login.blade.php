@@ -52,8 +52,8 @@
                                     </div>
                                     <div class="col-md-12 my-2">
                                         <div class="captcha">
-                                            <span>{!! captcha_img() !!}</span>
-                                            <button type="button" class="btn btn-danger" class="reload" id="reload">
+                                            <span class="captcha_div">{!! captcha_img() !!}</span>
+                                            <button type="button" class="btn btn-danger btn_captcha" class="reload" id="reload">
                                                 &#x21bb;
                                             </button>
                                         </div>
@@ -125,12 +125,12 @@
         $('#reload').click(function() {
             $.ajax({
                 type: 'GET',
-                url: 'reload-captcha',
+                url: '{{ route('reload-captcha') }}',
                 success: function(data) {
                     $(".captcha span").html(data.captcha);
                 }
             });
         });
     </script>
-       
+
 @endsection

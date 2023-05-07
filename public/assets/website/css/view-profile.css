@@ -157,3 +157,11 @@ color: black;
 font-size: 15px;
 font-weight: 600;
 }
+
+iframe{
+    height: 100px !important;
+}
+
+.c-edit-panel__header{
+    padding-bottom: 5px;
+}

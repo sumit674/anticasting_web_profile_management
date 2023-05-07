@@ -27,26 +27,29 @@ class LoginController extends Controller
                 'captcha.captcha' => 'Captcha text incorrect.'
             ],
         );
-        
+
         $credentials = $request->only(['email', 'password']);
-       
+
         if (auth()->attempt($credentials)) {
             if (auth()?->user()?->user_type == '1') {
-              
-                
                 return redirect()
                     ->route('admin.actors')
                     ->with('message', 'Login successfully.');
+            }else{
+                \Auth::logout();
+                return redirect()
+                ->back()
+                ->with('error', 'Unauthorized access.');
             }
         }
         //    dd('unLogin');
         return redirect()
             ->back()
-            ->with('error', 'email and password incorrect.');
+            ->with('error', 'Invalid login credentials.');
     }
     public function logoutAdmin()
     {
-       
+
         \Auth::logout();
         return redirect()->route('admin.login');
     }

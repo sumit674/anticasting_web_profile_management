@@ -48,7 +48,7 @@ class LoginController extends Controller
         //    dd('unLogin');
         return redirect()
             ->back()
-            ->with('error', 'Email or password incorrect.');
+            ->with('error', 'Invalid login credentials.');
     }
     public function logout()
     {
