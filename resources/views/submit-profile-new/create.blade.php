@@ -280,7 +280,7 @@
                                         <div class="mb-1">
                                             <input type="text" class="form-control" name="work_reel1"
                                                 placeholder="Work Reel 1 - only youtube link"
-                                                value="{{ old('work_reel1', isset($userProfile->work_reel1) ? $userProfile->work_reel1 : ' ') }}" />
+                                                value="{{ old('work_reel1', isset($userProfile->work_reel1) ? $userProfile->work_reel1 : '') }}" />
                                             @error('work_reel1')
                                                 <span class="text-danger">
                                                     {{ $message }}
@@ -294,7 +294,7 @@
                                         <div class="mb-1">
                                             <input type="text" class="form-control" name="work_reel2"
                                                 placeholder="Work Reel 2 - only youtube link"
-                                                value="{{ old('work_reel2', isset($userProfile->work_reel2) ? $userProfile->work_reel2 : ' ') }}" />
+                                                value="{{ old('work_reel2', isset($userProfile->work_reel2) ? $userProfile->work_reel2 : '') }}" />
                                             @error('work_reel2')
                                                 <span class="text-danger">
                                                     {{ $message }}
@@ -308,7 +308,7 @@
                                         <div class="mb-1">
                                             <input type="text" class="form-control" name="work_reel3"
                                                 placeholder="Work Reel 3 - only youtube link"
-                                                value="{{ old('work_reel3', isset($userProfile->work_reel3) ? $userProfile->work_reel3 : ' ') }}" />
+                                                value="{{ old('work_reel3', isset($userProfile->work_reel3) ? $userProfile->work_reel3 : '') }}" />
                                             @error('work_reel3')
                                                 <span class="text-danger">
                                                     {{ $message }}

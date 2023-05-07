@@ -29,13 +29,13 @@ var left;
 
 
 function selectItem(e) {
-
+	// $('#default-img').attr('src', 'https://anticasting.in/dev/public/assets/images/default-user.jfif');
 	if (e.target.classList.contains('active')) {
 
 		// if (e.target.style.backgroundImage == 'url("undefined")') {
 // $('#default-img').attr('src', 'https://anticasting.in/dev/public/assets/images/default-user.jfif');
 		e.target.addEventListener("click", function () {
-			
+			// $('#default-img').attr('src', e.target.getAttribute("data-fileurl"));
 			// document.getElementById('results').innerHTML = '';
 
 			document.getElementById('image-upload').checked = true;
@@ -53,7 +53,7 @@ function selectItem(e) {
 		});
 
 		// }
-
+$("#default-img").attr('src', evt.target.result);
 	}
 
 	// else if(e.target.style.backgroundImage != 'url("undefined")'){
@@ -343,7 +343,7 @@ const getBase64FromUrl = async (url) => {
 
 
 function readFile() {
-
+$('#default-img').remove();
 	if (!this.files || !this.files[0]) return;
 
 	const FR = new FileReader();
@@ -362,12 +362,12 @@ function readFile() {
 		// galleryItems[i].style.backgroundImage = 'url(' + images[i] + ')';
 
 		$('#upload-image-modal').modal('hide');
-
+			$("#default-img").attr('src', evt.target.result);
 		if (imgId == 1) {
 
 			// document.querySelector("#default-img").src = evt.target.result;
 
-			$("#default-img").attr('src', evt.target.result);
+			// $("#default-img").attr('src', evt.target.result);
 
 			// document.querySelector("#image1").style.backgroundImage = 'url(' + evt.target.result + ')';
 
@@ -379,7 +379,7 @@ function readFile() {
 
 		if (imgId == 2) {
 			// $('#default-img').remove();
-			$("#default-img").attr('src', evt.target.result);
+			// $("#default-img").attr('src', evt.target.result);
 			document.querySelector("#image2").style.backgroundImage = 'url(' + evt.target.result + ')';
 
 			document.querySelector("#picture2").value = evt.target.result;
@@ -387,7 +387,7 @@ function readFile() {
 		}
 
 		if (imgId == 3) {
-			$("#default-img").attr('src', evt.target.result);
+			// $("#default-img").attr('src', evt.target.result);
 			document.querySelector("#image3").style.backgroundImage = 'url(' + evt.target.result + ')';
 
 			document.querySelector("#picture3").value = evt.target.result;
