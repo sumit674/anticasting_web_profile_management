@@ -22,7 +22,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="{{ asset('assets/toast/jquery.toast.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
-    <script src="http://jqueryvalidation.org/files/dist/additional-methods.min.js"></script>
+    <script src="//jqueryvalidation.org/files/dist/additional-methods.min.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>

@@ -41,6 +41,7 @@ class ProfileController extends Controller
     }
     public function submitProfileStore(Request $request)
     {
+        // dd($request->all());
         $request->validate(
             [
                 'first_name' => 'required',
