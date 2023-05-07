@@ -4,6 +4,15 @@
 @endsection
 @section('content')
     <h4 class="text-danger">Administrator Login</h4>
+    @if (Session::has('message'))
+        <div id="success" title="Success">
+            <p class="alert-success text-center">{{ Session::get('message') }}</p>
+        </div>
+    @elseif (Session::has('error'))
+        <div id="error" title="Error">
+            <p class="alert-danger text-center">{{ Session::get('error') }}</p>
+        </div>
+    @endif
     <form class="form-disable" action="{{ route('admin.loginPost') }}" method="POST">
         @csrf
         <div class="form-group">
@@ -11,15 +20,15 @@
             <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email" name="email"
                 value="{{ old('email') }}" autocomplete="email" />
             @error('email')
-                <span class="invalid-feedback alert-danger" role="alert">
-                    <strong>{{ $message }}</strong>
+                <span class="alert-danger" role="alert">
+                   {{ $message }}
                 </span>
             @enderror
         </div>
         <div class="form-group">
             <label>Password</label>
             <div class="input-group" id="show_hide_password">
-                <input class="form-control  password block mt-0 w-full    @error('password') is-invalid @enderror"
+                <input class="form-control  password block mt-0 w-full @error('password') is-invalid @enderror"
                     placeholder="Enter  password" type="password" name="password" id="password"
                     autocomplete="current-password" />
                 <span class="input-group-text togglePassword" id="">
@@ -27,15 +36,15 @@
                 </span>
             </div>
             @error('password')
-                <span class="invalid-feedback alert-danger" role="alert">
-                    <strong>{{ $message }}</strong>
+                <span class="alert-danger" role="alert">
+                    {{ $message }}
                 </span>
             @enderror
         </div>
         <div class="form-group  mb-3">
             <div class="captcha">
-                <span>{!! captcha_img() !!}</span>
-                <button type="button" class="btn-danger" class="reload" id="reload">
+                <span class="captcha_div">{!! captcha_img() !!}</span>
+                <button type="button" class="btn-danger btn_captcha" class="reload" id="reload">
                     &#x21bb;
                 </button>
             </div>
@@ -46,7 +55,7 @@
                 <span class="text-danger">{{ $message }}</span>
             @enderror
         </div>
-     
+
         {{-- <div class="checkbox">
             <label>
                 <input type="checkbox"> Remember Me
@@ -89,7 +98,7 @@
         $('#reload').click(function() {
             $.ajax({
                 type: 'GET',
-                url: 'reload-captcha',
+                url: '{{ route('reload-captcha') }}',
                 success: function(data) {
                     $(".captcha span").html(data.captcha);
                 }

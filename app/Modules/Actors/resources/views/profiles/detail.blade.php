@@ -410,16 +410,21 @@
     <section id="main-content">
         <div id="popover-content">
             <div class="popover-header-section" id="popoverHeader">
-                <div class="popover-header">
+                <div class="popover-header row">
+                    <div class="col-8">
                     <b><span class="actor-name">{{ $item->first_name . ' ' . $item->last_name }}</span> </b>
-                    <b><span class="fa-brands fa-facebook"></span></b>
-                    <b><span class="fa-brands fa-square-instagram"></span></b>
+                </div>
+                <div class="col-4">
+
                     <div class="text-right rating-widget h4 " style="margin-top:-23px;" id="close-yt">
 
                         <!-- Rating Stars Box -->
                         <div class='rating-stars text-right'>
-
+                            <div class="text-left refresh-icon">
+                                <b><span class="fa fa-refresh" onclick="removeStar()"></span></b>
+                            </div>
                             <ul id='stars'>
+
                                 <li class='star {{ $selectStar?->rating >= 1 ? "selected" : " "}}' title='Poor' data-value='1'>
                                     <i class='fa fa-star fa-fw'></i>
                                 </li>
@@ -437,10 +442,9 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="text-right refresh-icon">
-                            <b><span class="fa fa-refresh" onclick="removeStar()"></span></b>
-                        </div>
+
                     </div>
+                </div>
                 </div>
             </div>
             <div class="row">
@@ -801,7 +805,7 @@
                 },
                 dataType: 'json',
                 success: function(resp) {
-                    
+
                 },
                 error: function(xhr, ajaxOptions, thrownError) {
                     console.log(xhr.status);
