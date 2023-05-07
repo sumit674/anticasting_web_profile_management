@@ -438,7 +438,7 @@ transform: rotate(45deg); */
 
 .card__content{
     width: 80%;
-    margin-left:80px;
+    /* margin-left:80px; */
 }
 .card__content label{
     color: #4e041c;
@@ -484,7 +484,7 @@ transform: rotate(45deg); */
 }
 
 .card__title{
-    padding:10px 20px 10px 0px;
+    padding:0px 20px 10px 0px;
 }
 
 p.card__title{
@@ -610,7 +610,7 @@ a.g-alternative-link {
     background-color: #f5f4f9;
     margin-bottom: 10px;
     padding: 10px 7px 10px 0;
-    margin-left: 85px;
+    /* margin-left: 85px; */
 }
 .p-main-page__about-me-section, .p-main-page__credits-section, .p-main-page__skills-section, .p-main-page__training-section {
     background-color: #fff;

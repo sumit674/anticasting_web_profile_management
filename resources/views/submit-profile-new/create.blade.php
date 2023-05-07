@@ -320,11 +320,11 @@
                             </div>
                         </div>
                         <div class="d-flex justify-content-between mt-3">
-                            <input type="submit" style="background-color: #ff5b00;margin-bottom:10px;"
-                                class="btn btn-sm toster-show" id="btn" value="Submit" tabindex="75"
+                            <input type="submit" style="margin-bottom:10px;"
+                                class="btn btn-sm toster-show cust_btn" id="btn" value="Submit" tabindex="75"
                                 onclick="toster()" />
-                            <a href="{{ route('users.view-profile') }}" class="btn btn-sm"
-                                style="background-color: #ff5b00;margin-bottom:10px;">Profile View</a>
+                            <a href="{{ route('users.view-profile') }}" class="btn btn-sm cust_btn"
+                                style="margin-bottom:10px;">Profile View</a>
 
                         </div>
                     </div>

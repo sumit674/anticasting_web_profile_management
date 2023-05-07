@@ -1,10 +1,6 @@
 <style>
     .welcome-user {
-        /* background-color: rgb(239 101 3) !important; */
-        /* background-color:rgb(121, 112, 125) !important; */
-        /* background-image: radial-gradient(circle, #5c0067 0%, #00d4ff 100%) !important; */
-        background-image: url(./public/assets/images/banner-left.jpeg)
-        /* box-shadow: 3px 4px #a98585; */
+        background: url('./../../public/assets/images/banner-left.gif')
         padding: 5px !important;
         font-size: 22px;
     }

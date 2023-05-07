@@ -8,8 +8,8 @@
         <div id="popover-content">
             <div class="popover-header-section" id="popoverHeader">
                 <div class="popover-header">
-                    <b><span class="actor-name">{{ $item->first_name . ' ' . $item->last_name }}</span> </b>
-                    <div class="text-right h4" style="margin-top:-23px;" id="close-yt">
+                    <strong><span class="actor-name">{{ $item->first_name . ' ' . $item->last_name }}</span> </strong>
+                    <div class="text-right" style="margin-top:-25px;" id="close-yt">
                         <a href="{{ route('users.submitProfile') }}">
                             <i class="fa-solid fa-pencil"></i>
                         </a>
@@ -22,19 +22,19 @@
                         <div class="card-body">
                             <div class="card-section">
                                 <div class="row">
-                                    <div class="col-3">
-                                        <div class="d-flex justify-content-center">
+                                    <div class="col-4">
+                                        <div class="d-flex">
                                             <div class="image-container">
                                                 <div class="card-left">
                                                     @if (isset($item?->images[0]?->image) && count($item?->images))
                                                         <div class="main-image gallary-image border border-dark rounded-6">
                                                             @if (isset($item?->images[0]?->image))
                                                                 <img id="mainImage" src="{{ $item?->images[0]?->image }}"
-                                                                    height="200" width="200" />
+                                                                    width="295" height="200" />
                                                             @else
                                                                 <img id="mainImage"
                                                                     src="{{ asset('assets/images/user-default-image.png') }}"
-                                                                    height="200" width="200" />
+                                                                    width="295" height="200" />
                                                             @endif
                                                         </div>
 
@@ -101,7 +101,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-9">
+                                    <div class="col-8">
                                         <div class="row">
                                             <div class="col-md-12 col-sm-12">
                                                 {{-- <div class="card__content">

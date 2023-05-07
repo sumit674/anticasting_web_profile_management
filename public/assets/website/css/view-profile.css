@@ -13,9 +13,9 @@ border: 1px solid black;
 }
 
 .divId {
-margin: 0 25px;
+margin: 0 20px;
 display: inline-flex;
-width: 257px;
+/* width: 257px; */
 border: 1px solid #b3aeae;
 cursor: pointer;
 }
@@ -30,7 +30,7 @@ box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19)
 
 /*Intro Video*/
 .intro_video {
-margin-top: 150px;
+margin-top: 74px;
 }
 
 /*Form text css*/
@@ -62,7 +62,7 @@ height: 650px !important;
 background-color: #fff;
 display: grid;
 grid-template-columns: 1fr 1fr;
-padding: 5px;
+padding: 6px;
 gap: 10px;
 object-fit: contain;
 /* position: fixed; */
@@ -70,9 +70,10 @@ object-fit: contain;
 
 .gallary-image img {
 display: block;
-box-shadow: 2px 2px 2px 1px rgb(87, 88, 88);
-width: 330px !important;
-object-fit: fill;
+/* box-shadow: 2px 2px 2px 1px rgb(87, 88, 88); */
+/* width: 330px !important;
+object-fit: fill; */
+object-fit: contain;
 }
 
 .gallary-image img:hover {
