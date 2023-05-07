@@ -23,9 +23,14 @@
         width: 20px;
         height: 20px;
     }
-  
+
+    .card-top {
+        margin-bottom: 13px !important;
+        height: 412px !important;
+        align-items: center;
+    }
 </style>
-<div class="card mb-4">
+<div class="card card-top me-0">
     <div class="card-body">
         <div class="d-flex justify-content-between">
             <h3 class="h6 fw-bold">Headshot Images <b><span style="color:red;">*</span></b></h3>
@@ -79,24 +84,15 @@
 
             </div>
         </div>
-       
+
     </div>
 </div>
-<div class="card mb-3">
+<div class="card mb-5">
     <div class="card-body ms-1">
 
         <div class="d-flex justify-content-between">
             <span class="h6 fw-bold">Upload Intro video <b><span style="color:red;">*</span></b></span>
         </div>
-        <div class="form-group mb-3 ms-3">
-            @if (isset($userIntroVideo) && $userIntroVideo != null)
-                <iframe style="width:75%;" src="{{ $userIntroVideo->intro_video_link }}" allowfullscreen="true">
-                </iframe>
-            @else
-                <img src="{{ asset('assets/images/video-thumb.png') }}" alt="" style="width:75%;">
-            @endif
-        </div>
-
         <div class="row" style="margin-top:20px;">
             {{-- <form action="{{ route('users.introvideos') }}" method="post">
                 @csrf --}}
@@ -114,6 +110,14 @@
                 @enderror
             </div>
             {{-- </form> --}}
+        </div>
+        <div class="form-group mt-3 ms-3">
+            @if (isset($userIntroVideo) && $userIntroVideo != null)
+                <iframe style="width:75%;" src="{{ $userIntroVideo->intro_video_link }}" allowfullscreen="true">
+                </iframe>
+            @else
+                <img src="{{ asset('assets/images/video-thumb.png') }}" alt="" style="width:75%;">
+            @endif
         </div>
         <div class="row">
             <div class="col-md-12 col-lg-12 col-sm-12 mt-3">

@@ -8,6 +8,7 @@
     <title>Anticasting @yield('title')</title>
     <link rel="icon" href="{{ asset('assets/website/images/favicon.ico') }}">
     @include('include.head')
+    @yield('header')
 </head>
 
 <body>
@@ -44,8 +45,8 @@
             }
 
         });
-        $(document).ready(function () {
-            $(".form-disable").on("submit", function () {
+        $(document).ready(function() {
+            $(".form-disable").on("submit", function() {
                 var self = $(this),
                     button = self.find('input[type="submit"], button'),
                     submitValue = button.data("submit-value");
@@ -55,5 +56,8 @@
             });
         });
     </script>
+
+    @include('include.alert-msg')
+    <script src="{{ asset('assets/toast/jquery.toast.js') }}"></script>
 </body>
 </html>

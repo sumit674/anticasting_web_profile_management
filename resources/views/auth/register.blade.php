@@ -5,7 +5,7 @@
 @endsection
 @section('content')
     <section class="contact-us section register-card">
-        <main class="d-flex align-items-center w-auto main-container">
+        <main class="d-flex align-items-center w-auto main-container-reg">
             <div class="container">
                 <div class="card register-card-page">
                     <div class="row no-gutters">
@@ -130,7 +130,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-7">
+                        <div class="col-md-7 d-none d-sm-none d-md-block">
                             <img src="{{ asset('assets/website/images/banner.jpg') }}" alt="login"
                                 class="login-card-img">
                             {{-- <p

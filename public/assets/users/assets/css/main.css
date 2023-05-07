@@ -332,8 +332,9 @@ section {
 }
 
 .header .logo img {
-  max-height: 100px;
-  margin-right: 6px;
+    max-height: 72px;
+    margin-right: 6px;
+    width: 130px;
 }
 
 .header .logo h1 {
@@ -2014,3 +2015,4 @@ section {
     font-weight: bold;
     border: 2px solid #e1380e;
 }
+

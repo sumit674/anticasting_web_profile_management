@@ -35,6 +35,8 @@
 
     <!-- Template Main JS File -->
     <script src="{{ asset('assets/users/assets/js/main.js') }}"></script>
+    @include('include.alert-msg')
+    <script src="{{ asset('assets/toast/jquery.toast.js') }}"></script>
     @yield('footer')
 </body>
 

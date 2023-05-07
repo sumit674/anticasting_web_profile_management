@@ -10,7 +10,6 @@ use App\Models\User;
 use Mail;
 use Hash;
 use Illuminate\Support\Str;
-
 class ForgotPasswordController extends Controller
 {
     //
@@ -46,7 +45,7 @@ class ForgotPasswordController extends Controller
                 $message->to($request->email);
                 $message->subject('Reset Password');
             });
-            return back()->with('message', 'We have e-mailed your password reset link!');
+            return back()->with('success', 'We have e-mailed your password reset link!');
     }
     public function ResetPassword($token, $email)
     {
@@ -89,6 +88,6 @@ class ForgotPasswordController extends Controller
 
         return redirect()
             ->route('users.login')
-            ->with('message', 'Your password has been changed!');
+            ->with('success', 'Your password has been changed!');
     }
 }

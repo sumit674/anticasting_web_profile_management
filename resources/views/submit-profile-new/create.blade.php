@@ -1,12 +1,14 @@
 @extends('layouts.submit-profile-new')
+{{-- @extends('layouts.master') --}}
 @section('header')
+    <link rel="stylesheet" href="{{ asset('assets/website/css/submit-profile.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/website/css/image-gallery.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/auth/toastr.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/website/css/alertbox.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/website/css/webcam.css') }}" />
 @endsection
 @section('content')
-@include('include.submitprofile.image-header')
+    @include('include.submitprofile.image-header')
     <section id="contact-us" class="contact-us section page-background">
         <div class="container">
             <form class="form-disable" id="profile-valdation" action="{{ route('users.submitProfile.store') }}"
@@ -34,13 +36,18 @@
                 <div class="row">
                     <div class="col-lg-8 col-12">
                         @if (Session::has('message'))
-                            <div id="success" title="Success">
-                                <p>{{ Session::get('message') }}</p>
-                            </div>
+                            <script>
+                                $.toast({
+                                    heading: 'Can I add <em>icons</em>?',
+                                    text: 'Yes! check this <a href="https://github.com/kamranahmedse/jquery-toast-plugin/commits/master">update</a>.',
+                                    hideAfter: false,
+                                    icon: 'success'
+                                })
+                            </script>
                         @endif
-                        <div class="card mb-4">
+                        <div class="card mb-3">
                             <div class="card-body">
-                                <h3 class="h6 mb-4 fw-bold">Personal Information</h3>
+                                <h3 class="h6 fw-bold">Personal Information</h3>
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="mb-3">
@@ -192,8 +199,8 @@
                                                     Number</b>&nbsp;<span style="color:red;"><b>*</b></span></label>
                                             <div class="input-group mb-3">
                                                 <!--
-                                                                                                                                                      <span class="input-group-text" style="width:10px;">+</span>
-                                                                                                                                                     -->
+                                                                                                                                                                                                                  <span class="input-group-text" style="width:10px;">+</span>
+                                                                                                                                                                                                                 -->
                                                 {{-- <input type="text" class="form-control" name="countryCode" readonly
                                                     style="width:15px;"
                                                     value="{{ old('countryCode', $userInfo->countryCode) }}" />
@@ -217,7 +224,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card mb-4">
+                        <div class="card mb-2">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-lg-6">
@@ -255,14 +262,15 @@
                                             </label>
                                             <textarea id="about_me" name="about_me" class="form-control">
                                                 @isset($userProfile->about_me)
-                                                    {{ $userProfile->about_me }}
-                                                @endisset
+{{ $userProfile->about_me }}
+@endisset
                                              </textarea>
 
                                         </div>
                                     </div>
                                 </div>
-                                <h3 class="h6 mb-2 fw-bold">Work Reels</h3>
+                                <label class="form-label"><b>Work Reels</b>&nbsp; &nbsp;<span><b>(only youtube
+                                            links)</b></span></label>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="mb-3">
@@ -307,11 +315,17 @@
                                 </div>
                             </div>
                         </div>
-                        <input type="submit" style="background-color: #ff5b00;margin-bottom:10px;"
-                            class="btn btn-sm toster-show" id="btn" value="Submit" tabindex="75"
-                            onclick="toster()">
+                        <div class="d-flex justify-content-between mt-3">
+                            <input type="submit" style="background-color: #ff5b00;margin-bottom:10px;"
+                                class="btn btn-sm toster-show" id="btn" value="Submit" tabindex="75"
+                                onclick="toster()" />
+                            <a href="{{ route('users.view-profile') }}" class="btn btn-sm"
+                                style="background-color: #ff5b00;margin-bottom:10px;">Profile View</a>
 
+
+                        </div>
                     </div>
+
                     <div class="col-lg-4 col-12 mb-3">
                         @error('image1')
                             <span class="text-danger">
@@ -355,7 +369,7 @@
             $('#about_me').summernote({
                 placeholder: 'Enter movie description goes here..',
                 // tabsize: 2,
-                height: 170,
+                height: 85,
                 // followingToolbar: true,
                 toolbar: [
                     ['style', ['style']],
@@ -363,9 +377,9 @@
                     ['fontname', ['fontname']],
                     ['color', ['color']],
                     ['para', ['ul', 'ol', 'paragraph']],
-                    ['table', ['table']],
-                    ['insert', ['link', 'picture', 'video']],
-                    ['view', ['fullscreen', 'codeview', 'help']],
+                    // ['table', ['table']],
+                    // ['insert', ['link', 'picture', 'video']],
+                    // ['view', ['fullscreen', 'codeview', 'help']],
                 ],
                 popover: {
                     image: [
@@ -733,6 +747,6 @@
                         $(this).addClass('portrait');
                     }
                 });
-            });
+        });
     </script>
 @endsection

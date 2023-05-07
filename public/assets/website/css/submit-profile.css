@@ -1,3 +1,143 @@
+/* Bread Crumbs */
+.page-banner {
+/* padding: 80px 0 0; */
+padding: 70px 0 0;
+/* background-color: #ff5b00; */
+}
+/* .breadcrumbs {
+background-color: #081828;
+position: relative;
+padding: 100px 0;
+padding-top: 180px;
+} */
+.breadcrumbs {
+background: url(./../images/page-banner.png);
+background-position: center;
+background-attachment: fixed;
+/* opacity: 0.8; */
+background-attachment: scroll;
+background-repeat: no-repeat;
+background-size: auto;
+position: relative;
+/* padding: 0 0 0 0; */
+/* padding-top: 150px; */
+padding-top: 29px;
+height: 199px;
+/* padding-bottom: 0; */
+}
+
+.breadcrumbs .breadcrumbs-content {
+position: relative;
+text-align: center;
+}
+
+.breadcrumbs .breadcrumbs-content p {
+color: #fff;
+font-size: 14px;
+margin-top: 20px;
+}
+.page-banner .breadcrumbs .breadcrumbs-content .page-title {
+color: #fff;
+/* background-color: rgb(177 35 35 / 40%) !important; */
+}
+.breadcrumbs .breadcrumbs-content .page-title {
+font-size: 32px;
+/* color: #ffffff !important; */
+font-weight: 500;
+position: relative;
+/* padding-bottom: 22px; */
+line-height: 50px;
+font-weight: bold;
+text-transform: uppercase;
+background-color: transparent;
+}
+
+.breadcrumbs .breadcrumbs-content .page-title:before {
+position: absolute;
+content: "";
+left: 50%;
+bottom: 0;
+height: 2px;
+width: 80px;
+background: #ce9514;
+margin-left: -40px;
+}
+
+.breadcrumbs .breadcrumbs-content .breadcrumb-nav {
+background: transparent;
+border-radius: 0;
+margin-bottom: 0;
+padding: 0;
+display: inline-block;
+}
+
+.breadcrumbs .breadcrumb-nav {
+text-align: center;
+/* margin-top: 50px; */
+margin-top: 15px;
+}
+
+.breadcrumbs .breadcrumb-nav li {
+display: inline-block;
+}
+
+.breadcrumbs .breadcrumb-nav li,
+.breadcrumbs .breadcrumb-nav li span {
+color: #fff;
+font-size:21px;
+font-weight:bold;
+/* font-family: "Times New Roman", Times, serif; */
+/* text-transform: uppercase; */
+background-color: transparent;
+}
+.breadcrumbs .breadcrumb-nav li span {
+/* padding-right: 15px; */
+/* margin-right: 3px; */
+margin-bottom:70px;
+position: relative;
+}
+
+.breadcrumbs .breadcrumb-nav li span:hover {
+/* color: #ff5b00; */
+color: #000;
+}
+
+.card {
+border-radius: 15px !important;
+/* background: lightcyan; */
+
+background: rgb(105,155,200);
+background: -moz-radial-gradient(top left, ellipse cover, rgba(105,155,200,1) 0%, rgba(181,197,216,1) 57%);
+background: -webkit-gradient(radial, top left, 0px, top left, 100%, color-stop(0%,rgba(105,155,200,1)),
+color-stop(57%,rgba(181,197,216,1)));
+background: -webkit-radial-gradient(top left, ellipse cover, rgba(105,155,200,1) 0%,rgba(181,197,216,1) 57%);
+background: -o-radial-gradient(top left, ellipse cover, rgba(105,155,200,1) 0%,rgba(181,197,216,1) 57%);
+background: -ms-radial-gradient(top left, ellipse cover, rgba(105,155,200,1) 0%,rgba(181,197,216,1) 57%);
+background: radial-gradient(ellipse at top left, rgba(105,155,200,1) 0%,rgba(181,197,216,1) 57%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#699bc8', endColorstr='#b5c5d8',GradientType=1 );
+
+}
+
+.page-background {
+background: #092756;
+background: -moz-radial-gradient(0% 100%, ellipse cover, rgba(104,128,138,.4) 10%,rgba(138,114,76,0)
+40%),-moz-linear-gradient(top, rgba(57,173,219,.25) 0%, rgba(42,60,87,.4) 100%), -moz-linear-gradient(-45deg, #670d10
+0%, #092756 100%);
+background: -webkit-radial-gradient(0% 100%, ellipse cover, rgba(104,128,138,.4) 10%,rgba(138,114,76,0) 40%),
+-webkit-linear-gradient(top, rgba(57,173,219,.25) 0%,rgba(42,60,87,.4) 100%), -webkit-linear-gradient(-45deg, #670d10
+0%,#092756 100%);
+background: -o-radial-gradient(0% 100%, ellipse cover, rgba(104,128,138,.4) 10%,rgba(138,114,76,0) 40%),
+-o-linear-gradient(top, rgba(57,173,219,.25) 0%,rgba(42,60,87,.4) 100%), -o-linear-gradient(-45deg, #670d10 0%,#092756
+100%);
+background: -ms-radial-gradient(0% 100%, ellipse cover, rgba(104,128,138,.4) 10%,rgba(138,114,76,0) 40%),
+-ms-linear-gradient(top, rgba(57,173,219,.25) 0%,rgba(42,60,87,.4) 100%), -ms-linear-gradient(-45deg, #670d10 0%,#092756
+100%);
+background: -webkit-radial-gradient(0% 100%, ellipse cover, rgba(104,128,138,.4) 10%,rgba(138,114,76,0) 40%),
+linear-gradient(to bottom, rgba(57,173,219,.25) 0%,rgba(42,60,87,.4) 100%), linear-gradient(135deg, #41505dd9 0%,#da7016
+100%);
+}
+
+
 output{
 width: 100%;
 min-height: 150px;

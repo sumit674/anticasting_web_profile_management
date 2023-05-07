@@ -5,7 +5,7 @@
         background-image: radial-gradient(circle, #5c0067 0%, #00d4ff 100%) !important;
         /* box-shadow: 3px 4px #a98585; */
         padding: 5px !important;
-        font-size: 25px !important;
+        font-size: 22px;
     }
     .welcome-user:hover {
         color: #fff !important;

@@ -110,7 +110,8 @@ class RegisterController extends Controller
         // return redirect()
         //     ->route('users.login')
         //     ->with('message', 'Register successfully done.');
-        return redirect('/showotp/');
+        return redirect('/showotp/')
+            ->with('success', 'Registered successfully.');
     }
     public function showOtp(Request $request)
     {
@@ -135,12 +136,12 @@ class RegisterController extends Controller
         if ($otp_data == null) {
             return redirect()
                 ->back()
-                ->with('invalid', 'Otp Invalid.');
+                ->with('error', 'Otp Invalid.');
         }
         if (strtotime($otp_data->expiry_date) < strtotime($current_datetime)) {
             return redirect()
                 ->back()
-                ->with('expire', 'Otp Expired.');
+                ->with('error', 'Otp Expired.');
         }
         $user_info = User::where(['mobile_no' => $otp_data->mobile_no])->first();
 

@@ -90,7 +90,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-7">
+                        <div class="col-md-7 d-none d-sm-none d-md-block">
                             <img src="{{ asset('assets/website/images/banner.jpg') }}" alt="login"
                                 class="login-card-img">
                         </div>

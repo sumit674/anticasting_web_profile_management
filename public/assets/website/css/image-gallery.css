@@ -47,10 +47,10 @@ margin: auto;
 
 .featured-item {overflow:hidden;}
 .featured-item.landscape {max-width:200px; width:100%; height:auto;}
-.featured-item.portrait {max-height:200px; width:auto; height:100%; background-size: cover;
+.featured-item.portrait { width:auto; height:226px; background-size: cover;
 background-position: center;
 }
-
+/* max-height:200px; */
 /* .main-img {
 background-position: center center;
 background-repeat: no-repeat;

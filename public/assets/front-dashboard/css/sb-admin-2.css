@@ -10016,9 +10016,10 @@ a:focus {
 }
 
 .text-gray-600 {
-  color: #858796 !important;
+    color: #000000 !important;
+    font-size: 18px;
+    font-weight: 700;
 }
-
 .text-gray-700 {
   color: #6e707e !important;
 }
@@ -10163,8 +10164,8 @@ a:focus {
 
 .sidebar .nav-item .nav-link .img-profile,
 .topbar .nav-item .nav-link .img-profile {
-  height: 2rem;
-  width: 2rem;
+  height: 3rem;
+  width: 3rem;
 }
 
 .topbar {

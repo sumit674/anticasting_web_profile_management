@@ -41,7 +41,6 @@ class ProfileController extends Controller
     }
     public function submitProfileStore(Request $request)
     {
-      
         $request->validate(
             [
                 'first_name' => 'required',
@@ -54,7 +53,7 @@ class ProfileController extends Controller
                 'image2' => ['required_without_all:image1,image3|image|mimes:jpg,jfif,png,jpeg,gif|max:4096'],
                 'image3' => ['required_without_all:image1,image2|image|mimes:jpg,jfif,png,jpeg,gif|max:4096'],
                 'intro_video_link' => [
-                    'url',
+                    'required',
                     function ($attribute, $requesturl, $failed) {
                         if (!preg_match('/(youtube.com|youtu.be)\/(embed)?(\?v=)?(\S+)?/', $requesturl)) {
                             $failed(trans('Intro  video link should be youtube url', ['name' => trans('general.url')]));
@@ -62,31 +61,28 @@ class ProfileController extends Controller
                     },
                 ],
                 'work_reel1' => [
-                    Rule::when(false, [
-                        function ($attribute, $requesturl, $failed) {
-                            if (!preg_match('/(youtube.com|youtu.be)\/(embed)?(\?v=)?(\S+)?/', $requesturl)) {
-                                $failed(trans('Work reel one should be youtube url', ['name' => trans('general.url')]));
-                            }
-                        },
-                    ]),
+                    'nullable',
+                    function ($attribute, $requesturl, $failed) {
+                        if (!preg_match('/(youtube.com|youtu.be)\/(embed)?(\?v=)?(\S+)?/', $requesturl)) {
+                            $failed(trans('Work reel one should be youtube url', ['name' => trans('general.url')]));
+                        }
+                    },
                 ],
                 'work_reel2' => [
-                    Rule::when(false, [
-                        function ($attribute, $requesturl, $failed) {
-                            if (!preg_match('/(youtube.com|youtu.be)\/(embed)?(\?v=)?(\S+)?/', $requesturl)) {
-                                $failed(trans('Work reel two should be youtube url', ['name' => trans('general.url')]));
-                            }
-                        },
-                    ]),
+                    'nullable',
+                    function ($attribute, $requesturl, $failed) {
+                        if (!preg_match('/(youtube.com|youtu.be)\/(embed)?(\?v=)?(\S+)?/', $requesturl)) {
+                            $failed(trans('Work reel two should be youtube url', ['name' => trans('general.url')]));
+                        }
+                    },
                 ],
                 'work_reel3' => [
-                    Rule::when(false, [
-                        function ($attribute, $requesturl, $failed) {
-                            if (!preg_match('/(youtube.com|youtu.be)\/(embed)?(\?v=)?(\S+)?/', $requesturl)) {
-                                $failed(trans('Work reel three should be youtube url', ['name' => trans('general.url')]));
-                            }
-                        },
-                    ]),
+                    'nullable',
+                    function ($attribute, $requesturl, $failed) {
+                        if (!preg_match('/(youtube.com|youtu.be)\/(embed)?(\?v=)?(\S+)?/', $requesturl)) {
+                            $failed(trans('Work reel three should be youtube url', ['name' => trans('general.url')]));
+                        }
+                    },
                 ],
             ],
             [
@@ -97,23 +93,23 @@ class ProfileController extends Controller
                 'gender.required' => 'Please select  gender',
                 'mobile_no.required' => 'Please enter mobile number',
                 'current_location.required' => 'Please enter a current location',
-                'intro_video_link.url' => 'The intro  video link must be a valid URL.',
+                'intro_video_link.required' => 'Please enter your intro video',
                 // 'work_reel1.url' => 'The work reel one must be a valid URL.',
                 // 'work_reel2.url' => 'The work reel two must be a valid URL.',
                 // 'work_reel3.url' => 'The work reel three must be a valid URL.',
             ],
         );
         // dd($request->all());
-         $userId = auth()->user()->id;
-         $dateOfBirth =  Carbon::parse($request->date_of_birth)->format('Y-m-d');
-         $age = Carbon::parse($dateOfBirth)->age;
-         if (auth()->user()) {
+        $userId = auth()->user()->id;
+        $dateOfBirth = Carbon::parse($request->date_of_birth)->format('Y-m-d');
+        $age = Carbon::parse($dateOfBirth)->age;
+        if (auth()->user()) {
             $user = User::find($userId);
             $user->first_name = $request->first_name;
             $user->last_name = $request->last_name;
             $user->countryCode = $request->iso2;
             $user->mobile_no = str_replace(' ', '', $request->mobile_no);
-            $user->age = $age; 
+            $user->age = $age;
             $user->save();
             $user_profile = UserProfile::where('user_id', auth()->user()->id)->first();
             if (!isset($user_profile)) {
@@ -125,12 +121,18 @@ class ProfileController extends Controller
 
             if ($request->work_reel1 != null) {
                 $user_profile->work_reel1 = GeneralHelper::getYoutubeEmbedUrl($request->work_reel1);
-            }   
+            } else {
+                $user_profile->work_reel1 = null;
+            }
             if ($request->work_reel2 != null) {
                 $user_profile->work_reel2 = GeneralHelper::getYoutubeEmbedUrl($request->work_reel2);
+            } else {
+                $user_profile->work_reel2 = null;
             }
             if ($request->work_reel3 != null) {
                 $user_profile->work_reel3 = GeneralHelper::getYoutubeEmbedUrl($request->work_reel3);
+            } else {
+                $user_profile->work_reel3 = null;
             }
             $user_profile->gender = $request->gender;
             $user_profile->height = $request->height;
@@ -261,12 +263,13 @@ class ProfileController extends Controller
                 $user_introvideo->intro_video_link = GeneralHelper::getYoutubeEmbedUrl($request->intro_video_link);
             }
             $user_introvideo->save();
-           // dd($request->all());
+            // dd($request->all());
             return redirect()
-                ->back()
-                ->with('message', 'Your profile saved successfully.');
+                ->route('users.view-profile')
+                ->with('success', 'Profile submitted/saved successfully.');
         } else {
-            return redirect()->route('users.login');
+            return redirect()->route('users.login')
+                ->with('error', 'Something went wrong, please try again.');
         }
     }
     // public function submitWorkReel(Request $request)

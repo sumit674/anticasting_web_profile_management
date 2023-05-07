@@ -4,6 +4,32 @@ body {
     min-height: 100vh;
 }
 
+.bg-body {
+    background: linear-gradient(
+    to right,
+    #6f7280,
+    #cf067c,
+    #f85206,
+    #833ab4,
+    #fd1d1d,
+    #fcb045
+  );
+  background-size: 400% 400%;
+  animation: body 10s infinite ease-in-out;
+}
+
+@keyframes body {
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+
 .input-span {
     display: block;
 }
@@ -138,7 +164,10 @@ font-weight: normal;
 }
 
 .main-container {
-    margin-top: 100px;
+    margin-top: 95px;
+}
+.main-container-reg {
+    margin-top: 55px;
 }
 
 /*# sourceMappingURL=login.css.map */
@@ -226,8 +255,8 @@ input.btn::after {
     box-shadow: 0 10px 30px 0 rgba(172, 168, 168, 0.43);
     overflow: hidden;
     width: auto;
-    bottom:4rem;
-    height: 36rem;
+    bottom: 2em;
+    /* height: 36rem; */
 }
 .forgotpassword-card-page{
     border: 0;
