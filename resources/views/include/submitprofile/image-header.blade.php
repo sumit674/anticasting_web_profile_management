@@ -23,8 +23,8 @@
                     <ul class="breadcrumb-nav">
                         @auth
                             <li>
-                                <span class="welcome-user">Welcome <b
-                                        style="font-size:10px;display: inline-block;">-</b>&nbsp;{{ auth()->user()->first_name . ' ' . auth()->user()->last_name }}
+                                <span class="welcome-user">Welcome! <b
+                                        style="font-size:10px;display: inline-block;"></b>&nbsp;{{ auth()->user()->first_name . ' ' . auth()->user()->last_name }}
                                     &nbsp;</span>
                             </li>
                         @else

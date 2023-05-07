@@ -62,7 +62,7 @@ Route::group(['prefix' => 'users', 'middleware' => ['web', 'user']], function ()
     Route::post('/userimage', [ProfileController::class, 'uploadUserImage'])->name('users.uploadImages');
     Route::post('/userworkreel', [ProfileController::class, 'submitWorkReel'])->name('users.userworkreel');
     Route::post('/userintrovideo', [ProfileController::class, 'IntroVideo'])->name('users.introvideos');
-    Route::post('/delete/single/{id}/{user_id}/image', [ImageController::class, 'deleteHeadShotImageSingle'])->name('user.single.image');
+    Route::get('/delete/{id}/{user_id}/image', [ImageController::class, 'deleteHeadShotImageSingle'])->name('user.delete-single.image');
     Route::get('/delete/all/{user_id}/image', [ImageController::class, 'deleteHeadShotImageAll'])->name('user.delete-all-headshots');
     /*View User Profile */
     Route::get('/view-profile', [ProfileController::class, 'viewProfileDetails'])->name('users.view-profile');

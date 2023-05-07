@@ -38,11 +38,17 @@ object-fit: contain;
 width: 270px;
 margin: auto;
 } */
-.feature {
-	/* width: 165px; */
+/* .feature {
 	width: 215px;
 	margin: auto;
 	height: 210px;
+} */
+
+.feature {
+    /* width: 165px; */
+    width: 258px;
+    /* margin: auto; */
+    height: 210px;
 }
 
 .featured-item {overflow:hidden;}
@@ -121,9 +127,8 @@ border: 1px dotted #c5c5c5;
     cursor: pointer;
     /* width: 30%; */
     display: inline-block;
-    /* background-color: white; */
-    margin-right: 10px;
-    /* border: 1px dotted #c5c5c5; */
+    /* margin-right: 10px; */
+    /* margin-right: 10px; */
 }
 .gallery-item {
 opacity: 0.5;
