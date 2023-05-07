@@ -102,7 +102,7 @@
                                         </div>
                                         <div class="col-md-6 my-2">
                                             <div class="captcha">
-                                                <span>{!! captcha_img() !!}</span>
+                                                <span class="captcha_div">{!! captcha_img() !!}</span>
                                                 <button type="button" class="btn btn-danger" class="reload"
                                                     id="reload">
                                                     &#x21bb;

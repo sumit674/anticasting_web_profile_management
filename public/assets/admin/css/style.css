@@ -9031,3 +9031,21 @@ display: inline-block !important;
 .invalid-feedback{
     font-size: 100% !important;
 }
+
+.rating-stars{
+    text-align: right !important;
+    padding-top: 5px;
+}
+
+.refresh-icon{
+    display: inline-block;
+    padding-right: 15px;
+}
+.rating-stars ul{
+    display: inline-block;
+    margin-top: 0;
+}
+.actor-name{
+    padding-top: 5px;
+    display: inline-block;
+}

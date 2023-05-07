@@ -416,7 +416,7 @@
                 </div>
                 <div class="col-4">
 
-                    <div class="text-right rating-widget h4 " style="margin-top:-23px;" id="close-yt">
+                    <div class="text-right rating-widget h4" id="close-yt">
 
                         <!-- Rating Stars Box -->
                         <div class='rating-stars text-right'>
@@ -513,7 +513,7 @@
                                                         <div class="c-further-information">
                                                             @if ($item?->introVideo?->intro_video_link != null)
                                                                 <div>
-                                                                    <iframe width="100%"
+                                                                    <iframe width="100%" height="150"
                                                                         src="{{ $item?->introVideo?->intro_video_link }}"
                                                                         frameborder="0"
                                                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -523,7 +523,7 @@
                                                             @else
                                                                 <div class="d-flex justify-content-center">
                                                                     <img src="{{ asset('assets/website/images/youtube.png') }}"
-                                                                        alt="" width="40%">
+                                                                        alt="" height="100" width="100">
                                                                 </div>
                                                             @endif
                                                         </div>
@@ -638,7 +638,7 @@
                                                                 <div class="col-md-4 mb-1">
                                                                     @if ($item?->profile?->work_reel1 != null)
                                                                         <div>
-                                                                            <iframe width="80%"
+                                                                            <iframe width="80%" height="100"
                                                                                 src="{{ $item?->profile?->work_reel1 }}"
                                                                                 frameborder="0"
                                                                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -648,14 +648,14 @@
                                                                     @else
                                                                         <div class="d-flex justify-content-center">
                                                                             <img src="{{ asset('assets/website/images/youtube.png') }}"
-                                                                                alt="" width="70%">
+                                                                                alt="" height="100" width="100">
                                                                         </div>
                                                                     @endif
                                                                 </div>
                                                                 <div class="col-md-4 mb-3">
                                                                     @if ($item?->profile?->work_reel2 != null)
                                                                         <div>
-                                                                            <iframe width="80%"
+                                                                            <iframe width="80%" height="100"
                                                                                 src="{{ $item?->profile?->work_reel2 }}"
                                                                                 frameborder="0"
                                                                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -664,13 +664,13 @@
                                                                     @else
                                                                         <div class=" d-flex justify-content-center">
                                                                             <img src="{{ asset('assets/website/images/youtube.png') }}"
-                                                                                alt="" width="70%">
+                                                                                alt="" height="100" width="100">
                                                                         </div>
                                                                     @endif
                                                                 </div>
                                                                 <div class="col-md-4 mb-3">
                                                                     @if ($item?->profile?->work_reel3 != null)
-                                                                        <iframe width="80%"
+                                                                        <iframe width="80%" height="100"
                                                                             src="{{ $item?->profile?->work_reel3 }}"
                                                                             frameborder="0"
                                                                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -678,7 +678,7 @@
                                                                     @else
                                                                         <div class="d-flex justify-content-center">
                                                                             <img src="{{ asset('assets/website/images/youtube.png') }}"
-                                                                                alt="" width="70%">
+                                                                                alt="" height="100" width="100">
                                                                         </div>
                                                                     @endif
                                                                 </div>
