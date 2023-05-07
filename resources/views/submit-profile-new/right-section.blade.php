@@ -26,9 +26,30 @@
 
     .card-top {
         margin-bottom: 13px !important;
-        height: 412px !important;
+        height: 394px !important;
         align-items: center;
     }
+
+    .close-itm-btn {
+        background: rgb(235, 217, 217)(201, 47, 47);
+        width: 18px;
+        height: 18px;
+        position: relative;
+        top: 0;
+        left: 80px;
+        color: red;
+        padding: 2px 2px 2px 2px;
+        background: #fcf0f0;
+    }
+
+    /* .item-wrapper .close {
+        position: absolute;
+        left: 100%;
+        margin-left: -10px;
+        margin-top: 2px;
+        cursor: pointer;
+    } */
+
 </style>
 <div class="card card-top me-0">
     <div class="card-body">
@@ -38,11 +59,11 @@
                 data-bs-content-id="popover-content" data-bs-trigger="focus" title="Headshot Image">
                 <i class="fa fa-info-circle"></i>
             </div>
-            @if (count($userInfo?->images) > 0)
+            {{-- @if (count($userInfo?->images) > 0)
                 <div class="close-btn"
                     onclick="deleteAllHeadShotImages('{{ route('user.delete-all-headshots', auth()->user()->id) }}')">x
                 </div>
-            @endif
+            @endif --}}
         </div>
         <div id="popover-content" class="d-none">
             <div class="form-group">
@@ -69,16 +90,34 @@
             </figure>
         </div>
         <div class="gallery-wrapper">
-            <div class="gallery">
-                <div class="item-wrapper">
+            <div class="gallery d-flex">
+                <div class="item-wrapper d-inline-flex">
                     {{-- <div class="delete-single-btn">x</div> --}}
+                    {{-- @if (count($userInfo?->images) > 0)
+                        <div class="close-itm-btn"
+                            onclick="deleteAllHeadShotImages('{{ route('user.delete-all-headshots', auth()->user()->id) }}')">x
+                        </div>
+                    @endif --}}
                     <figure class="gallery-item image-holder r-3-2 active transition" id="image1" data-value="1">
                     </figure>
+                    
                 </div>
-                <div class="item-wrapper">
+                <div class="item-wrapper d-inline-flex">
+                    @if (isset($userInfo?->images) && isset($userInfo?->images[1]->field_name) && $userInfo?->images[1]->field_name != '')
+                        <div class="close-itm-btn close-1" style="display: none;"
+                            onclick="deleteSingleHeadShotImage('{{ route('user.delete-single.image', ['image2', auth()->user()->id]) }}')">
+                            <i class="fa fa-trash"></i>
+                        </div>
+                    @endif
                     <figure class="gallery-item image-holder r-3-2 transition" id="image2" data-value="2"></figure>
                 </div>
-                <div class="item-wrapper">
+                <div class="item-wrapper d-inline-flex">
+                    @if (isset($userInfo?->images) && isset($userInfo?->images[2]->field_name) && $userInfo?->images[2]->field_name != '')
+                        <div class="close-itm-btn close-2" style="display: none;"
+                            onclick="deleteSingleHeadShotImage('{{ route('user.delete-single.image', ['image3', auth()->user()->id]) }}')">
+                            <i class="fa fa-trash"></i>
+                        </div>
+                    @endif
                     <figure class="gallery-item image-holder r-3-2 transition" id="image3" data-value="3"></figure>
                 </div>
 
@@ -91,13 +130,14 @@
     <div class="card-body ms-1">
 
         <div class="d-flex justify-content-between">
-            <span class="h6 fw-bold">Upload Intro video <b><span style="color:red;">*</span></b></span>
+            <span class="h6 fw-bold">Intro video <b><span style="color:red;">*</span></b></span>
         </div>
-        <div class="row" style="margin-top:20px;">
+        <div class="row" >
             {{-- <form action="{{ route('users.introvideos') }}" method="post">
                 @csrf --}}
             <div class="col-md-12 col-lg-12 col-sm-6">
-                <div class="input-group">
+                <div class="form-group">
+                    {{-- <label  class="form-label" for="">Upload video</label> --}}
                     <input type="text" class="form-control" name="intro_video_link"
                         placeholder="Please enter  intro video"
                         value="{{ old('intro_video_link', isset($userIntroVideo->intro_video_link) ? $userIntroVideo->intro_video_link : '') }}" />
@@ -111,23 +151,23 @@
             </div>
             {{-- </form> --}}
         </div>
-        <div class="form-group mt-3 ms-3">
+        <div class="form-group mt-2">
             @if (isset($userIntroVideo) && $userIntroVideo != null)
-                <iframe style="width:75%;" src="{{ $userIntroVideo->intro_video_link }}" allowfullscreen="true">
+                <iframe style="width: 100%;" src="{{ $userIntroVideo->intro_video_link }}" allowfullscreen="true">
                 </iframe>
             @else
-                <img src="{{ asset('assets/images/video-thumb.png') }}" alt="" style="width:75%;">
+                <img src="{{ asset('assets/images/video-thumb.png') }}" alt="" style="width: 100%;">
             @endif
         </div>
-        <div class="row">
-            <div class="col-md-12 col-lg-12 col-sm-12 mt-3">
+        <div class="row mt-3">
+            <div class="col-md-12 col-lg-12 col-sm-12">
                 <div class="d-flex justify-content-between">
                     <span class="h6 fw-bold">Sample intro video</span>
                 </div>
-                <div id="video-section" class="mb-2 ms-3">
-                    <div class="sample-yt-video mt-2">
+                <div id="video-section" class="mb-2">
+                    <div class="sample-yt-video">
                         <div id="intro_hindi">
-                            <iframe class="video" style="width:75%;" src="https://www.youtube.com/embed/q22JrhzFEuQ"
+                            <iframe class="video" style="width: 100%;" src="https://www.youtube.com/embed/q22JrhzFEuQ"
                                 allowfullscreen="true">
                             </iframe>
                         </div>

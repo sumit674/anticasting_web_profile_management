@@ -1,7 +1,7 @@
 @extends('layouts.submit-profile-new')
 {{-- @extends('layouts.master') --}}
 @section('header')
-    <link rel="stylesheet" href="{{ asset('assets/website/css/submit-profile.css') }}" />
+    {{-- <link rel="stylesheet" href="{{ asset('assets/website/css/submit-profile.css') }}" /> --}}
     <link rel="stylesheet" href="{{ asset('assets/website/css/image-gallery.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/auth/toastr.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/website/css/alertbox.css') }}" />
@@ -86,6 +86,10 @@
                                         </div>
                                     </div>
                                 </div>
+                                <?php
+                                $date = date('Y-m-d');
+                                $newDate = date('Y-m-d', strtotime($date . ' - 5 years'));
+                                ?>
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="mb-3">
@@ -96,7 +100,7 @@
                                                 </b>
                                             </label>
                                             <input type="date" class="form-control" placeholder="Date of Birth"
-                                                name="date_of_birth"
+                                                name="date_of_birth" max="<?php echo $newDate; ?>"
                                                 value="{{ old('date_of_birth', isset($userProfile->date_of_birth) ? $userProfile->date_of_birth : ' ') }}" />
 
                                             @error('date_of_birth')
@@ -199,8 +203,8 @@
                                                     Number</b>&nbsp;<span style="color:red;"><b>*</b></span></label>
                                             <div class="input-group mb-3">
                                                 <!--
-                                                                                                                                                                                                                  <span class="input-group-text" style="width:10px;">+</span>
-                                                                                                                                                                                                                 -->
+                                                                                                                                                                                                                      <span class="input-group-text" style="width:10px;">+</span>
+                                                                                                                                                                                                                     -->
                                                 {{-- <input type="text" class="form-control" name="countryCode" readonly
                                                     style="width:15px;"
                                                     value="{{ old('countryCode', $userInfo->countryCode) }}" />
@@ -273,7 +277,7 @@
                                             links)</b></span></label>
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <div class="mb-3">
+                                        <div class="mb-1">
                                             <input type="text" class="form-control" name="work_reel1"
                                                 placeholder="Work Reel 1"
                                                 value="{{ old('work_reel1', isset($userProfile->work_reel1) ? $userProfile->work_reel1 : ' ') }}" />
@@ -287,7 +291,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <div class="mb-3">
+                                        <div class="mb-1">
                                             <input type="text" class="form-control" name="work_reel2"
                                                 placeholder="Work Reel 2"
                                                 value="{{ old('work_reel2', isset($userProfile->work_reel2) ? $userProfile->work_reel2 : ' ') }}" />
@@ -301,7 +305,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <div class="mb-3">
+                                        <div class="mb-1">
                                             <input type="text" class="form-control" name="work_reel3"
                                                 placeholder="Work Reel 3"
                                                 value="{{ old('work_reel3', isset($userProfile->work_reel3) ? $userProfile->work_reel3 : ' ') }}" />
@@ -596,6 +600,11 @@
         @endif
         function deleteAllHeadShotImages(url) {
             if (confirm('Do you really want to delete all headshot images?')) {
+                document.location.href = url;
+            }
+        }
+        function deleteSingleHeadShotImage(url) {
+            if (confirm('Do you really want to delete this headshot image?')) {
                 document.location.href = url;
             }
         }

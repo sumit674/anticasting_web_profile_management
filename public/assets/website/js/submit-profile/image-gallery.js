@@ -283,7 +283,12 @@ const getBase64FromUrl = async (url) => {
 	//Set Images for Gallery and Add Event Listeners
 
 	for (var i = 0; i < galleryItems.length; i++) {
-
+		// galleryItems[i].style.marginRight = '-20px';
+		// galleryItems[i].style.marginRight = '0';
+		if (images[i] !== undefined) {
+			galleryItems[i].style.marginRight = '-10px';
+			$('.close-'+i).show();
+		}
 		// galleryItems[i].style.backgroundImage = 'url(' + images[i] + ')';
 
 		galleryItems[i].style.backgroundImage = 'url(' + images[i] + ')';
