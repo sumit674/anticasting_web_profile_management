@@ -30,21 +30,30 @@
     <!-- Nav Item - Pages Collapse Menu -->
 
         <li class="nav-item">
-            <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo"
+            {{--  <a class="nav-link" href="{{route('users.submitProfile')}}" data-toggle="collapse" data-target="#collapseTwo"
                 aria-expanded="true" aria-controls="collapseTwo">
                 <i class="fas fa-fw fa-user"></i>
                 <span>Users</span>
+            </a>  --}}
+            <a class="nav-link" href="{{route('users.submitProfile')}}">
+                <i class="fas fa-fw fa-user"></i>
+                <span>Submit Profile</span>
             </a>
-            <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            {{--  <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Submit Profile:</h6>
                     <a class="collapse-item" href="{{route('users.submitProfile')}}">Profile</a>
                        <a class="collapse-item" href="{{route('users.change-password')}}">ChangePassword</a>
 
                 </div>
-            </div>
+            </div>  --}}
         </li>
-
+        <li class="nav-item">
+            <a class="nav-link" href="{{route('users.change-password')}}">
+                <i class="fas fa-fw fa-lock"></i>
+                <span>Change Password</span>
+            </a>
+        </li>
 
    <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">

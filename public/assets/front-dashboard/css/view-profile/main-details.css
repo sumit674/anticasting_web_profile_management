@@ -423,7 +423,12 @@ transform: rotate(45deg); */
     position: relative;
     width: 100%;
 }
-
+.image-container{
+    background: radial-gradient(ellipse at top left, rgba(105,155,200,1) 0%,rgba(181,197,216,1) 57%);
+}
+.p-main-page__about-me-section{
+    background: radial-gradient(ellipse at top left, rgba(105,155,200,1) 0%,rgba(181,197,216,1) 57%);
+}
 .c-card__image {
     left: 50%;
     position: absolute;

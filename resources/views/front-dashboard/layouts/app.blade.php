@@ -37,7 +37,7 @@
         </div>
     </div>
     <!-- Bootstrap core JavaScript-->
- 
+
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="{{ asset('assets/front-dashboard/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
