@@ -98,6 +98,7 @@
                                             </div>
                                             @php
                                                 $dateOfBirth = $item?->profile?->date_of_birth;
+                                                
                                                 $age = \Carbon\Carbon::parse($dateOfBirth)->age;
                                             @endphp
                                             <div class="product-content">

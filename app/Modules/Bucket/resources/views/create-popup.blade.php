@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Add New Bucket</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Add New Movie</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -13,8 +13,8 @@
                 <div class="modal-body p-4 bg-light">
                     <div class="row">
                         <div class="col-lg">
-                            <label for="fname">Bucket Name</label>
-                            <input type="text" name="bucket_name" class="form-control" placeholder="Enter bucket name" required>
+                            <label for="fname">Movie Name</label>
+                            <input type="text" name="movie_name" class="form-control" placeholder="Enter movie name" required>
                         </div>
                     </div>
                 </div>

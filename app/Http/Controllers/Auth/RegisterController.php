@@ -100,7 +100,9 @@ class RegisterController extends Controller
         $user_otp->mobile_code = '91';
         $user_otp->mobile_no = $mobileNumber;
         $user_otp->otp = $otp;
+      
         $user_otp->expiry_date = Carbon::now()->addMinutes(10);
+
         $user_otp->save();
         Mail::send('emails.email_show_otp', ['Firstname' => $user->first_name, 'Lastname' => $user->last_name, 'email' => $user->email, 'otp' => $user_otp->otp], function ($message) use ($request) {
             $message->to($request->email);

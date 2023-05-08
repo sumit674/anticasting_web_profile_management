@@ -69,20 +69,20 @@
       padding: 0px 0px !important;
     }
 </style>
-<div class="card dark card-container position-static" id="shortlist-page" style="display:none;">
+<div class="card dark card-container position-static" id="archive-page"/>
     <div class="card-body">
-        <form id="bucket-form" method="POST" action="{{ route('admin.bucket.member.archiveBulk', $item?->id) }}">
+        <form id="bucket-form" method="POST" action="{{route('admin.bucket.archiveBulk') }}">
             @csrf
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group d-flex mt-3">
                         <span id="bucket-ids" class="text-white text-label">
-                            0
+
                         </span>
-                        <span class="h6 text-white text-label" style="margin-left:5px;">
+                        <span class="h6 text-white text-label" style="margin-left:5px;" id="'bucket-ids"/>
                             Selected
                         </span>
-                        <input type="hidden" name="user_id" class="form-control-sm" id="archive-item" />
+                        <input type="hidden" name="bucket_id" class="form-control-sm" id="archive-item" />
 
                     </div>
                 </div>

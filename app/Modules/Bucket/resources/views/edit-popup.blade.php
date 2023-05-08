@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Edit Bucket</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Edit Movie</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -13,8 +13,8 @@
                 <input type="hidden" name="bucket_id" id="bucket_id">
                 <div class="modal-body p-4 bg-light">
                     <div class="my-2">
-                        <label for="bucket_name">Bucket</label>
-                        <input type="text" name="bucket_name" id="bucket_name" class="form-control" placeholder="Bucket"
+                        <label for="movie_name">Movie Name</label>
+                        <input type="text" name="movie_name" id="movie_name" class="form-control" placeholder="Enter a movie name"
                             required>
                     </div>
                 </div>

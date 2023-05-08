@@ -41,13 +41,12 @@
                                                         <button type="button"
                                                             class="btn btn-labeled btn-primary open-model-create">
                                                             <span class="btn-label"><i class="fa fa-plus"></i></span>Add
-                                                            Bucket</button>
+                                                            Movie</button>
 
                                                     </div>
                                                 </div>
                                                 <div class="justify-content-start" style="margin-left:8px;">
-                                                    <input type="checkbox" class="mt-3 ms-5" id="check_all"
-                                                        onclick="selecteAllItems()" />
+                                                    <input type="checkbox" class="mt-3 ms-5" id="check_all" />
                                                     <span class="ms-1" style="margin-left:8px; font-size:16px;">Select
                                                         all</span>
                                                 </div>
@@ -57,25 +56,27 @@
                                                             <tr>
                                                                 <th></th>
                                                                 <th class="text-center">Id</th>
-                                                                <th class="text-center">Bucket List</th>
+                                                                <th class="text-center">Movie List</th>
                                                                 {{-- <th class="text-center">Status</th> --}}
                                                                 <th class="text-center">Action</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            @forelse ($items as $key=>$item)
-                                                                <tr>
-                                                                    <td>
-                                                                        <input type="checkbox" name="all_list_item"
-                                                                            class="select_all_list"
-                                                                            onclick="getBucket({{ $item->id }})" />
-                                                                    </td>
-                                                                    <td class="text-center">{{ $key + 1 }}</td>
-                                                                    <td class="text-center">
+                                                            @isset($items)
+                                                                @forelse ($items as $key=>$item)
+                                                                    <tr>
+                                                                        <td>
+                                                                            <input type="checkbox" name="all_list_item"
+                                                                                class="select_all_list"
+                                                                                value="{{ $item->id }}"
+                                                                                {{--  onclick="getBucket({{ $item->id }})" --}} />
+                                                                        </td>
+                                                                        <td class="text-center">{{ $key + 1 }}</td>
+                                                                        <td class="text-center">
 
-                                                                        {{ $item->bucket_name }}
-                                                                    </td>
-                                                                    {{-- @if (isset($item->status) && $item->status == 1)
+                                                                            {{ $item->movie_name }}
+                                                                        </td>
+                                                                        {{-- @if (isset($item->status) && $item->status == 1)
                                                                         <td class="text-center">
                                                                             <span
                                                                                 class="badge badge-success text-center text-capitalize">
@@ -91,19 +92,19 @@
                                                                             </span>
                                                                         </td>
                                                                     @endif --}}
-                                                                    <td class="text-center">
-                                                                        <a href="#" id="{{ $item->id }}"
-                                                                            class=" btn btn-success mx-1 editIcon"
-                                                                            data-toggle="modal"
-                                                                            data-target="#editBucketModal">
-                                                                            <i class="fa-solid fa-pen-to-square"></i></a>
-                                                                        {{-- <button class="btn btn-success btn-sm "
+                                                                        <td class="text-center">
+                                                                            <a href="#" id="{{ $item->id }}"
+                                                                                class=" btn btn-success mx-1 editIcon"
+                                                                                data-toggle="modal"
+                                                                                data-target="#editBucketModal">
+                                                                                <i class="fa-solid fa-pen-to-square"></i></a>
+                                                                            {{-- <button class="btn btn-success btn-sm "
                                                                             id="#open_edit_model_{{ $item->id }}"
                                                                             onclick="openEditModel({{ $item->id }})">
 
                                                                             <i class="fa-solid fa-pen-to-square"></i>
                                                                         </button> --}}
-                                                                        @if (isset($item->status) && $item->status == 1)
+                                                                            {{-- @if (isset($item->status) && $item->status == 1)
                                                                             <a href="{{ route('admin.bucket.manage.details', $item->id) }}"
                                                                                 class="btn btn-primary btn-sm">
                                                                                 <i class="fa-solid fa-eye"></i>
@@ -113,15 +114,17 @@
                                                                                 class="btn btn-primary btn-sm disabled">
                                                                                 <i class="fa-solid fa-eye"></i>
                                                                             </a>
-                                                                        @endif
+                                                                        @endif --}}
 
-                                                                    </td>
-                                                                </tr>
-                                                            @empty
-                                                                <tr>
-                                                                    <td colspan="4" class="text-center">No Record</td>
-                                                                </tr>
-                                                            @endforelse
+                                                                        </td>
+                                                                    </tr>
+                                                                @empty
+                                                                    <tr>
+                                                                        <td colspan="4" class="text-center">No Record</td>
+                                                                    </tr>
+                                                                @endforelse
+                                                            @endisset
+
                                                         </tbody>
                                                     </table>
                                                 </div>
@@ -183,8 +186,9 @@
                     </div>
                 </div>
                 @include('Bucket::create-popup')
-                @include('Bucket::shortlist-show')
+                {{--  @include('Bucket::shortlist-show')  --}}
                 @include('Bucket::edit-popup')
+                @include('Bucket::archive')
             </section>
         </div>
     </div>
@@ -227,11 +231,11 @@
                     $("#add_bucket_btn").text('Add Bucket');
                     $("#add_bucket_form")[0].reset();
                     $("#myModal").modal('hide');
-                      location.reload(true);
+                    location.reload(true);
                 }
             });
         });
-        //Edit get request 
+        //Edit get request
         $(document).on('click', '.editIcon', function(e) {
             e.preventDefault();
             let id = $(this).attr('id');
@@ -243,7 +247,7 @@
                     _token: '{{ csrf_token() }}'
                 },
                 success: function(response) {
-                    $("#bucket_name").val(response.bucket_name);
+                    $("#movie_name").val(response.movie_name);
                     $("#bucket_id").val(response.id);
                 }
             });
@@ -269,7 +273,7 @@
                             'Bucket Updated Successfully!',
                             'success'
                         )
-                       
+
                     }
                     $("#edit_Bucket_btn").text('Bucket Employee');
                     $("#edit_bucket_form")[0].reset();
@@ -278,5 +282,113 @@
                 }
             });
         });
+        //Archive bucket movie js
+        var collectionBucket = []
+
+
+        //  function getBucket(id) {
+
+        //   if (collectionBucket.indexOf(id) === -1) {
+        //     collectionBucket.push(id);
+        //   } else {
+
+        //      let index = collectionBucket.indexOf(id);
+        //    collectionBucket.splice(index, 1)
+        //   }
+
+
+
+        //   const bucketvalue = document.getElementById('bucket-ids').innerHTML = collectionBucket.length;
+        //   document.querySelector('#archive-item').value = collectionBucket.join(',');
+        //   if (collectionBucket.length == 0) {
+        //      const bucketvalue = document.getElementById('bucket-ids').innerHTML=0;
+        //      document.querySelector('#archive-item').value = 0;
+        //    }
+        //      $("#check_all").prop('checked',false);
+        //  }
+
+
+      {{--
+        $("#check_all").on("click", function() {
+
+            if ($(this).is(':checked', true)) {
+                $(".select_all_list").prop('checked', true);
+                $('.select_all_list').each(function(idx, el) {
+
+                    var selectedValue = $(el).val();
+
+                    if (allBucketArchived.indexOf(selectedValue) === -1) {
+                        allBucketArchived.push(selectedValue);
+                    } else {
+                        const index = allBucketArchived.indexOf(selectedValue)
+                        allBucketArchived.splice(index, 0)
+                    }
+
+                    const bucketvalue = document.getElementById('bucket-ids').innerHTML =
+                        allBucketArchived.length;
+
+                    document.querySelector('#archive-item').value = allBucketArchived.join(',');
+                });
+            } else {
+                $(".select_all_list").prop('checked', false);
+
+                document.getElementById('bucket-ids').innerHTML = 0;
+                document.querySelector('#archive-item').value = 0;
+            }
+        });  --}}
+        {{--  $('.select_all_list').each(function(idx, el) {
+
+                var selectedValue = $(el).val();
+                 document.getElementById('bucket-ids').innerHTML = selectedValue;
+
+           });  --}}
+
+        $('.select_all_list').click(function() {
+            $("#check_all").prop('checked', false);
+            var selectedValue = $(this).val();
+              if (collectionBucket.indexOf(selectedValue) === -1) {
+                    collectionBucket.push(selectedValue);
+              }else {
+
+                    let index = collectionBucket.indexOf(selectedValue);
+                    collectionBucket.splice(index, 1)
+                }
+                document.getElementById('bucket-ids').innerHTML =
+                    collectionBucket.length;
+
+                document.querySelector('#archive-item').value = collectionBucket.join(',');
+
+        });
+       $("#check_all").on("click", function() {
+            if ($(this).is(':checked', true)) {
+                $(".select_all_list").prop('checked', true);
+                var checkboxes = document.getElementsByClassName('select_all_list');
+                for (var i =0; i < checkboxes.length; i++) {
+                    if (collectionBucket.indexOf(checkboxes[i].value) === -1) {
+                        collectionBucket.push(checkboxes[i].value);
+
+                    }
+                    document.getElementById('bucket-ids').innerHTML =
+                        collectionBucket.length;
+                    document.querySelector('#archive-item').value = collectionBucket.join(',');
+                }
+
+            } else {
+                $(".select_all_list").prop('checked', false);
+                document.getElementById('bucket-ids').innerHTML = 0;
+                document.querySelector('#archive-item').value = null;
+            }
+        })
+
+
+        $('#archive_member').hide()
+        $('#active_tab').on('click', function() {
+            $('#active_member').show()
+            $('#archive_member').hide()
+        })
+        $('#archive_tab').on('click', function() {
+            $('#archive_member').show()
+            $('#active_member').hide()
+        })
     </script>
 @endsection

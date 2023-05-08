@@ -159,7 +159,7 @@
                         <select name="bucket_id" class="form-control" id="selecter2">
                             @isset($bucket_list)
                                 @foreach ($bucket_list as $key => $bucket)
-                                    <option value="{{$bucket->id}}" @if(isset($bucket->id)) selected @endif >{{$bucket->bucket_name}}</option>
+                                    <option value="{{$bucket->id}}" @if(isset($bucket->id)) selected @endif >{{$bucket->movie_name}}</option>
                                 @endforeach
                             @endisset
 

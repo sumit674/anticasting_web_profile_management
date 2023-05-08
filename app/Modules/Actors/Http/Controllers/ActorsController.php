@@ -59,50 +59,14 @@ class ActorsController extends Controller
             //     ->orderBy('users.age', 'desc');
               $items->orderBy('users.age','desc');
         }
-        /* $items->with('profile', function ($query) use ($request) {
-            if ($request->has('age_asc') && $request->sort == 'age_asc') {
-                $query->select(DB::raw('floor(DATEDIFF(CURDATE(),date_of_birth) /365) as age'))->orderBy('age', 'asc');
-            } elseif ($request->has('age_desc') && $request->sort == 'age_desc') {
-                // $query->orderBy('created_at', 'asc');
-                $query->select(DB::raw('floor(DATEDIFF(CURDATE(),date_of_birth) /365) as age'))->orderBy('age', 'desc');
-            }
-        }); */
-        /* $items->where(function($q) use ($request) {
-            if ($request->has('age_asc') && $request->sort == 'age_asc') {
-                $q->orderBy('created_at', 'asc');
-            } elseif ($request->has('age_desc') && $request->sort == 'age_desc') {
-                $q->orderBy('created_at', 'asc');
-            }
-        }); */
-        // $items->orderBy(function($q) use ($request) {
-        //     // return $user->age;
-        //     if ($request->has('age_asc') && $request->sort == 'age_asc') {
-        //         $q->orderBy('age', 'asc');
-        //     } elseif ($request->has('age_desc') && $request->sort == 'age_desc') {
-        //         $q->orderBy('age', 'asc');
-        //     }
-        // });
-        /* if ($request->has('sort') && $request->sort == 'descrase_age') {
-            $items->with('profile', function ($query) {
-                $query
-                    ->orderBy('date_of_birth', 'ASC') // or DESC
-                    ->orderBy('created_at', 'DESC');
-            });
-        } else {
-            $items->with('profile', function ($query) {
-                $query
-                    ->orderBy('date_of_birth', 'DESC') // or DESC
-                    ->orderBy('created_at', 'ASC');
-            });
-        } */
-        //
+
         $actors = $items->paginate(8);
         // dd($actors);
         $state = State::all();
 
         // return view('Actors::New-Actor.index', compact('actors', 'state'));
         //  return view('Actors::index', compact('actors', 'state'));
-        $bucket_list = Bucket::select('id', 'bucket_name')
+        $bucket_list = Bucket::select('id','movie_name')
             ->where('status', 1)
             ->get();
         return view('Actors::profiles.list', compact('actors', 'state', 'bucket_list'));

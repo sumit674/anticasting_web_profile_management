@@ -16,9 +16,8 @@ class BucketController extends Controller
     public function index()
     {
         $items = Bucket::paginate(10);
-        $allItems = Bucket::count();
         // dd($items);
-        return view('Bucket::index', compact('items', 'allItems'));
+        return view('Bucket::index', compact('items'));
     }
     public function create()
     {
@@ -28,7 +27,7 @@ class BucketController extends Controller
     {
         $request->validate(
             [
-                'bucket_name' => 'required',
+                'movie_name' => 'required',
                 // 'movie_name' => 'required',
                 // 'description' => 'required',
                 // 'movie_link' => [
@@ -42,7 +41,7 @@ class BucketController extends Controller
                 // ],
             ],
             [
-                'bucket_name.required' => 'Please enter a bucket name',
+                'movie_name.required' => 'Please enter a movie name',
                 // 'movie_name.required' => 'Please enter a movie name',
                 // 'description.required' => 'Please enter a move description',
                 // 'movie_link.required' => 'Please enter a movie link',
@@ -52,7 +51,7 @@ class BucketController extends Controller
         // $empData = ['first_name' => $request->fname, 'last_name' => $request->lname, 'email' => $request->email, 'phone' => $request->phone, 'post' => $request->post, 'avatar' => $fileName];
 
         $bucket = new Bucket();
-        $bucket->bucket_name = $request->bucket_name;
+        $bucket->movie_name = $request->movie_name;
         $bucket->save();
         return response()->json([
             'status' => 200,
@@ -67,7 +66,7 @@ class BucketController extends Controller
     public function update(Request $request)
     {
         $bucket = Bucket::where('id', $request->bucket_id)->first();
-        $bucket->bucket_name = $request->bucket_name;
+        $bucket->movie_name = $request->movie_name;
         $bucket->save();
         return response()->json([
             'status' => 200,
@@ -118,25 +117,26 @@ class BucketController extends Controller
     /**
      * Archive in bulk
      */
-    public function archiveBulk(Request $request, $bucketId)
+    public function archiveBulk(Request $request)
     {
-        $usersIds = explode(',', $request->user_id);
-        $bucket = Bucket::where('id', $bucketId)->first();
-        //    dd($usersIds);
-        foreach ($usersIds as $key => $user_id) {
-            $bucket_member = BucketMembers::where('bucket_id', $bucketId)
-                ->where('user_id', $user_id)
-                ->first();
-            if (!isset($bucket_member)) {
-                $bucket_member = new BucketMembers();
-                $bucket_member->status = 0;
-            }
-            $bucket_member->user_id = $user_id;
-            $bucket_member->bucket_id = $bucket->id;
-            $bucket_member->status = 0;
-            $bucket_member->save();
-        }
-        return redirect()->route('admin.bucket.manage.details', $bucketId);
+        dd($request->all());
+        // $usersIds = explode(',', $request->user_id);
+        // $bucket = Bucket::where('id', $bucketId)->first();
+        // //    dd($usersIds);
+        // foreach ($usersIds as $key => $user_id) {
+        //     $bucket_member = BucketMembers::where('bucket_id', $bucketId)
+        //         ->where('user_id', $user_id)
+        //         ->first();
+        //     if (!isset($bucket_member)) {
+        //         $bucket_member = new BucketMembers();
+        //         $bucket_member->status = 0;
+        //     }
+        //     $bucket_member->user_id = $user_id;
+        //     $bucket_member->bucket_id = $bucket->id;
+        //     $bucket_member->status = 0;
+        //     $bucket_member->save();
+        // }
+        // return redirect()->route('admin.bucket.manage.details', $bucketId);
     }
 
     /**

@@ -23,9 +23,12 @@ class CreateBucketsTable extends Migration
             nullable();
             $table->longText('description')->
             nullable();
-            $table->boolean('status')
+           $table->boolean('status')
             ->default(0)
             ->comment('Active=>1,Archive=>0');
+             $table->boolean('archive')
+            ->default(0)
+            ->comment('Yes=>1,No=>0');
             $table->timestamps();
         });
     }
