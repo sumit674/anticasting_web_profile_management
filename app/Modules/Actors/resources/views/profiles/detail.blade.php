@@ -217,12 +217,12 @@
         }
 
         /* .img-select-container img hover:{
-                                                                                                width: 100% !important;
-                                                                                                display: inline-block;
-                                                                                                border: 1px solid black;
-                                                                                                opacity: 0.4;
+                                                                                                    width: 100% !important;
+                                                                                                    display: inline-block;
+                                                                                                    border: 1px solid black;
+                                                                                                    opacity: 0.4;
 
-                                                                                            } */
+                                                                                                } */
         .img-select .active {
             border: 1px dotted black;
             height: 50px !important;
@@ -328,7 +328,7 @@
         }
 
         .divId {
-            margin: 0 40px;
+            margin: 0 51px;
             display: inline-flex;
             width: 212px;
             border: 1px solid #b3aeae;
@@ -343,6 +343,24 @@
             box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19)
         }
 
+        /*main-image portarit landscap*/
+        .main-image {
+            overflow: hidden;
+        }
+
+        .main-image.landscape {
+            max-width: 285px;
+            width: 100%;
+            height: auto;
+            margin-left:16px;
+        }
+
+        .main-image.portrait {
+            width: auto;
+            height: 226px;
+            background-size: cover;
+            background-position: center;
+        }
 
         /* Rating Star Widgets Style */
         .rating-stars ul {
@@ -412,39 +430,44 @@
             <div class="popover-header-section" id="popoverHeader">
                 <div class="popover-header row">
                     <div class="col-8">
-                    <b><span class="actor-name">{{ $item->first_name . ' ' . $item->last_name }}</span> </b>
-                </div>
-                <div class="col-4">
-
-                    <div class="text-right rating-widget h4" id="close-yt">
-
-                        <!-- Rating Stars Box -->
-                        <div class='rating-stars text-right'>
-                            <div class="text-left refresh-icon">
-                                <b><span class="fa fa-refresh" onclick="removeStar()"></span></b>
-                            </div>
-                            <ul id='stars'>
-
-                                <li class='star {{ $selectStar?->rating >= 1 ? "selected" : " "}}' title='Poor' data-value='1'>
-                                    <i class='fa fa-star fa-fw'></i>
-                                </li>
-                                <li class='star  {{ $selectStar?->rating >= 2 ? "selected" : " "}}' title='Fair' data-value='2'>
-                                    <i class='fa fa-star fa-fw'></i>
-                                </li>
-                                <li class='star  {{ $selectStar?->rating >= 3 ? "selected" : " "}}' title='Good' data-value='3'>
-                                    <i class='fa fa-star fa-fw'></i>
-                                </li>
-                                <li class='star  {{ $selectStar?->rating >= 4 ? "selected" : " "}}' title='Excellent' data-value='4'>
-                                    <i class='fa fa-star fa-fw'></i>
-                                </li>
-                                <li class='star {{ $selectStar?->rating == 5 ? "selected" : " "}}' title='WOW!!!' data-value='5'>
-                                    <i class='fa fa-star fa-fw'></i>
-                                </li>
-                            </ul>
-                        </div>
-
+                        <b><span class="actor-name">{{ $item->first_name . ' ' . $item->last_name }}</span> </b>
                     </div>
-                </div>
+                    <div class="col-4">
+
+                        <div class="text-right rating-widget h4" id="close-yt">
+
+                            <!-- Rating Stars Box -->
+                            <div class='rating-stars text-right'>
+                                <div class="text-left refresh-icon">
+                                    <b><span class="fa fa-refresh" onclick="removeStar()"></span></b>
+                                </div>
+                                <ul id='stars'>
+
+                                    <li class='star {{ $selectStar?->rating >= 1 ? 'selected' : ' ' }}' title='Poor'
+                                        data-value='1'>
+                                        <i class='fa fa-star fa-fw'></i>
+                                    </li>
+                                    <li class='star  {{ $selectStar?->rating >= 2 ? 'selected' : ' ' }}' title='Fair'
+                                        data-value='2'>
+                                        <i class='fa fa-star fa-fw'></i>
+                                    </li>
+                                    <li class='star  {{ $selectStar?->rating >= 3 ? 'selected' : ' ' }}' title='Good'
+                                        data-value='3'>
+                                        <i class='fa fa-star fa-fw'></i>
+                                    </li>
+                                    <li class='star  {{ $selectStar?->rating >= 4 ? 'selected' : ' ' }}' title='Excellent'
+                                        data-value='4'>
+                                        <i class='fa fa-star fa-fw'></i>
+                                    </li>
+                                    <li class='star {{ $selectStar?->rating == 5 ? 'selected' : ' ' }}' title='WOW!!!'
+                                        data-value='5'>
+                                        <i class='fa fa-star fa-fw'></i>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="row">
@@ -648,7 +671,8 @@
                                                                     @else
                                                                         <div class="d-flex justify-content-center">
                                                                             <img src="{{ asset('assets/website/images/youtube.png') }}"
-                                                                                alt="" height="100" width="100">
+                                                                                alt="" height="100"
+                                                                                width="100">
                                                                         </div>
                                                                     @endif
                                                                 </div>
@@ -664,7 +688,8 @@
                                                                     @else
                                                                         <div class=" d-flex justify-content-center">
                                                                             <img src="{{ asset('assets/website/images/youtube.png') }}"
-                                                                                alt="" height="100" width="100">
+                                                                                alt="" height="100"
+                                                                                width="100">
                                                                         </div>
                                                                     @endif
                                                                 </div>
@@ -678,7 +703,8 @@
                                                                     @else
                                                                         <div class="d-flex justify-content-center">
                                                                             <img src="{{ asset('assets/website/images/youtube.png') }}"
-                                                                                alt="" height="100" width="100">
+                                                                                alt="" height="100"
+                                                                                width="100">
                                                                         </div>
                                                                     @endif
                                                                 </div>
@@ -814,5 +840,15 @@
             })
 
         }
+        $(window).on('load', function() {
+            $('.main-image').each(
+                function() { //you need to put this inside the window.onload-function (not document.ready), otherwise the image dimensions won't be available yet
+                    if ($(this).width() / $(this).height() >= 1) {
+                        $(this).addClass('landscape');
+                    } else {
+                        $(this).addClass('portrait');
+                    }
+                });
+        });
     </script>
 @endsection

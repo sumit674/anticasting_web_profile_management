@@ -186,6 +186,22 @@
         height: 100px;
         box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19)
     }
+    /*main-image portarit landscap*/
+    .gallary-image{
+        overflow: hidden;
+    }
+
+    .gallary-image.landscape {
+        max-width: 275px;
+        width: 100%;
+        height: auto;
+    }
+   .gallary-image.portrait {
+        width: auto;
+        height: 226px;
+        background-size: cover;
+        background-position: center;
+    }
 
     /* Rating Star Widgets Style */
     .rating-stars ul {
@@ -600,4 +616,14 @@
         })
 
     }
+    $(window).on('load', function() {
+        $('.gallary-image').each(
+            function() { //you need to put this inside the window.onload-function (not document.ready), otherwise the image dimensions won't be available yet
+                if ($(this).width() / $(this).height() >= 1) {
+                    $(this).addClass('landscape');
+                } else {
+                    $(this).addClass('portrait');
+                }
+            });
+    });
 </script>
