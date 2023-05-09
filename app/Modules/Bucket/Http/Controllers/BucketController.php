@@ -119,23 +119,15 @@ class BucketController extends Controller
      */
     public function archiveBulk(Request $request)
     {
-        dd($request->all());
-        // $usersIds = explode(',', $request->user_id);
-        // $bucket = Bucket::where('id', $bucketId)->first();
-        // //    dd($usersIds);
-        // foreach ($usersIds as $key => $user_id) {
-        //     $bucket_member = BucketMembers::where('bucket_id', $bucketId)
-        //         ->where('user_id', $user_id)
-        //         ->first();
-        //     if (!isset($bucket_member)) {
-        //         $bucket_member = new BucketMembers();
-        //         $bucket_member->status = 0;
-        //     }
-        //     $bucket_member->user_id = $user_id;
-        //     $bucket_member->bucket_id = $bucket->id;
-        //     $bucket_member->status = 0;
-        //     $bucket_member->save();
-        // }
+
+        $bucketId = explode(',', $request->bucket_id);
+       // dd($bucketId);
+         $bucket = new Bucket();
+
+        foreach ($bucket as $key => $bucket_id) {
+            $bucket->archive = 0;
+            $bucket->save();
+        }
         // return redirect()->route('admin.bucket.manage.details', $bucketId);
     }
 

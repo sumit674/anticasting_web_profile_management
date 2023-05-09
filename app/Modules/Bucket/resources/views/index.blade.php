@@ -308,7 +308,7 @@
         //  }
 
 
-      {{--
+        {{--
         $("#check_all").on("click", function() {
 
             if ($(this).is(':checked', true)) {
@@ -346,27 +346,34 @@
         $('.select_all_list').click(function() {
             $("#check_all").prop('checked', false);
             var selectedValue = $(this).val();
-              if (collectionBucket.indexOf(selectedValue) === -1) {
-                    collectionBucket.push(selectedValue);
-              }else {
+            if (collectionBucket.indexOf(selectedValue) === -1) {
 
-                    let index = collectionBucket.indexOf(selectedValue);
-                    collectionBucket.splice(index, 1)
-                }
-                document.getElementById('bucket-ids').innerHTML =
-                    collectionBucket.length;
+                collectionBucket.push(selectedValue);
 
-                document.querySelector('#archive-item').value = collectionBucket.join(',');
+            } else {
+
+                let index = collectionBucket.indexOf(selectedValue);
+                collectionBucket.splice(index, 1)
+            }
+            document.getElementById('bucket-ids').innerHTML =
+                collectionBucket.length;
+
+            document.querySelector('#archive-item').value = collectionBucket.join(',');
 
         });
-       $("#check_all").on("click", function() {
+        $("#check_all").on("click", function() {
             if ($(this).is(':checked', true)) {
                 $(".select_all_list").prop('checked', true);
                 var checkboxes = document.getElementsByClassName('select_all_list');
-                for (var i =0; i < checkboxes.length; i++) {
+
+                for (var i = 0; i < checkboxes.length; i++) {
                     if (collectionBucket.indexOf(checkboxes[i].value) === -1) {
                         collectionBucket.push(checkboxes[i].value);
+                    } else {
 
+                        let index = collectionBucket.indexOf(checkboxes[i].value);
+                        collectionBucket.splice(index, 1)
+                        collectionBucket.push(checkboxes[i].value);
                     }
                     document.getElementById('bucket-ids').innerHTML =
                         collectionBucket.length;

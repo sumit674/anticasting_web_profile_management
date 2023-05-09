@@ -1,7 +1,7 @@
 <style>
-    .breadcrumbs{
+    {{--  .breadcrumbs{
         background: url('{{ asset('assets/images/banner-left.gif') }}')
-    }
+    }  --}}
     .welcome-user {
 
         padding: 5px !important;

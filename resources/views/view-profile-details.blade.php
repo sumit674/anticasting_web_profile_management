@@ -73,7 +73,7 @@
                                                     @endif
                                                     <div class="intro_video">
                                                         <div class="c-edit-panel">
-                                                            <h4 class="c-edit-panel__header"> &nbsp; Intro Video</h4>
+                                                            <h4 class="c-edit-panel__header">Intro Video</h4>
                                                             <div class="c-edit-panel__controls"></div>
 
                                                         </div>
