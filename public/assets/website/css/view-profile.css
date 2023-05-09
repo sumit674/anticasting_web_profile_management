@@ -59,7 +59,7 @@
 
 .image-container {
     width: 308px !important;
-    height: 650px !important;
+    height: 550px !important;
     background-color: #fff;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -177,10 +177,26 @@ opacity: 0.4;
     font-weight: 600;
 }
 
-iframe {
+/* iframe {
     height: 100px !important;
-}
+} */
 
 .c-edit-panel__header {
     padding-bottom: 5px;
+}
+
+.work_reel_iframe {
+    height: 70%;
+}
+.work_reel_iframe iframe{
+    display: block;  /* iframes are inline by default */
+    border: none; /* Remove default border */
+    background: lightyellow; /* Just for styling */
+    overflow:scroll;
+    height:100%;
+    width:100%;
+
+}
+.intro_video_ifram{
+    height: 70%;
 }

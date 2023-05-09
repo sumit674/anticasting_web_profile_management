@@ -79,12 +79,14 @@
                                                         </div>
                                                         <div class="c-further-information">
                                                             @if ($item?->introVideo?->intro_video_link != null)
-                                                                <div>
-                                                                    <iframe width="100%"  height="100"
+                                                                <div class="intro_video_ifram">
+                                                                    <iframe width="100%"  height="100%"
                                                                         src="{{ $item?->introVideo?->intro_video_link }}"
                                                                         frameborder="0"
                                                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                                                        allowfullscreen>
+                                                                        allowfullscreen
+                                                                        scrolling="yes"
+                                                                        >
                                                                     </iframe>
                                                                 </div>
                                                             @else
@@ -210,14 +212,16 @@
                                                         </div>
                                                         <div class="c-further-information">
                                                             <div class="row">
-                                                                <div class="col-md-4 mb-1">
+                                                                <div class="col-md-4">
                                                                     @if ($item?->profile?->work_reel1 != null)
-                                                                        <div>
-                                                                            <iframe width="80%" height="100"
+                                                                        <div class="work_reel_iframe">
+                                                                            <iframe width="100%" height="100%"
                                                                                 src="{{ $item?->profile?->work_reel1 }}"
                                                                                 frameborder="0"
                                                                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                                                                allowfullscreen>
+                                                                                allowfullscreen
+                                                                                scrolling="yes"
+                                                                                >
                                                                             </iframe>
                                                                         </div>
                                                                     @else
@@ -227,14 +231,16 @@
                                                                         </div>
                                                                     @endif
                                                                 </div>
-                                                                <div class="col-md-4 mb-3">
+                                                                <div class="col-md-4">
                                                                     @if ($item?->profile?->work_reel2 != null)
-                                                                        <div>
-                                                                            <iframe width="80%" height="100"
+                                                                        <div  class="work_reel_iframe">
+                                                                            <iframe width="100%" height="100%"
                                                                                 src="{{ $item?->profile?->work_reel2 }}"
                                                                                 frameborder="0"
                                                                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                                                                allowfullscreen></iframe>
+                                                                                allowfullscreen
+                                                                                scrolling="yes"
+                                                                                ></iframe>
                                                                         </div>
                                                                     @else
                                                                         <div class=" d-flex justify-content-center">
@@ -243,13 +249,17 @@
                                                                         </div>
                                                                     @endif
                                                                 </div>
-                                                                <div class="col-md-4 mb-3">
+                                                                <div class="col-md-4">
                                                                     @if ($item?->profile?->work_reel3 != null)
-                                                                        <iframe width="80%" height="100"
+                                                                    <div  class="work_reel_iframe">
+                                                                        <iframe  width="100%" height="100%"
                                                                             src="{{ $item?->profile?->work_reel3 }}"
                                                                             frameborder="0"
                                                                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                                                            allowfullscreen></iframe>
+                                                                            allowfullscreen
+                                                                            scrolling="yes"
+                                                                            ></iframe>
+                                                                    </div>
                                                                     @else
                                                                         <div class="d-flex justify-content-center">
                                                                             <img src="{{ asset('assets/website/images/youtube.png') }}"
@@ -308,237 +318,3 @@
         });
     </script>
 @endsection
-{{-- <div class="container">
-    <div class="row">
-        <div class="col-lg-4">
-            <div class="profile-card-4 z-depth-3">
-                <div class="card">
-                    <div class="card-body text-center bg-body rounded-top">
-                        <div class="user-box">
-                            @if (isset($item?->images[0]?->image))
-                                <img id="mainImage" src="{{ $item?->images[0]?->image }}" height="200" width="200" />
-                            @else
-                                <img class="imgStyle" src="{{ asset('assets/images/actor-image-thumbnail.jpg') }}"
-                                    height="200" width="200" />
-                            @endif
-                            <br />
-                            <div class="divId" onmouseover="changeImageOnClick(event)">
-                                @if (isset($item?->images[0]?->image))
-                                    <img class="imgStyle" src="{{ $item?->images[0]?->image }}" />
-                                @else
-                                    <img class="imgStyle"
-                                        src="{{ asset('assets/images/actor-image-thumbnail.jpg') }}" />
-                                @endif
-                                @if (isset($item?->images[1]?->image))
-                                    <img class="imgStyle" src="{{ $item?->images[1]?->image }}" />
-                                @else
-                                    <img class="imgStyle"
-                                        src="{{ asset('assets/images/actor-image-thumbnail.jpg') }}" />
-                                @endif
-                                @if (isset($item?->images[2]?->image))
-                                    <img class="imgStyle" src="{{ $item?->images[2]?->image }}" />
-                                @else
-                                    <img class="imgStyle"
-                                        src="{{ asset('assets/images/actor-image-thumbnail.jpg') }}" />
-                                @endif
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <ul class="list-group shadow-none">
-                            <li class="list-group-item">
-                                <div class="list-icon">
-                                    <i class="fa fa-phone-square"></i>
-                                </div>
-                                <div class="list-details">
-                                    <span>{{ $item?->countryCode . ' ' . $item?->mobile_no }}</span>
-                                    <small>Mobile Number</small>
-                                </div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="list-icon">
-                                    <i class="fa fa-envelope"></i>
-                                </div>
-                                <div class="list-details">
-                                    <span>{{ $item?->email }}</span>
-                                    <small>Email Address</small>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-8">
-            <div class="card z-depth-3">
-                <div class="card-body">
-                    <ul class="nav nav-pills nav-pills-primary nav-justified">
-                        <li class="nav-item">
-                            <a href="javascript:void();" data-target="#profile" data-toggle="pill"
-                                class="nav-link active show"><i class="icon-user"></i> <span class="hidden-xs">About
-                                    Me</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="javascript:void();" data-target="#messages" data-toggle="pill" class="nav-link"><i
-                                    class="icon-envelope-open"></i> <span class="hidden-xs">Videos</span></a>
-                        </li>
-
-                    </ul>
-                    <div class="tab-content p-3">
-                        <div class="tab-pane active show" id="profile">
-                            <h5 class="mb-3">User Profile</h5>
-                            <div class="row">
-
-                                <div class="col-lg-12 col-md-12">
-                                    <div class="team-single-text padding-50px-left sm-no-padding-left">
-                                        <div class="contact-info-section margin-40px-tb">
-                                            <ul class="list-style9 no-margin">
-                                                <li>
-                                                    <div class="row">
-                                                        <div class="col-md-5 col-5">
-                                                            <strong class="margin-10px-left text-orange">Name:</strong>
-                                                        </div>
-                                                        <div class="col-md-7 col-7">
-                                                            <p>{{ $item?->first_name . ' ' . $item?->last_name }}</p>
-                                                        </div>
-                                                    </div>
-
-                                                </li>
-                                                <li>
-
-                                                    <div class="row">
-                                                        <div class="col-md-5 col-5">
-
-                                                            <strong
-                                                                class="margin-10px-left text-yellow">Ethnicity.:</strong>
-                                                        </div>
-                                                        <div class="col-md-7 col-7">
-                                                            <p>{{ $item?->profile?->ethnicity }}</p>
-                                                        </div>
-                                                    </div>
-
-                                                </li>
-                                                <li>
-
-                                                    <div class="row">
-                                                        <div class="col-md-5 col-5">
-                                                            @php
-                                                                $dateOfBirth = $item?->profile?->date_of_birth;
-                                                                $age = \Carbon\Carbon::parse($dateOfBirth)->age;
-                                                            @endphp
-                                                            <strong class="margin-10px-left text-yellow">Age:</strong>
-                                                        </div>
-                                                        <div class="col-md-7 col-7">
-                                                            <p>{{ $age }}</p>
-                                                        </div>
-                                                    </div>
-
-                                                </li>
-                                                <li>
-
-                                                    <div class="row">
-                                                        <div class="col-md-5 col-5">
-
-                                                            <strong
-                                                                class="margin-10px-left text-lightred">Email:</strong>
-                                                        </div>
-                                                        <div class="col-md-7 col-7">
-                                                            <p>{{ $item->email }}</p>
-                                                        </div>
-                                                    </div>
-
-                                                </li>
-                                                <li>
-
-                                                    <div class="row">
-                                                        <div class="col-md-5 col-5">
-
-                                                            <strong class="margin-10px-left text-green">Current
-                                                                Location:</strong>
-                                                        </div>
-                                                        <div class="col-md-7 col-7">
-                                                            <p>{{ $item?->profile?->current_location }}</p>
-                                                        </div>
-                                                    </div>
-
-                                                </li>
-                                                <li>
-
-                                                    <div class="row">
-                                                        <div class="col-md-5 col-5">
-
-                                                            <strong
-                                                                class="margin-10px-left xs-margin-four-left text-purple">Phone:</strong>
-                                                        </div>
-                                                        <div class="col-md-7 col-7">
-                                                            <p> {{ $item?->countryCode . ' ' . $item?->mobile_no }}</p>
-                                                        </div>
-                                                    </div>
-
-                                                </li>
-                                                <li>
-                                                    <div class="row">
-                                                        <div class="col-md-5 col-5">
-
-                                                            <strong
-                                                                class="margin-10px-left xs-margin-four-left text-pink">Gender:</strong>
-                                                        </div>
-                                                        <div class="col-md-7 col-7">
-                                                            <p>{{ $item?->profile?->gender }}</p>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane" id="messages">
-
-                            <div class="container">
-                                <h6 class="page-header" id="youtube-gallery">Intro video</h6>
-                                <div class="row p-2">
-                                    <div class="col-md-12 col-12">
-
-                                        <iframe width="100%" height="120%"
-                                            src="{{ $item?->introVideo?->intro_video_link }}">
-                                        </iframe>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="container  mt-5">
-                                <h6 class="page-header" id="youtube-gallery">Work Reels</h6>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="row">
-                                            <div class="col-md-4 mt-3">
-                                                <iframe width="100%" height="100%"
-                                                    src="{{ @$item?->profile->work_reel1 }}">
-                                                </iframe>
-                                            </div>
-                                            <div class="col-md-4 mt-3">
-                                                <iframe width="100%" height="100%"
-                                                    src="{{ @$item?->profile->work_reel2 }}">
-                                                </iframe>
-                                            </div>
-                                            <div class="col-md-4 mt-3">
-                                                <iframe width="100%" height="100%"
-                                                    src="{{ @$item?->profile->work_reel3 }}">
-                                                </iframe>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                        </div>
-                      </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</div> --}}
