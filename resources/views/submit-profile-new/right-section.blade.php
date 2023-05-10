@@ -82,7 +82,7 @@
             </div>
         </div>
         <div class="feature" @if (count($userInfo?->images) == 0) id="upload-default" @endif>
-            <figure class="featured-item r-3-2 transition main-img img">
+            <figure class="featured-item r-3-2 transition main-img img portrait">
                 @if (count($userInfo?->images) == 0)
                     <img id="default-img" src="{{ asset('assets/images/default-user.jfif') }}" alt="User"
                         title="Please select an image" style="width:100%; cursor: pointer;">
@@ -100,7 +100,7 @@
                     @endif --}}
                     <figure class="gallery-item image-holder r-3-2 active transition" id="image1" data-value="1">
                     </figure>
-                    
+
                 </div>
                 <div class="item-wrapper d-inline-flex">
                     @if (isset($userInfo?->images) && isset($userInfo?->images[1]->field_name) && $userInfo?->images[1]->field_name != '')

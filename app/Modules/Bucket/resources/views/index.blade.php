@@ -185,10 +185,10 @@
                         </div>
                     </div>
                 </div>
-                @include('Bucket::create-popup')
+                @include('Shortlist::create-popup')
                 {{--  @include('Bucket::shortlist-show')  --}}
-                @include('Bucket::edit-popup')
-                @include('Bucket::archive')
+                @include('Shortlist::edit-popup')
+                {{--  @include('Bucket::archive')  --}}
             </section>
         </div>
     </div>
@@ -283,7 +283,7 @@
             });
         });
         //Archive bucket movie js
-        var collectionBucket = []
+      //  var collectionBucket = []
 
 
         //  function getBucket(id) {
@@ -342,6 +342,7 @@
                  document.getElementById('bucket-ids').innerHTML = selectedValue;
 
            });  --}}
+        {{--
 
         $('.select_all_list').click(function() {
             $("#check_all").prop('checked', false);
@@ -387,7 +388,7 @@
             }
         })
 
-
+        --}}
         $('#archive_member').hide()
         $('#active_tab').on('click', function() {
             $('#active_member').show()

@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/auth/toastr.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/website/css/alertbox.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/website/css/webcam.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/website/css/crop-image.css') }}" />
 @endsection
 @section('content')
     @include('include.submitprofile.image-header')
@@ -350,6 +351,7 @@
         let camHeight = 225;
     </script>
     <script src="{{ asset('assets/website/js/submit-profile/image-gallery.js') }}"></script>
+    <script src="{{ asset('assets/website/js/submit-profile/image-crop.js') }}"></script>
     <script src="{{ asset('assets/intl-telephone/js/intlTelInput.js') }}" type="text/javascript"></script>
     </script>
     <script>
@@ -746,15 +748,15 @@
             });
         }
 
-        $(window).on('load', function() {
+        {{--  $(window).on('load', function() {
             $('.featured-item').each(
-                function() { //you need to put this inside the window.onload-function (not document.ready), otherwise the image dimensions won't be available yet
+                function() {
                     if ($(this).width() / $(this).height() >= 1) {
                         $(this).addClass('landscape');
                     } else {
                         $(this).addClass('portrait');
                     }
                 });
-        });
+        });  --}}
     </script>
 @endsection

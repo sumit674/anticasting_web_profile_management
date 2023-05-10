@@ -25,7 +25,7 @@
                     <input type="file" name="picture" class="form-control image mb-2" id="picture" />
                     <input type="hidden" name="old_image" class="mb-2" id="old_image" />
 
-                    <span id="error1" style="display:none; color:#FF0000;">
+                    {{--  <span id="error1" style="display:none; color:#FF0000;">
                         Invalid image format. Image format must be jpg, jpeg,png or gif.
                     </span>
                     <!--
@@ -35,7 +35,25 @@
                           -->
                     <span id="error3" style="display:none; color:#FF0000;">
                         Image should be more than 4 MB.
-                    </span>
+                    </span>  --}}
+                    <div class="box-2">
+                        <div class="result"></div>
+                    </div>
+                    <div class="box-2 img-result hide">
+                        <!-- result of crop -->
+                        <img class="cropped" src="" alt="">
+                    </div>
+                    <!-- input file -->
+                    <div class="box">
+                        <div class="options hide">
+                            <label> Width</label>
+                            <input type="number" class="img-w" value="300" min="100" max="1200" />
+                        </div>
+                        <!-- save btn -->
+                        <button class="btn save hide">Save</button>
+                        <!-- download btn -->
+                        <a href="" class="btn download hide">Download</a>
+                    </div>
                 </div>
             </div>
             <div class="image-capture upload-capture">

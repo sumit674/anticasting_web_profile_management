@@ -1,10 +1,11 @@
-/* .card {
-margin: 5% 0%;
-} */
+.card {
+    border-radius: 30px !important;
+}
 
 .card-body {
 margin: 0% 0% 0% 3%;
 padding: 6% 0%;
+
 }
 
 .bg-gray-950 {
@@ -136,7 +137,12 @@ margin-bottom: 10px;
 }
 /*Add Bucket Pop Up*/
 .modal-header .close {
-font-size: 38px !important;
-margin-right: 10px !important;
-margin-top: 0px !important;
+    font-size: 38px !important;
+    margin-right: -1px !important;
+    margin-top: -15px !important;
 }
+
+.modal-content {
+
+    border-radius: 17px !important;
+ }
