@@ -39,20 +39,17 @@
                     <div class="box-2">
                         <div class="result"></div>
                     </div>
-                    <div class="box-2 img-result hide">
+                    {{--  <div class="box-2 img-result hide">
                         <!-- result of crop -->
                         <img class="cropped" src="" alt="">
-                    </div>
+                    </div>  --}}
                     <!-- input file -->
                     <div class="box">
                         <div class="options hide">
-                            <label> Width</label>
-                            <input type="number" class="img-w" value="300" min="100" max="1200" />
+                            <input type="hidden" class="img-w" value="300" min="100" max="1200" />
                         </div>
                         <!-- save btn -->
-                        <button class="btn save hide">Save</button>
-                        <!-- download btn -->
-                        <a href="" class="btn download hide">Download</a>
+                        <button class="btn btn-primary save hide btn-save">Save</button>
                     </div>
                 </div>
             </div>

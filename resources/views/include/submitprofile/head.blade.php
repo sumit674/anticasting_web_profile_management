@@ -14,7 +14,7 @@ rel="stylesheet"
 <link rel="stylesheet" href="{{ asset('assets/intl-telephone/css/intlTelInput.css') }}">
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.css" integrity="sha512-C4k/QrN4udgZnXStNFS5osxdhVECWyhMsK1pnlk+LkC7yJGCqoYxW4mH3/ZXLweODyzolwdWSqmmadudSHMRLA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="{{asset('assets/submitprofile/assets/css/cropper.css')}}"  rel="stylesheet" />
 <link rel="stylesheet" href="{{ asset('assets/submitprofile/assets/css/style.css') }}" />
 <link rel="stylesheet" href="{{ asset('assets/website/css/responsive.css') }}" />
 <link rel="stylesheet" href="{{ asset('assets/toast/jquery.toast.css') }}" />

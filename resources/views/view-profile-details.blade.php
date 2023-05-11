@@ -306,15 +306,5 @@
                 mainImage.src = targetElement.getAttribute("src");
             }
         }
-        $(window).on('load', function() {
-            $('.main-image').each(
-                function() { //you need to put this inside the window.onload-function (not document.ready), otherwise the image dimensions won't be available yet
-                    if ($(this).width() / $(this).height() >= 1) {
-                        $(this).addClass('landscape');
-                    } else {
-                        $(this).addClass('portrait');
-                    }
-                });
-        });
     </script>
 @endsection

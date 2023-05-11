@@ -77,7 +77,7 @@
     overflow: hidden;
 }
 
-.main-image.landscape {
+/* .main-image.landscape {
     max-width: 275px;
     width: 100%;
     height: auto;
@@ -91,18 +91,18 @@
     height: 226px;
     background-size: cover;
     background-position: center;
-}
+} */
 
 .gallary-image img {
     display: block;
     /* box-shadow: 2px 2px 2px 1px rgb(87, 88, 88); */
     /* width: 330px !important;
 object-fit: fill; */
-    object-fit:cover;
+    /* object-fit:none; */
 }
 
 .gallary-image img:hover {
-    object-fit: cover;
+    /* object-fit: none; */
     opacity: 0.9;
 }
 
