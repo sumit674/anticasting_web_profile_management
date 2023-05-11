@@ -31,7 +31,9 @@
                                     <div class="col-md-12">
                                         <div class="row">
                                             <div class="col-lg-6 col-md-6 col-sm-6">
-                                                <label for="parent_id">Categories</label>
+                                                <label class="form-label" id=""><b>Categories
+                                                </b><span style="color:red;">*</span>
+                                            </label>
                                                 <select class="form-control" name="parent_id" id="parent_id"
                                                     placeholder="Category">
                                                     <option value="0" selected>Parent</option>
@@ -44,17 +46,20 @@
                                                         @endforeach
                                                     @endif
                                                 </select>
-                                                <span class="text-danger error-text parent_id_err"></span>
+                                                @error('parent_id')
+                                                  <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-sm-6">
-                                                <label class="form-label" id="project"><b>Project name
+                                                <label class="form-label" id=""><b>Project name
                                                     </b><span style="color:red;">*</span>
                                                 </label>
                                                 <div class="form-group">
 
                                                     <input type="text" name="project_name" class="form-control"
                                                         id="project_name" placeholder="Enter project name" />
-                                                    @error('bucket_name')
+                                                    @error('project_name')
                                                         <span style="color:red;"><b>{{ $message }}</b></span>
                                                     @enderror
 
@@ -62,13 +67,21 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                                <label class="form-label" id=""><b>Description
+                                                </b><span style="color:red;">*</span>
+                                            </label>
                                                 <div class="form-group">
-                                                    <label class="form-label" for="description">Description</label>
-                                                    <textarea class="form-control" name="description" id="description" cols="30" rows="10"></textarea>
+
+                                                    <textarea class="form-control" name="description" id="" cols="30" rows="10"></textarea>
                                                 </div>
-                                                <span class="text-danger error-text description_err"></span>
+                                                @error('description')
+                                                <span style="color:red;"><b>{{ $message }}</b></span>
+                                                @enderror
                                             </div>
+
+                                        </div>
+                                        <div class="row">
                                             <div class="col-lg-6 col-md-6 col-sm-6 mt-2">
                                                 <div class="checkbox">
                                                     <label for="active">
@@ -96,54 +109,52 @@
 @endsection
 @section('footer')
     <script>
-        $(document).ready(function() {
-            $('#description').summernote();
-        });
-        // $(document).ready(function() {
-        //     $('#description').summernote({
-        //         placeholder: 'Enter movie description goes here..',
-        //         // tabsize: 2,
-        //         height: 300,
-        //         // followingToolbar: true,
-        //         toolbar: [
-        //             ['style', ['style']],
-        //             ['font', ['bold', 'underline', 'clear']],
-        //             ['fontname', ['fontname']],
-        //             ['color', ['color']],
-        //             ['para', ['ul', 'ol', 'paragraph']],
-        //             ['table', ['table']],
-        //             ['insert', ['link', 'picture', 'video']],
-        //             ['view', ['fullscreen', 'codeview', 'help']],
-        //         ],
-        //         popover: {
-        //             image: [
-        //                 ['image', ['resizeFull', 'resizeHalf', 'resizeQuarter', 'resizeNone']],
-        //                 ['float', ['floatLeft', 'floatRight', 'floatNone']],
-        //                 ['remove', ['removeMedia']]
-        //             ],
-        //             link: [
-        //                 ['link', ['linkDialogShow', 'unlink']]
-        //             ],
-        //             table: [
-        //                 ['add', ['addRowDown', 'addRowUp', 'addColLeft', 'addColRight']],
-        //                 ['delete', ['deleteRow', 'deleteCol', 'deleteTable']],
-        //             ],
-        //             air: [
-        //                 ['color', ['color']],
-        //                 ['font', ['bold', 'underline', 'clear']],
-        //                 ['para', ['ul', 'paragraph']],
-        //                 ['table', ['table']],
-        //                 ['insert', ['link', 'picture']]
-        //             ]
-        //         }
 
-        //     })
-        //     //.summernote("code", '{!! old('policy', isset($item->policy) ? $item->policy : '') !!}');
+         $(document).ready(function() {
+           $('#description').summernote({
+                placeholder: 'Enter movie description goes here..',
+                // tabsize: 2,
+             height: 300,
+                // followingToolbar: true,
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'underline', 'clear']],
+                    ['fontname', ['fontname']],
+                   ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                     ['table', ['table']],
+                    ['insert', ['link', 'picture', 'video']],
+                  ['view', ['fullscreen', 'codeview', 'help']],
+               ],
+                 popover: {
+                     image: [
+                         ['image', ['resizeFull', 'resizeHalf', 'resizeQuarter', 'resizeNone']],
+                       ['float', ['floatLeft', 'floatRight', 'floatNone']],
+                       ['remove', ['removeMedia']]
+                    ],
+                     link: [
+                    ['link', ['linkDialogShow', 'unlink']]
+                    ],
+                    table: [
+                        ['add', ['addRowDown', 'addRowUp', 'addColLeft', 'addColRight']],
+                     ['delete', ['deleteRow', 'deleteCol', 'deleteTable']],
+                     ],
+                   air: [
+                        ['color', ['color']],
+                        ['font', ['bold', 'underline', 'clear']],
+                     ['para', ['ul', 'paragraph']],
+                        ['table', ['table']],
+                        ['insert', ['link', 'picture']]
+                    ]
+            }
 
-        //     // var postForm = function() {
-        //     //     var content = $('textarea[name="policy"]').html($('#policycontent').code());
-        //     // }
-        // });
+             })
+         //.summernote("code", '{!! old('policy', isset($item->policy) ? $item->policy : '') !!}');
+
+            // var postForm = function() {
+            //     var content = $('textarea[name="policy"]').html($('#policycontent').code());
+            // }
+         });
     </script>
 @endsection
 

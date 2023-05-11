@@ -82,7 +82,7 @@
                                     </p>
                                 </div>
                                 <div class="take-snap-second" id="take-btn">
-                                    <button class="btn btn-sm btn-success text-webcam-text" data-bs-dismiss="modal" onClick="Retake_snapshot()">
+                                    <button class="btn btn-sm btn-success btn-ok-capture text-webcam-text" data-bs-dismiss="modal" onClick="Retake_snapshot()">
                                         <span class="fa fa-check fa-2xl"></span>
                                     </button>
                                 </div>

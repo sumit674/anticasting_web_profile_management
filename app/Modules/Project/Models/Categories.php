@@ -14,5 +14,8 @@ class Categories extends Model
     public function trans(){
         return $this->hasOne(CategoryTrans::class,'category_id')->select(['id','project_name','description','category_id']);
     }
+    public function parents(){
+        return $this->hasMany(Categories::class,'parent_id');
+    }
 
 }

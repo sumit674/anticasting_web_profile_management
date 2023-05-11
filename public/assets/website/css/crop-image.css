@@ -5,39 +5,42 @@
     align-items: flex-start;
     flex-wrap: wrap;
     height: 100%;
-  }
+}
 
-  .box {
+.box {
     padding: 0.5em;
     width: 100%;
     margin: 0.5em;
-  }
+}
 
-  .box-2 {
+.box-2 {
     padding: 0.5em;
     width: calc(100% / 2 - 1em);
-  }
+}
 
-  .options label,
-  .options input {
+.options label,
+.options input {
     width: 4em;
     padding: 0.5em 1em;
-  }
-  .btn-save {
-    background: white;
-    color: black;
-    border: 1px solid black;
-    padding: 0.5em 1em;
-    text-decoration: none;
-    margin: 0.8em 0.3em;
+}
+
+.btn-save {
+
+    background: radial-gradient(ellipse at top left, rgba(105, 155, 200, 1) 0%, rgba(181, 197, 216, 1) 57%);
+    border-radius: 10px;
     display: inline-block;
     cursor: pointer;
-  }
-
-  .hide {
+}
+.btn-ok-capture{
+    background: radial-gradient(ellipse at top left, rgba(105, 155, 200, 1) 0%, rgba(181, 197, 216, 1) 57%);
+    border-radius: 10px;
+    display: inline-block;
+    cursor: pointer;
+}
+.hide {
     display: none;
-  }
+}
 
-  img {
+img {
     max-width: 100%;
-  }
+}

@@ -41,7 +41,7 @@
                                                         <a href="{{ route('admin.projects.create') }}"
                                                             class="btn btn-labeled btn-primary open-model-create">
                                                             <span class="btn-label"><i class="fa fa-plus"></i></span>Add
-                                                            Movie</a>
+                                                            Project</a>
 
                                                     </div>
                                                 </div>
@@ -56,8 +56,8 @@
                                                             <tr>
                                                                 <th></th>
                                                                 <th class="text-center">Id</th>
-                                                                <th class="text-center">Project Name</th>
                                                                 <th class="text-center">Parent</th>
+                                                                <th class="text-center">Project name</th>
                                                                 <th class="text-center">Status</th>
                                                                 <th class="text-center">Action</th>
                                                             </tr>
@@ -66,19 +66,29 @@
                                                             @if (isset($items))
                                                                 @foreach ($items as $k => $item)
                                                                     <tr>
-                                                                        <th scope="row">{{ $k + 1 }}</th>
-                                                                        <td>{{ $item->trans->project_name }}</td>
-                                                                        <td class="user_name_col_{{ $item->id }}">
-                                                                            @if (isset($item->parents) && count($item->parents) > 0)
-                                                                                {{ $item->parents[0]->trans->project_name }}
-                                                                            @else
-                                                                                --
-                                                                            @endif
+                                                                        <td>
+                                                                            <input type="checkbox" name="all_list_item"
+                                                                                class="select_all_list"
+                                                                                 value="{{ $item->id }}"
+                                                                             />
                                                                         </td>
+                                                                        <td class="text-center" scope="row">{{ $k + 1 }}</td>
+                                                                        <td class="text-center">{{ $item->trans->project_name }}</td>
+
+                                                                            @if (isset($item->parents) && count($item->parents) > 0)
+                                                                            <td class="text-center user_name_col_{{ $item->id }}">
+                                                                                {{ $item->parents[0]->trans->project_name }}
+                                                                            </td>
+                                                                            @else
+                                                                              <td class="text-center">
+                                                                                --
+                                                                              </td>
+                                                                            @endif
+
                                                                         {{-- <td>
                                                                         {!! $item->trans->description !!}
                                                                     </td> --}}
-                                                                        <td>
+                                                                        <td class="text-center">
                                                                             @if ($item->active === 1)
                                                                                 <span
                                                                                     class="badge badge-success">Active</span>
@@ -87,13 +97,13 @@
                                                                                     class="badge badge-danger">InActive</span>
                                                                             @endif
                                                                         </td>
-                                                                        <td class="text-left">
-                                                                            <a href="{{ route('admin.categories.edit', $item->id) }}"
+                                                                        <td class="text-center">
+                                                                            <a href="{{ route('admin.projects.edit', $item->id) }}"
                                                                                 class="btn btn-success btn-flat btn-addon m-l-5">
                                                                                 <i class="ti-pencil"></i>
                                                                                 Edit
                                                                             </a>
-                                                                            <a href="{{ route('admin.categories.delete', $item->id) }}"
+                                                                            <a href="{{ route('admin.projects.delete', $item->id) }}"
                                                                                 class="btn btn-danger btn-flat btn-addon m-l-5"
                                                                                 onclick="return confirm('Do you really want to delete this item?')">
                                                                                 <i class="ti-minus"></i>
@@ -109,7 +119,7 @@
                                             </div>
                                             <div class="tab-pane fade" id="archivelist" role="tabpanel"
                                                 aria-labelledby="archive-tab">
-
+                                               <span>Archive</span>
 
                                             </div>
 
@@ -124,11 +134,56 @@
 
                 {{--  @include('Bucket::shortlist-show')  --}}
                 {{--  @include('Project::edit-popup')  --}}
-                {{--  @include('Bucket::archive')  --}}
+                @include('Project::archive')
             </section>
         </div>
     </div>
 @endsection
 @section('footer')
-    <script></script>
+    <script>
+        var collectionBucket = []
+        $('.select_all_list').click(function() {
+            $("#check_all").prop('checked', false);
+            var selectedValue = $(this).val();
+            if (collectionBucket.indexOf(selectedValue) === -1) {
+
+                collectionBucket.push(selectedValue);
+
+            } else {
+
+                let index = collectionBucket.indexOf(selectedValue);
+                collectionBucket.splice(index, 1)
+            }
+            document.getElementById('project-id').innerHTML =
+                collectionBucket.length;
+
+            document.querySelector('#archive-item').value = collectionBucket.join(',');
+
+        });
+        $("#check_all").on("click", function() {
+            if ($(this).is(':checked', true)) {
+                $(".select_all_list").prop('checked', true);
+                var checkboxes = document.getElementsByClassName('select_all_list');
+
+                for (var i = 0; i < checkboxes.length; i++) {
+                    if (collectionBucket.indexOf(checkboxes[i].value) === -1) {
+                        collectionBucket.push(checkboxes[i].value);
+                    } else {
+
+                        let index = collectionBucket.indexOf(checkboxes[i].value);
+                        collectionBucket.splice(index, 1)
+                        collectionBucket.push(checkboxes[i].value);
+                    }
+                    document.getElementById('project-id').innerHTML =
+                        collectionBucket.length;
+                    document.querySelector('#archive-item').value = collectionBucket.join(',');
+                }
+
+            } else {
+                $(".select_all_list").prop('checked', false);
+                document.getElementById('project-id').innerHTML = 0;
+                document.querySelector('#archive-item').value = null;
+            }
+        })
+    </script>
 @endsection

@@ -684,7 +684,7 @@
         });
         Webcam.attach('#my_camera'); */
         function take_snapshot() {
-            alert("Snap-shot")
+
             let imgId = $('#image_number').val();
 
             $('#take').hide();
