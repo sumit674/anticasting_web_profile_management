@@ -157,11 +157,18 @@
                 <div class=" col-md-6">
                     <div class="form-group select-list mt-2">
                         <select name="bucket_id" class="form-control" id="selecter2">
-                            @isset($bucket_list)
-                                @foreach ($bucket_list as $key => $bucket)
-                                    <option value="{{$bucket->id}}" @if(isset($bucket->id)) selected @endif >{{$bucket->movie_name}}</option>
+                            @if (isset($project_categories_parent))
+                                @foreach ($project_categories_parent as $parent_item)
+                                    <optgroup label="{{$parent_item?->trans?->project_name }}">
+                                        @foreach ($project_categories_child as $key => $child_item)
+                                            <option value="{{ $child_item->id }}"
+                                                @if (isset($child_item->id)) selected @endif>
+                                                {{$child_item?->trans?->project_name }}</option>
+                                        @endforeach
+                                    </optgroup>
                                 @endforeach
-                            @endisset
+
+                            @endif
 
                         </select>
                     </div>

@@ -49,10 +49,10 @@
         margin-top: 2px;
         cursor: pointer;
     } */
-
 </style>
 <div class="card card-top me-0">
     <div class="card-body">
+
         <div class="d-flex justify-content-between">
             <h3 class="h6 fw-bold">Headshot Images <b><span style="color:red;">*</span></b></h3>
             <div class="info" style="cursor:pointer;" tabindex="0" data-bs-placement="top" data-bs-toggle="popover"
@@ -79,6 +79,10 @@
                     <li>width: 250px</li>
                     <li>height: 167px</li>
                 </ul>
+                <strong class="form-label">Sample Image Size/Type</strong>
+                <span>Maximum: 4MB</span>
+                <br />
+                <span>Type: jpg, jfif, jpeg, png, gif</span>
             </div>
         </div>
         <div class="feature" @if (count($userInfo?->images) == 0) id="upload-default" @endif>
@@ -123,7 +127,13 @@
 
             </div>
         </div>
-
+        @error('image1')
+            <div class="d-inline-flex">
+                <span class="text-danger">
+                    Please select at-least one image.
+                </span>
+            </div>
+        @enderror
     </div>
 </div>
 <div class="card mb-5">
@@ -132,7 +142,7 @@
         <div class="d-flex justify-content-between">
             <span class="h6 fw-bold">Intro video <b><span style="color:red;">*</span></b></span>
         </div>
-        <div class="row" >
+        <div class="row">
             {{-- <form action="{{ route('users.introvideos') }}" method="post">
                 @csrf --}}
             <div class="col-md-12 col-lg-12 col-sm-6">

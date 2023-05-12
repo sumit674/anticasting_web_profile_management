@@ -73,12 +73,12 @@ class ProjectController extends Controller
         $validator = $request->validate(
             [
                 'parent_id' => 'required',
-                'project_name' => ['required', new CategoryValidationRule($request->parent_id, '')],
+                //'project_name' => ['required', new CategoryValidationRule($request->parent_id, '')],
                 'description' => 'required',
             ],
             [
                 'parent_id.required' => 'Please select category',
-                'project_name.required' => 'Please enter name',
+               // 'project_name.required' => 'Please enter name',
                 'description.required' => 'Please enter description',
             ]
         );

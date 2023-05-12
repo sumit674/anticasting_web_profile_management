@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\{User, State, UserProfile};
 use App\Modules\Actors\Models\{Bucket};
+use App\Modules\Project\Models\{Categories,CategoryTrans};
 use App\Helpers\PaginateCollection;
 use Illuminate\Support\Facades\DB;
 
@@ -66,10 +67,9 @@ class ActorsController extends Controller
 
         // return view('Actors::New-Actor.index', compact('actors', 'state'));
         //  return view('Actors::index', compact('actors', 'state'));
-        $bucket_list = Bucket::select('id','movie_name')
-            ->where('status', 1)
-            ->get();
-        return view('Actors::profiles.list', compact('actors', 'state', 'bucket_list'));
+        $project_categories_parent = Categories::where('active',1)->where('parent_id',0)->get();
+        $project_categories_child = Categories::where('active',1)->where('parent_id','<>',0)->get();
+        return view('Actors::profiles.list', compact('actors', 'state', 'project_categories_parent','project_categories_child'));
     }
 
     public function filterActorList(Request $request)

@@ -331,11 +331,6 @@
                     </div>
 
                     <div class="col-lg-4 col-12 mb-3">
-                        @error('image1')
-                            <span class="text-danger">
-                                Please select at-least one headshot image.
-                            </span>
-                        @enderror
                         @include('submit-profile-new.right-section')
                     </div>
                 </div>
