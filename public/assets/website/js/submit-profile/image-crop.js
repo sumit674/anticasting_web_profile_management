@@ -34,7 +34,24 @@ upload.addEventListener('change', (e) => {
                 save.classList.remove('hide');
                 options.classList.remove('hide');
                 // init cropper
-                cropper = new Cropper(img);
+                cropper = new Cropper(img, {
+                    dragMode: 'move',
+                    aspectRatio: 9 / 8,
+                    autoCropArea: 0.65,
+                    restore: false,
+                    guides: false,
+                    center: false,
+                    highlight: false,
+                    cropBoxMovable: true,
+                    cropBoxResizable: false,
+                    toggleDragModeOnDblclick: false,
+                });
+                cropper.getCroppedCanvas({
+                    minWidth: 256,
+                    minHeight: 256,
+                    maxWidth: 4096,
+                    maxHeight: 4096,
+                  });
             }
         };
         reader.readAsDataURL(e.target.files[0]);

@@ -163,7 +163,7 @@
 
         .image-container {
             width: 330px !important;
-            height: 730px !important;
+            height: 597px !important;
             background-color: #fff;
             display: grid;
             grid-template-columns: 1fr 1fr;

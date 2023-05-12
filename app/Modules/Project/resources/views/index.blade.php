@@ -55,9 +55,9 @@
                                                         <thead>
                                                             <tr>
                                                                 <th></th>
-                                                                <th class="text-center">Id</th>
-                                                                <th class="text-center">Parent</th>
+                                                                {{--  <th class="text-center">Id</th>  --}}
                                                                 <th class="text-center">Project name</th>
+                                                                <th class="text-center">Parent</th>
                                                                 <th class="text-center">Status</th>
                                                                 <th class="text-center">Action</th>
                                                             </tr>
@@ -72,19 +72,15 @@
                                                                                  value="{{ $item->id }}"
                                                                              />
                                                                         </td>
-                                                                        <td class="text-center" scope="row">{{ $k + 1 }}</td>
+                                                                        {{--  <td class="text-center" scope="row">{{ $k + 1 }}</td>  --}}
                                                                         <td class="text-center">{{ $item->trans->project_name }}</td>
-
+                                                                        <td class="text-center">
                                                                             @if (isset($item->parents) && count($item->parents) > 0)
-                                                                            <td class="text-center user_name_col_{{ $item->id }}">
                                                                                 {{ $item->parents[0]->trans->project_name }}
-                                                                            </td>
                                                                             @else
-                                                                              <td class="text-center">
                                                                                 --
-                                                                              </td>
                                                                             @endif
-
+                                                                        </td>
                                                                         {{-- <td>
                                                                         {!! $item->trans->description !!}
                                                                     </td> --}}

@@ -267,8 +267,8 @@
                                             </label>
                                             <textarea id="about_me" name="about_me" class="form-control">
                                                 @isset($userProfile->about_me)
-{{ $userProfile->about_me }}
-@endisset
+                                                    {{ $userProfile->about_me }}
+                                                 @endisset
                                              </textarea>
 
                                         </div>

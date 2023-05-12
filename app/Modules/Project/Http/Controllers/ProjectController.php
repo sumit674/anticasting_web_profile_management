@@ -19,7 +19,7 @@ class ProjectController extends Controller
     public function index()
     {
         $items = Categories::orderBy('id', 'desc')->paginate();
-
+// dd($items);
         return view("Project::index",compact('items'));
     }
     public function createProject(){
@@ -63,7 +63,9 @@ class ProjectController extends Controller
             return redirect()->route('admin.projects');
     }
     public function editProject($id){
-        $category =  Categories::where('active',1)->get();
+        $category =  Categories::where('parent_id', 0)
+            ->where('active',1)
+            ->get();
         $catItem =  Categories::find($id);
         return view('Project::edit',compact('category','catItem'));
     }

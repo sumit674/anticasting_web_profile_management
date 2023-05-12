@@ -3,11 +3,9 @@
     Actor Manage Bucket
 @endsection
 <style>
-    #contact_select {
 
-
-        background: #FFF;
-        color: #aaa;
+    .edit-card{
+        border-radius:30px !important;
     }
 </style>
 
@@ -23,8 +21,9 @@
             @endif
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="card mt-5">
+                    <div class="card mt-5 edit-card">
                         <div class="card-body">
+                            {{--  {{ dd($catItem) }}  --}}
                             <form action="{{ route('admin.projects.update',$catItem->id) }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
@@ -34,15 +33,16 @@
                                                 <label class="form-label" id=""><b>Categories
                                                     </b><span style="color:red;">*</span>
                                                 </label>
+                                                {{--  {{ dd($category) }}  --}}
                                                 <select class="form-control" name="parent_id" id="parent_id"
                                                     placeholder="Category">
                                                     <option value="0" selected>Parent</option>
                                                     @if (isset($category))
                                                         @foreach ($category as $cat)
-                                                            @if ($catItem->parent_id !== $cat->id)
+                                                            @if ($catItem->id != $cat->id)
 
                                                                 <option value="{{ $cat->id }}"
-                                                                    @if (old('parent_id', $catItem->parent_id)== $cat->id) selected  @endif
+                                                                    @if (old('parent_id', $catItem->parent_id) == $cat->id) selected  @endif
 
                                                                     >
                                                                     {{ $cat->trans->project_name }}
@@ -79,9 +79,7 @@
                                                     </b><span style="color:red;">*</span>
                                                 </label>
                                                 <div class="form-group">
-                                                    <textarea class="form-control" name="description" id="" cols="30" rows="10">
-                                                        {{$catItem?->trans?->description}}
-                                                    </textarea>
+                                                    <textarea class="form-control" name="description" id="" cols="30" rows="10">{{$catItem?->trans?->description}}</textarea>
                                                 </div>
                                                 @error('description')
                                                     <span style="color:red;"><b>{{ $message }}</b></span>
@@ -106,7 +104,6 @@
                             <input type="submit" class="btn btn-success" value="Update" />
                         </center>
                         </form>
-                        <hr />
                     </div>
                 </div>
             </div>
