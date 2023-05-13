@@ -60,7 +60,7 @@
             overflow-y: scroll;
             overflow-x: scroll;
         }
-    </style>
+      </style>
 @endsection
 @section('content')
     {{-- <div class="main">
@@ -311,5 +311,13 @@
         $(function() {
             $('.rating').fSelect();
         });
+        (function() {
+            $(function() {
+              return $('.bucket-select').select2({
+                width: 'resolve'
+              });
+            });
+
+          }).call(this);
     </script>
 @endsection

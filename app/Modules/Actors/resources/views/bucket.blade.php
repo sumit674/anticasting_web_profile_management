@@ -156,7 +156,7 @@
                 </div>
                 <div class=" col-md-6">
                     <div class="form-group  mt-2">
-                        <select name="parent_id" class="form-control w-75">
+                        {{--  <select name="parent_id" class="form-control w-75">
                             @isset($project_categories)
                                 @foreach ($project_categories as $category)
                                     <optgroup label="{{count($category->parents)==0 ? $category?->trans?->project_name : ' '}}">
@@ -167,6 +167,23 @@
 
                                 @endforeach
                             @endisset
+                        </select>  --}}
+                        <select data-placeholder="Select Project Member " id=""
+                            class="form-control w-75 bucket-select">
+                            <option></option>
+                            @foreach ($project_categories as $category)
+                                <optgroup label="{{ $category?->trans?->project_name }}11">
+
+                                    @if ($category->parent_id >= 0)
+                                        @foreach ($category->child as $subcategory)
+                                            <option value="{{ $subcategory->id }}">
+                                                {{ $subcategory?->trans?->project_name }}
+                                            </option>
+                                        @endforeach
+                                    @endif
+
+                                </optgroup>
+                            @endforeach
                         </select>
                     </div>
                 </div>
