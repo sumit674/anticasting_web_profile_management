@@ -67,7 +67,7 @@ class ActorsController extends Controller
 
         // return view('Actors::New-Actor.index', compact('actors', 'state'));
         //  return view('Actors::index', compact('actors', 'state'));
-        $project_categories = Categories::with('parents')->where('active',1)->get();
+        $project_categories = Categories::with('child')->whereNotNull('parent_id')->where('active',1)->get();
 
         return view('Actors::profiles.list', compact('actors', 'state', 'project_categories',));
     }

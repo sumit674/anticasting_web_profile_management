@@ -101,7 +101,7 @@
                                 </div>
                                 <?php
                                 $date = date('Y-m-d');
-                                $newDate = date('Y-m-d', strtotime($date . ' - 5 years'));
+                                $newDate = date('Y-m-d', strtotime('-1 day', strtotime($date)));
                                 ?>
                                 <div class="row">
                                     <div class="col-lg-6">
@@ -757,6 +757,11 @@
         }
         //Automatic load intro video show js
         // $('iframe#introvideo').contents().find('img').css({width: '100%', 'height': '100%'});
+        @if (isset($userIntroVideo->intro_video_link))
+            $('#default-video').hide();
+            $('#introvideo').show();
+            $('#introvideo').attr("src", '{{ $userIntroVideo->intro_video_link }}');
+        @endif
         $("#show_intro_video").change(function() {
             const url = $('#show_intro_video').val()
             var youTubeId;
@@ -776,7 +781,18 @@
                 // });
             // }
             if (youTubeId !== '') {
+                $('#default-video').hide();
+                $('#introvideo').show();
+                $('#introvideo').attr("src", `//www.youtube.com/embed/${youTubeId}`);
+            } else if (url !== '') {
+                $('#default-video').hide();
+                $('#introvideo').show();
                 $('#introvideo').attr("src", `//www.youtube.com/embed/${youTubeId}`)
+            } else {
+                $('#introvideo').hide();
+                $('#default-video').show();
+                $('#default-video').attr("src", "{{ asset('assets/images/video-thumb.png') }}")
+                $('#default-video').attr("style", "height: 100%")
             }
             /*else {
                 // let iframe = $('iframe#introvideo').parent();

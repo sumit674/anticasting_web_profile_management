@@ -158,8 +158,9 @@
         </div>
         <div class="form-group mt-2">
             {{--  @if (isset($userIntroVideo) && $userIntroVideo != null)  --}}
-                <iframe style="width:100%;" src="{{ isset($userIntroVideo->intro_video_link) ? $userIntroVideo->intro_video_link : '' }}" allowfullscreen="true" id="introvideo">
-                </iframe>
+                {{--  <iframe style="width:100%; display:none;" src="{{ isset($userIntroVideo->intro_video_link) ? $userIntroVideo->intro_video_link : '' }}" allowfullscreen="true" id="introvideo"></iframe>  --}}
+                <iframe style="width:100%; display:none;" allowfullscreen="true" id="introvideo"></iframe>
+                <img id="default-video" src="{{ asset('assets/images/video-thumb.png') }}" alt="" style="width: 100%;">
             {{--  @else  --}}
                 {{--  <iframe style="width: 100%;" src=" " allowfullscreen="true" id="video_intro">  --}}
                 {{--  </iframe>  --}}
