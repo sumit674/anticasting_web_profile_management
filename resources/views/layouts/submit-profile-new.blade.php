@@ -31,7 +31,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script>
     <script src="{{ asset('assets/submitprofile/assets/js/cropper.min.js') }}"></script>
     @yield('footer')
-    <script type="text/javascript">
+    {{--  <script type="text/javascript">
         $(document).ready(function() {
             $(".form-disable").on("submit", function() {
                 var self = $(this),
@@ -42,7 +42,7 @@
                     .val(submitValue ? submitValue : "Please wait...");
             });
         });
-    </script>
+    </script>  --}}
     <script src="{{ asset('assets/toast/jquery.toast.js') }}"></script>
     @include('include.alert-msg')
 </body>

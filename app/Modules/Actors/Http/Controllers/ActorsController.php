@@ -67,9 +67,9 @@ class ActorsController extends Controller
 
         // return view('Actors::New-Actor.index', compact('actors', 'state'));
         //  return view('Actors::index', compact('actors', 'state'));
-        $project_categories_parent = Categories::where('active',1)->where('parent_id',0)->get();
-        $project_categories_child = Categories::where('active',1)->where('parent_id','<>',0)->get();
-        return view('Actors::profiles.list', compact('actors', 'state', 'project_categories_parent','project_categories_child'));
+        $project_categories = Categories::with('parents')->where('active',1)->get();
+
+        return view('Actors::profiles.list', compact('actors', 'state', 'project_categories',));
     }
 
     public function filterActorList(Request $request)

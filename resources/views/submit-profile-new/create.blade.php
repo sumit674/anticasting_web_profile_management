@@ -7,6 +7,24 @@
     <link rel="stylesheet" href="{{ asset('assets/website/css/alertbox.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/website/css/webcam.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/website/css/crop-image.css') }}" />
+    <style>
+        .text-danger {
+            color: #ff0018!important;
+            font-weight: 500;
+            font-size: 13px;
+        }
+        .form-control.is-invalid,
+        .was-validated .form-control:invalid {
+            border: 2px solid red !important;
+        }
+
+        .form-label {
+            margin-bottom: .2rem !important;
+        }
+        /*#introvideo img {
+            border: 2px solid red;
+        }*/
+    </style>
 @endsection
 @section('content')
     @include('include.submitprofile.image-header')
@@ -36,16 +54,7 @@
                 <input type="hidden" name="capture_image" id="capture_image" />
                 <div class="row">
                     <div class="col-lg-8 col-12">
-                        @if (Session::has('message'))
-                            <script>
-                                $.toast({
-                                    heading: 'Can I add <em>icons</em>?',
-                                    text: 'Yes! check this <a href="https://github.com/kamranahmedse/jquery-toast-plugin/commits/master">update</a>.',
-                                    hideAfter: false,
-                                    icon: 'success'
-                                })
-                            </script>
-                        @endif
+
                         <div class="card mb-3">
                             <div class="card-body">
                                 <h3 class="h6 fw-bold">Personal Information</h3>
@@ -58,14 +67,15 @@
                                                     <span style="color:red;"><b>*</b></span>
                                                 </b>
                                             </label>
-                                            <input type="text" class="form-control" placeholder="First Name"
-                                                name="first_name" value="{{ old('first_name', $userInfo->first_name) }}" />
-                                            @error('first_name')
+                                            <input type="text"
+                                                class="form-control {{ $errors->has('first_name') ? ' is-invalid' : '' }}"
+                                                placeholder="First Name" name="first_name"
+                                                value="{{ old('first_name', $userInfo->first_name) }}" />
+                                            {{--  @error('first_name')
                                                 <span class="text-danger">
                                                     {{ $message }}
                                                 </span>
-                                            @enderror
-
+                                            @enderror  --}}
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
@@ -76,13 +86,15 @@
                                                     <span style="color:red;"><b>*</b></span>
                                                 </b>
                                             </label>
-                                            <input type="text" class="form-control" placeholder="Last Name"
-                                                name="last_name" value="{{ old('last_name', $userInfo->last_name) }}" />
-                                            @error('last_name')
+                                            <input type="text"
+                                                class="form-control {{ $errors->has('last_name') ? ' is-invalid' : '' }}"
+                                                placeholder="Last Name" name="last_name"
+                                                value="{{ old('last_name', $userInfo->last_name) }}" />
+                                            {{--  @error('last_name')
                                                 <span class="text-danger">
                                                     {{ $message }}
                                                 </span>
-                                            @enderror
+                                            @enderror  --}}
 
                                         </div>
                                     </div>
@@ -100,15 +112,16 @@
                                                     <span style="color:red;"><b>*</b></span>
                                                 </b>
                                             </label>
-                                            <input type="date" class="form-control" placeholder="Date of Birth"
-                                                name="date_of_birth" max="<?php echo $newDate; ?>"
+                                            <input type="date"
+                                                class="form-control {{ $errors->has('date_of_birth') ? ' is-invalid' : '' }}"
+                                                placeholder="Date of Birth" name="date_of_birth" max="<?php echo $newDate; ?>"
                                                 value="{{ old('date_of_birth', isset($userProfile->date_of_birth) ? $userProfile->date_of_birth : ' ') }}" />
 
-                                            @error('date_of_birth')
+                                            {{--  @error('date_of_birth')
                                                 <span class="text-danger">
                                                     {{ $message }}
                                                 </span>
-                                            @enderror
+                                            @enderror  --}}
 
                                         </div>
                                     </div>
@@ -120,23 +133,21 @@
                                                     <span style="color:red;"><b>*</b></span>
                                                 </b>
                                             </label>
-                                            <select name="gender" id="gender" class="form-control">
+                                            <select name="gender" id="gender"
+                                                class="form-control {{ $errors->has('gender') ? ' is-invalid' : '' }}">
                                                 <option value="" selected="selected" class="0">
                                                     Gender
                                                 </option>
-                                                <option value="Male" @if (isset($userProfile->gender) && $userProfile->gender == 'Male') selected @endif>
+                                                <option value="Male"
+                                                    {{ old('gender', isset($userProfile->gender) && $userProfile->gender) == 'Male' ? 'selected' : '' }}>
                                                     Male</option>
-                                                <option value="Female" @if (isset($userProfile->gender) && $userProfile->gender == 'Female') selected @endif>
+                                                <option value="Female"
+                                                    {{ old('gender', isset($userProfile->gender) && $userProfile->gender) == 'Female' ? 'selected' : '' }}>
                                                     Female</option>
-                                                <option
-                                                    value="prefernottosay"@if (isset($userProfile->gender) && $userProfile->gender == 'prefernottosay') selected @endif>
+                                                <option value="prefernottosay"
+                                                    {{ old('gender', isset($userProfile->gender) && $userProfile->gender) == 'prefernottosay' ? 'selected' : '' }}>
                                                     Prefer not to say</option>
                                             </select>
-                                            @error('gender')
-                                                <span class="text-danger">
-                                                    {{ $message }}
-                                                </span>
-                                            @enderror
                                         </div>
                                     </div>
                                 </div>
@@ -149,14 +160,15 @@
                                                     <span style="color:red;"><b>*</b></span>
                                                 </b>
                                             </label>
-                                            <input type="text" class="form-control" name="current_location"
-                                                placeholder="Enter current location"
+                                            <input type="text"
+                                                class="form-control {{ $errors->has('current_location') ? ' is-invalid' : '' }}"
+                                                name="current_location" placeholder="Enter current location"
                                                 value="{{ old('current_location', isset($userProfile->current_location) ? $userProfile->current_location : ' ') }}" />
-                                            @error('current_location')
+                                            {{--  @error('current_location')
                                                 <span class="text-danger">
                                                     {{ $message }}
                                                 </span>
-                                            @enderror
+                                            @enderror  --}}
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
@@ -167,23 +179,24 @@
                                                     <span style="color:red;"><b>*</b></span>
                                                 </b>
                                             </label>
-                                            <select name="ethnicity" id="ethnicity" class="form-control">
+                                            <select name="ethnicity" id="ethnicity"
+                                                class="form-control {{ $errors->has('ethnicity') ? ' is-invalid' : '' }}">
                                                 <option value="" selected="selected" class="0">
                                                     Select Ethnicity
                                                 </option>
                                                 @if (isset($states))
                                                     @foreach ($states as $item)
                                                         <option value="{{ $item->value }}"
-                                                            @if (isset($userProfile->ethnicity) && $userProfile->ethnicity == $item->value) selected @endif>
+                                                            {{ old('ethnicity', isset($userProfile->ethnicity) && $userProfile->ethnicity) == $item->value ? 'selected' : '' }}>
                                                             {{ $item->name }}</option>
                                                     @endforeach
                                                 @endif
                                             </select>
-                                            @error('ethnicity')
+                                            {{--  @error('ethnicity')
                                                 <span class="text-danger">
                                                     {{ $message }}
                                                 </span>
-                                            @enderror
+                                            @enderror  --}}
                                         </div>
                                     </div>
                                 </div>
@@ -193,35 +206,28 @@
                                             <label class="form-label"><b>Email
                                                     <span style="color:red;"><b>*</b></span>
                                                 </b></label>
-                                            <input type="email" class="form-control" placeholder="Email"
-                                                name="email" readonly value="{{ old('email', $userInfo->email) }}" />
+                                            <input type="email"
+                                                class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}"
+                                                placeholder="Email" name="email" readonly
+                                                value="{{ old('email', $userInfo->email) }}" />
 
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="mb-3">
-                                            <label for="inputmobileNumber" class="form-label"><b>Moblile
+                                            <label for="inputmobileNumber" class="form-label"><b>Mobile
                                                     Number</b>&nbsp;<span style="color:red;"><b>*</b></span></label>
-                                            <div class="input-group mb-3">
-                                                <!--
-                                                                                                                                                                                                                      <span class="input-group-text" style="width:10px;">+</span>
-                                                                                                                                                                                                                     -->
-                                                {{-- <input type="text" class="form-control" name="countryCode" readonly
-                                                    style="width:15px;"
-                                                    value="{{ old('countryCode', $userInfo->countryCode) }}" />
-                                                <input type="text" class="form-control d-flex text-left"
-                                                    name="mobile_no" readonly style="width:248px;"
-                                                    value="{{ old('mobile_no', $userInfo->mobile_no) }}" /> --}}
-
-                                                <input type="tel" class="form-control intel-input-width" id="mobile_number"
-                                                    name="mobile_no" style="width:113%;"
+                                            <div class="mb-3">
+                                                <input type="tel"
+                                                    class="form-control intel-input-width {{ $errors->has('mobile_no') ? ' is-invalid' : '' }}"
+                                                    id="mobile_number" name="mobile_no"
                                                     value="{{ old('mobile_no', isset($userInfo->mobile_no) ? $userInfo->mobile_no : ' ') }}"
                                                     placeholder="Mobile number" />
                                                 <input type="hidden" name="iso2" id="phone_country_code"
                                                     value="+91" />
-                                                @error('mobile_no')
+                                                {{--  @error('mobile_no')
                                                     <span class="text-danger">{{ $message }}</span>
-                                                @enderror
+                                                @enderror  --}}
 
                                             </div>
                                         </div>
@@ -235,27 +241,29 @@
                                     <div class="col-lg-6">
                                         <div class="mb-3">
                                             <label class="form-label"><b>Height (CM)</b></label>
-                                            <input type="text" class="form-control" placeholder="Enter height"
-                                                name="height"
+                                            <input type="text"
+                                                class="form-control {{ $errors->has('height') ? ' is-invalid' : '' }}"
+                                                placeholder="Enter height" name="height"
                                                 value="{{ old('height', isset($userProfile->height) ? $userProfile->height : ' ') }}" />
-                                            @error('height')
+                                            {{--  @error('height')
                                                 <span class="text-danger">
                                                     {{ $message }}
                                                 </span>
-                                            @enderror
+                                            @enderror  --}}
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="mb-3">
                                             <label class="form-label"><b>Weight (KG)</b></label>
-                                            <input type="text" class="form-control" placeholder="Enter weight"
-                                                name="weight"
+                                            <input type="text"
+                                                class="form-control {{ $errors->has('weight') ? ' is-invalid' : '' }}"
+                                                placeholder="Enter weight" name="weight"
                                                 value="{{ old('weight', isset($userProfile->weight) ? $userProfile->weight : ' ') }}" />
-                                            @error('weight')
+                                            {{--  @error('weight')
                                                 <span class="text-danger">
                                                     {{ $message }}
                                                 </span>
-                                            @enderror
+                                            @enderror  --}}
                                         </div>
                                     </div>
                                 </div>
@@ -265,10 +273,10 @@
                                             <label class="form-label">
                                                 <b>About me</b>
                                             </label>
-                                            <textarea id="about_me" name="about_me" class="form-control">
+                                            <textarea id="about_me" name="about_me" class="form-control {{ $errors->has('about_me') ? ' is-invalid' : '' }}">
                                                 @isset($userProfile->about_me)
-                                                    {{ $userProfile->about_me }}
-                                                 @endisset
+{{ $userProfile->about_me }}
+@endisset
                                              </textarea>
 
                                         </div>
@@ -279,53 +287,57 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="mb-1">
-                                            <input type="text" class="form-control" name="work_reel1"
-                                                placeholder="Work Reel 1 - only youtube link"
+                                            <input type="text"
+                                                class="form-control {{ $errors->has('work_reel1') ? ' is-invalid' : '' }}"
+                                                name="work_reel1" placeholder="Work Reel 1 - only youtube link"
                                                 value="{{ old('work_reel1', isset($userProfile->work_reel1) ? $userProfile->work_reel1 : '') }}" />
-                                            @error('work_reel1')
+                                            {{--  @error('work_reel1')
                                                 <span class="text-danger">
                                                     {{ $message }}
                                                 </span>
-                                            @enderror
+                                            @enderror  --}}
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="mb-1">
-                                            <input type="text" class="form-control" name="work_reel2"
-                                                placeholder="Work Reel 2 - only youtube link"
+                                            <input type="text"
+                                                class="form-control {{ $errors->has('work_reel2') ? ' is-invalid' : '' }}"
+                                                name="work_reel2" placeholder="Work Reel 2 - only youtube link"
                                                 value="{{ old('work_reel2', isset($userProfile->work_reel2) ? $userProfile->work_reel2 : '') }}" />
-                                            @error('work_reel2')
+                                            {{--  @error('work_reel2')
                                                 <span class="text-danger">
                                                     {{ $message }}
                                                 </span>
-                                            @enderror
+                                            @enderror  --}}
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="mb-1">
-                                            <input type="text" class="form-control" name="work_reel3"
-                                                placeholder="Work Reel 3 - only youtube link"
+                                            <input type="text"
+                                                class="form-control {{ $errors->has('work_reel3') ? ' is-invalid' : '' }}"
+                                                name="work_reel3" placeholder="Work Reel 3 - only youtube link"
                                                 value="{{ old('work_reel3', isset($userProfile->work_reel3) ? $userProfile->work_reel3 : '') }}" />
-                                            @error('work_reel3')
+                                            {{--  @error('work_reel3')
                                                 <span class="text-danger">
                                                     {{ $message }}
                                                 </span>
-                                            @enderror
+                                            @enderror  --}}
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="d-flex justify-content-between mt-3">
-                            <input type="submit" style="margin-bottom:10px;"
-                                class="btn btn-sm toster-show cust_btn" id="btn" value="Submit" tabindex="75"
-                                onclick="toster()" />
+
                             <a href="{{ route('users.view-profile') }}" class="btn btn-sm cust_btn"
-                                style="margin-bottom:10px;">Profile View</a>
+                                style="margin-bottom:10px;"><i class="fa fa-arrow-left" aria-hidden="true"></i> Profile
+                                View</a>
+                            <button type="submit" style="margin-bottom:10px;" class="btn btn-sm toster-show cust_btn"
+                                id="btn" tabindex="75">Submit <i class="fa fa-send"></i></button>
 
                         </div>
                     </div>
@@ -599,6 +611,7 @@
                 document.location.href = url;
             }
         }
+
         function deleteSingleHeadShotImage(url) {
             if (confirm('Do you really want to delete this headshot image?')) {
                 document.location.href = url;
@@ -639,9 +652,9 @@
 
         });
 
-        jQuery.validator.addMethod("intlTelNumber", function(value, element) {
+        {{--  jQuery.validator.addMethod("intlTelNumber", function(value, element) {
             return this.optional(element) || $(element).intlTelInput("isValidNumber");
-        }, "Please enter a valid phone number 10 digits");
+        }, "Please enter a valid phone number 10 digits");  --}}
     </script>
     <script>
         /*Upload Image JavaScript*/
@@ -742,7 +755,36 @@
                 document.querySelector('#capture_image').value = data_uri;
             });
         }
+        //Automatic load intro video show js
+        // $('iframe#introvideo').contents().find('img').css({width: '100%', 'height': '100%'});
+        $("#show_intro_video").change(function() {
+            const url = $('#show_intro_video').val()
+            var youTubeId;
+            var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+            var match = url.match(regExp);
+            if (match && match[2].length == 11) {
+                youTubeId = match[2];
+            } else {
+                youTubeId = '';
+            }
+            // $('#introvideo').attr("src", "{{ asset('assets/images/video-thumb.png') }}")
+            // $('#introvideo').attr("style", "height: 100%")
+            //if (url == '') {
+               // let videoIframe = $("#introvideo");
+               // videoIframe.on('load', function(){
+                   // videoIframe.contents().find("html").append("<p>test2</p>");
+                // });
+            // }
+            if (youTubeId !== '') {
+                $('#introvideo').attr("src", `//www.youtube.com/embed/${youTubeId}`)
+            }
+            /*else {
+                // let iframe = $('iframe#introvideo').parent();
+                let iframe = $('iframe#introvideo');
+                iframe.replaceWith('<img style="width: 100%; height: 100%;" src="{{ asset('assets/images/video-thumb.png') }}">');
+            }*/
 
+        });
         {{--  $(window).on('load', function() {
             $('.featured-item').each(
                 function() {

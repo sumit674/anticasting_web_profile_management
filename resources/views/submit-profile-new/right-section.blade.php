@@ -148,26 +148,24 @@
             <div class="col-md-12 col-lg-12 col-sm-6">
                 <div class="form-group">
                     {{-- <label  class="form-label" for="">Upload video</label> --}}
-                    <input type="text" class="form-control" name="intro_video_link"
-                        placeholder="Please enter  intro video"
+                    <input type="text" class="form-control {{ $errors->has('intro_video_link') ? ' is-invalid' : '' }}" name="intro_video_link"
+                        placeholder="Please enter  intro video" id="show_intro_video"
                         value="{{ old('intro_video_link', isset($userIntroVideo->intro_video_link) ? $userIntroVideo->intro_video_link : '') }}" />
                     {{-- <button class="btn btn-sm" style="background-color: #ff5b00;" type="submit">Save</button> --}}
                 </div>
-                @error('intro_video_link')
-                    <span class="text-danger">
-                        {{ $message }}
-                    </span>
-                @enderror
             </div>
             {{-- </form> --}}
         </div>
         <div class="form-group mt-2">
-            @if (isset($userIntroVideo) && $userIntroVideo != null)
-                <iframe style="width: 100%;" src="{{ $userIntroVideo->intro_video_link }}" allowfullscreen="true">
+            {{--  @if (isset($userIntroVideo) && $userIntroVideo != null)  --}}
+                <iframe style="width:100%;" src="{{ isset($userIntroVideo->intro_video_link) ? $userIntroVideo->intro_video_link : '' }}" allowfullscreen="true" id="introvideo">
                 </iframe>
-            @else
-                <img src="{{ asset('assets/images/video-thumb.png') }}" alt="" style="width: 100%;">
-            @endif
+            {{--  @else  --}}
+                {{--  <iframe style="width: 100%;" src=" " allowfullscreen="true" id="video_intro">  --}}
+                {{--  </iframe>  --}}
+                {{--  <img src="{{ asset('assets/images/video-thumb.png') }}" alt="" style="width: 100%;">  --}}
+            {{--  @endif  --}}
+
         </div>
         <div class="row mt-3">
             <div class="col-md-12 col-lg-12 col-sm-12">

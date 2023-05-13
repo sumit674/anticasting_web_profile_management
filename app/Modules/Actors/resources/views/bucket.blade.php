@@ -155,21 +155,18 @@
                     </div>
                 </div>
                 <div class=" col-md-6">
-                    <div class="form-group select-list mt-2">
-                        <select name="bucket_id" class="form-control" id="selecter2">
-                            @if (isset($project_categories_parent))
-                                @foreach ($project_categories_parent as $parent_item)
-                                    <optgroup label="{{$parent_item?->trans?->project_name }}">
-                                        @foreach ($project_categories_child as $key => $child_item)
-                                            <option value="{{ $child_item->id }}"
-                                                @if (isset($child_item->id)) selected @endif>
-                                                {{$child_item?->trans?->project_name }}</option>
-                                        @endforeach
+                    <div class="form-group  mt-2">
+                        <select name="parent_id" class="form-control w-75">
+                            @isset($project_categories)
+                                @foreach ($project_categories as $category)
+                                    <optgroup label="{{count($category->parents)==0 ? $category?->trans?->project_name : ' '}}">
+                                            @if (isset($category->parents) && count($category->parents) > 0)
+                                                <option value="{{ $category->id }}">{{ $category->trans->project_name }}</option>
+                                            @endif
                                     </optgroup>
+
                                 @endforeach
-
-                            @endif
-
+                            @endisset
                         </select>
                     </div>
                 </div>

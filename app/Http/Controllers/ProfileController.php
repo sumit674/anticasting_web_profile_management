@@ -50,6 +50,8 @@ class ProfileController extends Controller
                 'ethnicity' => 'required',
                 'gender' => 'required',
                 'current_location' => 'required',
+                'height' => 'numeric|min:1|max:250',
+                'weight' => 'numeric',
                 'image1' => ['required_without_all:image2,image3|image|mimes:jpg,jfif,png,jpeg,gif|max:4096'],
                 'image2' => ['required_without_all:image1,image3|image|mimes:jpg,jfif,png,jpeg,gif|max:4096'],
                 'image3' => ['required_without_all:image1,image2|image|mimes:jpg,jfif,png,jpeg,gif|max:4096'],

@@ -19,5 +19,10 @@ class Categories extends Model
     {
         return $this->hasMany(Categories::class, 'id', 'parent_id');
     }
+    public function child()
+    {
+        return $this->hasMany(Categories::class, 'parent_id')
+            ->where('active', 1);
+    }
 
 }
