@@ -21,11 +21,6 @@
         .form-label {
             margin-bottom: .2rem !important;
         }
-
-        .card-body {
-            flex: 1 1 auto;
-            padding: 1.65rem 1rem;
-        }
         .work-reels{
             padding-bottom: 11px;
         }
@@ -146,17 +141,17 @@
                                             </label>
                                             <select name="gender" id="gender"
                                                 class="form-control {{ $errors->has('gender') ? ' is-invalid' : '' }}">
-                                                <option value="" selected="selected" class="0">
+                                                <option value="" class="0">
                                                     Gender
                                                 </option>
                                                 <option value="Male"
-                                                    {{ old('gender', isset($userProfile->gender) && $userProfile->gender) == 'Male' ? 'selected' : '' }}>
+                                                    {{ old('gender', isset($userProfile->gender) && $userProfile->gender == 'Male') ? 'selected' : '' }}>
                                                     Male</option>
                                                 <option value="Female"
-                                                    {{ old('gender', isset($userProfile->gender) && $userProfile->gender) == 'Female' ? 'selected' : '' }}>
+                                                    {{ old('gender', isset($userProfile->gender) && $userProfile->gender == 'Female') ? 'selected' : '' }}>
                                                     Female</option>
                                                 <option value="prefernottosay"
-                                                    {{ old('gender', isset($userProfile->gender) && $userProfile->gender) == 'prefernottosay' ? 'selected' : '' }}>
+                                                    {{ old('gender', isset($userProfile->gender) && $userProfile->gender == 'prefernottosay') ? 'selected' : '' }}>
                                                     Prefer not to say</option>
                                             </select>
                                         </div>
@@ -343,6 +338,9 @@
                                 </div>
                             </div>
                         </div>
+
+
+
                         <div class="d-flex justify-content-between mt-3">
 
                             <a href="{{ route('users.view-profile') }}" class="btn btn-sm cust_btn"

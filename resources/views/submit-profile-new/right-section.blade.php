@@ -141,7 +141,7 @@
     <div class="card-body ms-1">
 
         <div class="d-flex justify-content-between">
-            <span class="h6 fw-bold">Intro video <b><span style="color:red;">*</span></b></span>
+            <span class="h6 fw-bold pb-3">Intro video <b><span style="color:red;">*</span></b></span>
         </div>
         <div class="row">
             {{-- <form action="{{ route('users.introvideos') }}" method="post">
