@@ -95,6 +95,7 @@
 
 .gallary-image img {
     display: block;
+    border-radius: 10px;
     /* box-shadow: 2px 2px 2px 1px rgb(87, 88, 88); */
     /* width: 330px !important;
 object-fit: fill; */
@@ -114,6 +115,7 @@ object-fit: fill; */
 .main-image {
     display: flex;
     transition: all 0.5s ease;
+    border-radius: 10px;
 }
 
 .img-select {
