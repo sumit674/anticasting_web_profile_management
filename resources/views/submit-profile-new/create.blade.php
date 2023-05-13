@@ -21,6 +21,17 @@
         .form-label {
             margin-bottom: .2rem !important;
         }
+
+        .card-body {
+            flex: 1 1 auto;
+            padding: 1.65rem 1rem;
+        }
+        .work-reels{
+            padding-bottom: 11px;
+        }
+        .contact-us{
+            padding-top:25px;
+        }
         /*#introvideo img {
             border: 2px solid red;
         }*/
@@ -283,7 +294,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <label class="form-label"><b>Work Reels</b>&nbsp;<span><b>(only youtube
+                                <label class="form-label work-reels"><b>Work Reels</b>&nbsp;<span><b>(only youtube
                                             links)</b></span></label>
                                 <div class="row">
                                     <div class="col-lg-12">

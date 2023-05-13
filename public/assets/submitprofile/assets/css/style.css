@@ -888,7 +888,11 @@ padding: 70px 0 0;
     background-repeat: no-repeat, no-repeat, no-repeat;
     position: relative;
     padding-top: 29px;
-    height: 199px;
+    height: 190px;
+}
+
+.page-banner h1{
+    padding-top: 15px;
 }
 
 .breadcrumbs .breadcrumbs-content {

@@ -1,9 +1,7 @@
 @extends('front-dashboard.layouts.app')
 @section('header')
-<meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{ asset('assets/front-dashboard/css/view-profile/main-details.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/website/css/view-profile.css') }}" />
-    <link href="{{ asset('assets/website/css/responsive.css') }}" rel="stylesheet">
 @endsection
 @section('content')
     <div class="container">
@@ -24,7 +22,7 @@
                         <div class="card-body">
                             <div class="card-section">
                                 <div class="row">
-                                    <div class="col-md-4 col-ms-12">
+                                    <div class="col-4">
                                         <div class="d-flex">
                                             <div class="image-container">
                                                 <div class="card-left">
@@ -105,7 +103,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-8 col-ms-12">
+                                    <div class="col-8">
                                         <div class="row">
                                             <div class="col-md-12 col-sm-12">
                                                 {{-- <div class="card__content">

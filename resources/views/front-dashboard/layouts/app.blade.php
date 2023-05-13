@@ -29,7 +29,7 @@
             <div id="content">
                 <!-- Topbar -->
                 @include('front-dashboard.include.navbar')
-                <div class="container-fluid">
+                <div>
                     @yield('content')
                 </div>
             </div>

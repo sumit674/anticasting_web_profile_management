@@ -1,15 +1,6 @@
 @extends('layouts.auth')
 @section('content')
     <section class="contact-us section">
-        @if (Session::has('message'))
-            <div id="success" title="Success">
-                <p>{{ Session::get('message') }}</p>
-            </div>
-        @elseif (Session::has('error'))
-            <div id="error" title="Error">
-                <p>{{ Session::get('error') }}</p>
-            </div>
-        @endif
         <main class="d-flex align-items-center w-auto main-container">
             <div class="container">
                 <div class="card login-card">
@@ -23,6 +14,15 @@
                                     </a>
                                 </div>
                                 <p class="d-flex justify-content-center fs-4">Login into your account</p>
+                                @if (Session::has('message'))
+                                    <div id="success" class="text-success text-center" title="Success">
+                                        <p>{{ Session::get('message') }}</p>
+                                    </div>
+                                @elseif (Session::has('error'))
+                                    <div id="error" class="text-danger text-center" title="Error">
+                                        <p>{{ Session::get('error') }}</p>
+                                    </div>
+                                @endif
                                 <form class="form-disable" action="{{ route('users.loginpost') }}" method="post">
                                     @csrf
                                     <div class="form-group">
@@ -76,10 +76,8 @@
                                                     password?</b></a>
                                         </label>
                                     </div>
-
                                     <div class="d-grid gap-2 mb-1 mt-3 col-6 mx-auto">
-                                        <input type="submit" class="btn btn-dark form-control" type="button"
-                                            value="Login">
+                                        <input type="submit" class="btn btn-dark form-control" value="Login">
                                     </div>
                                 </form>
                                 <div class="mt-3">
@@ -99,8 +97,6 @@
             </div>
         </main>
     </section>
-    {{-- otpless signin --}}
-    {{-- @include('auth.otpless') --}}
 @endsection
 @section('footer')
     <script type="text/javascript">
@@ -110,7 +106,7 @@
         $(".togglePassword").click(function(e) {
             e.preventDefault();
             var type = $(this).parent().parent().find(".password").attr("type");
-            console.log(type);
+            //console.log(type);
             if (type == "password") {
 
                 $("svg.feather.feather-eye").replaceWith(feather.icons["eye-off"].toSvg());
@@ -132,5 +128,4 @@
             });
         });
     </script>
-
 @endsection
