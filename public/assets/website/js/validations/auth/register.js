@@ -14,7 +14,7 @@ $(document).ready (function () {
              first_name:{
               required: true,
               lettersonly:true
-              
+
             },
             last_name:{
                 required: true,
@@ -24,7 +24,7 @@ $(document).ready (function () {
             required: true,
             email: true,
             remote: url+'/validate-email',
-          
+
           },
           mobile_no:{
             required: true,
@@ -40,12 +40,12 @@ $(document).ready (function () {
           confirm_password: {
               minlength: 8,
               equalTo: "#password"
-          } 
+          }
         },
         messages: {
             first_name: {
                 required:"Please enter firstname",
-                alphanumeric: "Letters only please", 
+                alphanumeric: "Letters only please",
             },
             last_name: {
                 required:"Please enter lastname" ,
@@ -115,5 +115,5 @@ $(document).ready (function () {
     $.validator.addMethod("intlTelNumber", function(value, element) {
         return this.optional(element) || $(element).intlTelInput("isValidNumber");
     }, "Please enter a valid phone number");
-   
+
 });

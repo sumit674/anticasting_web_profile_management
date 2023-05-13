@@ -631,7 +631,7 @@
     <script>
         //Phone number validation of submit profile
 
-        $('#profile-valdation').validate({
+        {{--  $('#profile-valdation').validate({
             debug: false,
             errorClass: 'text-danger',
             errorElement: "span",
@@ -660,7 +660,7 @@
                 form.submit();
             }
 
-        });
+        });  --}}
 
         {{--  jQuery.validator.addMethod("intlTelNumber", function(value, element) {
             return this.optional(element) || $(element).intlTelInput("isValidNumber");

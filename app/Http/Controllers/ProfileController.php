@@ -44,14 +44,16 @@ class ProfileController extends Controller
         // dd($request->all());
         $request->validate(
             [
-                'first_name' => 'required',
-                'last_name' => 'required',
+                'first_name' => 'required|regex:/^[a-zA-Z ]+[a-zA-Z 0-9]*$/',
+                'last_name' => 'required|regex:/^[a-zA-Z ]+[a-zA-Z 0-9]*$/',
                 'date_of_birth' => 'required',
                 'ethnicity' => 'required',
                 'gender' => 'required',
-                'current_location' => 'required',
+                'current_location' => 'required|regex:/^[a-zA-Z ]+[a-zA-Z 0-9]*$/',
                 'height' => 'numeric|min:1|max:250',
-                'weight' => 'numeric',
+                'mobile_no'=>'required',
+                'about_me'=>'nullable|max:300',
+                'weight' => 'numeric|min:1|max:400',
                 'image1' => ['required_without_all:image2,image3|image|mimes:jpg,jfif,png,jpeg,gif|max:4096'],
                 'image2' => ['required_without_all:image1,image3|image|mimes:jpg,jfif,png,jpeg,gif|max:4096'],
                 'image3' => ['required_without_all:image1,image2|image|mimes:jpg,jfif,png,jpeg,gif|max:4096'],
