@@ -287,7 +287,7 @@ const getBase64FromUrl = async (url) => {
 		// galleryItems[i].style.marginRight = '0';
 		if (images[i] !== undefined) {
 			// $('#default-img').attr('src', 'https://anticasting.in/dev/public/assets/images/default-user.jfif');
-			galleryItems[i].style.marginRight = '-10px';
+			// galleryItems[i].style.marginRight = '-10px';
 			$('.close-'+i).show();
 		}
 		// $('#default-img').attr('src', images[i]);

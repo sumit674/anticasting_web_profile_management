@@ -1,3 +1,6 @@
+var finalCropWidth = 640;
+var finalCropHeight = 480;
+var finalAspectRatio = finalCropWidth / finalCropHeight;
 // vars
 let result = document.querySelector('.result'),
     // img_result = document.querySelector('.img-result'),
@@ -36,8 +39,9 @@ upload.addEventListener('change', (e) => {
                 // init cropper
                 cropper = new Cropper(img, {
                     dragMode: 'move',
-                    aspectRatio: 9 / 8,
-                    autoCropArea: 0.65,
+                    // aspectRatio: finalAspectRatio,
+                    aspectRatio: 5 / 5,
+                    autoCropArea: 0.80,
                     restore: false,
                     guides: false,
                     center: false,
@@ -46,12 +50,12 @@ upload.addEventListener('change', (e) => {
                     cropBoxResizable: false,
                     toggleDragModeOnDblclick: false,
                 });
-                cropper.getCroppedCanvas({
-                    minWidth: 256,
-                    minHeight: 256,
-                    maxWidth: 4096,
-                    maxHeight: 4096,
-                  });
+                // cropper.getCroppedCanvas({
+                //     minWidth: 256,
+                //     minHeight: 256,
+                //     maxWidth: 4096,
+                //     maxHeight: 4096,
+                // });
             }
         };
         reader.readAsDataURL(e.target.files[0]);
@@ -61,6 +65,7 @@ upload.addEventListener('change', (e) => {
 // save on click
 save.addEventListener('click', (e) => {
     e.preventDefault();
+    console.log('cropper', cropper);
     // get result to data uri
     let imgSrc = cropper.getCroppedCanvas({
         width: img_w.value // input value
@@ -77,6 +82,12 @@ save.addEventListener('click', (e) => {
     let imgId = $('#image_number').val();
     $("#default-img").attr('src', imgSrc);
     $('#upload-image-modal').modal('hide');
+    // reset cropper
+    cropper.clear();
+    cropper.reset();
+    cropper.destroy();
+    $('#img').remove();
+
     $('#default-img').remove();
     if (imgId == 1) {
 

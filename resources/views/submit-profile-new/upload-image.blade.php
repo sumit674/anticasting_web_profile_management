@@ -43,11 +43,13 @@
                         <!-- result of crop -->
                         <img class="cropped" src="" alt="">
                     </div>  --}}
+
+                    <div class="options hide">
+                        <input type="hidden" class="img-w" value="300" min="100" max="1200" />
+                    </div>
                     <!-- input file -->
-                    <div class="box">
-                        <div class="options hide">
-                            <input type="hidden" class="img-w" value="300" min="100" max="1200" />
-                        </div>
+                    <div class="box d-flex justify-content-end">
+
                         <!-- save btn -->
                         <button class="btn btn-primary save hide btn-save">Save</button>
                     </div>

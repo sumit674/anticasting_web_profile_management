@@ -57,7 +57,7 @@
 
                         <div class="card mb-3">
                             <div class="card-body">
-                                <h3 class="h6 fw-bold">Personal Information</h3>
+                                <h3 class="h6 fw-bold mb-3">Personal Information</h3>
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="mb-3">
@@ -236,10 +236,11 @@
                             </div>
                         </div>
                         <div class="card mb-2">
+                            <h3 class="h6 fw-bold mx-3 mt-2 mb-1">Other Information</h3>
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-lg-6">
-                                        <div class="mb-3">
+                                        <div class="mb-2">
                                             <label class="form-label"><b>Height (CM)</b></label>
                                             <input type="text"
                                                 class="form-control {{ $errors->has('height') ? ' is-invalid' : '' }}"
@@ -253,7 +254,7 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
-                                        <div class="mb-3">
+                                        <div class="mb-2">
                                             <label class="form-label"><b>Weight (KG)</b></label>
                                             <input type="text"
                                                 class="form-control {{ $errors->has('weight') ? ' is-invalid' : '' }}"
@@ -381,7 +382,7 @@
             $('#about_me').summernote({
                 placeholder: 'Enter movie description goes here..',
                 // tabsize: 2,
-                height: 85,
+                height: 80,
                 // followingToolbar: true,
                 toolbar: [
                     ['style', ['style']],

@@ -25,20 +25,20 @@
     }
 
     .card-top {
-        margin-bottom: 13px !important;
-        height: 394px !important;
+        margin-bottom: 15px !important;
+        height: 383px !important;
         align-items: center;
     }
 
     .close-itm-btn {
         background: rgb(235, 217, 217)(201, 47, 47);
-        width: 18px;
+        /* width: 18px; */
         height: 18px;
-        position: relative;
+        position: absolute;
         top: 0;
-        left: 80px;
+        right: 93px;
         color: red;
-        padding: 2px 2px 2px 2px;
+        /* padding: 2px 2px 2px 2px; */
         background: #fcf0f0;
     }
 
