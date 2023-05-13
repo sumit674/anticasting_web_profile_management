@@ -118,7 +118,7 @@
                                         </div>
                                     </div>
                                     <div class="d-grid gap-2 col-6 mx-auto">
-                                        {{-- <input type="submit" class="btn btn-dark form-control" type="button"
+                                        {{-- <input type="submit" class="btn btn-dark form-control"
                                             value="Register" /> --}}
                                             <button type="submit" class="btn btn-dark form-control" >Register</button>
                                     </div>

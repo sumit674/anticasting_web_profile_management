@@ -64,8 +64,53 @@
         bottom: 4rem; */
         height: auto !important;
     }
-   
-   
+
+    .hero h1{
+        font-size: 2.5rem;
+    }
+
+    .bi-list::before {
+        color: #000000;
+    }
+
+
+.navbar-nav {
+    min-width: auto;
+    position: initial;
+    left: 0;
+    bottom: -146px;
+    padding: 0px;
+    display: block;
+    background-image: none;
+    z-index: 2;
+    /* background-color: #1d1c1cb2; */
+    background: radial-gradient(ellipse at top left, rgba(105,155,200,1) 0%,rgba(181,197,216,1) 57%);
+}
+.navbar-collapse{
+    padding: 10px 0px;
+    height: auto;
+}
+
+.navbar-nav .nav-item a{
+    color: #000;
+}
+
+.card__content{
+    padding: 15px;
+}
+.card__content{
+    width: 100%;
+}
+
+.container, .container-fluid, .container-sm, .container-md, .container-lg, .container-xl {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+}
+
+.mb-4, .my-4 {
+    margin-bottom: 1rem !important;
+}
+
  }
  @media only screen and (device-width: 768px) {
  /* default iPad screens */
@@ -81,4 +126,5 @@
 
  @media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
  /* For landscape layouts only */
+
  }
