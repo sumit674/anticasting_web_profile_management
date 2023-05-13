@@ -106,6 +106,7 @@ save.addEventListener('click', (e) => {
 
         // document.querySelector("#image1").style.backgroundImage = 'url(' + evt.target.result + ')';
 
+        $('.close-1').show();
         $('#image2').css("background-image", 'url(' + imgSrc + ')');
 
         document.querySelector("#picture2").value = imgSrc;
@@ -119,6 +120,7 @@ save.addEventListener('click', (e) => {
 
         // document.querySelector("#image1").style.backgroundImage = 'url(' + evt.target.result + ')';
 
+        $('.close-2').show();
         $('#image3').css("background-image", 'url(' + imgSrc + ')');
 
         document.querySelector("#picture3").value = imgSrc;

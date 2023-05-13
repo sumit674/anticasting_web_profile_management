@@ -33,10 +33,10 @@
     .close-itm-btn {
         background: rgb(235, 217, 217)(201, 47, 47);
         /* width: 18px; */
-        height: 18px;
-        position: absolute;
+        height: 17px;
+        position: relative;
         top: 0;
-        right: 93px;
+        left: 75px;
         color: red;
         /* padding: 2px 2px 2px 2px; */
         background: #fcf0f0;
@@ -113,6 +113,11 @@
                             onclick="deleteSingleHeadShotImage('{{ route('user.delete-single.image', ['image2', auth()->user()->id]) }}')">
                             <i class="fa fa-trash"></i>
                         </div>
+                    @else
+                        <div class="close-itm-btn close-1" style="display: none;"
+                            onclick="deleteTempImage('image2')">
+                            <i class="fa fa-trash"></i>
+                        </div>
                     @endif
                     <figure class="gallery-item image-holder r-3-2 transition" id="image2" data-value="2"></figure>
                 </div>
@@ -120,6 +125,11 @@
                     @if (isset($userInfo?->images) && isset($userInfo?->images[2]->field_name) && $userInfo?->images[2]->field_name != '')
                         <div class="close-itm-btn close-2" style="display: none;"
                             onclick="deleteSingleHeadShotImage('{{ route('user.delete-single.image', ['image3', auth()->user()->id]) }}')">
+                            <i class="fa fa-trash"></i>
+                        </div>
+                    @else
+                        <div class="close-itm-btn close-2" style="display: none;"
+                            onclick="deleteTempImage('image3')">
                             <i class="fa fa-trash"></i>
                         </div>
                     @endif
