@@ -87,7 +87,7 @@
     background: radial-gradient(ellipse at top left, rgba(105,155,200,1) 0%,rgba(181,197,216,1) 57%);
 }
 .navbar-collapse{
-    padding: 10px 0px;
+    padding: 0px;
     height: auto;
 }
 
@@ -109,6 +109,19 @@
 
 .mb-4, .my-4 {
     margin-bottom: 1rem !important;
+}
+.section {
+    padding: 12px 0px;
+}
+.breadcrumbs {
+    padding-top: 110px;
+    padding-bottom: 50px;
+}
+.breadcrumbs .breadcrumbs-content .page-title:before{
+    background: none;
+}
+.page-banner h1 {
+    padding-top: 0px;
 }
 
  }

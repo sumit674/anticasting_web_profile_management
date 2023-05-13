@@ -42,6 +42,7 @@
         background: #fcf0f0;
     }
 
+
     /* .item-wrapper .close {
         position: absolute;
         left: 100%;
