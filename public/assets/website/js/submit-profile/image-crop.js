@@ -86,7 +86,8 @@ save.addEventListener('click', (e) => {
     cropper.clear();
     cropper.reset();
     cropper.destroy();
-    $('#img').remove();
+    $('#image').remove();
+    $('#picture').val('');
 
     $('#default-img').remove();
     if (imgId == 1) {
