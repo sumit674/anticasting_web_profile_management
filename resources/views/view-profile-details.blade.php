@@ -32,11 +32,11 @@
                                                         <div class="main-image gallary-image border border-dark rounded-6">
                                                             @if (isset($item?->images[0]?->image))
                                                                 <img id="mainImage" src="{{ $item?->images[0]?->image }}"
-                                                                    width="295" height="200" />
+                                                                    width="320" height="200" />
                                                             @else
                                                                 <img id="mainImage"
                                                                     src="{{ asset('assets/images/user-default-image.png') }}"
-                                                                    width="295" height="200" />
+                                                                    width="320" height="200" />
                                                             @endif
                                                         </div>
 
@@ -118,7 +118,7 @@
                                                 </div> --}}
                                                 <div class="row">
                                                     <div class="col-md-6 col-sm-6">
-                                                        <div class="card__content">
+                                                        <div class="card__content card__content_cl_1">
 
                                                             <p class="card__title"><label class="fw-bold"><b>Email:
                                                                     </b></label><span
@@ -151,7 +151,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 col-sm-6">
-                                                        <div class="card__content">
+                                                        <div class="card__content card__content_cl_2">
 
                                                             <p class="card__title"><label class="fw-bold"><b>Mobile:
                                                                     </b></label><span
