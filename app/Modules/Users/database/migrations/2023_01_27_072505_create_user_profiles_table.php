@@ -25,7 +25,7 @@ class CreateUserProfilesTable extends Migration
             $table->string('work_reel1')->nullable();
             $table->string('work_reel2')->nullable();
             $table->string('work_reel3')->nullable();
-            $table->longText('about_me')->nullable();
+            $table->Text('about_me')->nullable();
             $table
                 ->boolean('status')
                 ->default(0)
@@ -40,7 +40,7 @@ class CreateUserProfilesTable extends Migration
                 ->references('id')
                 ->on('users')
                 ->onDelete('cascade');
-          
+
             $table->timestamps();
         });
 

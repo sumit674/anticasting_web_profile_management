@@ -656,3 +656,11 @@ a.g-alternative-link {
     padding: 10px;
     word-break: break-word;
 }
+.c-further-information_about_me{
+    font-size: 14px;
+    padding: 10px;
+    word-break: break-word;
+    overflow: scroll;
+    height: 147px;
+    color: #000;
+}

@@ -91,15 +91,19 @@ save.addEventListener('click', (e) => {
 
     $('#default-img').remove();
     if (imgId == 1) {
-
         $('#image1').css("background-image", 'url(' + imgSrc + ')');
 
         document.querySelector("#picture1").value = imgSrc;
+        $('#image1').closest('.item-wrapper').css("margin-right", '0');
+        // $('#image1').closest('.item-wrapper').addClass("img-item-wrapper");
 
     }
     if (imgId == 2) {
-
-
+        // $('#image1').closest('.item-wrapper').css("margin-right", '-15px');
+        $('#image1').closest('.item-wrapper').css("margin-right", '5px');
+        $('.close-1').closest('.item-wrapper').css("margin-right", '0px');
+        // $('.close-1').closest('.item-wrapper').addClass("img-item-wrapper");
+        // $('.close-2').closest('.item-wrapper').addClass("img-item-wrapper");
         // document.querySelector("#default-img").src = evt.target.result;
 
         // $("#default-img").attr('src', evt.target.result);
@@ -119,7 +123,8 @@ save.addEventListener('click', (e) => {
         // $("#default-img").attr('src', evt.target.result);
 
         // document.querySelector("#image1").style.backgroundImage = 'url(' + evt.target.result + ')';
-
+        // $('.close-2').closest('.item-wrapper').addClass("img-item-wrapper");
+        $('.close-2').closest('.item-wrapper').css("margin-left", '-15px');
         $('.close-2').show();
         $('#image3').css("background-image", 'url(' + imgSrc + ')');
 

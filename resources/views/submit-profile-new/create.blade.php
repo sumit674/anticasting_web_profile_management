@@ -9,9 +9,11 @@
     <link rel="stylesheet" href="{{ asset('assets/website/css/crop-image.css') }}" />
     <style>
         .text-danger {
-            color: #ff0018!important;
+            color: #ff0000!important;
             font-weight: 500;
             font-size: 13px;
+            font-weight: 500;
+            background: #c5c5c5;
         }
         .form-control.is-invalid,
         .was-validated .form-control:invalid {
@@ -145,13 +147,16 @@
                                                     Gender
                                                 </option>
                                                 <option value="Male"
-                                                    {{ old('gender', isset($userProfile->gender) && $userProfile->gender == 'Male') ? 'selected' : '' }}>
+                                                        {{ old('gender') == 'Male' ? 'selected' : (isset($userProfile->gender) && $userProfile->gender == 'Male' ? 'selected' : '') }}
+                                                          >
                                                     Male</option>
                                                 <option value="Female"
-                                                    {{ old('gender', isset($userProfile->gender) && $userProfile->gender == 'Female') ? 'selected' : '' }}>
+                                                {{ old('gender') == 'Female' ? 'selected' : (isset($userProfile->gender) && $userProfile->gender == 'Female' ? 'selected' : '') }}
+                                                    >
                                                     Female</option>
                                                 <option value="prefernottosay"
-                                                    {{ old('gender', isset($userProfile->gender) && $userProfile->gender == 'prefernottosay') ? 'selected' : '' }}>
+                                                {{ old('gender') == 'prefernottosay' ? 'selected' : (isset($userProfile->gender) && $userProfile->gender == 'prefernottosay' ? 'selected' : '') }}
+                                                >
                                                     Prefer not to say</option>
                                             </select>
                                         </div>
@@ -278,7 +283,7 @@
                                     <div class="col-lg-12">
                                         <div class="mb-3">
                                             <label class="form-label">
-                                                <b>About me</b>
+                                                <b>About me <small class="text-danger">(Maximum 300 characters allowed.)</small></b>
                                             </label>
                                             <textarea id="about_me" name="about_me" class="form-control {{ $errors->has('about_me') ? ' is-invalid' : '' }}">
                                                 @isset($userProfile->about_me)

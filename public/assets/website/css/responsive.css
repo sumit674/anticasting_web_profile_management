@@ -1,173 +1,251 @@
  @media only screen and (min-width: 960px) {
- /* styles for browsers larger than 960px; */
+     /* styles for browsers larger than 960px; */
  }
- @media only screen and (min-width: 1440px) {
- /* styles for browsers larger than 1440px; */
- }
- @media only screen and (min-width: 2000px) {
- /* for sumo sized (mac) screens */
- }
- @media only screen and (max-device-width: 480px) {
- /* styles for mobile browsers smaller than 480px; (iPhone) */
-    .navbar-brand {
-        padding: 5px;
-        height: 85px;
-    }
- }
- @media only screen and (max-width: 767px) {
-    .navbar {
-        padding: 0;
-    }
-     .navbar-brand {
-        padding: 0 !important;
-        height: 78px !important;
-    }
-    .navbar-brand img {
-        width: 150px !important;
-        height: 76px !important;
-    }
-    .page-banner {
-        padding: 0 !important;
-    }
-    .breadcrumbs .breadcrumbs-content .page-title {
-        font-size: 20px !important;
-        margin-bottom: 5px !important;
-        color: #fff;
-        line-height: 0 !important;
-        top: 10px !important;
-    }
-    .breadcrumbs .breadcrumbs-content .page-title:before {
-        position: absolute;
-        content: "";
-        left: 50%;
-        top: 12px !important;
-        height: 2px;
-        width: 80px;
-        background: #ce9514;
-        margin-left: -40px;
-    }
-    .breadcrumbs .breadcrumb-nav {
-        text-align: center;
-        margin-top: 30px !important;
-    }
-    .welcome-user {
-        font-size: 16px !important;
-        top: 5px !important;
-    }
 
-    .register-card-page {
-        /* border: 0;
+ @media only screen and (min-width: 1440px) {
+     /* styles for browsers larger than 1440px; */
+ }
+
+ @media only screen and (min-width: 2000px) {
+     /* for sumo sized (mac) screens */
+ }
+
+ @media only screen and (max-device-width: 480px) {
+
+     /* styles for mobile browsers smaller than 480px; (iPhone) */
+     .navbar-brand {
+         padding: 5px;
+         height: 85px;
+     }
+ }
+
+ @media only screen and (max-width: 767px) {
+     .navbar {
+         padding: 0;
+     }
+
+     .navbar-brand {
+         padding: 0 !important;
+         height: 78px !important;
+     }
+
+     .navbar-brand img {
+         width: 150px !important;
+         height: 76px !important;
+     }
+
+     /* .page-banner {
+         padding: 0 !important;
+     } */
+
+     .breadcrumbs .breadcrumbs-content .page-title {
+         font-size: 20px !important;
+         margin-bottom: 5px !important;
+         color: #fff;
+         line-height: 0 !important;
+         top: 10px !important;
+     }
+
+     .breadcrumbs .breadcrumbs-content .page-title:before {
+         position: absolute;
+         content: "";
+         left: 50%;
+         top: 12px !important;
+         height: 2px;
+         width: 80px;
+         background: #ce9514;
+         margin-left: -40px;
+     }
+
+     .breadcrumbs .breadcrumb-nav {
+         text-align: center;
+         margin-top: 30px !important;
+     }
+
+     .welcome-user {
+         font-size: 16px !important;
+         top: 5px !important;
+     }
+
+     .register-card-page {
+         /* border: 0;
         border-radius: 27.5px;
         box-shadow: 0 10px 30px 0 rgba(172, 168, 168, 0.43);
         overflow-y: auto;
         width: auto;
         bottom: 4rem; */
-        height: auto !important;
+         height: auto !important;
+     }
+
+     .hero h1 {
+         font-size: 2.5rem;
+     }
+
+     .bi-list::before {
+         color: #000000;
+     }
+
+
+     .navbar-nav {
+         min-width: auto;
+         position: initial;
+         left: 0;
+         bottom: -146px;
+         padding: 0px;
+         display: block;
+         background-image: none;
+         z-index: 2;
+         /* background-color: #1d1c1cb2; */
+         background: radial-gradient(ellipse at top left, rgba(105, 155, 200, 1) 0%, rgba(181, 197, 216, 1) 57%);
+     }
+
+     .navbar-collapse {
+         padding: 0px;
+         height: auto;
+     }
+
+     .navbar-nav .nav-item a {
+         color: #000;
+     }
+
+     .card__content {
+         padding: 15px;
+     }
+
+     .card__content {
+         width: 100%;
+     }
+
+     .container,
+     .container-fluid,
+     .container-sm,
+     .container-md,
+     .container-lg,
+     .container-xl {
+         padding-left: 0.75rem;
+         padding-right: 0.75rem;
+     }
+
+     .mb-4,
+     .my-4 {
+         margin-bottom: 1rem !important;
+     }
+
+     .section {
+         padding: 12px 0px;
+     }
+
+     .breadcrumbs {
+         padding-top: 110px;
+         padding-bottom: 50px;
+     }
+
+     .breadcrumbs .breadcrumbs-content .page-title:before {
+         background: none;
+     }
+
+     .page-banner h1 {
+         padding-top: 0px;
+     }
+
+     .card-body {
+         max-height: initial;
+         padding: 10px;
+     }
+
+     .image-container {
+         width: 73% !important;
+         display: inline-block;
+         margin-left: 54px;
+     }
+
+     .c-edit-panel__header {
+         padding: 10px;
+     }
+
+     .card-left {
+         width: 100% !important;
+     }
+
+     .img-select {
+         margin-top: 15px;
+         height: 30px;
+         width: 100% !important;
+         /* display: inline-block; */
+         text-align: center;
+     }
+     .main-image {
+        display: flex;
+        transition: all 0.5s ease;
+        border-radius: 10px;
+        width: 240px !important;
+        margin-left: 41px !important;
+        height: 202px !important;
+        margin-top: 22px !important;
     }
-
-    .hero h1{
-        font-size: 2.5rem;
+    .intro_video {
+        margin-top: 82px !important;
     }
+     .card__content_cl_1 {
+         padding-bottom: 2px;
+         margin-left: 55px !important;
+     }
 
-    .bi-list::before {
-        color: #000000;
+     .card__content_cl_2 {
+         padding-top: 0px;
+         margin-left: 55px !important;
+     }
+
+     .p-main-page__content {
+         background-color: #f5f4f9;
+         margin-bottom: 10px;
+         padding: 10px 7px 10px 0;
+         width: 73%;
+         margin-left: 55px;
+     }
+
+     .popover-header {
+         padding: 0.5rem 0.75rem;
+         margin-bottom: 0;
+         font-size: 1rem;
+         background-color: #f7f7f7;
+         border-bottom: 1px solid #ebebeb;
+         border-top-left-radius: calc(0.3rem - 1px);
+         border-top-right-radius: calc(0.3rem - 1px);
+         border-radius:30px;
+
+     }
+     #wrapper #content-wrapper #content {
+        flex: 1 0 auto;
+        border-radius:30px;
+        width: 100%;
     }
-
-
-.navbar-nav {
-    min-width: auto;
-    position: initial;
-    left: 0;
-    bottom: -146px;
-    padding: 0px;
-    display: block;
-    background-image: none;
-    z-index: 2;
-    /* background-color: #1d1c1cb2; */
-    background: radial-gradient(ellipse at top left, rgba(105,155,200,1) 0%,rgba(181,197,216,1) 57%);
-}
-.navbar-collapse{
-    padding: 0px;
-    height: auto;
-}
-
-.navbar-nav .nav-item a{
-    color: #000;
-}
-
-.card__content{
-    padding: 15px;
-}
-.card__content{
-    width: 100%;
-}
-
-.container, .container-fluid, .container-sm, .container-md, .container-lg, .container-xl {
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
-}
-
-.mb-4, .my-4 {
-    margin-bottom: 1rem !important;
-}
-.section {
-    padding: 12px 0px;
-}
-.breadcrumbs {
-    padding-top: 110px;
-    padding-bottom: 50px;
-}
-.breadcrumbs .breadcrumbs-content .page-title:before{
-    background: none;
-}
-.page-banner h1 {
-    padding-top: 0px;
-}
-.card-body{
-    max-height: initial;
-    padding: 10px;
-}
-.image-container{
-    width: 100% !important;
-    display: inline-block;
-}
-.c-edit-panel__header{
-    padding: 10px;
-}
-.card-left{
-    width: 100% !important;
-}
-
-.img-select {
-    margin-top: 15px;
-    height: 30px;
-    width: 100% !important;
-    /* display: inline-block; */
-    text-align: center;
-}
-
-.card__content_cl_1{
-    padding-bottom: 2px;
-}
-.card__content_cl_2{
-    padding-top: 0px;
-}
-
+    .breadcrumbs {
+        background: url(./../../../images/banner2.gif), linear-gradient(to right, rgb(41, 69, 94), rgba(41, 69,94)), url(./../../../images/banner1.gif);
+        background-position: left, left, right;
+        background-repeat: no-repeat, no-repeat, no-repeat;
+        position: relative;
+        padding-top:47px;
+        height: 170px;
+    }
 
  }
+
  @media only screen and (device-width: 768px) {
- /* default iPad screens */
- .navbar-brand {
-        padding: 0 !important;
-        height: 78px !important;
-    }
+
+     /* default iPad screens */
+     .navbar-brand {
+         padding: 0 !important;
+         height: 78px !important;
+     }
  }
+
  /* different techniques for iPad screening */
  @media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) {
- /* For portrait layouts only */
+     /* For portrait layouts only */
  }
 
  @media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
- /* For landscape layouts only */
+     /* For landscape layouts only */
 
  }

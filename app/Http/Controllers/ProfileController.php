@@ -14,6 +14,7 @@ use Illuminate\Validation\Rule;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+
 class ProfileController extends Controller
 {
     public function submitProfile()
@@ -51,8 +52,21 @@ class ProfileController extends Controller
                 'gender' => 'required',
                 'current_location' => 'required|regex:/^[a-zA-Z ]+[a-zA-Z 0-9]*$/',
                 'height' => 'numeric|min:1|max:250',
-                'mobile_no'=>'required',
-                'about_me'=>'nullable|max:300',
+                // 'mobile_no'=>'required',
+                'mobile_no' => [
+                    'required',
+                    'regex:/^[0-9][0-9\s]+[0-9]$/',
+                    // check number with white space
+                    function ($attribute, $value, $fail) {
+                        if (strlen(str_replace(' ', '', $value)) != 10) {
+                            $fail('Message fail');
+                            // dd('error');
+                            return false;
+                        }
+                        return true;
+                    },
+                ],
+                'about_me' => 'string|max:300',
                 'weight' => 'numeric|min:1|max:400',
                 'image1' => ['required_without_all:image2,image3|image|mimes:jpg,jfif,png,jpeg,gif|max:4096'],
                 'image2' => ['required_without_all:image1,image3|image|mimes:jpg,jfif,png,jpeg,gif|max:4096'],
@@ -99,6 +113,7 @@ class ProfileController extends Controller
                 'mobile_no.required' => 'Please enter mobile number',
                 'current_location.required' => 'Please enter a current location',
                 'intro_video_link.required' => 'Please enter your intro video',
+                'about_me.max' => 'Maximum 300 characters allowed.',
                 // 'work_reel1.url' => 'The work reel one must be a valid URL.',
                 // 'work_reel2.url' => 'The work reel two must be a valid URL.',
                 // 'work_reel3.url' => 'The work reel three must be a valid URL.',

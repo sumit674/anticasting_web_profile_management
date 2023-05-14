@@ -189,23 +189,7 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-12">
-                                                <div class="g-content-area p-main-page__content">
-                                                    <div class="p-main-page__about-me-section g-col-lg-12">
-                                                        <div class="c-edit-panel">
-                                                            <h4 class="c-edit-panel__header">About me</h4>
-                                                            <div class="c-edit-panel__controls"></div>
-                                                        </div>
-                                                        <div class="c-further-information">
-                                                            <p>
-                                                                {!! $item?->profile?->about_me !!}
-                                                            </p>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-12">
+                                             <div class="col-12">
                                                 <div class="g-content-area p-main-page__content">
                                                     <div class="p-main-page__about-me-section g-col-lg-12">
                                                         <div class="c-edit-panel">
@@ -270,6 +254,22 @@
                                                                     @endif
                                                                 </div>
                                                             </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="g-content-area p-main-page__content">
+                                                    <div class="p-main-page__about-me-section g-col-lg-12">
+                                                        <div class="c-edit-panel">
+                                                            <h4 class="c-edit-panel__header">About me</h4>
+                                                            <div class="c-edit-panel__controls"></div>
+                                                        </div>
+                                                        <div class="c-further-information_about_me">
+                                                            <p>
+                                                                {!! $item?->profile?->about_me !!}
+                                                            </p>
+
                                                         </div>
                                                     </div>
                                                 </div>

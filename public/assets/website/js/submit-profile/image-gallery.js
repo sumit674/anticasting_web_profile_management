@@ -287,7 +287,7 @@ const getBase64FromUrl = async (url) => {
 		// galleryItems[i].style.marginRight = '0';
 		if (images[i] !== undefined) {
 			// $('#default-img').attr('src', 'https://anticasting.in/dev/public/assets/images/default-user.jfif');
-			// galleryItems[i].style.marginRight = '-10px';
+			galleryItems[i].style.marginRight = '-15px';
 			$('.close-'+i).show();
 		}
 		// $('#default-img').attr('src', images[i]);
@@ -314,7 +314,28 @@ const getBase64FromUrl = async (url) => {
 
 			$("#picture"+ index).val(await getBase64FromUrl(images[i]));
 
+            if (i == 0) {
+                $('#image1').closest('.item-wrapper').css("margin-right", '5px');
+            }
+            if (i == 1) {
+                $('#image2').closest('.item-wrapper').css("margin-right", '20px');
+            }
+
 		}
+        if (i == 0 && images[i] == undefined) {
+            $('#image1').closest('.item-wrapper').css("margin-right", '19px');
+        }
+        if (i == 0 && images[i] != undefined && images[i+1] == undefined) {
+            $('#image1').closest('.item-wrapper').css("margin-right", '19px');
+        }
+        // if (i == 0 && images[i] != undefined && images[i+1] != undefined) {
+        //     $('#image1').closest('.item-wrapper').css("margin-left", '-14px');
+        // }
+        // if (i == 1 && images[i] != undefined && images[i+1] == undefined) {
+        //     $('#image2').closest('.item-wrapper').css("margin-right", '0');
+        // }
+
+
 
 		// galleryItems[i].addEventListener('click', function() {
 
@@ -340,7 +361,21 @@ const getBase64FromUrl = async (url) => {
 
 })();
 
-
+function deleteTempImage(imgId) {
+    if (imgId == 'image2') {
+        $('#image2').css("background-image", '');
+        document.querySelector("#picture2").value = '';
+        $('.close-1').hide();
+        // $('#image1').closest('.item-wrapper').css("margin-right", '0px');
+        $('#image1').closest('.item-wrapper').css("margin-right", '19px');
+    }
+    if (imgId == 'image3') {
+        $('#image3').css("background-image", '');
+        document.querySelector("#picture3").value = '';
+        $('.close-2').hide();
+        $('.close-2').closest('.item-wrapper').css("margin-left", '0px');
+    }
+}
 
 // function readFile() {
 // $('#default-img').remove();
