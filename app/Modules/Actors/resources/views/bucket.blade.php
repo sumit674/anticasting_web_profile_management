@@ -98,22 +98,10 @@
         color: dimgrey;
     }
 
-    .card-container img {
-        max-width: 25%;
-        margin: auto;
-        padding: 0.5em;
-        border-radius: 0.7em;
-    }
 
-    .cta-section {
-        max-width: 40%;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        justify-content: space-between;
-    }
 
-    .cta-section .btn {
+
+    .cta-section  {
         padding: 0.3em 0.5em;
         /* color: #696969; */
     }
@@ -132,7 +120,9 @@
     .select-list {
         margin-bottom: 100px;
     }
-
+    .select-text{
+        margin-left:70px;
+    }
     .text-label {
         font-size: 17px;
         font-weight: 500
@@ -144,7 +134,7 @@
             @csrf
             <div class="row">
                 <div class="col-md-3">
-                    <div class="form-group d-flex mt-3">
+                    <div class="d-flex mt-3 select-text">
                         <span id="actor-ids" class="text-white text-label">
                             0
                         </span>
@@ -154,8 +144,8 @@
                         <input type="hidden" name="user_id" class="form-control-sm" id="bucket-item" />
                     </div>
                 </div>
-                <div class=" col-md-6">
-                    <div class="form-group  mt-2">
+                <div class="col-md-6">
+                    <div class="d-flex flex-row mt-2">
                         {{--  <select name="parent_id" class="form-control w-75">
                             @isset($project_categories)
                                 @foreach ($project_categories as $category)
@@ -168,7 +158,7 @@
                                 @endforeach
                             @endisset
                         </select>  --}}
-                        <select data-placeholder="Select Project Member " id=""
+                        {{--  <select id="Select Project"
                             class="form-control w-75 bucket-select">
                             <option></option>
                             @foreach ($project_categories as $category)
@@ -184,6 +174,14 @@
 
                                 </optgroup>
                             @endforeach
+                        </select>  --}}
+                        <select id="Select Project" name="parent_id" class="form-control parent_id">
+                            <option value="">Select Parent Project </option>
+                            @foreach ($project_categories as $category)
+                                <option value="{{ $category?->id }}">{{ $category?->trans?->project_name }}</option>
+                            @endforeach
+                        </select>
+                        <select id="child_id" class="form-control">
                         </select>
                     </div>
                 </div>

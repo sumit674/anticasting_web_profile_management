@@ -67,9 +67,29 @@ class ActorsController extends Controller
 
         // return view('Actors::New-Actor.index', compact('actors', 'state'));
         //  return view('Actors::index', compact('actors', 'state'));
-        $project_categories = Categories::with('child')->whereNotNull('parent_id')->where('active',1)->get();
+        $project_categories = Categories::where('parent_id',0)->where('active',1)->get();
 
         return view('Actors::profiles.list', compact('actors', 'state', 'project_categories',));
+    }
+
+    public function fetchChildrenCategories(Request $request)
+    {
+
+        $childCategories = Categories::where("parent_id",$request->parent_id)
+            ->where('active', 1)
+            ->get();
+
+            $childCategories->mapWithKeys(function($category, $key){
+
+                return [
+                    $category->name => $category?->trans->project_name,
+                    $category->id => $category?->id
+
+                ];
+
+            });
+          $data['categories'] = $childCategories;
+        return response()->json($data);
     }
 
     public function filterActorList(Request $request)

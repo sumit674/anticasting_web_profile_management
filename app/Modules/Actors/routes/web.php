@@ -4,7 +4,7 @@ use App\Modules\Actors\Http\Controllers\{ActorsController, ManageActorController
 use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'admin', 'middleware' => ['web', 'admin']], function () {
-    
+
     Route::any('actors', [ActorsController::class, 'listActors'])->name('admin.actors');
     Route::get('actors/{id}/detail', [ActorsController::class, 'actorDetail'])->name('admin.actors.detail');
     Route::get('actors/{id}/video', [ActorsController::class, 'actorVideo'])->name('admin.actors.video');
@@ -18,11 +18,14 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'admin']], function (
     Route::post('list-actors/{id}/update', [ManageActorController::class, 'ActorUpdate'])->name('admin.actors.mange.update');
     Route::get('list-actors/{id}/delete', [ManageActorController::class, 'ActorDelete'])->name('admin.actors.mange.delete');
     Route::get('list-actors/{id}/delete', [ManageActorController::class, 'ActorDelete'])->name('admin.actors.mange.delete');
+
+    Route::post('get-child-categories', [ActorsController::class, 'fetchChildrenCategories'])->name('admin.actors.get-child-categories');
+
     Route::post('bucket-actors/store', [BucketController::class, 'store'])->name('admin.actors.bucket.store');
     /*Actor Details Page */
     Route::get('/profile/{id}', [ActorsController::class, 'actorProfileDetails'])->name('admin.profile-detail');
     Route::get('/rating', [ActorsController::class, 'actorRating'])->name('admin.rating');
     Route::get('/rating-rating-star', [ActorsController::class, 'actorRemoveRatingStar'])->name('admin.rating.remove');
-  
+
 });
 

@@ -36,13 +36,13 @@
         }
 
         /* .bucket-wrapper {
-                                    height: 50px;
-                                    border-top: 1px solid rgba(255, 255, 255, .2);
-                                    border-bottom: 1px solid rgba(255, 255, 255, .2);
-                                    position: sticky;
-                                    bottom: 0;
-                                    width: 100%;
-                                } */
+                                            height: 50px;
+                                            border-top: 1px solid rgba(255, 255, 255, .2);
+                                            border-bottom: 1px solid rgba(255, 255, 255, .2);
+                                            position: sticky;
+                                            bottom: 0;
+                                            width: 100%;
+                                        } */
         .bucket-wrapper {
             position: sticky;
             /* left: 0; */
@@ -60,7 +60,7 @@
             overflow-y: scroll;
             overflow-x: scroll;
         }
-      </style>
+    </style>
 @endsection
 @section('content')
     {{-- <div class="main">
@@ -146,7 +146,8 @@
                                                         target="_blank">{{ $item?->first_name . ' ' . $item?->last_name }}</a></label>
                                             </div>
                                             <div class="c-card__title">
-                                                <label>Mobile no:</label> {{$item?->countryCode.' '.$item?->mobile_no }}
+                                                <label>Mobile no:</label>
+                                                {{ $item?->countryCode . ' ' . $item?->mobile_no }}
                                             </div>
                                             <div class="c-card__title">
                                                 <label>Age:</label> {{ $age }}
@@ -159,7 +160,7 @@
                                                 <label>Weight:</label> {{ $item?->profile?->weight . ' ' . ' ' }}kg
                                             </div>
                                             <div class="c-card__title" id="actor-rating-{{ $item->id }}">
-                                                @if (isset($item?->rating) && $item?->rating !=' ' )
+                                                @if (isset($item?->rating) && $item?->rating != ' ')
                                                     @for ($i = 0; $i < $item?->rating; $i++)
                                                         <i class="fa-solid fa-star text-warning"></i>
                                                     @endfor
@@ -313,11 +314,37 @@
         });
         (function() {
             $(function() {
-              return $('.bucket-select').select2({
-                width: 'resolve'
-              });
+                return $('.bucket-select').select2({
+                    width: 'resolve'
+                });
             });
 
-          }).call(this);
+        }).call(this);
+
+        $(function() {
+            $('.parent_id').on('change', function() {
+                var parentId = this.value;
+                $("#child_id").html('');
+                $.ajax({
+                    url: "{{ route('admin.actors.get-child-categories') }}",
+                    type: "POST",
+                    data: {
+                        parent_id: parentId,
+                        _token: '{{ csrf_token() }}'
+                    },
+                    dataType: 'json',
+                    success: function(result) {
+
+                        $('#child_id').html(
+                            '<option value="">-- Select Project --</option>');
+                        $.each(result.categories, function(key, value) {
+
+                            $("#child_id").append('<option value="' + value
+                                .id +'">' + value.trans.project_name + '</option>');
+                        });
+                    }
+                });
+            });
+        });
     </script>
 @endsection
