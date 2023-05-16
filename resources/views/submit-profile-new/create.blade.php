@@ -9,12 +9,13 @@
     <link rel="stylesheet" href="{{ asset('assets/website/css/crop-image.css') }}" />
     <style>
         .text-danger {
-            color: #ff0000!important;
+            color: #ff0000 !important;
             font-weight: 500;
             font-size: 13px;
             font-weight: 500;
             background: #c5c5c5;
         }
+
         .form-control.is-invalid,
         .was-validated .form-control:invalid {
             border: 2px solid red !important;
@@ -23,15 +24,18 @@
         .form-label {
             margin-bottom: .2rem !important;
         }
-        .work-reels{
+
+        .work-reels {
             padding-bottom: 11px;
         }
-        .contact-us{
-            padding-top:25px;
+
+        .contact-us {
+            padding-top: 25px;
         }
+
         /*#introvideo img {
-            border: 2px solid red;
-        }*/
+                border: 2px solid red;
+            }*/
     </style>
 @endsection
 @section('content')
@@ -147,16 +151,13 @@
                                                     Gender
                                                 </option>
                                                 <option value="Male"
-                                                        {{ old('gender') == 'Male' ? 'selected' : (isset($userProfile->gender) && $userProfile->gender == 'Male' ? 'selected' : '') }}
-                                                          >
+                                                    {{ old('gender') == 'Male' ? 'selected' : (isset($userProfile->gender) && $userProfile->gender == 'Male' ? 'selected' : '') }}>
                                                     Male</option>
                                                 <option value="Female"
-                                                {{ old('gender') == 'Female' ? 'selected' : (isset($userProfile->gender) && $userProfile->gender == 'Female' ? 'selected' : '') }}
-                                                    >
+                                                    {{ old('gender') == 'Female' ? 'selected' : (isset($userProfile->gender) && $userProfile->gender == 'Female' ? 'selected' : '') }}>
                                                     Female</option>
                                                 <option value="prefernottosay"
-                                                {{ old('gender') == 'prefernottosay' ? 'selected' : (isset($userProfile->gender) && $userProfile->gender == 'prefernottosay' ? 'selected' : '') }}
-                                                >
+                                                    {{ old('gender') == 'prefernottosay' ? 'selected' : (isset($userProfile->gender) && $userProfile->gender == 'prefernottosay' ? 'selected' : '') }}>
                                                     Prefer not to say</option>
                                             </select>
                                         </div>
@@ -283,7 +284,8 @@
                                     <div class="col-lg-12">
                                         <div class="mb-3">
                                             <label class="form-label">
-                                                <b>About me <small class="text-danger">(Maximum 300 characters allowed.)</small></b>
+                                                <b>About me <small class="text-danger">(Maximum 300 characters
+                                                        allowed.)</small></b>
                                             </label>
                                             <textarea id="about_me" name="about_me" class="form-control {{ $errors->has('about_me') ? ' is-invalid' : '' }}">
                                                 @isset($userProfile->about_me)
@@ -790,10 +792,10 @@
             // $('#introvideo').attr("src", "{{ asset('assets/images/video-thumb.png') }}")
             // $('#introvideo').attr("style", "height: 100%")
             //if (url == '') {
-               // let videoIframe = $("#introvideo");
-               // videoIframe.on('load', function(){
-                   // videoIframe.contents().find("html").append("<p>test2</p>");
-                // });
+            // let videoIframe = $("#introvideo");
+            // videoIframe.on('load', function(){
+            // videoIframe.contents().find("html").append("<p>test2</p>");
+            // });
             // }
             if (youTubeId !== '') {
                 $('#default-video').hide();
@@ -826,5 +828,17 @@
                     }
                 });
         });  --}}
+        /*Check file type when upload a headshot image*/
+        $("#picture").change(function() {
+
+          var validExtensions = ["jpg", "jfif", "jpeg", "gif", "png"]
+            var file = $(this).val().split('.').pop().toLowerCase();
+            if (validExtensions.indexOf(file) == -1) {
+                alert("Only formats are allowed : " + validExtensions.join(', '));
+
+            }
+
+
+        });
     </script>
 @endsection
