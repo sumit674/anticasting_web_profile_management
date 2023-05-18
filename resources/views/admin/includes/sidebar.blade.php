@@ -24,8 +24,8 @@
                     </ul>
                 </li> --}}
                 {{-- <li><a href="{{ route('admin.manageuser') }}"><i class="ti-user"></i>Manage User</a></li> --}}
-                {{-- <li class="{{ request()->routeIs('admin.bucket.manage') ? 'active' : '' }}"><a
-                        href="{{ route('admin.bucket.manage') }}"><i class="fa-solid fa-list"></i></i>Shortlist</a></li> --}}
+                <li class="{{ request()->routeIs('admin.shortlist') ? 'active' : '' }}"><a
+                        href="{{ route('admin.shortlist') }}"><i class="fa-solid fa-list"></i></i>Shortlist</a></li>
                 <li class="{{ request()->routeIs('admin.projects') ? 'active' : '' }}"><a
                         href="{{ route('admin.projects') }}"><i class="fa fa-folder"></i></i>Project</a></li>
                 {{-- <li class="{{ request()->routeIs('admin.actors.mange') ? 'active' : '' }}"><a

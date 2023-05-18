@@ -141,7 +141,7 @@
                         <span class="h6 text-white text-label" style="margin-left:5px;">
                             Selected
                         </span>
-                        <input type="hidden" name="user_id" class="form-control-sm" id="bucket-item" />
+                        <input type="hidden" name="user_id" class="form-control-sm" id="bucket-item"/>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -181,7 +181,7 @@
                                 <option value="{{ $category?->id }}">{{ $category?->trans?->project_name }}</option>
                             @endforeach
                         </select>
-                        <select id="child_id" class="form-control">
+                        <select id="child_id" name="child_id" class="form-control">
                         </select>
                     </div>
                 </div>

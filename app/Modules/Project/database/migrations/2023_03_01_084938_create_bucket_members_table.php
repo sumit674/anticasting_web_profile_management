@@ -33,6 +33,15 @@ class CreateBucketMembersTable extends Migration
             ->references('id')
             ->on('buckets')
             ->onDelete('cascade');
+            $table->unsignedBigInteger('category_id')
+            ->unsigned()
+            ->index()
+            ->nullable();
+            $table
+            ->foreign('category_id')
+            ->references('id')
+            ->on('categories')
+            ->onDelete('cascade');
             $table->boolean('status')
             ->default(0)
             ->comment('Active=>1,Archive=>0');

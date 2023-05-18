@@ -1,5 +1,5 @@
 @extends('admin.layouts.admin_master')
-@section('title','Project')
+@section('title','Character')
 <style>
     #contact_select {
 
@@ -23,18 +23,32 @@
                 <div class="col-lg-12">
                     <div class="card mt-5">
                         <div class="card-body">
-                            <form action="{{ route('admin.projects.store') }}" method="post" enctype="multipart/form-data">
+                            <form action="{{ route('admin.character.store',$project->id) }}" method="post">
                                 @csrf
                                        <div class="row">
-                                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                            <div class="col-lg-6 col-md-6 col-sm-6">
                                                 <label class="form-label" id=""><b>Project name
                                                     </b><span style="color:red;">*</span>
                                                 </label>
                                                 <div class="form-group">
 
                                                     <input type="text" name="project_name" class="form-control"
-                                                        id="project_name" placeholder="Enter project name" />
+                                                        id="project_name" placeholder="Enter project name" value="{{old('project_name',$project?->trans?->project_name)}}" readonly/>
                                                     @error('project_name')
+                                                        <span style="color:red;"><b>{{ $message }}</b></span>
+                                                    @enderror
+
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                                <label class="form-label" id=""><b>Character name
+                                                    </b><span style="color:red;">*</span>
+                                                </label>
+                                                <div class="form-group">
+
+                                                    <input type="text" name="character_name" class="form-control"
+                                                        id="character_name" placeholder="Enter character name"/>
+                                                    @error('character_name')
                                                         <span style="color:red;"><b>{{ $message }}</b></span>
                                                     @enderror
 
@@ -52,7 +66,7 @@
                                         </div>
 
                                    </div>
-                         <center>
+                        <center>
                             <input type="submit" class="btn btn-danger" value="Save" />
                         </center>
                         </form>
@@ -114,63 +128,3 @@
          });
     </script>
 @endsection
-
-{{--  <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" data-bs-backdrop="static"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header d-flex justify-content-center">
-                <h5 class="modal-title  mt-2" id="exampleModalLabel">Add Project</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <hr />
-            <form action="#" method="POST" id="add_project_form">
-                @csrf
-                <div class="modal-body p-4 bg-light">
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label for="parent_id">Categories</label>
-                            <select class="form-control" name="parent_id" id="parent_id" placeholder="Category">
-                                <option value="0" selected>Parent</option>
-                                @if (isset($category))
-                                    @foreach ($category as $cat)
-                                        <option value="{{ $cat->id }}"
-                                            @if (old('parent_id') == $cat->id) selected @endif>{{ $cat->trans->project_name }}
-                                        </option>
-                                    @endforeach
-                                @endif
-                            </select>
-                            <span class="text-danger error-text parent_id_err"></span>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label for="project_name">Project Name</label>
-                            <input type="text" name="project_name" class="form-control" id="project_name"
-                                placeholder="Enter project name"/>
-                            <span class="text-danger error-text project_name_err"></span>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <label for="description">Description</label>
-                            <textarea class="form-control" name="description" id="description" cols="30" rows="10"></textarea>
-                            <span class="text-danger error-text description_err"></span>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6 mt-2">
-                            <div class="checkbox">
-                                <label for="active">
-                                    <input type="checkbox" id="active" name="active"> Active
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" id="add_project_btn" class="btn btn-primary">Add Project</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>  --}}

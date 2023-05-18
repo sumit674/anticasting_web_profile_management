@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Modules\Actors\Models;
+namespace App\Modules\Project\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use  App\Modules\Actors\Models\BucketMembers;
+use  App\Modules\Project\Models\BucketMembers;
 class Bucket extends Model
 {
     use HasFactory;

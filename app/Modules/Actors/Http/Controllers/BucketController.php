@@ -3,37 +3,37 @@
 namespace App\Modules\Actors\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Controllers\Controller;
-use App\Modules\Actors\Models\{Bucket, BucketMembers};
+use App\Modules\Project\Models\{Bucket, BucketMembers};
+use App\Modules\Project\Models\{Categories, CategoryTrans};
+
 class BucketController extends Controller
 {
     //
     public function store(Request $request)
     {
-        //  dd($request->all());
-        // $bucket = new Bucket();
-        // $bucket->bucket_name=$request->bucket_name;
-        // $bucket->status = $request->status==true ? 1 : 0;
-        // $bucket->save();
+        $category = Categories::where('id', $request->parent_id)->first();
+       if ($request->has('child_id') && $request->child_id != '') {
+            $category = Categories::where('id', $request->child_id)->first();
+        }
+        // dd($category);
         $users_id = explode(',', $request->user_id);
-        $bucket = Bucket::where('id', $request->bucket_id)->first();
-        foreach ($users_id as $key => $user_id) {
-            $bucket_member = BucketMembers::where('bucket_id', $request->bucket_id)
+        foreach ($users_id as $user_id) {
+           $bucketmember = BucketMembers::where('category_id', $category->id)
                 ->where('user_id', $user_id)
                 ->first();
-            if (!isset($bucket_member)) {
-                $bucket_member = new BucketMembers();
-                $bucket_member->status = 1;
-             
-            }
-            $bucket_member->user_id = $user_id;
-            $bucket_member->bucket_id = $bucket->id;
-            $bucket_member->save();
-        }
 
+            if (!isset($bucketmember)) {
+                $bucketmember = new BucketMembers();
+                $bucketmember->category_id = $category->id;
+                $bucketmember->status = 1;
+
+            }
+            $bucketmember->user_id = $user_id;
+            $bucketmember->save();
+        }
         return redirect()
-            ->route('admin.bucket.manage');
-            
+            ->route('admin.shortlist');
+
     }
 }

@@ -16,25 +16,16 @@ use Illuminate\Support\Facades\Schema;
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
             $table->string('project_name')->nullable();
+            $table->dateTime('edit_mode')->nullable();
             $table
                 ->unsignedBigInteger('user_id')
                 ->unsigned()
                 ->index()
                 ->nullable();
-            $table
-                ->unsignedBigInteger('bucket_id')
-                ->unsigned()
-                ->index()
-                ->nullable(); 
-            $table
+           $table
                 ->foreign('user_id')
                 ->references('id')
                 ->on('users')
-                ->onDelete('cascade');
-         $table
-                ->foreign('bucket_id')
-                ->references('id')
-                ->on('buckets')
                 ->onDelete('cascade');
             $table->timestamps();
         });

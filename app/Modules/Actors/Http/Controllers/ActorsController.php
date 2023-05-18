@@ -67,17 +67,15 @@ class ActorsController extends Controller
 
         // return view('Actors::New-Actor.index', compact('actors', 'state'));
         //  return view('Actors::index', compact('actors', 'state'));
-        $project_categories = Categories::where('parent_id',0)->where('active',1)->get();
+        $project_categories = Categories::where('parent_id',0)->get();
 
-        return view('Actors::profiles.list', compact('actors', 'state', 'project_categories',));
+        return view('Actors::profiles.list', compact('actors', 'state', 'project_categories'));
     }
 
     public function fetchChildrenCategories(Request $request)
     {
 
-        $childCategories = Categories::where("parent_id",$request->parent_id)
-            ->where('active', 1)
-            ->get();
+        $childCategories = Categories::where("parent_id",$request->parent_id)->get();
 
             $childCategories->mapWithKeys(function($category, $key){
 
@@ -88,6 +86,7 @@ class ActorsController extends Controller
                 ];
 
             });
+          //  dd($childCategories);
           $data['categories'] = $childCategories;
         return response()->json($data);
     }

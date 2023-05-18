@@ -4,7 +4,7 @@ namespace App\Modules\Bucket\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Modules\Actors\Models\{Bucket, BucketMembers};
+use App\Modules\Project\Models\{Bucket, BucketMembers};
 
 class BucketController extends Controller
 {

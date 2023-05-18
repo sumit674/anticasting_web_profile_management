@@ -17,8 +17,8 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         //
-     
-        // Id = 1 
+
+        // Id = 1
         \DB::table('users')->insert([
 
             'name'=>'Admin',
@@ -26,7 +26,7 @@ class UsersTableSeeder extends Seeder
             'last_name'=>'Admin',
             'email'=>'admin@gmail.com',
             'password'=> bcrypt('Pass@123'),
-           
+
           //  'gender	'=>'Male',
             'status'=>1,
             'user_type'=>'1',
@@ -35,7 +35,7 @@ class UsersTableSeeder extends Seeder
             'updated_at'=> Carbon::now()->format('Y-m-d'),
         ]);
 
-         // Id = 2 
+         // Id = 2
          \DB::table('users')->insert([
 
             'name'=>'Sub Admin',
@@ -43,7 +43,7 @@ class UsersTableSeeder extends Seeder
             'last_name'=>'Admin',
             'email'=>'admin@2023gmail.com',
             'password'=> bcrypt('Pass@123'),
-          
+
            // 'gender	'=>'Female',
             'status'=>1,
             'user_type'=>'1',
@@ -51,7 +51,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=> Carbon::now()->format('Y-m-d'),
             'updated_at'=> Carbon::now()->format('Y-m-d'),
         ]);
-         // Id = 3 
+         // Id = 3
          \DB::table('users')->insert([
 
             'name'=>'mahesh kumar singh',
@@ -59,7 +59,7 @@ class UsersTableSeeder extends Seeder
             'last_name'=>'Kumar Singh',
             'email'=>'maheshkrs@2023gmail.com',
             'password'=> bcrypt('Pass@123'),
-          
+
            // 'gender	'=>'Male',
             'status'=>1,
             'user_type'=>'0',

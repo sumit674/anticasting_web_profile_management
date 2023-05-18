@@ -185,9 +185,8 @@
                         </div>
                     </div>
                 </div>
-                @include('Shortlist::create-popup')
+
                 {{--  @include('Bucket::shortlist-show')  --}}
-                @include('Shortlist::edit-popup')
                 {{--  @include('Bucket::archive')  --}}
             </section>
         </div>

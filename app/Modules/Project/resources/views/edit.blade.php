@@ -1,7 +1,6 @@
 @extends('admin.layouts.admin_master')
-@section('title')
-    Actor Manage Bucket
-@endsection
+@section('title','Project')
+
 <style>
 
     .edit-card{
@@ -26,43 +25,13 @@
                             {{--  {{ dd($catItem) }}  --}}
                             <form action="{{ route('admin.projects.update',$catItem->id) }}" method="post" enctype="multipart/form-data">
                                 @csrf
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="row">
-                                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                                <label class="form-label" id=""><b>Categories
-                                                    </b><span style="color:red;">*</span>
-                                                </label>
-                                                {{--  {{ dd($category) }}  --}}
-                                                <select class="form-control" name="parent_id" id="parent_id"
-                                                    placeholder="Category">
-                                                    <option value="0" selected>Parent</option>
-                                                    @if (isset($category))
-                                                        @foreach ($category as $cat)
-                                                            @if ($catItem->id != $cat->id)
-
-                                                                <option value="{{ $cat->id }}"
-                                                                    @if (old('parent_id', $catItem->parent_id) == $cat->id) selected  @endif
-
-                                                                    >
-                                                                    {{ $cat->trans->project_name }}
-                                                                </option>
-                                                            @endif
-                                                        @endforeach
-                                                    @endif
-                                                </select>
-                                                @error('parent_id')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                @enderror
-
-                                            </div>
-                                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                     <div class="row">
+                                           <div class="col-lg-12 col-md-12 col-sm-12">
                                                 <label class="form-label" id=""><b>Project name
                                                     </b><span style="color:red;">*</span>
                                                 </label>
                                                 <div class="form-group">
-
-                                                    <input type="text" name="project_name" class="form-control"
+                                                 <input type="text" name="project_name" class="form-control"
                                                         id="project_name"
                                                         value="{{ old('project_name', $catItem?->trans?->project_name) }}"
                                                         placeholder="Enter project name" />
@@ -74,31 +43,15 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-lg-12 col-md-12 col-sm-12">
-                                                <label class="form-label" id=""><b>Description
-                                                    </b><span style="color:red;">*</span>
-                                                </label>
-                                                <div class="form-group">
-                                                    <textarea class="form-control" name="description" id="" cols="30" rows="10">{{$catItem?->trans?->description}}</textarea>
-                                                </div>
-                                                @error('description')
-                                                    <span style="color:red;"><b>{{ $message }}</b></span>
-                                                @enderror
-                                            </div>
-
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-lg-6 col-md-6 col-sm-6 mt-2">
+                                            <div class="col-lg-6 col-md-6 col-sm-6">
                                                 <div class="checkbox">
-                                                    <label for="active">
-                                                        <input type="checkbox" id="active" name="active"> Active
-                                                    </label>
+                                                    <label for="active">Active</label>
+                                                     <input type="checkbox" id="active" name="active" value="1" {{isset($catItem->active) && $catItem->active == true ? 'checked' : ' ' }}/>
+
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
 
-                                </div>
                         </div>
                         <center>
                             <input type="submit" class="btn btn-success" value="Update" />

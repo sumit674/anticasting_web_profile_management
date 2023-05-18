@@ -22,7 +22,8 @@ class CreateCategoriesTable extends Migration
             $table->unsignedBigInteger('updated_by')->unsigned()->index()->nullable();
             $table->foreign('updated_by')->references('id')->on('users')->onDelete('cascade');
             $table->boolean('active')->default(1)->comment('Active=>1,Inactive=>0');
-            $table->text('options')->nullable(); //json
+            $table->boolean('status')->default(1)->comment('Active=>1,Archive=>0');
+            $table->text('options')->nullable();
             $table->integer('order_id')->nullable();
             $table->timestamps();
         });

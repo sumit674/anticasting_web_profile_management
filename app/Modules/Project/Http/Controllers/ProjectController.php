@@ -18,76 +18,61 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $items = Categories::orderBy('id', 'desc')->paginate();
-// dd($items);
-        return view("Project::index",compact('items'));
+        $activeItems = Categories::with('trans')->where('parent_id',0)->orderBy('id', 'desc')->paginate();
+        $archiveItems = Categories::where('status',0)->orderBy('id', 'desc')->paginate();
+        $activeItemsCount = Categories::where('status',1)->count();
+        $archiveItemsCount = Categories::where('status',0)->count();
+        return view("Project::index",compact('activeItems','archiveItems','activeItemsCount','archiveItemsCount'));
     }
     public function createProject(){
 
-        $category =  Categories::where('active',1)->get();
-        return view('Project::create',compact('category'));
+        //$category =  Categories::where('active',1)->where('parent_id',0)->get();
+        return view('Project::create');
     }
     public function storeProject(Request $request)
     {
+
         $validator = $request->validate(
             [
-                'parent_id' => 'required',
-                'project_name' => ['required', new CategoryValidationRule($request->parent_id, '')],
-                'description' => 'required',
+                'project_name' => ['required'],
             ],
             [
-                'parent_id.required' => 'Please select category',
-                'project_name.required' => 'Please enter name',
-                'description.required' => 'Please enter description',
+                'project_name.required' => 'Please enter project name',
             ]
         );
 
 
             $category = new Categories();
             $category->slug = GeneralHelper::seoUrl($request->project_name);
-            $category->parent_id = $request->parent_id;
-
-            $category->active = false;
-            if ($request->active) {
-                $category->active = true;
-            }
+            $category->parent_id = 0;
+            $category->active = $request->active==true ? 1 : 0;
             $category->save();
-
-            // Trans
             $categoryTrans = new CategoryTrans();
-
             $categoryTrans->category_id = $category->id;
             $categoryTrans->project_name = $request->project_name;
-            $categoryTrans->description = $request->description;
             $categoryTrans->save();
             return redirect()->route('admin.projects');
     }
     public function editProject($id){
-        $category =  Categories::where('parent_id', 0)
-            ->where('active',1)
-            ->get();
+
         $catItem =  Categories::find($id);
-        return view('Project::edit',compact('category','catItem'));
+        return view('Project::edit',compact('catItem'));
     }
     public function updateProject(Request $request,$id){
         $validator = $request->validate(
             [
-                'parent_id' => 'required',
-                //'project_name' => ['required', new CategoryValidationRule($request->parent_id, '')],
-                'description' => 'required',
+
+              'project_name' => ['required'],
             ],
             [
-                'parent_id.required' => 'Please select category',
-               // 'project_name.required' => 'Please enter name',
-                'description.required' => 'Please enter description',
+             'project_name.required' => 'Please enter project name',
             ]
         );
 
 
             $category =  Categories::find($id);
             $category->slug = GeneralHelper::seoUrl($request->project_name);
-            $category->parent_id = $request->parent_id;
-
+            $category->parent_id=0;
             $category->active = false;
             if ($request->active) {
                 $category->active = true;
@@ -96,10 +81,8 @@ class ProjectController extends Controller
 
             // Trans
             $categoryTrans = CategoryTrans::where('category_id', $category->id)->first();
-
             $categoryTrans->category_id = $category->id;
             $categoryTrans->project_name = $request->project_name;
-            $categoryTrans->description = $request->description;
             $categoryTrans->save();
             return redirect()->route('admin.projects');
     }
@@ -125,4 +108,22 @@ class ProjectController extends Controller
             ->with('message', 'Category deleted successfully.');
 
     }
+    public function archive($id){
+        $category =  Categories::where('id',$id)->first();
+        if(isset($category)){
+            $category->status=0;
+            $category->save();
+            return redirect()->back();
+        }
+    }
+    public function active($id){
+        $category =  Categories::where('id',$id)->first();
+        if(isset($category)){
+            $category->status=1;
+            $category->save();
+            return redirect()->back();
+        }
+    }
+
+
 }

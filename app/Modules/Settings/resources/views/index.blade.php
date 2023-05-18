@@ -1,7 +1,5 @@
 @extends('admin.layouts.admin_master')
-@section('title')
-    Setting
-@endsection
+@section('title','Setting')
 @section('content')
 <script src="{{ asset('assets/auth/toastr.min.js') }}" defer ></script>
 <script src="{{ asset('assets/auth/jquery-3.6.0.js') }}"></script>
@@ -57,7 +55,7 @@
                                                 <label><b> Site Title</b> <span style="color:red;"><b>*</b></span></label>
                                                 <input type="text" class="form-control" name="site_title" placeholder="Site Title" value="{{ old('site_title',$site_title) }}" />
                                                 @error('site_title')
-                                                   <span style="color:red;"><b>{{$message}}</b></span> 
+                                                   <span style="color:red;"><b>{{$message}}</b></span>
                                                 @enderror
                                             </div>
                                         </div>
@@ -66,7 +64,7 @@
                                                 <label for="reward"><b>Site Email </b> <span style="color:red;"><b>*</b></span></label>
                                                 <input type="text" class="form-control" name="site_email" placeholder="Site Email" value="{{ old('site_email',$site_email) }}" />
                                                 @error('site_email')
-                                                <span style="color:red;"><b>{{$message}}</b></span> 
+                                                <span style="color:red;"><b>{{$message}}</b></span>
                                              @enderror
                                             </div>
                                         </div>
@@ -77,7 +75,7 @@
                                                 <label><b>Site Url</b> <span style="color:red;"><b>*</b></span></label>
                                                 <input type="text" class="form-control" name="site_url" placeholder="Site Url" value="{{ old('site_url',$site_url) }}" />
                                                 @error('site_url')
-                                                <span style="color:red;"><b>{{$message}}</b></span> 
+                                                <span style="color:red;"><b>{{$message}}</b></span>
                                              @enderror
                                             </div>
                                         </div>
@@ -86,7 +84,7 @@
                                                 <label for="reward"><b>Site Address</b> <span style="color:red;"><b>*</b></span></label>
                                                 <input type="text" class="form-control" name="address" placeholder="Site Address" value="{{ old('address',$address) }}" />
                                                 @error('address')
-                                                <span style="color:red;"><b>{{$message}}</b></span> 
+                                                <span style="color:red;"><b>{{$message}}</b></span>
                                              @enderror
                                             </div>
                                         </div>

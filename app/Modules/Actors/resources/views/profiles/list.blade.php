@@ -1,12 +1,10 @@
 @extends('admin.layouts.admin_master')
-@section('title')
-    Manage Actors
-@endsection
+@section('title','Actor')
 @section('header')
     <link rel="stylesheet" href="{{ asset('assets/admin/css/profiles/main-popover.css') }}" />
     {{-- <link rel="stylesheet" href="{{ asset('assets/admin/css/actors.css') }}" /> --}}
     <style>
-        .main .page-header {
+        .main.page-header {
             min-height: 50px;
             margin: 0px 0 0px;
             padding: 0 0px;
@@ -240,7 +238,7 @@
             $('.bucket-wrapper').show();
             if (array.indexOf(id) === -1) {
                 array.push(id);
-                $('#bucket-form').show();
+
             } else {
                 let index = array.indexOf(id);
                 array.splice(index, 1);
@@ -334,9 +332,8 @@
                     },
                     dataType: 'json',
                     success: function(result) {
-
-                        $('#child_id').html(
-                            '<option value="">-- Select Project --</option>');
+                      $('#child_id').html(
+                            '<option value="">-- Select Child Project --</option>');
                         $.each(result.categories, function(key, value) {
 
                             $("#child_id").append('<option value="' + value
@@ -345,6 +342,25 @@
                     }
                 });
             });
+        });
+        /*Select Project categories validation.*/
+        $(document).ready(function(){
+
+            $("#bucket-form").validate({
+                debug: false,
+                errorClass: 'text-danger',
+                errorElement: "span",
+                rules: {
+                parent_id: "required"
+               },
+               messages: {
+                parent_id: "Please select parent project."
+
+               }
+            })
+        })
+        $('#btn').on('click', function() {
+            $("#bucket_list").valid();
         });
     </script>
 @endsection
