@@ -71,13 +71,11 @@
                                                                                 <i class="ti-pencil"></i>
                                                                                 Edit
                                                                             </a>
-
-                                                                            {{--  <a href="{{ route('admin.projects.delete', $item->id) }}"
-                                                                        class="btn btn-danger  btn-sm btn-flat btn-addon m-l-5"
-                                                                        onclick="return confirm('Do you really want to delete this item?')">
-                                                                        <i class="ti-minus"></i>
-                                                                        Character
-                                                                    </a>  --}}
+                                                                            <a href="{{ route('admin.character.delete',[$project->id,$item->id]) }}"
+                                                                                class="btn btn-danger  btn-sm btn-flat btn-addon m-l-5">
+                                                                                <i class="ti-trash"></i>
+                                                                                Delete
+                                                                            </a>
                                                                         </td>
 
                                                                     </tr>

@@ -17,5 +17,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'admin']], function (
     Route::get('project/{id}/character/create', [CharacterController::class, 'createCharacter'])->name('admin.character.create');
     Route::post('project/{id}/character/store', [CharacterController::class, 'storeCharacter'])->name('admin.character.store');
     Route::get('project/{pId}/{id}/character/edit', [CharacterController::class, 'editCharacter'])->name('admin.character.edit');
-    Route::post('project/{pId}/{id}/character/update', [CharacterController::class, 'updateCategory'])->name('admin.character.update');
+    Route::post('project/{pId}/{id}/character/update', [CharacterController::class, 'updateCharacter'])->name('admin.character.update');
+    Route::get('project/{pId}/{id}/character/delete', [CharacterController::class, 'deleteCharacter'])->name('admin.character.delete');
 });

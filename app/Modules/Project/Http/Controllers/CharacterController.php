@@ -52,7 +52,7 @@ class CharacterController extends Controller
         $character = Categories::where('id', $id)->first();
         return view('Project::character.edit', compact('character', 'project'));
     }
-    public function updateCategory(Request $request, $pId, $id)
+    public function updateCharacter(Request $request, $pId, $id)
     {
       //  dd($request->all());
         $validator = $request->validate(
@@ -76,5 +76,14 @@ class CharacterController extends Controller
         $characterCategoryTrans->project_name = $request->character_name;
         $characterCategoryTrans->save();
         return redirect()->route('admin.character', $categoryProject->id);
+    }
+    public function deleteCharacter($pId, $id){
+        $categoryProject = Categories::where('id', $pId)->where('parent_id', 0)->first();
+        $category =  Categories::find($id);
+        CategoryTrans::where('category_id', $id)->delete();
+        Categories::where('id', $id)->delete();
+        return redirect()
+            ->route('admin.character', $categoryProject->id)
+            ->with('message', 'Category deleted successfully.');
     }
 }
