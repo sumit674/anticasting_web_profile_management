@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBucketMembersTable extends Migration
+ class CreateProjectMembersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateBucketMembersTable extends Migration
      */
     public function up()
     {
-        Schema::create('bucket_members', function (Blueprint $table) {
+        Schema::create('project_members', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')
             ->unsigned()
@@ -23,15 +23,6 @@ class CreateBucketMembersTable extends Migration
             ->foreign('user_id')
             ->references('id')
             ->on('users')
-            ->onDelete('cascade');
-            $table->unsignedBigInteger('bucket_id')
-            ->unsigned()
-            ->index()
-            ->nullable();
-            $table
-            ->foreign('bucket_id')
-            ->references('id')
-            ->on('buckets')
             ->onDelete('cascade');
             $table->unsignedBigInteger('category_id')
             ->unsigned()
@@ -56,6 +47,6 @@ class CreateBucketMembersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bucket_members');
+        Schema::dropIfExists('project_members');
     }
 };

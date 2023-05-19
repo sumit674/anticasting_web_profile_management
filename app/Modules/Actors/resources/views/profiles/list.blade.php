@@ -218,13 +218,11 @@
             <div class="bucket-wrapper" style="display: none;">
                 <div class="row ">
                     <div class="col-lg-12 title-margin-right">
-                        @include('Actors::bucket')
+                        @include('Shortlist::bucket')
                     </div>
                 </div>
             </div>
         </div>
-
-
     </section>
 @endsection
 @section('footer')
@@ -333,7 +331,7 @@
                     dataType: 'json',
                     success: function(result) {
                       $('#child_id').html(
-                            '<option value="">-- Select Child Project --</option>');
+                            '<option value="">-- Select Character --</option>');
                         $.each(result.categories, function(key, value) {
 
                             $("#child_id").append('<option value="' + value

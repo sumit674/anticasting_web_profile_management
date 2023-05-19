@@ -18,14 +18,14 @@
                                             <li class="nav-item" id="active_tab">
                                                 <a class="nav-link active" id="active" data-toggle="tab"
                                                     href="#activelist" role="tab" aria-controls="active"
-                                                    aria-selected="true">Active ({{$bucketMemberActiveCount}})<span class="marker"></span>
+                                                    aria-selected="true">Active ()<span class="marker"></span>
                                                 </a>
 
                                             </li>
                                             <li class="nav-item" id="archive_tab">
                                                 <a class="nav-link" id="archive" data-toggle="tab" href="#archivelist"
                                                     role="tab" aria-controls="archive"
-                                                    aria-selected="false">Archive ({{$bucketMemberArchiveCount}})<span class="marker"></span></a>
+                                                    aria-selected="false">Archive ()<span class="marker"></span></a>
                                             </li>
                                         </ul>
                                         <div class="tab-content" id="myTabContent">
@@ -43,7 +43,7 @@
                                                                 <th></th>
                                                                 {{--  <th class="text-center">Id</th>  --}}
                                                                 <th class="text-center">Movie name</th>
-                                                                <th class="text-center">Member Name</th>
+                                                                <th class="text-center">Total Profile</th>
 
                                                             </tr>
                                                         </thead>
@@ -59,11 +59,11 @@
                                                                         </td>
                                                                         {{--  <td class="text-center" scope="row">{{ $k + 1 }}</td>  --}}
                                                                         <td class="text-center">{{$member?->category?->trans?->project_name }}</td>
-                                                                        <td class="text-center">{{$member?->user?->first_name.' '.$member?->user?->last_name }}</td>
-                                                                        <td class="text-center">
+                                                                        {{--  <td class="text-center">{{$member?->user?->first_name.' '.$member?->user?->last_name }}</td>  --}}
+                                                                        {{--  <td class="text-center">
                                                                            <a class="btn btn-danger btn-sm" href="{{route('admin.shortlist.archive',$member?->id)}}">
                                                                               Archive
-                                                                           </a>
+                                                                           </a>  --}}
                                                                         </td>
                                                                     </tr>
                                                                 @endforeach
@@ -80,24 +80,24 @@
                                                         <thead>
                                                             <tr>
                                                                 {{--  <th class="text-center">Id</th>  --}}
-                                                                <th class="text-center">Movie name</th>
-                                                                <th class="text-center">Member Name</th>
+                                                                <th class="text-center">Movie Name</th>
+                                                                <th class="text-center">Total Profile</th>
                                                                 <th class="text-center">Status</th>
 
                                                             </tr>
-                                                        </thead>
+                                                        </thead>+9*
                                                         <tbody>
-                                                            @isset($bucketMemberArchive)
-                                                                @foreach ($bucketMemberArchive as $member)
+                                                            @isset($bucketMemberActive)
+                                                                @foreach ($bucketMemberActive as $member)
                                                                     <tr>
                                                                         {{--  <td class="text-center" scope="row">{{ $k + 1 }}</td>  --}}
                                                                         <td class="text-center">{{$member?->category?->trans?->project_name }}</td>
-                                                                        <td class="text-center">{{$member?->user?->first_name.' '.$member?->user?->last_name }}</td>
-                                                                        <td class="text-center">
+                                                                        {{--  <td class="text-center">{{$member?->user?->first_name.' '.$member?->user?->last_name }}</td>  --}}
+                                                                        {{--  <td class="text-center">
                                                                            <a class="btn btn-success btn-sm" href="{{route('admin.shortlist.active',$member?->id)}}">
                                                                               Active
                                                                            </a>
-                                                                        </td>
+                                                                        </td>  --}}
                                                                     </tr>
                                                                 @endforeach
                                                             @endisset

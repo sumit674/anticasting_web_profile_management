@@ -24,10 +24,11 @@
                     </ul>
                 </li> --}}
                 {{-- <li><a href="{{ route('admin.manageuser') }}"><i class="ti-user"></i>Manage User</a></li> --}}
-                <li class="{{ request()->routeIs('admin.shortlist') ? 'active' : '' }}"><a
-                        href="{{ route('admin.shortlist') }}"><i class="fa-solid fa-list"></i></i>Shortlist</a></li>
+
                 <li class="{{ request()->routeIs('admin.projects') ? 'active' : '' }}"><a
                         href="{{ route('admin.projects') }}"><i class="fa fa-folder"></i></i>Project</a></li>
+                <li class="{{ request()->routeIs('admin.shortlist') ? 'active' : '' }}"><a
+                        href="{{ route('admin.shortlist') }}"><i class="fa-solid fa-list"></i></i>Shortlist</a></li>
                 {{-- <li class="{{ request()->routeIs('admin.actors.mange') ? 'active' : '' }}"><a
                         href="{{ route('admin.actors.mange') }}"><i class="ti-user"></i>Manage Actors</a></li> --}}
                 <li><a href="#"><i class='fa-solid fa-campground'></i></i>Camping</a></li>

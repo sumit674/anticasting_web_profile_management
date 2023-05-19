@@ -19,7 +19,7 @@
                                             <li class="nav-item" id="active_tab">
                                                 <a class="nav-link active" id="active" data-toggle="tab"
                                                     href="#activelist" role="tab" aria-controls="active"
-                                                    aria-selected="true">Active ({{ $activeItemsCount }})<span
+                                                    aria-selected="true">Active <span
                                                         class="marker"></span>
                                                 </a>
 
@@ -119,20 +119,6 @@
                                             <div class="tab-pane fade" id="archivelist" role="tabpanel"
                                                 aria-labelledby="archive-tab">
                                                 <div class="table-responsive mt-2 border-top reload-table">
-                                                    <table class="table table-striped table-borderless">
-                                                        <thead>
-                                                            <tr>
-                                                                <th class="text-center">Id</th>
-                                                                <th class="text-center">Project name</th>
-                                                                <th class="text-center">Parent</th>
-                                                                <th class="text-center">Status</th>
-
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-
-                                                        </tbody>
-                                                    </table>
                                                 </div>
 
                                             </div>
