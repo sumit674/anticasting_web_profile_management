@@ -331,7 +331,7 @@
                     dataType: 'json',
                     success: function(result) {
                       $('#child_id').html(
-                            '<option value="">-- Select Character --</option>');
+                            '<option value="">-- No Character --</option>');
                         $.each(result.categories, function(key, value) {
 
                             $("#child_id").append('<option value="' + value

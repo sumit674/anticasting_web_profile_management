@@ -11,6 +11,16 @@ class Categories extends Model
     use HasFactory;
     protected $table ='categories';
     public $timestamps = true;
+
+    protected $with = [
+        'parent'
+    ];
+
+    public function parent()
+    {
+        return $this->belongsTo(Categories::class, 'parent_id');
+    }
+
     public function trans(){
         return $this->hasOne(CategoryTrans::class,'category_id')->select(['id','project_name','description','category_id']);
     }

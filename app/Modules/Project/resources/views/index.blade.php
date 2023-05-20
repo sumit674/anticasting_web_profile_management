@@ -55,7 +55,8 @@
                                                                 <th></th>
 
                                                                 <th class="text-center">Project name</th>
-                                                                <th class="text-center">Total Character</th>
+                                                                <th class="text-center">Active breakdowns</th>
+                                                                <th class="text-center">Last Modified</th>
                                                                 <th class="text-center">Active</th>
                                                                 <th class="text-center">Action</th>
                                                             </tr>
@@ -70,10 +71,15 @@
                                                                                 value="{{ $item->id }}" />
                                                                         </td>
                                                                         <td class="text-center">
-                                                                            {{ $item->trans->project_name }}
+                                                                            <a href="{{ route('admin.character', $item->id) }}">
+                                                                                {{ $item->trans->project_name }}
+                                                                            </a>
                                                                         </td>
                                                                          <td class="text-center">
                                                                             {{ count($item->child) }}
+                                                                         </td>
+                                                                         <td class="text-center">
+                                                                            {{date('y-m-d h:i:s', strtotime($item?->updated_at)) }}
                                                                          </td>
                                                                         {{--  <td class="text-center">
                                                                             <a href="{{ route('admin.projects.archive', $item->id) }}"
@@ -100,11 +106,6 @@
                                                                                 class="btn btn-danger  btn-sm btn-flat btn-addon m-l-5">
                                                                                 <i class="ti-trash"></i>
                                                                                 Delete
-                                                                            </a>
-                                                                            <a href="{{ route('admin.character', $item->id) }}"
-                                                                                class="btn btn-primary  btn-sm">
-
-                                                                               Character
                                                                             </a>
                                                                             {{--  <a href="{{ route('admin.projects.delete', $item->id) }}"
                                                                                 class="btn btn-danger  btn-sm btn-flat btn-addon m-l-5"

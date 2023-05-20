@@ -83,7 +83,7 @@
                                 <option value="{{ $category?->id }}">{{ $category?->trans?->project_name }}</option>
                             @endforeach
                         </select>
-                        <select id="child_id" name="child_id[]" class="form-control">
+                        <select id="child_id" name="child_id" class="form-control">
                         </select>
                     </div>
                 </div>

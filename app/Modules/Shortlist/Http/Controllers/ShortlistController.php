@@ -23,11 +23,46 @@ class ShortlistController extends Controller
         //  $bucketMemberActiveCount = ProjectMember::with('category')->with('user')->where('status',1)->count();
         //  $bucketMemberArchiveCount = ProjectMember::with('category')->with('user')->where('status',0)->count();
         // return view("Shortlist::index",compact('bucketMemberActive','bucketMemberArchive','bucketMemberActiveCount','bucketMemberArchiveCount'));
-          $bucketMemberActive = ProjectMember::select('category_id')->distinct()->get();
-         return view("Shortlist::index",compact('bucketMemberActive'));
-      //  dd($categories);
+        $bucketMemberActive = ProjectMember::where('status', 1)
+            ->select(
+                array(
+                    'id',
+                    'category_id',
+                    'status',
+                    \DB::raw('COUNT(user_id) as numberOfProfiles'),
+                    'updated_at',
+                    'user_id',
+                )
+            )
+            ->with('category')
+            ->groupBy('category_id')
+            ->get();
+
+        $bucketMemberArchives = ProjectMember::where('status', 0)
+            ->select(
+                array(
+                    'id',
+                    'category_id',
+                    'status',
+                    \DB::raw('COUNT(user_id) as numberOfProfiles'),
+                    'updated_at',
+                    'user_id',
+                )
+            )
+            ->with('category')
+            ->groupBy('category_id')
+            ->get();
+
+            //  dd($bucketMemberActive);
+        return view("Shortlist::index", compact('bucketMemberActive', 'bucketMemberArchives'));
     }
-//     public function archive($id){
+         public function allProfileMember($cId)
+         {
+             $projectProfileMember = ProjectMember::where('category_id',$cId)->with('user')->get();
+             return view('Shortlist::profile-member',compact('projectProfileMember'));
+
+         }
+    //     public function archive($id){
 //          $archiveMember = ProjectMember::where('id',$id)->first();
 //            if(isset($archiveMember)){
 //             $archiveMember->status = 0;
@@ -35,7 +70,7 @@ class ShortlistController extends Controller
 //            return redirect()->route('admin.shortlist');
 //          }
 
-//     }
+    //     }
 //     public function active($id){
 //         $archiveMember = ProjectMember::where('id',$id)->first();
 //           if(isset($archiveMember)){
@@ -44,6 +79,6 @@ class ShortlistController extends Controller
 //           return redirect()->route('admin.shortlist');
 //         }
 
-//    }
+    //    }
 
 }

@@ -14,18 +14,16 @@ class BucketController extends Controller
     {
 
         $category = Categories::where('id', $request->parent_id)->first();
-        if ($request->has('child_id') && $request->child_id != '') {
+        if ($request->has('child_id') && $request->child_id != '' && $request->child_id != null) {
             $category = Categories::where('id', $request->child_id)->first();
-            // dd($request->child_id);
+
         }
-        dd($category->id);
         $users_id = explode(',', $request->user_id);
 
         foreach ($users_id as $user_id) {
             $bucketmember = ProjectMember::where('category_id', $category->id)
                 ->where('user_id', $user_id)
                 ->first();
-
             if (!isset($bucketmember)) {
                 $bucketmember = new ProjectMember();
                 $bucketmember->category_id = $category->id;

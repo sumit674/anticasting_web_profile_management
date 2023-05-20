@@ -12,10 +12,19 @@ class ProjectMember extends Model
     use HasFactory;
     protected $table ='project_members';
     public $timestamps = true;
-    public function category(){
+
+    // public function parent()
+    // {
+    //     return $this->belongsTo(Categories::class, 'category_id')
+    //         ->where('parent_id', 0);
+    // }
+
+    public function category()
+    {
         return $this->belongsTo(Categories::class,'category_id');
     }
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo(User::class,'user_id');
     }
 }

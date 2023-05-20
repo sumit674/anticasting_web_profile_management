@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\{UserProfileImage, UserProfile, IntroVideo};
+use App\Modules\Shortlist\Models\ProjectMember;
 
 class User extends Authenticatable
 {
@@ -48,6 +49,9 @@ class User extends Authenticatable
     public function introVideo()
     {
         return $this->hasOne(IntroVideo::class, 'user_id');
+    }
+    public function project_member(){
+         return $this->hasMany(ProjectMember::class,'user_id');
     }
     public function scopeFilterProfile($query)
     {
