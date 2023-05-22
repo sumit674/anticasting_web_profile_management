@@ -16,7 +16,7 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mynav" aria-controls="mynav"
         aria-expanded="false" aria-label="Toggle navigation" onclick="chnageIcon()" id="icon"> <span
             class="navbar-toggler-icon"></span> </button>
-       
+
     <div class="collapse navbar-collapse" id="mynav">
         <form action="" method="get">
             <ul class="navbar-nav d-lg-flex align-items-lg-center">
@@ -43,10 +43,14 @@
                 <li class="nav-item d-lg-none d-inline-flex"> </li>
             </ul>
         </form>
+
     </div>
 </nav>
+<div class="d-flex align-items-center">
+    <button type="button" class="btn btn-sm btn-warning"  data-toggle="modal" data-target="#broadcast-popup">Send Email</button>
+</div>
 <div class="ml-auto mt-1 mr-2">
-    <nav aria-label="Page navigation example">
+     <nav aria-label="Page navigation example">
         <ul class="pagination">
             {{-- <li class="page-item">
 				<a class="page-link" href="#" aria-label="Previous"> <span aria-hidden="true" class="font-weight-bold">&lt;</span> <span class="sr-only">Previous</span> </a>
@@ -63,3 +67,5 @@
         </ul>
     </nav>
 </div>
+
+@include('Actors::profiles.broadcast-email')

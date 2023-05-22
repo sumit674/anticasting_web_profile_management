@@ -78,7 +78,7 @@ class RegisterController extends Controller
                 // 'captcha.captcha' => 'Captcha text incorrect.'
             ],
         );
-      
+
         $activation_code = GeneralHelper::generateReferenceNumber();
         $mobileNumber = str_replace(' ', '', $request->mobile_no);
         $user = new User();
@@ -100,7 +100,7 @@ class RegisterController extends Controller
         $user_otp->mobile_code = '91';
         $user_otp->mobile_no = $mobileNumber;
         $user_otp->otp = $otp;
-      
+
         $user_otp->expiry_date = Carbon::now()->addMinutes(10);
 
         $user_otp->save();

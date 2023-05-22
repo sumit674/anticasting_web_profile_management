@@ -41,7 +41,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row">
+                                        {{--  <div class="row">
                                             <div class="col-lg-6 col-md-6 col-sm-6 mb-2">
                                                 <div class="checkbox">
                                                     <label for="active">Active</label>
@@ -49,7 +49,7 @@
 
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div>  --}}
 
                                    </div>
                          <center>

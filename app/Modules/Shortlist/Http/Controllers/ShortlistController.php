@@ -17,12 +17,6 @@ class ShortlistController extends Controller
      */
     public function index()
     {
-
-        //  $bucketMemberActive = ProjectMember::with('category')->with('user')->where('status',1)->get();
-        //  $bucketMemberArchive = ProjectMember::with('category')->with('user')->where('status',0)->get();
-        //  $bucketMemberActiveCount = ProjectMember::with('category')->with('user')->where('status',1)->count();
-        //  $bucketMemberArchiveCount = ProjectMember::with('category')->with('user')->where('status',0)->count();
-        // return view("Shortlist::index",compact('bucketMemberActive','bucketMemberArchive','bucketMemberActiveCount','bucketMemberArchiveCount'));
         $bucketMemberActive = ProjectMember::where('status', 1)
             ->select(
                 array(
@@ -53,32 +47,42 @@ class ShortlistController extends Controller
             ->groupBy('category_id')
             ->get();
 
-            //  dd($bucketMemberActive);
+        //  dd($bucketMemberActive);
         return view("Shortlist::index", compact('bucketMemberActive', 'bucketMemberArchives'));
     }
-         public function allProfileMember($cId)
-         {
-             $projectProfileMember = ProjectMember::where('category_id',$cId)->with('user')->get();
-             return view('Shortlist::profile-member',compact('projectProfileMember'));
+    public function allProfileMember($cId)
+    {
+        $projectProfileMember = ProjectMember::where('category_id', $cId)->with('user')->get();
+        return view('Shortlist::profile-member', compact('projectProfileMember'));
 
-         }
-    //     public function archive($id){
-//          $archiveMember = ProjectMember::where('id',$id)->first();
-//            if(isset($archiveMember)){
-//             $archiveMember->status = 0;
-//             $archiveMember->save();
-//            return redirect()->route('admin.shortlist');
-//          }
+    }
+    public function archive($id)
+    {
+        $archiveMember = ProjectMember::where('category_id', $id)->with('user')->get();
+        if (isset($archiveMember)) {
+            foreach($archiveMember as $member){
+                $member->status = 0;
+                $member->save();
+            }
 
-    //     }
-//     public function active($id){
-//         $archiveMember = ProjectMember::where('id',$id)->first();
-//           if(isset($archiveMember)){
-//            $archiveMember->status = 1;
-//            $archiveMember->save();
-//           return redirect()->route('admin.shortlist');
-//         }
+            return redirect()->route('admin.shortlist');
+        }
 
-    //    }
+    }
+    public function active($id)
+    {
+        $activeMember = ProjectMember::where('category_id', $id)->with('user')->get();
+        if (isset($activeMember)) {
+
+            foreach($activeMember as $member){
+
+                $member->status = 1;
+                $member->save();
+            }
+
+            return redirect()->route('admin.shortlist');
+        }
+
+    }
 
 }

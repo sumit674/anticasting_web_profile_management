@@ -32,7 +32,7 @@ class Categories extends Model
     public function child()
     {
         return $this->hasMany(Categories::class, 'parent_id')
-            ->where('active', 1);
+            ->where('parent_id','<>',0);
     }
 
 }

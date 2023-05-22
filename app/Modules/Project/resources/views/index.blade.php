@@ -19,14 +19,14 @@
                                             <li class="nav-item" id="active_tab">
                                                 <a class="nav-link active" id="active" data-toggle="tab"
                                                     href="#activelist" role="tab" aria-controls="active"
-                                                    aria-selected="true">Active <span
+                                                    aria-selected="true">Active ({{ count($activeItems) }})<span
                                                         class="marker"></span>
                                                 </a>
 
                                             </li>
                                             <li class="nav-item" id="archive_tab">
                                                 <a class="nav-link" id="archive" data-toggle="tab" href="#archivelist"
-                                                    role="tab" aria-controls="archive" aria-selected="false">Archive
+                                                    role="tab" aria-controls="archive" aria-selected="false">Archive ({{ count($archiveItems) }})
                                                    <span class="marker"></span></a>
                                             </li>
 
@@ -57,7 +57,6 @@
                                                                 <th class="text-center">Project name</th>
                                                                 <th class="text-center">Active breakdowns</th>
                                                                 <th class="text-center">Last Modified</th>
-                                                                <th class="text-center">Active</th>
                                                                 <th class="text-center">Action</th>
                                                             </tr>
                                                         </thead>
@@ -75,19 +74,15 @@
                                                                                 {{ $item->trans->project_name }}
                                                                             </a>
                                                                         </td>
+
                                                                          <td class="text-center">
                                                                             {{ count($item->child) }}
                                                                          </td>
                                                                          <td class="text-center">
                                                                             {{date('y-m-d h:i:s', strtotime($item?->updated_at)) }}
                                                                          </td>
+
                                                                         {{--  <td class="text-center">
-                                                                            <a href="{{ route('admin.projects.archive', $item->id) }}"
-                                                                                class="btn btn-danger btn-sm">
-                                                                                Archive
-                                                                            </a>
-                                                                        </td>  --}}
-                                                                        <td class="text-center">
                                                                             @if (isset($item->active) && $item->active == 1)
                                                                                 <span
                                                                                     class="badge badge-success">Active</span>
@@ -95,18 +90,18 @@
                                                                                 <span
                                                                                     class="badge badge-danger">Inactive</span>
                                                                             @endif
-                                                                        </td>
+                                                                        </td>  --}}
                                                                         <td class="text-center">
                                                                             <a href="{{ route('admin.projects.edit', $item->id) }}"
                                                                                 class="btn btn-success  btn-sm btn-flat btn-addon m-l-5">
                                                                                 <i class="ti-pencil"></i>
                                                                                 Edit
                                                                             </a>
-                                                                            <a href="{{ route('admin.projects.delete', $item->id) }}"
-                                                                                class="btn btn-danger  btn-sm btn-flat btn-addon m-l-5">
-                                                                                <i class="ti-trash"></i>
-                                                                                Delete
+                                                                            <a href="{{ route('admin.projects.archive',$item->id)}}"
+                                                                                class="btn btn-danger btn-sm">
+                                                                                Remove
                                                                             </a>
+
                                                                             {{--  <a href="{{ route('admin.projects.delete', $item->id) }}"
                                                                                 class="btn btn-danger  btn-sm btn-flat btn-addon m-l-5"
                                                                                 onclick="return confirm('Do you really want to delete this item?')">
@@ -125,6 +120,54 @@
                                             <div class="tab-pane fade" id="archivelist" role="tabpanel"
                                                 aria-labelledby="archive-tab">
                                                 <div class="table-responsive mt-2 border-top reload-table">
+                                                     <table class="table table-striped table-borderless">
+                                                        <thead>
+                                                            <tr>
+                                                                <th class="text-center">Project name</th>
+                                                                <th class="text-center">Active breakdowns</th>
+                                                                <th class="text-center">Last Modified</th>
+                                                                {{--  <th class="text-center">Active</th>  --}}
+                                                                <th class="text-center">Action</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @if (isset($archiveItems))
+                                                                @foreach ($archiveItems as $k => $item)
+                                                                    <tr>
+                                                                        <td class="text-center">
+                                                                            <a href="{{ route('admin.character', $item->id) }}">
+                                                                                {{ $item->trans->project_name }}
+                                                                            </a>
+                                                                        </td>
+                                                                        {{--  {{ dd(count($item->child)) }}  --}}
+                                                                         <td class="text-center">
+                                                                            {{ count($item->child) }}
+                                                                         </td>
+                                                                         <td class="text-center">
+                                                                            {{date('y-m-d h:i:s', strtotime($item?->updated_at)) }}
+                                                                         </td>
+                                                                        {{--  <td class="text-center">
+                                                                            @if (isset($item->active) && $item->active == 1)
+                                                                                <span
+                                                                                    class="badge badge-success">ACTIVE
+                                                                                </span>
+                                                                                @else
+                                                                                <span
+                                                                                class="badge badge-danger">INACTIVE
+                                                                                </span>
+                                                                            @endif
+                                                                        </td>  --}}
+                                                                         <td class="text-center">
+                                                                            <a href="{{ route('admin.projects.active', $item->id) }}"
+                                                                                class="btn btn-success btn-sm">
+                                                                                Active
+                                                                            </a>
+                                                                        </td>
+                                                                    </tr>
+                                                                @endforeach
+                                                            @endif
+                                                        </tbody>
+                                                    </table>
                                                 </div>
 
                                             </div>

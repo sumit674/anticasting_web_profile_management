@@ -24,6 +24,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'admin']], function (
     Route::get('/profile/{id}', [ActorsController::class, 'actorProfileDetails'])->name('admin.profile-detail');
     Route::get('/rating', [ActorsController::class, 'actorRating'])->name('admin.rating');
     Route::get('/rating-rating-star', [ActorsController::class, 'actorRemoveRatingStar'])->name('admin.rating.remove');
+    /*Send Broadcast email */
+    Route::post('/send-email',[ActorsController::class,'actorSendBroadcastEmail'])->name('admin.broadcast');
 
 });
 

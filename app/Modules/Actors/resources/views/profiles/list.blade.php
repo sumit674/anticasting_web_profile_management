@@ -1,7 +1,8 @@
 @extends('admin.layouts.admin_master')
-@section('title','Actor')
+@section('title', 'Actor')
 @section('header')
     <link rel="stylesheet" href="{{ asset('assets/admin/css/profiles/main-popover.css') }}" />
+    {{--  <link rel="stylesheet" href="{{ asset('assets/admin/css/profiles/broadcast-email.css') }}" />  --}}
     {{-- <link rel="stylesheet" href="{{ asset('assets/admin/css/actors.css') }}" /> --}}
     <style>
         .main.page-header {
@@ -34,13 +35,13 @@
         }
 
         /* .bucket-wrapper {
-                                            height: 50px;
-                                            border-top: 1px solid rgba(255, 255, 255, .2);
-                                            border-bottom: 1px solid rgba(255, 255, 255, .2);
-                                            position: sticky;
-                                            bottom: 0;
-                                            width: 100%;
-                                        } */
+                                                height: 50px;
+                                                border-top: 1px solid rgba(255, 255, 255, .2);
+                                                border-bottom: 1px solid rgba(255, 255, 255, .2);
+                                                position: sticky;
+                                                bottom: 0;
+                                                width: 100%;
+                                            } */
         .bucket-wrapper {
             position: sticky;
             /* left: 0; */
@@ -243,6 +244,7 @@
             }
             document.getElementById('actor-ids').innerHTML = array.length;;
             document.querySelector('#bucket-item').value = array.join(',');
+            document.querySelector('#send-broadcast-user-email').value = array.join(',');
 
             //  alert(array.join(','))
             if (array.length === 0) {
@@ -330,35 +332,24 @@
                     },
                     dataType: 'json',
                     success: function(result) {
-                      $('#child_id').html(
+                        $('#child_id').html(
                             '<option value="">-- No Character --</option>');
                         $.each(result.categories, function(key, value) {
 
                             $("#child_id").append('<option value="' + value
-                                .id +'">' + value.trans.project_name + '</option>');
+                                .id + '">' + value.trans.project_name + '</option>');
                         });
                     }
                 });
             });
         });
-        /*Select Project categories validation.*/
-        $(document).ready(function(){
-
-            $("#bucket-form").validate({
-                debug: false,
-                errorClass: 'text-danger',
-                errorElement: "span",
-                rules: {
-                parent_id: "required"
-               },
-               messages: {
-                parent_id: "Please select parent project."
-
-               }
-            })
-        })
-        $('#btn').on('click', function() {
-            $("#bucket_list").valid();
-        });
+        ClassicEditor
+        .create( document.querySelector( '#message' ) )
+        .then( editor => {
+                console.log( editor );
+        } )
+        .catch( error => {
+                console.error( error );
+        } );
     </script>
 @endsection

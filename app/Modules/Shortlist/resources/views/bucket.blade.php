@@ -48,36 +48,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="d-flex flex-row mt-2">
-                        {{--  <select name="parent_id" class="form-control w-75">
-                            @isset($project_categories)
-                                @foreach ($project_categories as $category)
-                                    <optgroup label="{{count($category->parents)==0 ? $category?->trans?->project_name : ' '}}">
-                                            @if (isset($category->parents) && count($category->parents) > 0)
-                                                <option value="{{ $category->id }}">{{ $category->trans->project_name }}</option>
-                                            @endif
-                                    </optgroup>
-
-                                @endforeach
-                            @endisset
-                        </select>  --}}
-                        {{--  <select id="Select Project"
-                            class="form-control w-75 bucket-select">
-                            <option></option>
-                            @foreach ($project_categories as $category)
-                                <optgroup label="{{ $category?->trans?->project_name }}11">
-
-                                    @if ($category->parent_id >= 0)
-                                        @foreach ($category->child as $subcategory)
-                                            <option value="{{ $subcategory->id }}">
-                                                {{ $subcategory?->trans?->project_name }}
-                                            </option>
-                                        @endforeach
-                                    @endif
-
-                                </optgroup>
-                            @endforeach
-                        </select>  --}}
-                        <select id="Select Project" name="parent_id" class="form-control parent_id">
+                       <select id="Select Project" name="parent_id" class="form-control parent_id">
                             <option value="">Select Project </option>
                             @foreach ($project_categories as $category)
                                 <option value="{{ $category?->id }}">{{ $category?->trans?->project_name }}</option>

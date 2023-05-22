@@ -9,6 +9,7 @@ use App\Modules\Actors\Models\{Bucket};
 use App\Modules\Project\Models\{Categories,CategoryTrans};
 use App\Helpers\PaginateCollection;
 use Illuminate\Support\Facades\DB;
+use Mail;
 
 class ActorsController extends Controller
 {
@@ -219,5 +220,27 @@ class ActorsController extends Controller
             ]);
 
         return response()->json(['success' => true, 'message' => $request->user_id]);
+    }
+    public function actorSendBroadcastEmail(Request $request){
+
+        if($request->has('user_id') && $request->user_id != ''){
+            $users_id = explode(',', $request->user_id);
+            $users = User::whereIn('id', $users_id)->get();
+            foreach( $users as $user){
+                Mail::send('emails.promotional', ['Firstname' => $user->first_name, 'Lastname' => $user->last_name, 'email' => $user->email,'messages'=>$request->message], function ($msg) use ($user, $request) {
+                    $msg->to($user->email);
+                    $msg->subject($request->subject);
+
+                });
+            }
+            return redirect()->back()->with('success',"Massage has been sent for each user");
+
+        }
+        else{
+            return redirect()->back()->with('errorsenduser',"You have don't select any user");
+        }
+
+        // dd('Not User');
+
     }
 }

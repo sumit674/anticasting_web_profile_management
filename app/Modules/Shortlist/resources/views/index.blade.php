@@ -66,9 +66,9 @@
                                                                          <td class="text-center">{{ $member?->numberOfProfiles }}</td>
                                                                          <td class="text-center">{{ date('y-m-d h:i:s', strtotime($member->updated_at)) }}</td>
                                                                          <td class="text-center">
-                                                                           {{--  <a class="btn btn-danger btn-sm" href="{{route('admin.shortlist.archive',$member?->id)}}">
-                                                                              Archive
-                                                                           </a>  --}}
+                                                                           <a class="btn btn-danger btn-sm" href="{{route('admin.shortlist.archive',$member?->category_id)}}">
+                                                                              Remove
+                                                                           </a>
                                                                         </td>
                                                                     </tr>
                                                                 @endforeach
@@ -80,6 +80,40 @@
                                             </div>
                                             <div class="tab-pane fade" id="archivelist" role="tabpanel"
                                                 aria-labelledby="archive-tab">
+                                                <div class="table-responsive mt-2 border-top reload-table">
+                                                    <table class="table table-striped table-borderless">
+                                                        <thead>
+                                                            <tr>
+
+                                                                <th class="text-center">List name</th>
+                                                                <th class="text-center">Number of profiles</th>
+                                                                <th class="text-center">Last modified</th>
+                                                                <th class="text-center">Action</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @isset($bucketMemberArchives)
+                                                                @foreach ($bucketMemberArchives as $member)
+                                                                    <tr>
+                                                                         <td class="text-center">
+                                                                          <a href="{{route('admin.show.allMember',$member?->category_id)}}">
+                                                                            {{ $member?->category?->trans?->project_name }} @if(isset($member?->category?->parent?->trans?->project_name)) - {{ $member?->category?->parent?->trans?->project_name }} @endif
+                                                                            </a>
+                                                                        </td>
+                                                                         <td class="text-center">{{ $member?->numberOfProfiles }}</td>
+                                                                         <td class="text-center">{{ date('y-m-d h:i:s', strtotime($member->updated_at)) }}</td>
+                                                                         <td class="text-center">
+                                                                           <a class="btn btn-success btn-sm" href="{{route('admin.shortlist.active',$member?->category_id)}}">
+                                                                              Active
+                                                                           </a>
+                                                                        </td>
+                                                                    </tr>
+                                                                @endforeach
+                                                            @endisset
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
