@@ -74,7 +74,8 @@
         overflow-y: auto;
         width: auto;
         bottom: 4rem; */
-         height: auto !important;
+         height: 650px;
+         overflow-y: scroll;
      }
 
      .hero h1 {
@@ -154,9 +155,9 @@
      }
 
      .image-container {
-         width: 73% !important;
+         width: 100% !important;
          display: inline-block;
-         margin-left: 54px;
+         margin-left: 0px;
      }
 
      .c-edit-panel__header {
@@ -188,20 +189,20 @@
     }
      .card__content_cl_1 {
          padding-bottom: 2px;
-         margin-left: 55px !important;
+         margin-left: 0px !important;
      }
 
      .card__content_cl_2 {
          padding-top: 0px;
-         margin-left: 55px !important;
+         margin-left: 0px !important;
      }
 
      .p-main-page__content {
          background-color: #f5f4f9;
          margin-bottom: 10px;
-         padding: 10px 7px 10px 0;
-         width: 73%;
-         margin-left: 55px;
+         padding: 10px 0px 10px 0;
+         width: 100%;
+         margin-left: 0px;
      }
 
      .popover-header {
@@ -225,10 +226,13 @@
         background-position: left, left, right;
         background-repeat: no-repeat, no-repeat, no-repeat;
         position: relative;
-        padding-top:47px;
+        padding-top:60px;
         height: 170px;
     }
 
+    .login-card{
+        overflow-y: scroll;
+    }
  }
 
  @media only screen and (device-width: 768px) {

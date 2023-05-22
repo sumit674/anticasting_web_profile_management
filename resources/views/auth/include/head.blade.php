@@ -5,4 +5,5 @@
 <link href="{{ asset('assets/auth/new-auth/css/style.css') }}" rel="stylesheet"/>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="{{asset('assets/website/css/alertbox.css')}}"/>
- <link rel="stylesheet" href="{{ asset('assets/toast/jquery.toast.css') }}" />
+<link rel="stylesheet" href="{{ asset('assets/toast/jquery.toast.css') }}" />
+<link rel="stylesheet" href="{{asset('assets/website/css/responsive.css')}}"/>
