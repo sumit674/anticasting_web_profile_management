@@ -30,18 +30,9 @@
         }
 
         .popover {
-            max-width: 100% !important;
-            margin: 18px 0 0 26px;
+            max-width: 75% !important;
+            margin: 18px 0 0 160px !important;
         }
-
-        /* .bucket-wrapper {
-                                                height: 50px;
-                                                border-top: 1px solid rgba(255, 255, 255, .2);
-                                                border-bottom: 1px solid rgba(255, 255, 255, .2);
-                                                position: sticky;
-                                                bottom: 0;
-                                                width: 100%;
-                                            } */
         .bucket-wrapper {
             position: sticky;
             /* left: 0; */
@@ -110,7 +101,7 @@
                                         ->format('%y years');
                                 @endphp
                                 <div class="col-lg-3 col-sm-6 col-md-6 pt-md-0 pt-3">
-                                    <div class="card d-flex flex-column align-items-center actor-grid">
+                                    <div class="card d-flex flex-column actor-grid">
                                         <div class="card-img c-card__image-container">
                                             <div style="cursor: pointer;" data-toggle="popover" {{-- data-poload="{{ route('admin.actors.detail', $item->id) }}" --}}>
                                                 @isset($item->images[0]->image)
@@ -272,7 +263,8 @@
                     placement: "bottom",
                     container: 'body',
                     trigger: 'focus',
-                    content: d
+                    content: d,
+                    offset: '0 50px'
                 }).popover('show');
             });
         });

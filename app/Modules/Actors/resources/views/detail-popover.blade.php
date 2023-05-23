@@ -31,12 +31,24 @@
         gap: 10px;
         object-fit: contain;
         position: fixed;
-    }
+        border-radius: 35px;
+        margin-top: 9px;
+        border: 1px solid #dadada;
 
+    }
+    .main-image {
+        max-width: 265px;
+        width: 77%;
+        height: auto;
+        margin-left: 32px;
+        border-radius: 18px;
+        margin-top: 20px;
+
+    }
     .gallary-image img {
         display: block;
         box-shadow: 2px 2px 2px 1px rgb(87, 88, 88);
-        width: 330px !important;
+        width: 260px !important;
     }
 
     .gallary-image img:hover {
@@ -163,46 +175,27 @@
         object-fit: cover;
 
     }
-
-    .mainImage {
-        margin-right: 120px;
-        margin-top: 5px;
-        width: 100%;
-        border: 1px solid black;
-    }
-
     .divId {
-        margin: 0 40px;
+        margin: 10px 44px;
         display: inline-flex;
-        width: 212px;
+        width: 226px;
         border: 1px solid #b3aeae;
         cursor: pointer;
+        border-radius: 8px;
     }
-
-    .divId.imgStyle {
-        display: flex;
-        opacity: 0.4;
-        transition: 0.4s;
-        height: 100px;
-        box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19)
+    .imgStyle {
+        width: 70px;
+        height: 64px;
+        margin: 2px;
+        object-fit: cover;
+        border-radius: 15px;
+        border: 1px solid;
+        padding: 3px;
     }
     /*main-image portarit landscap*/
     .gallary-image{
         overflow: hidden;
     }
-
-    .gallary-image.landscape {
-        max-width: 275px;
-        width: 100%;
-        height: auto;
-    }
-   .gallary-image.portrait {
-        width: auto;
-        height: 226px;
-        background-size: cover;
-        background-position: center;
-    }
-
     /* Rating Star Widgets Style */
     .rating-stars ul {
         list-style-type: none;
@@ -429,7 +422,7 @@
                                                     <h4 class="c-edit-panel__header">About me</h4>
                                                     <div class="c-edit-panel__controls"></div>
                                                 </div>
-                                                <div class="c-further-information">
+                                                <div class="c-further-information-about-me">
                                                     <p class="text-body">
                                                         {!! $actor?->profile?->about_me !!}
                                                     </p>
@@ -449,8 +442,8 @@
                                                     <div class="row">
                                                         <div class="col-md-4 mb-1">
                                                             @if ($actor?->profile?->work_reel1 != null)
-                                                                <div>
-                                                                    <iframe width="80%"
+                                                                <div class="">
+                                                                    <iframe width="100%" height="100%"
                                                                         src="{{ $actor?->profile?->work_reel1 }}"
                                                                         frameborder="0"
                                                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -466,8 +459,8 @@
                                                         </div>
                                                         <div class="col-md-4 mb-3">
                                                             @if ($actor?->profile?->work_reel2 != null)
-                                                                <div>
-                                                                    <iframe width="80%"
+                                                                <div class=" ">
+                                                                    <iframe width="100%" height="100%"
                                                                         src="{{ $actor?->profile?->work_reel2 }}"
                                                                         frameborder="0"
                                                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -482,11 +475,13 @@
                                                         </div>
                                                         <div class="col-md-4 mb-3">
                                                             @if ($actor?->profile?->work_reel3 != null)
-                                                                <iframe width="80%"
+                                                            <div class=" ">
+                                                                <iframe width="100%" height="100%"
                                                                     src="{{ $actor?->profile?->work_reel3 }}"
                                                                     frameborder="0"
                                                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                                                     allowfullscreen></iframe>
+                                                            </div>
                                                             @else
                                                                 <div class="d-flex justify-content-center">
                                                                     <img src="{{ asset('assets/website/images/youtube.png') }}"
@@ -507,7 +502,6 @@
             @endif
         </div>
     </div>
-    {{ $selectStar->rating }}
 </div>
 </div>
 <input type="hidden" id="selected_rating" value="{{$selectStar->rating}}" />

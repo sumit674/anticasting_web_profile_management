@@ -1395,15 +1395,12 @@ width: 100%;
 .c-card__content {
     width: 100%;
     /* padding: 10px; */
-    padding-top: 22px;
+    padding-top: 32px;
 }
-.card__content{
-
-width: 75%;
-margin-left: 80px;
-
+.card__content {
+    width: 75%;
+    margin-left: 98px;
 }
-
 .card__content label{
 
 color: #26247b;
@@ -1550,12 +1547,12 @@ font-size: 15px;
 margin-bottom: 0;
 }
 .c-edit-panel__header {
-font-size: 18px;
-font-weight: 600;
-line-height: inherit;
-margin: 0;
-padding: 10px;
-color: #220202;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: inherit;
+    margin: 0;
+    padding: 10px;
+    color: #220202;
 }
 
 .fa-2x {
@@ -1706,25 +1703,17 @@ display: flex;
 
 }
 
-
-
 .p-main-page__content {
-
-background-color: #f5f4f9;
-
-margin-bottom: 10px;
-
-padding: 10px 7px 10px 0;
-
-margin-left:80px;
-
+    background-color: #f5f4f9;
+    margin-bottom: 10px;
+    padding: 10px 7px 10px 0;
+    margin-left: 94px;
 }
 
-.p-main-page__about-me-section, .p-main-page__credits-section, .p-main-page__skills-section,
-.p-main-page__training-section {
-
-background-color: #fff;
-
+.p-main-page__about-me-section, .p-main-page__credits-section, .p-main-page__skills-section, .p-main-page__training-section {
+    background-color: #fff;
+    border-radius: 25px;
+    border: 1px solid #dadada;
 }
 
 .c-edit-panel {
@@ -1738,13 +1727,18 @@ display: flex;
 justify-content: space-between;
 
 }
-
-
+.c-further-information-about-me{
+    font-size: 15px;
+    padding: 0px;
+    word-break: break-word;
+    overflow-y: scroll;
+    height: 130px;
+    padding-left: 20px;
+}
 
 .c-further-information {
 
 font-size: 14px;
-
 padding: 10px;
 
 word-break: break-word;
