@@ -126,3 +126,7 @@ Route::get('/our-work', [HomeController::class, 'ourWork'])->name('our-work');
 Route::get('/reload-captcha', [CommonController::class, 'reloadCaptcha'])->name('reload-captcha');
 
 
+/***
+ * CRON
+ */
+Route::get('cron-send-picture-notification', [CommonController::class, 'sendPictureNotification']);

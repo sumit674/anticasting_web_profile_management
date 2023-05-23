@@ -117,7 +117,6 @@
                 success: function(data) {
 
                     if (data.success == true) {
-                        //  toastr.success(data.message);
                         $.toast({
                             heading: 'Success',
                             text: data.message,

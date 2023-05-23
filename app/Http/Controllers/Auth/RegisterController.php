@@ -55,11 +55,16 @@ class RegisterController extends Controller
                 'password' => [
                     'required',
                     'string',
-                    'min:8', // must be at least 10 characters in length
-                    'regex:/[a-z]/', // must contain at least one lowercase letter
-                    'regex:/[A-Z]/', // must contain at least one uppercase letter
-                    'regex:/[0-9]/', // must contain at least one digit
-                    'regex:/[@$!%*#?&]/', // must contain a special character
+                    'min:8',
+                    // must be at least 10 characters in length
+                    'regex:/[a-z]/',
+                    // must contain at least one lowercase letter
+                    'regex:/[A-Z]/',
+                    // must contain at least one uppercase letter
+                    'regex:/[0-9]/',
+                    // must contain at least one digit
+                    'regex:/[@$!%*#?&]/',
+                    // must contain a special character
                 ],
                 'confirm_password' => ['required', 'string', 'regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$/', 'min:8', 'same:password'],
                 // 'captcha' => 'required|captcha'
@@ -91,6 +96,7 @@ class RegisterController extends Controller
         $user->email = $request->email;
         $user->status = 1;
         $user->user_type = '0';
+        $user->picture_updated_at = date('Y-m-d');
         $user->save();
 
         /* Otp */

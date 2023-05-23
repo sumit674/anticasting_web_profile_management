@@ -15,7 +15,7 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
 
-            
+
             $table->id();
             $table->string('name')->nullable();
             $table->string('username')->nullable();
@@ -29,19 +29,19 @@ class CreateUsersTable extends Migration
             $table->string('rating')->nullable();
             $table->string('age')->nullable();
             $table->boolean('status')->default(0)
-            ->comment('0=>INACTIVE,1=>ACTIVE');
+                ->comment('0=>INACTIVE,1=>ACTIVE');
             $table->string('image')->nullable();
-            $table->enum('user_type',['0','1'])->default(0)->
-            comment('0=>USER,1=>ADMIN');
+            $table->enum('user_type', ['0', '1'])->default(0)->
+                comment('0=>USER,1=>ADMIN');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
             $table->rememberToken();
             $table->timestamps();
-          
 
-            
-         
-          
+
+
+
+
         });
     }
 
@@ -54,4 +54,5 @@ class CreateUsersTable extends Migration
     {
         Schema::dropIfExists('users');
     }
-};
+}
+;

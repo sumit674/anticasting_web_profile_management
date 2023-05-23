@@ -190,6 +190,11 @@ class ProfileController extends Controller
                 $profile_image->field_name = 'image1';
                 $profile_image->image = $file;
                 $profile_image->save();
+
+                // update profile pic date
+                $user->picture_updated_at = date('Y-m-d');
+                $user->picture_email_sent = false;
+                $user->save();
             }
             if ($request->has('image2') && $request->image2 != '') {
                 $profile_image = UserProfileImage::where('user_id', $userId)
