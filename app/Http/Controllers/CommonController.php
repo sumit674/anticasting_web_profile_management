@@ -17,7 +17,7 @@ class CommonController extends Controller
     public function sendPictureNotification()
     {
         // $userProfile = UserProfile::whereRaw('MONTH(date_of_birth) = MONTH(NOW())')->get();
-        $userProfile = User::where('picture_updated_at', '<=', Carbon::now()->subDays(33)->toDateTimeString())
+        $userProfile = User::where('picture_updated_at', '<=', Carbon::now()->subDays(180)->toDateTimeString())
             ->where('picture_email_sent', false)
             ->where('user_type', '0')
             ->get();

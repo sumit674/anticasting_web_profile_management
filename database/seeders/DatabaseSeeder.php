@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Modules\EmailTempletes\Database\Seeders\EmailTemplateTableSeeder;
 use Illuminate\Database\Seeder;
 use App\Modules\Settings\Database\Seeders\SettingTableSeeder;
 use App\Modules\Users\Database\Seeders\UsersTableSeeder;
@@ -26,5 +27,6 @@ class DatabaseSeeder extends Seeder
        $this->call(UsersTableSeeder::class);
        $this->call(SettingTableSeeder::class);
        $this->call(StateTableSeeder::class);
+       $this->call(EmailTemplateTableSeeder::class);
     }
 }

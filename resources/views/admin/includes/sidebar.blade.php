@@ -27,10 +27,13 @@
 
                 <li class="{{ request()->routeIs('admin.projects') ? 'active' : '' }}"><a
                         href="{{ route('admin.projects') }}"><i class="fa fa-folder"></i></i>Project</a></li>
+
                 <li class="{{ request()->routeIs('admin.shortlist') ? 'active' : '' }}"><a
                         href="{{ route('admin.shortlist') }}"><i class="fa-solid fa-list"></i></i>Shortlist</a></li>
                 {{-- <li class="{{ request()->routeIs('admin.actors.mange') ? 'active' : '' }}"><a
                         href="{{ route('admin.actors.mange') }}"><i class="ti-user"></i>Manage Actors</a></li> --}}
+                <li class="{{ request()->routeIs('admin.emailtempletes') ? 'active' : '' }}"><a
+                        href="{{ route('admin.emailtempletes') }}"><i class="fa-solid fa-envelope"></i>EmailTemplate</a></li>
                 <li><a href="#"><i class='fa-solid fa-campground'></i></i>Camping</a></li>
 
                 <li class="{{ request()->routeIs('admin.changePassword') ? 'active' : '' }}"><a
