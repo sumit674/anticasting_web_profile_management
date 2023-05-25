@@ -27,8 +27,9 @@
                                                             <td  class="text-center">{{$key+1}}</td>
                                                             <td  class="text-center">{{trim($item?->trans?->subject)}}</td>
                                                             <td  class="text-center">
-                                                                <a href="{{route('admin.emailtempletes.edit',$item->id)}}">
-                                                                    <i class="fa-solid fa-pen-to-square fa-2x" style="color:rgb(155 101 205);"></i>
+                                                                <a href="{{route('admin.emailtempletes.edit',$item->id)}}" style="color:rgb(155 101 205);">
+                                                                    <i class="fa-solid fa-pen-to-square fa-1x"></i>
+                                                                    Edit
                                                                 </a>
                                                             </td>
                                                         </tr>

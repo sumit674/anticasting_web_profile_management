@@ -14,37 +14,37 @@
                 <div class="col-lg-12">
                     <div class="card mt-5">
                         <div class="card-body">
-                            <form action="{{ route('admin.emailtempletes.store') }}" method="post">
+                            <form action="{{ route('admin.emailtempletes.update',$item->id) }}" method="post">
                                 @csrf
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12 col-sm-12">
-                                        <label class="form-label" id=""><b>Project name
+                                        <label class="form-label" id=""><b>Subject
                                             </b><span style="color:red;">*</span>
                                         </label>
                                         <div class="form-group">
-
-                                            <input type="text" name="project_name" class="form-control" id="project_name"
-                                                placeholder="Enter project name" />
-                                            @error('project_name')
+                                           <input type="text" name="subject" class="form-control" id="subject"
+                                                placeholder="Enter subject" value="{{ old('subject',$trans?->subject) }}" />
+                                            @error('subject')
                                                 <span style="color:red;"><b>{{ $message }}</b></span>
                                             @enderror
 
                                         </div>
                                     </div>
                                 </div>
-                                {{--  <div class="row">
-                                        <div class="col-lg-6 col-md-6 col-sm-6 mb-2">
-                                            <div class="checkbox">
-                                                <label for="active">Active</label>
-                                                    <input type="checkbox" id="active" name="active">
-
-                                            </div>
+                                 <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <label class="form-label" id=""><b>Content</b>
+                                            {{--  <span style="color:red;">*</span>  --}}
+                                        </label>
+                                        <div class="form-group">
+                                           <textarea  name="content" class="form-control" id="content">{{$trans?->html_content}}</textarea>
                                         </div>
-                                    </div>  --}}
+                                    </div>
+                                </div>
 
                         </div>
                         <center>
-                            <input type="submit" class="btn btn-danger" value="Save" />
+                            <input type="submit" class="btn btn-success" value="Update" />
                         </center>
                         </form>
                     </div>
@@ -52,4 +52,13 @@
             </div>
     </div>
     </section>
+@endsection
+@section('footer')
+<script>
+    $(document).ready(function() {
+        $('#content').summernote();
+      });
+</script>
+
+
 @endsection
