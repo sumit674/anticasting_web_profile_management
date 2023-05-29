@@ -9,6 +9,7 @@
         margin: auto;
         /* max-height: 30%; */
         max-height: 88px;
+        overflow: hidden;
     }
   .card-container.dark {
         color: #fff;

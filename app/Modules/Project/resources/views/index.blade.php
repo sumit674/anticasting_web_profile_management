@@ -44,16 +44,14 @@
                                                     </div>
                                                 </div>
                                                 <div class="justify-content-start" style="margin-left:8px;">
-                                                    <input type="checkbox" class="mt-3 ms-5" id="check_all" />
+                                                    {{--  <input type="checkbox" class="mt-3 ms-5" id="check_all" />
                                                     <span class="ms-1" style="margin-left:8px; font-size:16px;">Select
-                                                        all</span>
+                                                        all</span>  --}}
                                                 </div>
                                                 <div class="table-responsive mt-2 border-top reload-table">
                                                     <table class="table table-striped table-borderless">
                                                         <thead>
                                                             <tr>
-                                                                <th></th>
-
                                                                 <th class="text-center">Project name</th>
                                                                 <th class="text-center">Active breakdowns</th>
                                                                 <th class="text-center">Last Modified</th>
@@ -64,11 +62,11 @@
                                                             @if (isset($activeItems))
                                                                 @foreach ($activeItems as $k => $item)
                                                                     <tr>
-                                                                        <td>
+                                                                        {{--  <td>
                                                                             <input type="checkbox" name="all_list_item"
                                                                                 class="select_all_list"
                                                                                 value="{{ $item->id }}" />
-                                                                        </td>
+                                                                        </td>  --}}
                                                                         <td class="text-center">
                                                                             <a href="{{ route('admin.character', $item->id) }}">
                                                                                 {{ $item->trans->project_name }}
@@ -99,7 +97,7 @@
                                                                             </a>
                                                                             <a href="{{ route('admin.projects.archive',$item->id)}}"
                                                                                 class="btn btn-danger btn-sm">
-                                                                                Remove
+                                                                                Archive
                                                                             </a>
 
                                                                             {{--  <a href="{{ route('admin.projects.delete', $item->id) }}"

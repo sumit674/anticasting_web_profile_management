@@ -3,6 +3,11 @@
 @section('content')
 <script src="{{ asset('assets/auth/toastr.min.js') }}" defer ></script>
 <script src="{{ asset('assets/auth/jquery-3.6.0.js') }}"></script>
+<style>
+    .card{
+        border-radius:25px !important;
+    }
+</style>
 <div class="main">
     <script>
         @if(Session::has('message'))

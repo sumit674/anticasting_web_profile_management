@@ -24239,7 +24239,7 @@ a.c-step-tracker-item:focus .c-step-tracker-item__label,a.c-step-tracker-item:ho
 .c-agency__card-agency-info {
     display: flex;
     flex-direction: column;
-    padding: 10px 44px 10px 0
+    padding: 10px 44px 10px 45px;
 }
 
 @media(max-width: 720px) {

@@ -34,10 +34,11 @@ class ProjectController extends Controller
 
         $validator = $request->validate(
             [
-                'project_name' => ['required'],
+                'project_name' => 'required|max:30',
             ],
             [
                 'project_name.required' => 'Please enter project name',
+                'project_name.max' => 'project name should be 30 characters.',
             ]
         );
 
@@ -63,11 +64,11 @@ class ProjectController extends Controller
     {
         $validator = $request->validate(
             [
-
-                'project_name' => ['required'],
+                 'project_name' => 'required|max:30',
             ],
             [
                 'project_name.required' => 'Please enter project name',
+                'project_name.max' => 'project name should be 30 characters.',
             ]
         );
 

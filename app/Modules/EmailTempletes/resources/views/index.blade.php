@@ -1,6 +1,11 @@
 @extends('admin.layouts.admin_master')
 @section('title','EmailTemplete')
 @section('content')
+<style>
+    .card{
+        border-radius:25px !important;
+    }
+</style>
 <div class="main">
     <div class="container-fluid">
         <!-- /# row -->

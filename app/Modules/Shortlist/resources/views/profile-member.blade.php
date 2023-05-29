@@ -7,14 +7,20 @@
     <div class="main">
         <div class="container-fluid mt-5">
             <section id="main-content">
-                <div class="g-content-area">
-                    <div class="c-checkbox c-shortlist-performers-table__checkbox-select-all g-col-lg-4">
+                <div class="g-content-area ">
+                    {{--  <div class="c-checkbox c-shortlist-performers-table__checkbox-select-all g-col-lg-4">
                         <div class="c-checkbox__wrapper c-checkbox__additionalMargin"><input type="checkbox"
                                 name="chkSelectAll" id="chkSelectAll" value="chkSelectAll">
                             <div class="c-checkbox__box"></div><label class="c-checkbox__label" for="chkSelectAll">Select
                                 all</label>
                         </div>
-                    </div>
+                    </div>  --}}
+                </div>
+                <div class="d-flex justify-content-start mt-5">
+                    <a href="{{route('admin.shortlist')}}" class="btn btn-sm" style="background-color:#26247b;color:white;">
+                        <i class='fas fa-caret-left' style='font-size:18px;'></i><i class='fas fa-caret-left' style='font-size:18px;'></i>
+                        Back
+                    </a>
                 </div>
                 @isset($projectProfileMember)
                     @foreach ($projectProfileMember as $key => $item)
@@ -60,7 +66,7 @@
                                 </div>
                                 @php
                                     $dateOfBirth = $item?->user?->profile?->date_of_birth;
-                                    
+
                                     $age = \Carbon\Carbon::parse($dateOfBirth)
                                         ->diff(\Carbon\Carbon::now())
                                         ->format('%y years');
@@ -86,12 +92,12 @@
                                     </div>
                                 </div>
 
-                                <div class="c-checkbox c-performer-card__select">
+                                {{--  <div class="c-checkbox c-performer-card__select">
                                     <div class="c-checkbox__wrapper c-checkbox__additionalMargin"><input type="checkbox"
                                             name="selectCard" value="selectCard">
                                         <div class="c-checkbox__box"></div>
                                     </div>
-                                </div>
+                                </div>  --}}
                             </div>
                         </div>
                     @endforeach

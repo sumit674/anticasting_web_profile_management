@@ -1,10 +1,15 @@
 @extends('admin.layouts.admin_master')
-@section('title','Project')
+@section('title', 'Project')
 
 <style>
+    .edit-card {
+        border-radius: 30px !important;
+    }
 
-    .edit-card{
-        border-radius:30px !important;
+    .small-character {
+        color: red;
+        font-size: 11px;
+        font-weight: 700;
     }
 </style>
 
@@ -23,26 +28,27 @@
                     <div class="card mt-5 edit-card">
                         <div class="card-body">
                             {{--  {{ dd($catItem) }}  --}}
-                            <form action="{{ route('admin.projects.update',$catItem->id) }}" method="post" enctype="multipart/form-data">
+                            <form action="{{ route('admin.projects.update', $catItem->id) }}" method="post"
+                                enctype="multipart/form-data">
                                 @csrf
-                                     <div class="row">
-                                           <div class="col-lg-12 col-md-12 col-sm-12">
-                                                <label class="form-label" id=""><b>Project name
-                                                    </b><span style="color:red;">*</span>
-                                                </label>
-                                                <div class="form-group">
-                                                 <input type="text" name="project_name" class="form-control"
-                                                        id="project_name"
-                                                        value="{{ old('project_name', $catItem?->trans?->project_name) }}"
-                                                        placeholder="Enter project name" />
-                                                    @error('project_name')
-                                                        <span style="color:red;"><b>{{ $message }}</b></span>
-                                                    @enderror
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <label class="form-label" id=""><b>Project name
+                                                (<small class="small-character">Only 30 Character</small>)
+                                            </b><span style="color:red;">*</span>
+                                        </label>
+                                        <div class="form-group">
+                                            <input type="text" name="project_name" class="form-control" id="project_name"
+                                                value="{{ old('project_name', $catItem?->trans?->project_name) }}"
+                                                placeholder="Enter project name" />
+                                            @error('project_name')
+                                                <span style="color:red;"><b>{{ $message }}</b></span>
+                                            @enderror
 
-                                                </div>
-                                            </div>
                                         </div>
-                                        {{--  <div class="row">
+                                    </div>
+                                </div>
+                                {{--  <div class="row">
                                             <div class="col-lg-6 col-md-6 col-sm-6">
                                                 <div class="checkbox">
                                                     <label for="active">Active</label>
@@ -51,11 +57,22 @@
                                                 </div>
                                             </div>
                                         </div>  --}}
+                                 <div class="row">
+                                    <div class="col-lg-2 col-md-2 col-sm-2">
 
-                        </div>
-                        <center>
-                            <input type="submit" class="btn btn-success" value="Update" />
-                        </center>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6">
+                                          <a href="{{ route('admin.projects') }}" class="btn btn-primary text-white">
+                                            <i class='fas fa-caret-left' style='font-size:18px;'></i><i class='fas fa-caret-left' style='font-size:18px;'></i>
+                                              Back
+                                          </a>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-4">
+                                        <input type="submit" class="btn btn-success" value="Update" />
+                                    </div>
+                                </div>
+
+                          </div>
                         </form>
                     </div>
                 </div>

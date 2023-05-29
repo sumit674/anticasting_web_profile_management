@@ -27,10 +27,11 @@ class CharacterController extends Controller
 
         $validator = $request->validate(
             [
-                'character_name' => ['required'],
+                'character_name' =>'required|max:30',
             ],
             [
                 'character_name.required' => 'Please enter character name',
+                'character_name.max'=>'character name should be 30 characters.',
             ]
         );
         $categoryProject = Categories::where('id', $id)->where('parent_id', 0)->first();
@@ -57,10 +58,11 @@ class CharacterController extends Controller
       //  dd($request->all());
         $validator = $request->validate(
             [
-                'character_name' => ['required'],
+                'character_name' =>'required|max:30',
             ],
             [
                 'character_name.required' => 'Please enter character name',
+                'character_name.max'=>'character name should be 30 characters.',
             ]
         );
         $categoryProject = Categories::where('id', $pId)->where('parent_id', 0)->first();

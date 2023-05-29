@@ -1,5 +1,5 @@
 @extends('admin.layouts.admin_master')
-@section('title','Project')
+@section('title', 'Project')
 <style>
     #contact_select {
 
@@ -7,8 +7,16 @@
         background: #FFF;
         color: #aaa;
     }
-</style>
 
+    .small-character {
+        color: red;
+        font-size: 11px;
+        font-weight: 700;
+    }
+    .card{
+        border-radius:25px !important;
+    }
+</style>
 @section('content')
     <div class="main">
         <section id="main-content">
@@ -25,23 +33,23 @@
                         <div class="card-body">
                             <form action="{{ route('admin.projects.store') }}" method="post" enctype="multipart/form-data">
                                 @csrf
-                                       <div class="row">
-                                            <div class="col-lg-12 col-md-12 col-sm-12">
-                                                <label class="form-label" id=""><b>Project name
-                                                    </b><span style="color:red;">*</span>
-                                                </label>
-                                                <div class="form-group">
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <label class="form-label" id=""><b>Project name (<small
+                                                    class="small-character">Only 30 Character</small>)
+                                            </b><span style="color:red;">*</span>
+                                        </label>
+                                        <div class="form-group">
+                                            <input type="text" name="project_name" class="form-control" id="project_name"
+                                                placeholder="Enter project name" />
+                                            @error('project_name')
+                                                <span style="color:red;"><b>{{ $message }}</b></span>
+                                            @enderror
 
-                                                    <input type="text" name="project_name" class="form-control"
-                                                        id="project_name" placeholder="Enter project name" />
-                                                    @error('project_name')
-                                                        <span style="color:red;"><b>{{ $message }}</b></span>
-                                                    @enderror
-
-                                                </div>
-                                            </div>
                                         </div>
-                                        {{--  <div class="row">
+                                    </div>
+                                </div>
+                                {{--  <div class="row">
                                             <div class="col-lg-6 col-md-6 col-sm-6 mb-2">
                                                 <div class="checkbox">
                                                     <label for="active">Active</label>
@@ -49,73 +57,83 @@
 
                                                 </div>
                                             </div>
-                                        </div>  --}}
+                                        </div>
+                                        --}}
+                                 <div class="row">
+                                    <div class="col-lg-2 col-md-2 col-sm-2">
 
-                                   </div>
-                         <center>
-                            <input type="submit" class="btn btn-danger" value="Save" />
-                        </center>
-                        </form>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6">
+                                         <a href="{{route('admin.projects')}}" class="btn btn-primary text-white">
+                                            <i class='fas fa-caret-left' style='font-size:18px'></i><i class='fas fa-caret-left' style='font-size:18px'></i>
+                                            Back
+                                        </a>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-4">
+                                        <input type="submit" class="btn btn-danger" value="Save" />
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
-    </div>
-    </section>
-    <!-- Initialize Quill editor -->
+        </section>
+        <!-- Initialize Quill editor -->
 
-@endsection
-@section('footer')
-    <script>
-
-         $(document).ready(function() {
-           $('#description').summernote({
-                placeholder: 'Enter movie description goes here..',
-                // tabsize: 2,
-             height: 300,
-                // followingToolbar: true,
-                toolbar: [
-                    ['style', ['style']],
-                    ['font', ['bold', 'underline', 'clear']],
-                    ['fontname', ['fontname']],
-                   ['color', ['color']],
-                    ['para', ['ul', 'ol', 'paragraph']],
-                     ['table', ['table']],
-                    ['insert', ['link', 'picture', 'video']],
-                  ['view', ['fullscreen', 'codeview', 'help']],
-               ],
-                 popover: {
-                     image: [
-                         ['image', ['resizeFull', 'resizeHalf', 'resizeQuarter', 'resizeNone']],
-                       ['float', ['floatLeft', 'floatRight', 'floatNone']],
-                       ['remove', ['removeMedia']]
-                    ],
-                     link: [
-                    ['link', ['linkDialogShow', 'unlink']]
-                    ],
-                    table: [
-                        ['add', ['addRowDown', 'addRowUp', 'addColLeft', 'addColRight']],
-                     ['delete', ['deleteRow', 'deleteCol', 'deleteTable']],
-                     ],
-                   air: [
-                        ['color', ['color']],
+    @endsection
+    @section('footer')
+        <script>
+            $(document).ready(function() {
+                $('#description').summernote({
+                    placeholder: 'Enter movie description goes here..',
+                    // tabsize: 2,
+                    height: 300,
+                    // followingToolbar: true,
+                    toolbar: [
+                        ['style', ['style']],
                         ['font', ['bold', 'underline', 'clear']],
-                     ['para', ['ul', 'paragraph']],
+                        ['fontname', ['fontname']],
+                        ['color', ['color']],
+                        ['para', ['ul', 'ol', 'paragraph']],
                         ['table', ['table']],
-                        ['insert', ['link', 'picture']]
-                    ]
-            }
+                        ['insert', ['link', 'picture', 'video']],
+                        ['view', ['fullscreen', 'codeview', 'help']],
+                    ],
+                    popover: {
+                        image: [
+                            ['image', ['resizeFull', 'resizeHalf', 'resizeQuarter', 'resizeNone']],
+                            ['float', ['floatLeft', 'floatRight', 'floatNone']],
+                            ['remove', ['removeMedia']]
+                        ],
+                        link: [
+                            ['link', ['linkDialogShow', 'unlink']]
+                        ],
+                        table: [
+                            ['add', ['addRowDown', 'addRowUp', 'addColLeft', 'addColRight']],
+                            ['delete', ['deleteRow', 'deleteCol', 'deleteTable']],
+                        ],
+                        air: [
+                            ['color', ['color']],
+                            ['font', ['bold', 'underline', 'clear']],
+                            ['para', ['ul', 'paragraph']],
+                            ['table', ['table']],
+                            ['insert', ['link', 'picture']]
+                        ]
+                    }
 
-             })
-         //.summernote("code", '{!! old('policy', isset($item->policy) ? $item->policy : '') !!}');
+                })
+                //.summernote("code", '{!! old('policy', isset($item->policy) ? $item->policy : '') !!}');
 
-            // var postForm = function() {
-            //     var content = $('textarea[name="policy"]').html($('#policycontent').code());
-            // }
-         });
-    </script>
-@endsection
+                // var postForm = function() {
+                //     var content = $('textarea[name="policy"]').html($('#policycontent').code());
+                // }
+            });
+        </script>
+    @endsection
 
-{{--  <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" data-bs-backdrop="static"
+    {{--  <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" data-bs-backdrop="static"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">

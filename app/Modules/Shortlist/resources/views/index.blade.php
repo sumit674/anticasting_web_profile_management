@@ -32,15 +32,15 @@
                                             <div class="tab-pane fade show active" id="activelist" role="tabpanel"
                                                 aria-labelledby="active-tab">
                                                 <div class="justify-content-start" style="margin-left:8px;">
-                                                    <input type="checkbox" class="mt-3 ms-5" id="check_all" />
+                                                    {{--  <input type="checkbox" class="mt-3 ms-5" id="check_all" />
                                                     <span class="ms-1" style="margin-left:8px; font-size:16px;">Select
-                                                        all</span>
+                                                        all</span>  --}}
                                                 </div>
                                                 <div class="table-responsive mt-2 border-top reload-table">
                                                     <table class="table table-striped table-borderless">
                                                         <thead>
                                                             <tr>
-                                                                <th></th>
+
                                                                 {{--  <th class="text-center">Id</th>  --}}
                                                                 <th class="text-center">List name</th>
                                                                 <th class="text-center">Number of profiles</th>
@@ -52,12 +52,12 @@
                                                             @isset($bucketMemberActive)
                                                                 @foreach ($bucketMemberActive as $member)
                                                                     <tr>
-                                                                        <td>
+                                                                        {{--  <td>
                                                                             <input type="checkbox" name="all_list_member"
                                                                                 class="select_all_list"
                                                                                  value="{{ $member->id }}"
                                                                              />
-                                                                        </td>
+                                                                        </td>  --}}
                                                                          <td class="text-center">
                                                                           <a href="{{route('admin.show.allMember',$member?->category_id)}}">
                                                                             {{ $member?->category?->trans?->project_name }} @if(isset($member?->category?->parent?->trans?->project_name)) - {{ $member?->category?->parent?->trans?->project_name }} @endif
@@ -67,7 +67,7 @@
                                                                          <td class="text-center">{{ date('y-m-d h:i:s', strtotime($member->updated_at)) }}</td>
                                                                          <td class="text-center">
                                                                            <a class="btn btn-danger btn-sm" href="{{route('admin.shortlist.archive',$member?->category_id)}}">
-                                                                              Remove
+                                                                              Archive
                                                                            </a>
                                                                         </td>
                                                                     </tr>

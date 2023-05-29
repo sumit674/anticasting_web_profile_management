@@ -45,8 +45,8 @@
             /* text-align: center; */
         }
 
-        #content {
-            height: 500px;
+        .actor-list-page {
+            height: 600px;
             overflow-y: scroll;
             overflow-x: scroll;
         }
@@ -80,7 +80,7 @@
     <br />
     <section id="main-content">
         <!-- /# .container -->
-        <div class="container">
+        <div class="container actor-list-page">
             <div class="bg-white rounded d-flex align-items-center justify-content-between" id="header">
                 @include('Actors::profiles.topbar')
             </div>
