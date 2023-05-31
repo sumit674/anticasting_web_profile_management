@@ -68,7 +68,7 @@ class ActorsController extends Controller
 
         // return view('Actors::New-Actor.index', compact('actors', 'state'));
         //  return view('Actors::index', compact('actors', 'state'));
-        $project_categories = Categories::where('status',1)->where('parent_id',0)->get();
+        $project_categories = Categories::where('active', 1)->where('parent_id',0)->get();
 
         return view('Actors::profiles.list', compact('actors', 'state', 'project_categories'));
     }
@@ -76,7 +76,9 @@ class ActorsController extends Controller
     public function fetchChildrenCategories(Request $request)
     {
 
-        $childCategories = Categories::where("parent_id",$request->parent_id)->get();
+        $childCategories = Categories::where('active', 1)
+            ->where("parent_id",$request->parent_id)
+            ->get();
 
             $childCategories->mapWithKeys(function($category, $key){
 

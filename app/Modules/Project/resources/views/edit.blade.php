@@ -57,20 +57,18 @@
                                                 </div>
                                             </div>
                                         </div>  --}}
-                                 <div class="row">
-                                    <div class="col-lg-2 col-md-2 col-sm-2">
-
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-6">
-                                          <a href="{{ route('admin.projects') }}" class="btn btn-primary text-white">
-                                            <i class='fas fa-caret-left' style='font-size:18px;'></i><i class='fas fa-caret-left' style='font-size:18px;'></i>
-                                              Back
-                                          </a>
-                                    </div>
-                                    <div class="col-lg-4 col-md-4 col-sm-4">
-                                        <input type="submit" class="btn btn-success" value="Update" />
-                                    </div>
-                                </div>
+                                        <div class="d-flex justify-content-between mx-2">
+                                            <div class="">
+                                                <a href="{{ route('admin.projects') }}" class="btn btn-warning btn-sm text-white">
+                                                    <i class='fas fa-caret-left' style='font-size:18px;'></i><i
+                                                        class='fas fa-caret-left' style='font-size:18px;'></i>
+                                                    Back
+                                                </a>
+                                            </div>
+                                            <div class="">
+                                                <input type="submit" class="btn btn-success btn-sm" value="Update" />
+                                            </div>
+                                      </div>
 
                           </div>
                         </form>

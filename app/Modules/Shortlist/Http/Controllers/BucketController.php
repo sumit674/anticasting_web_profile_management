@@ -33,7 +33,8 @@ class BucketController extends Controller
             $bucketmember->user_id = $user_id;
             $bucketmember->save();
         }
-        return redirect()->back();
+        return redirect()->route('admin.shortlist')
+            ->with('success', 'Actor added to shortlist.');
 
     }
 }

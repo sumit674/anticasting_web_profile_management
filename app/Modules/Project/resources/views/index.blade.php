@@ -26,8 +26,9 @@
                                             </li>
                                             <li class="nav-item" id="archive_tab">
                                                 <a class="nav-link" id="archive" data-toggle="tab" href="#archivelist"
-                                                    role="tab" aria-controls="archive" aria-selected="false">Archive ({{ count($archiveItems) }})
-                                                   <span class="marker"></span></a>
+                                                    role="tab" aria-controls="archive" aria-selected="false">Archive
+                                                    ({{ count($archiveItems) }})
+                                                    <span class="marker"></span></a>
                                             </li>
 
                                         </ul>
@@ -68,17 +69,18 @@
                                                                                 value="{{ $item->id }}" />
                                                                         </td>  --}}
                                                                         <td class="text-center">
-                                                                            <a href="{{ route('admin.character', $item->id) }}">
+                                                                            <a
+                                                                                href="{{ route('admin.character', $item->id) }}">
                                                                                 {{ $item->trans->project_name }}
                                                                             </a>
                                                                         </td>
 
-                                                                         <td class="text-center">
+                                                                        <td class="text-center">
                                                                             {{ count($item->child) }}
-                                                                         </td>
-                                                                         <td class="text-center">
-                                                                            {{date('y-m-d h:i:s', strtotime($item?->updated_at)) }}
-                                                                         </td>
+                                                                        </td>
+                                                                        <td class="text-center">
+                                                                            {{ date('y-m-d h:i:s', strtotime($item?->updated_at)) }}
+                                                                        </td>
 
                                                                         {{--  <td class="text-center">
                                                                             @if (isset($item->active) && $item->active == 1)
@@ -95,7 +97,7 @@
                                                                                 <i class="ti-pencil"></i>
                                                                                 Edit
                                                                             </a>
-                                                                            <a href="{{ route('admin.projects.archive',$item->id)}}"
+                                                                            <a href="{{ route('admin.projects.archive', $item->id) }}"
                                                                                 class="btn btn-danger btn-sm">
                                                                                 Archive
                                                                             </a>
@@ -114,11 +116,21 @@
                                                         </tbody>
                                                     </table>
                                                 </div>
+                                                <div class="row mt-2">
+                                                    <div class="col-md-6 mt-5">
+                                                        <a href="{{ route('admin.projects') }}"
+                                                            class="btn btn-primary text-white">
+                                                            <i class='fas fa-caret-left' style='font-size:18px'></i><i
+                                                                class='fas fa-caret-left' style='font-size:18px'></i>
+                                                            Back
+                                                        </a>
+                                                    </div>
+                                                </div>
                                             </div>
                                             <div class="tab-pane fade" id="archivelist" role="tabpanel"
                                                 aria-labelledby="archive-tab">
                                                 <div class="table-responsive mt-2 border-top reload-table">
-                                                     <table class="table table-striped table-borderless">
+                                                    <table class="table table-striped table-borderless">
                                                         <thead>
                                                             <tr>
                                                                 <th class="text-center">Project name</th>
@@ -133,17 +145,18 @@
                                                                 @foreach ($archiveItems as $k => $item)
                                                                     <tr>
                                                                         <td class="text-center">
-                                                                            <a href="{{ route('admin.character', $item->id) }}">
+                                                                            <a
+                                                                                href="{{ route('admin.character', $item->id) }}">
                                                                                 {{ $item->trans->project_name }}
                                                                             </a>
                                                                         </td>
                                                                         {{--  {{ dd(count($item->child)) }}  --}}
-                                                                         <td class="text-center">
+                                                                        <td class="text-center">
                                                                             {{ count($item->child) }}
-                                                                         </td>
-                                                                         <td class="text-center">
-                                                                            {{date('y-m-d h:i:s', strtotime($item?->updated_at)) }}
-                                                                         </td>
+                                                                        </td>
+                                                                        <td class="text-center">
+                                                                            {{ date('y-m-d h:i:s', strtotime($item?->updated_at)) }}
+                                                                        </td>
                                                                         {{--  <td class="text-center">
                                                                             @if (isset($item->active) && $item->active == 1)
                                                                                 <span
@@ -155,10 +168,10 @@
                                                                                 </span>
                                                                             @endif
                                                                         </td>  --}}
-                                                                         <td class="text-center">
+                                                                        <td class="text-center">
                                                                             <a href="{{ route('admin.projects.active', $item->id) }}"
                                                                                 class="btn btn-success btn-sm">
-                                                                                Active
+                                                                                Activate
                                                                             </a>
                                                                         </td>
                                                                     </tr>
@@ -167,7 +180,16 @@
                                                         </tbody>
                                                     </table>
                                                 </div>
-
+                                                <div class="row mt-2">
+                                                    <div class="col-md-6 mt-5">
+                                                        <a href="{{ route('admin.projects') }}"
+                                                            class="btn btn-primary text-white">
+                                                            <i class='fas fa-caret-left' style='font-size:18px'></i><i
+                                                                class='fas fa-caret-left' style='font-size:18px'></i>
+                                                            Back
+                                                        </a>
+                                                    </div>
+                                                </div>
                                             </div>
 
                                         </div>

@@ -12,12 +12,21 @@
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-body">
-                                <div class="row mt-2">
-                                    <div class="col-md-6">
+                                <div class="d-flex justify-content-between mt-2">
+                                    <div>
+                                        <a href="{{ route('admin.projects') }}"
+                                                    class="btn btn-secondary btn-sm text-white">
+                                                    <i class='fas fa-caret-left' style='font-size:18px'></i><i
+                                                        class='fas fa-caret-left' style='font-size:18px'></i>
+                                                    Back
+                                                </a>
+                                    </div>
+                                    <div class="">
                                         <a href="{{ route('admin.character.create', $project->id) }}"
-                                            class="btn btn-labeled btn-primary open-model-create">
+                                            class="btn btn-labeled btn-primary btn-sm open-model-create">
                                             <span class="btn-label"><i class="fa fa-plus"></i></span>Add
                                             Character</a>
+
 
                                     </div>
                                 </div>

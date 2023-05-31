@@ -42,11 +42,11 @@ class ProjectController extends Controller
             ]
         );
 
-
         $category = new Categories();
         $category->slug = GeneralHelper::seoUrl($request->project_name);
         $category->parent_id = 0;
-        $category->active = $request->active == true ? 1 : 0;
+        $category->active = 1;
+        $category->status = 1;
         $category->save();
         $categoryTrans = new CategoryTrans();
         $categoryTrans->category_id = $category->id;
@@ -76,10 +76,8 @@ class ProjectController extends Controller
         $category = Categories::find($id);
         $category->slug = GeneralHelper::seoUrl($request->project_name);
         $category->parent_id = 0;
-        $category->active = false;
-        if ($request->active) {
-            $category->active = true;
-        }
+        $category->active = 1;
+        $category->status = 1;
         $category->save();
 
         // Trans

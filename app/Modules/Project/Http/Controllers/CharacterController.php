@@ -38,7 +38,9 @@ class CharacterController extends Controller
         $characterCategory = new Categories();
         $characterCategory->slug = GeneralHelper::seoUrl($request->character_name);
         $characterCategory->parent_id = $categoryProject->id;
-        $characterCategory->active = $request->active == true ? 1 : 0;
+        // $characterCategory->active = $request->active == true ? 1 : 0;
+        $characterCategory->active = 1;
+        $characterCategory->status = 1;
         $characterCategory->save();
 
         $characterCategoryTrans = new CategoryTrans();
@@ -70,7 +72,9 @@ class CharacterController extends Controller
 
         $character->slug = GeneralHelper::seoUrl($request->character_name);
         $character->parent_id = $categoryProject->id;
-        $character->active = $request->active == true ? 1 : 0;
+        // $character->active = $request->active == true ? 1 : 0;
+        $character->active = 1;
+        $character->status = 1;
         $character->save();
 
         $characterCategoryTrans = CategoryTrans::where('category_id', $character->id)->first();

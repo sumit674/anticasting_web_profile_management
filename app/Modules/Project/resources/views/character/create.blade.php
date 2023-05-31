@@ -29,7 +29,7 @@
             @endif
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="card mt-5">
+                    <div class="card mt-2">
                         <div class="card-body">
                             <form action="{{ route('admin.character.store', $project->id) }}" method="post">
                                 @csrf
@@ -75,18 +75,15 @@
                                                 </div>
                                             </div>
                                         </div>  --}}
-                                <div class="row">
-                                    <div class="col-lg-2 col-md-2 col-sm-2">
-
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-6">
-                                        <a href="{{ route('admin.character',$project->id) }}" class="btn btn-primary text-white">
+                                <div class="d-flex justify-content-between mx-2">
+                                    <div class="">
+                                        <a href="{{ route('admin.character',$project->id) }}" class="btn btn-warning btn-sm text-white">
                                             <i class='fas fa-caret-left' style='font-size:18px;'></i><i class='fas fa-caret-left' style='font-size:18px;'></i>
                                             Back
                                         </a>
                                      </div>
-                                    <div class="col-lg-4 col-md-4 col-sm-4">
-                                        <input type="submit" class="btn btn-danger" value="Save" />
+                                    <div class="">
+                                        <input type="submit" class="btn btn-primary btn-sm" value="Save" />
                                     </div>
                                 </div>
                             </form>

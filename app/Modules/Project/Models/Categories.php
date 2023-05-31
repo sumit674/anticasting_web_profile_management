@@ -2,6 +2,7 @@
 
 namespace App\Modules\Project\Models;
 
+use App\Modules\Shortlist\Models\ProjectMember;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Modules\Project\Models\CategoryTrans;
@@ -33,6 +34,10 @@ class Categories extends Model
     {
         return $this->hasMany(Categories::class, 'parent_id')
             ->where('parent_id','<>',0);
+    }
+
+    public function members(){
+        return $this->hasMany(ProjectMember::class, 'category_id')->where('status', 1);
     }
 
 }

@@ -158,7 +158,7 @@
                                                     <i class="fa-solid fa-star text-white"></i>
                                                 @endif
                                             </div>
-                                            <div class="d-flex align-items-center justify-content-center colors my-2">
+                                            <div class="d-flex align-items-center justify-content-center colors">
                                                 <div class="price">
                                                     <span style="cursor: pointer;" data-toggle="popover"
                                                         data-poload="{{ route('admin.actors.video', $item->id) }}">
