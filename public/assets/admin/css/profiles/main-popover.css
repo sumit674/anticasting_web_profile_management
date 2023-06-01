@@ -1708,7 +1708,7 @@ cursor: none;
 
 .p-main-page__content {
     background-color: #f5f4f9;
-    margin-bottom: 10px;
+    margin-bottom: -8px;
     padding: 10px 7px 10px 0;
     margin-left: 94px;
 }

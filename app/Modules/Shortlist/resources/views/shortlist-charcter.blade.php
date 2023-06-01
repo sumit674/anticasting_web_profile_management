@@ -26,7 +26,10 @@
                                                         @foreach ($characterActive as $item)
                                                             <tr>
                                                                 <td class="text-center">
+                                                                    <a
+                                                                            href="{{ route('admin.show.allMember', $item?->id) }}">
                                                                     {{ isset($item?->trans?->project_name) ? $item?->trans?->project_name : 'No Charactor' }}
+                                                                    </a>
                                                                 </td>
                                                                 <td class="text-center">
                                                                     @if ($item?->members_count > 0)

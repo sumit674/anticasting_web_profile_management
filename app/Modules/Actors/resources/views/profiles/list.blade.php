@@ -30,7 +30,7 @@
         }
 
         .popover {
-            max-width: 75% !important;
+            max-width: 70% !important;
             margin: 18px 0 0 160px !important;
         }
         .bucket-wrapper {
@@ -50,6 +50,13 @@
             overflow-y: scroll;
             overflow-x: scroll;
         }
+        .star-filter {
+            font-size: 18px;
+            font-weight: 600;
+            color:rgb(255 214 10);
+            position: relative;
+
+          }
     </style>
 @endsection
 @section('content')

@@ -44,19 +44,19 @@
                     <label class="form-label" for="gender">Rating</label>
                     <select name="rating[]" id="rating" class="form-control rating" multiple="multiple">
                         <optgroup label="Rating Number">
-                            
-                            <option value='1'>One
+
+                            <option value='1' class="star-filter">&#x2605;
                             </option>
-                            <option value='2'>Two
+                            <option value='2' class="star-filter">&#x2605; &#x2605;
                             </option>
-                            <option value='3'>
-                                Three
+                            <option value='3' class="star-filter">
+                                &#x2605; &#x2605; &#x2605;
                             </option>
-                            <option value='4'>
-                                Four
+                            <option value='4' class="star-filter">
+                                &#x2605; &#x2605; &#x2605; &#x2605;
                             </option>
-                            <option value='5'>
-                                Five
+                            <option value='5' class="star-filter">
+                                &#x2605; &#x2605; &#x2605; &#x2605; &#x2605; &#x2605;
                             </option>
                         </optgroup>
                     </select>

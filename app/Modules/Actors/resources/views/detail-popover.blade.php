@@ -22,33 +22,31 @@
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
     .image-container {
-        width: 330px !important;
-        height: 335px !important;
+        width: 280px !important;
+        height: 678px !important;
         background-color: #fff;
         display: grid;
         grid-template-columns: 1fr 1fr;
         padding: 5px;
         gap: 10px;
         object-fit: contain;
-        position: fixed;
         border-radius: 35px;
         margin-top: 9px;
         border: 1px solid #dadada;
-
+        margin-left: 20px;
     }
     .main-image {
-        max-width: 265px;
-        width: 77%;
+        max-width: 195px;
+        width: 60%;
         height: auto;
-        margin-left: 32px;
-        border-radius: 18px;
-        margin-top: 20px;
-
+        margin-left:38px;
+        border-radius: 10px;
+        margin-top: 26px;
     }
     .gallary-image img {
         display: block;
         box-shadow: 2px 2px 2px 1px rgb(87, 88, 88);
-        width: 260px !important;
+        width:195px !important;
     }
 
     .gallary-image img:hover {
@@ -106,7 +104,7 @@
     .card-body {
         max-height: 500px;
         overflow-y: scroll;
-        overflow-x: hidden;
+        overflow-x: scroll;
     }
 
     .popover-header-section {
@@ -144,7 +142,10 @@
         padding: 10px;
         word-break: break-word;
     }
-
+    .c-further-information-intro-video{
+        margin-left: 30px;
+        margin-top: 15px;
+    }
     /* Closable button inside the expanded image */
     .closebtn {
         position: absolute;
@@ -176,9 +177,9 @@
 
     }
     .divId {
-        margin: 10px 44px;
+        margin: 10px 17px;
         display: inline-flex;
-        width: 226px;
+        width: 230px;
         border: 1px solid #b3aeae;
         cursor: pointer;
         border-radius: 8px;
@@ -186,7 +187,7 @@
     .imgStyle {
         width: 70px;
         height: 64px;
-        margin: 2px;
+        margin: 3px;
         object-fit: cover;
         border-radius: 15px;
         border: 1px solid;
@@ -232,6 +233,18 @@
     .user-dtl-head {
         line-height: 38px;
         height: 50px;
+    }
+    .intro_video{
+        margin-top:100px;
+    }
+    .c-edit-panel-wer{
+            border-bottom: 1px solid #b3aeae;
+            width: 272px;
+            display: inline-flex;
+    }
+    .work_reel_iframe {
+        margin-left: -7px;
+        width: 110%;
     }
 </style>
 <div id="popover-content">
@@ -338,6 +351,32 @@
                                                     </a>
                                                 </div>
                                             @endif
+                                            <div class="intro_video">
+                                                <div class="c-edit-panel-wer">
+                                                    <h4 class="c-edit-panel__header">Intro Video</h4>
+                                                    <div class="c-edit-panel__controls"></div>
+
+                                                </div>
+                                                <div class="c-further-information-intro-video">
+                                                    @if ($actor?->introVideo?->intro_video_link != null)
+                                                        <div class="intro_video_ifram">
+                                                            <iframe width="70%" height="100%"
+                                                                src="{{ $actor?->introVideo?->intro_video_link }}"
+                                                                frameborder="0"
+                                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                                allowfullscreen scrolling="yes">
+                                                            </iframe>
+                                                        </div>
+                                                    @else
+                                                    <div class="intro_video_ifram">
+                                                        <div class="d-flex justify-content-center">
+                                                            <img src="{{ asset('assets/website/images/youtube.png') }}"
+                                                                alt="" height="100" width="100">
+                                                        </div>
+                                                    </div>
+                                                    @endif
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -442,50 +481,56 @@
                                                     <div class="row">
                                                         <div class="col-md-4 mb-1">
                                                             @if ($actor?->profile?->work_reel1 != null)
-                                                                <div class="">
+                                                                <div class="work_reel_iframe">
                                                                     <iframe width="100%" height="100%"
                                                                         src="{{ $actor?->profile?->work_reel1 }}"
                                                                         frameborder="0"
                                                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                                                        allowfullscreen>
+                                                                        allowfullscreen scrolling="yes">
                                                                     </iframe>
                                                                 </div>
                                                             @else
                                                                 <div class="d-flex justify-content-center">
+                                                                    <div class="work_reel_iframe">
                                                                     <img src="{{ asset('assets/website/images/youtube.png') }}"
                                                                         alt="" width="70%">
+                                                                    </div>
                                                                 </div>
                                                             @endif
                                                         </div>
                                                         <div class="col-md-4 mb-3">
                                                             @if ($actor?->profile?->work_reel2 != null)
-                                                                <div class=" ">
+                                                                <div class="work_reel_iframe">
                                                                     <iframe width="100%" height="100%"
                                                                         src="{{ $actor?->profile?->work_reel2 }}"
                                                                         frameborder="0"
                                                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                                                        allowfullscreen></iframe>
+                                                                        allowfullscreen scrolling="yes"></iframe>
                                                                 </div>
                                                             @else
                                                                 <div class=" d-flex justify-content-center">
+                                                                    <div class="work_reel_iframe">
                                                                     <img src="{{ asset('assets/website/images/youtube.png') }}"
                                                                         alt="" width="70%">
+                                                                    </div>
                                                                 </div>
                                                             @endif
                                                         </div>
                                                         <div class="col-md-4 mb-3">
                                                             @if ($actor?->profile?->work_reel3 != null)
-                                                            <div class=" ">
+                                                            <div class="work_reel_iframe">
                                                                 <iframe width="100%" height="100%"
                                                                     src="{{ $actor?->profile?->work_reel3 }}"
                                                                     frameborder="0"
                                                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                                                    allowfullscreen></iframe>
+                                                                    allowfullscreen scrolling="yes"></iframe>
                                                             </div>
                                                             @else
                                                                 <div class="d-flex justify-content-center">
+                                                                    <div class="work_reel_iframe">
                                                                     <img src="{{ asset('assets/website/images/youtube.png') }}"
                                                                         alt="" width="70%">
+                                                                    </div>
                                                                 </div>
                                                             @endif
                                                         </div>
