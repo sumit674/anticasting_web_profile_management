@@ -35,13 +35,21 @@
                                         <div class="tab-content" id="myTabContent">
                                             <div class="tab-pane fade show active" id="activelist" role="tabpanel"
                                                 aria-labelledby="active-tab">
-                                                <div class="row mt-2">
-                                                    <div class="col-md-6">
+                                                <div class="d-flex justify-content-between mx-2 mt-3">
+                                                    <div class="">
+                                                        <a href="{{ route('admin.projects') }}"
+                                                            class="btn btn-warning btn-sm text-white">
+                                                            <i class='fas fa-caret-left' style='font-size:18px'></i><i
+                                                                class='fas fa-caret-left' style='font-size:18px'></i>
+                                                            Back
+                                                        </a>
+                                                    </div>
+                                                    <div class="">
                                                         <a href="{{ route('admin.projects.create') }}"
-                                                            class="btn btn-labeled btn-primary open-model-create">
+                                                            class="btn btn-labeled btn-primary btn-sm open-model-create">
                                                             <span class="btn-label"><i class="fa fa-plus"></i></span>Add
-                                                            Project</a>
-
+                                                            Project
+                                                        </a>
                                                     </div>
                                                 </div>
                                                 <div class="justify-content-start" style="margin-left:8px;">
@@ -116,20 +124,18 @@
                                                         </tbody>
                                                     </table>
                                                 </div>
-                                                <div class="row mt-2">
-                                                    <div class="col-md-6 mt-5">
+                                            </div>
+                                            <div class="tab-pane fade" id="archivelist" role="tabpanel"
+                                                aria-labelledby="archive-tab">
+                                                   <div class="d-flex mt-2 mx-2">
                                                         <a href="{{ route('admin.projects') }}"
-                                                            class="btn btn-primary text-white">
+                                                            class="btn btn-warning btn-sm text-white">
                                                             <i class='fas fa-caret-left' style='font-size:18px'></i><i
                                                                 class='fas fa-caret-left' style='font-size:18px'></i>
                                                             Back
                                                         </a>
                                                     </div>
-                                                </div>
-                                            </div>
-                                            <div class="tab-pane fade" id="archivelist" role="tabpanel"
-                                                aria-labelledby="archive-tab">
-                                                <div class="table-responsive mt-2 border-top reload-table">
+                                                    <div class="table-responsive mt-2 border-top reload-table">
                                                     <table class="table table-striped table-borderless">
                                                         <thead>
                                                             <tr>
@@ -180,16 +186,7 @@
                                                         </tbody>
                                                     </table>
                                                 </div>
-                                                <div class="row mt-2">
-                                                    <div class="col-md-6 mt-5">
-                                                        <a href="{{ route('admin.projects') }}"
-                                                            class="btn btn-primary text-white">
-                                                            <i class='fas fa-caret-left' style='font-size:18px'></i><i
-                                                                class='fas fa-caret-left' style='font-size:18px'></i>
-                                                            Back
-                                                        </a>
-                                                    </div>
-                                                </div>
+
                                             </div>
 
                                         </div>
@@ -200,10 +197,6 @@
                         </div>
                     </div>
                 </div>
-
-                {{--  @include('Bucket::shortlist-show')  --}}
-                {{--  @include('Project::edit-popup')  --}}
-                {{--  @include('Project::archive')  --}}
             </section>
         </div>
     </div>

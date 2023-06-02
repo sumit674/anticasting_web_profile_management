@@ -11,7 +11,7 @@
                 @csrf
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="subject" class="text-muted fw-bold">Subject
+                        <label for="subject" class="text-muted fw-bold"><b>Subject</b>
                             {{--  <span class="text-danger"><b>*</b></span>  --}}
                         </label>
                         <input type="text" name="subject" class="form-control" id="subject"
@@ -21,7 +21,7 @@
                             @enderror  --}}
                     </div>
                     <div class="form-group">
-                        <label for="message" class="text-muted fw-bold">Message
+                        <label for="message" class="text-muted fw-bold"><b>Message</b>
                             {{--  <span class="text-danger"><b>*</b></span>  --}}
                         </label>
                         <textarea class="form-control" name="message" id="message" cols="6" rows="4" placeholder="Enter message">

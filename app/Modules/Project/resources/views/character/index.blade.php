@@ -12,10 +12,10 @@
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-body">
-                                <div class="d-flex justify-content-between mt-2">
+                                <div class="d-flex justify-content-between mt-2 mx-2">
                                     <div>
                                         <a href="{{ route('admin.projects') }}"
-                                                    class="btn btn-secondary btn-sm text-white">
+                                                    class="btn btn-warning btn-sm text-white">
                                                     <i class='fas fa-caret-left' style='font-size:18px'></i><i
                                                         class='fas fa-caret-left' style='font-size:18px'></i>
                                                     Back

@@ -17,14 +17,15 @@
                     </div>  --}}
                 </div>
                 <div class="d-flex justify-content-start mt-5 back-btn">
-                    <a href="{{ route('admin.character.breakdown',$cId) }}" class="btn btn-sm" style="background-color:#26247b;color:white;">
+                    <a href="{{ route('admin.character.breakdown', $catId) }}" class="btn btn-sm"
+                        style="background-color:#26247b;color:white;">
                         <i class='fas fa-caret-left' style='font-size:18px;'></i><i class='fas fa-caret-left'
                             style='font-size:18px;'></i>
                         Back
                     </a>
                 </div>
                 <div class="member-list mt-2">
-                    @isset($projectProfileMember)
+                    @if (isset($projectProfileMember) && count($projectProfileMember) > 0)
                         @foreach ($projectProfileMember as $key => $item)
                             <div class="c-performer-card">
                                 <div class="g-inner-grid-12">
@@ -42,10 +43,10 @@
                                                     class="g-alternative-link g-alternative-link--lg">{{ $item?->user?->first_name . ' ' . $item?->user?->last_name }}</a>
                                             </div>
                                             @if (isset($item?->user?->rating) && $item?->user?->rating != ' ')
-                                                    @for ($i = 0; $i < $item?->user?->rating; $i++)
-                                                        <i class="fa-solid fa-star text-warning"></i>
-                                                    @endfor
-                                                @endif
+                                                @for ($i = 0; $i < $item?->user?->rating; $i++)
+                                                    <i class="fa-solid fa-star text-warning"></i>
+                                                @endfor
+                                            @endif
                                             <div class="c-performer-card__performer-info-membership-type"></div>
                                         </div>
                                         <div
@@ -85,14 +86,15 @@
                                                 {{ $item?->user?->profile?->ethnicity }}
                                             </div>
                                             <div class="ms-5">
-                                                 <a href="{{route('admin.member.delete',[$item?->category_id,$item?->id])}}" class="btn btn-sm btn-danger">Remove</a>
+                                                <a href="{{ route('admin.member.delete', [$item?->category_id, $item?->id]) }}"
+                                                    class="btn btn-sm btn-danger">Remove</a>
                                             </div>
                                         </div>
 
                                         <div class="c-agency__card-agency-address"><span
                                                 class="c-agency__card-agency-address-ellipsis">
                                                 {{ $item?->user?->profile?->height }} CM,
-                                                 {{ $item?->user?->profile?->weight }} KG, Age {{ $age }}</span>
+                                                {{ $item?->user?->profile?->weight }} KG, Age {{ $age }}</span>
                                         </div>
                                         <div class="c-agency__card-agency-contactInfo">
                                             <div class="c-agency__card-agency-contactPhones"><a href="tel://020-7038 3737"
@@ -118,7 +120,17 @@
                                 </div>
                             </div>
                         @endforeach
-                    @endisset
+                    @else
+                        <div class="cont_principal">
+                            <div class="cont_error">
+
+                                <h1>No Member</h1>
+                                <p>The Profile member you're looking for isn't here.</p>
+                            </div>
+                            <div class="cont_aura_1"></div>
+                            <div class="cont_aura_2"></div>
+                        </div>
+                    @endif
                 </div>
 
             </section>
@@ -166,5 +178,9 @@
             });
 
         }
+        window.onload = function(){
+            document.querySelector('.cont_principal').className= "cont_principal cont_error_active";
+
+            }
     </script>
 @endsection

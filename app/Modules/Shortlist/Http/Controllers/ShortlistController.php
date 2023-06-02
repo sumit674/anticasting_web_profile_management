@@ -123,13 +123,19 @@ class ShortlistController extends Controller
          }
         $characterActive = $activeList;
         $characterArchives = $archiveList;
-        return view("Shortlist::shortlist-charcter", compact('characterActive', 'characterArchives', 'pCatId'));
+       // dd($characterActive);
+        return view("Shortlist::shortlist-charcter", compact('characterActive', 'characterArchives'));
     }
     public function allProfileMember($cId)
     {
-        // dd($cId);
+        $category = Categories::where('id', $cId)->first();
+        // dd($category);
+        $catId = $category->parent_id;
+        if (isset($category) && $category->parent_id == 0) {
+            $catId = $category->id;
+        }
         $projectProfileMember = ProjectMember::where('category_id', $cId)->with('user')->get();
-        return view('Shortlist::profile-member', compact('projectProfileMember','cId'));
+        return view('Shortlist::profile-member', compact('projectProfileMember','catId'));
 
     }
     public function destoryProjectMember($cId, $id)

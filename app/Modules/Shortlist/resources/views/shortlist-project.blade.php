@@ -13,6 +13,13 @@
                             <div class="card-body">
                                 <div class="row mt-1">
                                     <div class="col-md-12">
+                                        <div class="d-flex mx-2 mt-1">
+                                            <a href="{{ url('/admin/shortlist') }}" class="btn btn-warning btn-sm">
+                                                <i class='fas fa-caret-left' style='font-size:18px'></i><i
+                                                    class='fas fa-caret-left' style='font-size:18px'></i>
+                                                Back
+                                            </a>
+                                        </div>
                                         <div class="table-responsive mt-2 border-top reload-table">
                                             <table class="table table-striped table-borderless">
                                                 <thead>

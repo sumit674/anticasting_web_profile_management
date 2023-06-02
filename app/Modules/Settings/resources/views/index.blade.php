@@ -97,7 +97,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <button type="submit" class="btn btn-primary">Update</button>
+                                                <button type="submit" class="btn btn-success btn-sm">Update</button>
                                             </div>
                                         </div>
                                     </div>
