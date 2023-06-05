@@ -32,6 +32,7 @@ class LoginController extends Controller
 
         if (auth()->attempt($credentials)) {
             if (auth()?->user()?->user_type == '1') {
+
                 return redirect()
                     ->route('admin.actors')
                     ->with('message', 'Login successfully.');

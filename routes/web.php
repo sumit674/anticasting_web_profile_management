@@ -10,6 +10,7 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CommonController;
+use App\Http\Controllers\Admin\SubmitProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -119,6 +120,16 @@ Route::get('/', [HomeController::class, 'index'])->name('users.home');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::get('/our-work', [HomeController::class, 'ourWork'])->name('our-work');
+
+/**
+ * ADMIN PROFILE CREATION
+ */
+Route::group(['prefix' => 'admin', 'middleware' => ['web', 'admin']], function () {
+    Route::get('/submit-user-profile', [SubmitProfileController::class, 'submitUserProfile'])->name('admin.submit-user-profile');
+    Route::post('/submit-user-profile', [SubmitProfileController::class, 'storeUserProfile'])->name('admin.store-user-profile');
+    Route::get('/edit-user-profile/{id}/edit', [SubmitProfileController::class, 'editUserProfile'])->name('admin.edit-user-profile');
+    Route::post('/edit-user-profile/{id}/update', [SubmitProfileController::class, 'updateUpdateProfile'])->name('admin.update-user-profile');
+});
 
 /**
  * Captcha

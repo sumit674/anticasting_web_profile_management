@@ -39,7 +39,11 @@ class LoginController extends Controller
                     ->route('users.login')
                     ->with('error', 'Your account is not activated yet, please activate your account and try again.');
             }
-            if (auth()?->user()?->user_type == '0') {
+            if (auth()?->user()?->user_type == '1') {
+                return redirect()
+                ->route('admin.submit-user-profile')
+                ->with('success', 'Loggged in successfully.');
+            } else {
                 return redirect()
                     ->route('users.view-profile')
                     ->with('success', 'Login successfully.');
