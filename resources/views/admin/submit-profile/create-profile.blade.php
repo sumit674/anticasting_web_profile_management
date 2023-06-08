@@ -7,15 +7,16 @@
         $action = route('admin.update-user-profile', [$id]);
         $method = 'PATCH';
         $submitButton='Update';
+
     }
 @endphp
 @section('header')
     {{-- <link rel="stylesheet" href="{{ asset('assets/website/css/submit-profile.css') }}" /> --}}
-    <link rel="stylesheet" href="{{ asset('assets/website/css/image-gallery.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/admin/website/css/image-gallery.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/auth/toastr.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/website/css/alertbox.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/website/css/webcam.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/website/css/crop-image.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/admin/website/css/crop-image.css') }}" />
     <style>
         .text-danger {
             color: #ff0000 !important;
@@ -51,10 +52,10 @@
     @include('include.submitprofile.image-header')
     <section id="contact-us" class="contact-us section page-background">
         <div class="container">
-            <form class="form-disable" id="profile-valdation" action="{{ route('admin.store-user-profile') }}"
+            <form class="form-disable" id="profile-valdation" action="{{$action}}"
                 method="post">
                 @if($method === 'PATCH')
-                   <input type="hidden" name="_method" value="PATCH"/>
+                   <input type="hidden" name="_method" value="PATCH" />
                 @endif
                 @csrf
                 <input type="hidden" name="image1" id="picture1" />
@@ -94,7 +95,7 @@
                                             <input type="text"
                                                 class="form-control {{ $errors->has('first_name') ? ' is-invalid' : '' }}"
                                                 placeholder="First Name" name="first_name"
-                                                value="{{ old('first_name', $userInfo?->first_name) }}" />
+                                                value="{{ old('first_name') }}" />
                                             {{--  @error('first_name')
                                                 <span class="text-danger">
                                                     {{ $message }}
@@ -113,7 +114,7 @@
                                             <input type="text"
                                                 class="form-control {{ $errors->has('last_name') ? ' is-invalid' : '' }}"
                                                 placeholder="Last Name" name="last_name"
-                                                value="{{ old('last_name', $userInfo?->last_name) }}" />
+                                                value="{{ old('last_name') }}" />
                                             {{--  @error('last_name')
                                                 <span class="text-danger">
                                                     {{ $message }}
@@ -139,7 +140,7 @@
                                             <input type="date"
                                                 class="form-control {{ $errors->has('date_of_birth') ? ' is-invalid' : '' }}"
                                                 placeholder="Date of Birth" name="date_of_birth" max="<?php echo $newDate; ?>"
-                                                value="{{ old('date_of_birth', isset($userProfile?->date_of_birth) ? $userProfile?->date_of_birth : ' ') }}" />
+                                                value="{{ old('date_of_birth') }}" />
 
                                             {{--  @error('date_of_birth')
                                                 <span class="text-danger">
@@ -162,14 +163,11 @@
                                                 <option value="" class="0">
                                                     Gender
                                                 </option>
-                                                <option value="Male"
-                                                    {{ old('gender') == 'Male' ? 'selected' : (isset($userProfile?->gender) && $userProfile?->gender == 'Male' ? 'selected' : '') }}>
+                                                <option value="Male">
                                                     Male</option>
-                                                <option value="Female"
-                                                    {{ old('gender') == 'Female' ? 'selected' : (isset($userProfile?->gender) && $userProfile?->gender == 'Female' ? 'selected' : '') }}>
+                                                <option value="Female">
                                                     Female</option>
-                                                <option value="prefernottosay"
-                                                    {{ old('gender') == 'prefernottosay' ? 'selected' : (isset($userProfile?->gender) && $userProfile?->gender == 'prefernottosay' ? 'selected' : '') }}>
+                                                <option value="prefernottosay">
                                                     Prefer not to say</option>
                                             </select>
                                         </div>
@@ -187,7 +185,7 @@
                                             <input type="text"
                                                 class="form-control {{ $errors->has('current_location') ? ' is-invalid' : '' }}"
                                                 name="current_location" placeholder="Enter current location"
-                                                value="{{ old('current_location', isset($userProfile?->current_location) ? $userProfile?->current_location : ' ') }}" />
+                                                value="{{ old('current_location')}}" />
                                             {{--  @error('current_location')
                                                 <span class="text-danger">
                                                     {{ $message }}
@@ -233,7 +231,7 @@
                                             <input type="email"
                                                 class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}"
                                                 placeholder="Email" name="email"
-                                                value="{{ old('email', $userInfo?->email) }}" />
+                                                value="{{ old('email') }}" />
 
                                         </div>
                                     </div>
@@ -245,7 +243,7 @@
                                                 <input type="tel"
                                                     class="form-control intel-input-width {{ $errors->has('mobile_no') ? ' is-invalid' : '' }}"
                                                     id="mobile_number" name="mobile_no"
-                                                    value="{{ old('mobile_no', isset($userInfo?->mobile_no) ? $userInfo?->mobile_no : ' ') }}"
+                                                    value="{{ old('mobile_no') }}"
                                                     placeholder="Mobile number" />
                                                 <input type="hidden" name="iso2" id="phone_country_code"
                                                     value="+91" />
@@ -269,7 +267,7 @@
                                             <input type="text"
                                                 class="form-control {{ $errors->has('height') ? ' is-invalid' : '' }}"
                                                 placeholder="Enter height" name="height"
-                                                value="{{ old('height', isset($userProfile?->height) ? $userProfile?->height : ' ') }}" />
+                                                value="{{ old('height')}}" />
                                             {{--  @error('height')
                                                 <span class="text-danger">
                                                     {{ $message }}
@@ -283,7 +281,7 @@
                                             <input type="text"
                                                 class="form-control {{ $errors->has('weight') ? ' is-invalid' : '' }}"
                                                 placeholder="Enter weight" name="weight"
-                                                value="{{ old('weight', isset($userProfile?->weight) ? $userProfile?->weight : ' ') }}" />
+                                                value="{{ old('weight') }}" />
                                             {{--  @error('weight')
                                                 <span class="text-danger">
                                                     {{ $message }}
@@ -300,9 +298,7 @@
                                                         allowed.)</small></b>
                                             </label>
                                             <textarea id="about_me" name="about_me" class="form-control {{ $errors->has('about_me') ? ' is-invalid' : '' }}">
-                                                @isset($userProfile?->about_me)
-                                                {{ $userProfile?->about_me }}
-                                                @endisset
+
                                              </textarea>
 
                                         </div>
@@ -316,7 +312,7 @@
                                             <input type="text"
                                                 class="form-control {{ $errors->has('work_reel1') ? ' is-invalid' : '' }}"
                                                 name="work_reel1" placeholder="Work Reel 1 - only youtube link"
-                                                value="{{ old('work_reel1', isset($userProfile->work_reel1) ? $userProfile->work_reel1 : '') }}" />
+                                                value="{{ old('work_reel1') }}" />
                                             {{--  @error('work_reel1')
                                                 <span class="text-danger">
                                                     {{ $message }}
@@ -331,7 +327,7 @@
                                             <input type="text"
                                                 class="form-control {{ $errors->has('work_reel2') ? ' is-invalid' : '' }}"
                                                 name="work_reel2" placeholder="Work Reel 2 - only youtube link"
-                                                value="{{ old('work_reel2', isset($userProfile->work_reel2) ? $userProfile->work_reel2 : '') }}" />
+                                                value="{{ old('work_reel2') }}" />
                                             {{--  @error('work_reel2')
                                                 <span class="text-danger">
                                                     {{ $message }}
@@ -346,7 +342,7 @@
                                             <input type="text"
                                                 class="form-control {{ $errors->has('work_reel3') ? ' is-invalid' : '' }}"
                                                 name="work_reel3" placeholder="Work Reel 3 - only youtube link"
-                                                value="{{ old('work_reel3', isset($userProfile->work_reel3) ? $userProfile->work_reel3 : '') }}" />
+                                                value="{{ old('work_reel3') }}" />
                                             {{--  @error('work_reel3')
                                                 <span class="text-danger">
                                                     {{ $message }}
@@ -372,7 +368,7 @@
                     </div>
 
                     <div class="col-lg-4 col-12 mb-3">
-                        @include('submit-profile-new.right-section')
+                        @include('admin.submit-profile.right-section')
                     </div>
                 </div>
             </form>
@@ -380,14 +376,7 @@
     </section>
 @endsection
 @section('footer')
-    <script>
-        var images = @json($userInfo?->images?->pluck('image')?->toArray());
 
-        let camWidth = 400;
-        let camHeight = 225;
-    </script>
-    <script src="{{ asset('assets/website/js/submit-profile/image-gallery.js') }}"></script>
-    <script src="{{ asset('assets/website/js/submit-profile/image-crop.js') }}"></script>
     <script src="{{ asset('assets/intl-telephone/js/intlTelInput.js') }}" type="text/javascript"></script>
     </script>
     <script>
@@ -626,15 +615,7 @@
                 // }
             }
         });
-        @if (count($userInfo?->images) == 0)
-            let defaultUpload = document.querySelector('#upload-default');
 
-            defaultUpload.addEventListener('click', () => {
-                $('#upload-image-modal').modal('show');
-                $('#upload-image-modal').appendTo('body');
-                $('#image_number').val(1);
-            })
-        @endif
         function deleteAllHeadShotImages(url) {
             if (confirm('Do you really want to delete all headshot images?')) {
                 document.location.href = url;

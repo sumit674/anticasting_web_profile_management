@@ -50,6 +50,7 @@ class GeneralHelper
     // }
     public static function base64MimeType($encoded_string)
     {
+
         $pos = strpos($encoded_string, ';');
         $type = explode(':', substr($encoded_string, 0, $pos))[1];
         // $extension = explode('/', $type)[1];
@@ -58,6 +59,7 @@ class GeneralHelper
 
     public static function getExtension($mimeType)
     {
+
         $extension = explode('/', $mimeType)[1];
         return $extension;
     }

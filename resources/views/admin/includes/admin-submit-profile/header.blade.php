@@ -1,3 +1,4 @@
+
 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
     <!-- Sidebar Toggle (Topbar) -->
@@ -39,12 +40,12 @@
 
                 <!-- Dropdown - User Information -->
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                    <a class="dropdown-item" href="{{ route('users.view-profile') }}">
+                    {{--  <a class="dropdown-item" href="{{ route('users.view-profile') }}">
                         <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                         View Profile
-                    </a>
+                    </a>  --}}
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{{ route('users.logout') }}">
+                    <a class="dropdown-item" href="{{route('admin.logout') }}">
                         <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                         Logout
                     </a>

@@ -10,7 +10,7 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CommonController;
-use App\Http\Controllers\Admin\SubmitProfileController;
+use App\Http\Controllers\Admin\{SubmitProfileController};
 
 /*
 |--------------------------------------------------------------------------
@@ -110,6 +110,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'admin']], function (
     Route::post('/changepassword-post', [\App\Http\Controllers\Admin\Auth\ChangePasswordController::class, 'changePasswordPost'])->name('admin.changePasswordPost');
     Route::get('/logout', [\App\Http\Controllers\Admin\Auth\LoginController::class, 'logoutAdmin'])->name('admin.logout');
     Route::get('/dashboard', [\App\Http\Controllers\Admin\DashboardController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('/logout', [LoginController::class, 'logout'])->name('admin.logout');
 });
 /* About us */
 Route::get('/about', [AboutUsController::class, 'about']);
@@ -129,6 +130,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'admin']], function (
     Route::post('/submit-user-profile', [SubmitProfileController::class, 'storeUserProfile'])->name('admin.store-user-profile');
     Route::get('/edit-user-profile/{id}/edit', [SubmitProfileController::class, 'editUserProfile'])->name('admin.edit-user-profile');
     Route::post('/edit-user-profile/{id}/update', [SubmitProfileController::class, 'updateUpdateProfile'])->name('admin.update-user-profile');
+    Route::get('/profile-dashboard', [SubmitProfileController::class, 'dashboard'])->name('admin.profile-dashboard');
 });
 
 /**

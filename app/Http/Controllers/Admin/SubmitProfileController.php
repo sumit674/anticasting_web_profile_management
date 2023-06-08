@@ -14,31 +14,13 @@ class SubmitProfileController extends Controller
     //
     public function submitUserProfile($userId = '')
     {
-        // $userid = auth()->user()->id;
-        // $user = User::where('id', $userid)
-        //     ->with([
-        //         'images' => function ($image) {
-        //             $image
-        //                 ->offset(0)
-        //                 ->orderBy('id', 'ASC')
-        //                 ->limit(2);
-        //         },
-        //     ])
-        //     ->first();
-        $userProfile = UserProfile::where('user_id', 1)->first();
-        $userIntroVideo = IntroVideo::where('user_id', 1)->first();
-        $userInfo = User::where('id', 1)
-            ->with('images')
-            ->first();
-        //dd($userInfo);
-        $states = State::all();
-
-        return view('admin.submit-profile.create-profile', compact('userProfile', 'userInfo', 'states', 'userIntroVideo'));
+         $states = State::all();
+        return view('admin.submit-profile.create-profile', compact('states'));
     }
 
     public function storeUserProfile(Request $request)
     {
-
+             // dd($request->all());
         $request->validate(
             [
                 'first_name' => 'required|regex:/^[a-zA-Z ]+[a-zA-Z 0-9]*$/',
@@ -64,9 +46,9 @@ class SubmitProfileController extends Controller
                 ],
                 'about_me' => 'string|max:300',
                 'weight' => 'numeric|min:1|max:400',
-                'image1' => ['required_without_all:image2,image3|image|mimes:jpg,jfif,png,jpeg,gif|max:4096'],
-                'image2' => ['required_without_all:image1,image3|image|mimes:jpg,jfif,png,jpeg,gif|max:4096'],
-                'image3' => ['required_without_all:image1,image2|image|mimes:jpg,jfif,png,jpeg,gif|max:4096'],
+               // 'image1' => ['required_without_all:image2,image3|image|mimes:jpg,jfif,png,jpeg,gif|max:4096'],
+               // 'image2' => ['required_without_all:image1,image3|image|mimes:jpg,jfif,png,jpeg,gif|max:4096'],
+              //  'image3' => ['required_without_all:image1,image2|image|mimes:jpg,jfif,png,jpeg,gif|max:4096'],
                 'intro_video_link' => [
                     'required',
                     function ($attribute, $requesturl, $failed) {
@@ -115,11 +97,9 @@ class SubmitProfileController extends Controller
                 // 'work_reel3.url' => 'The work reel three must be a valid URL.',
             ],
         );
-
-        $userId = auth()->user()->id;
         $dateOfBirth = Carbon::parse($request->date_of_birth)->format('Y-m-d');
         $age = Carbon::parse($dateOfBirth)->age;
-        $flag = 1;
+        $flag =1;
         if ($flag == 1) {
             $user = new User();
             $user->first_name = $request->first_name;
@@ -127,17 +107,13 @@ class SubmitProfileController extends Controller
             $user->countryCode = $request->iso2;
             $user->mobile_no = str_replace(' ', '', $request->mobile_no);
             $user->age = $age;
+            $user->email_verified_at = 1;
             $user->save();
-
-            $user_profile = UserProfile::where('user_id', $user->id)->first();
-            if (!isset($user_profile)) {
-                $user_profile = new UserProfile();
-            }
+            $user_profile = new UserProfile();
             $user_profile->email = $request->email;
             $user_profile->date_of_birth = Carbon::parse($request->date_of_birth)->format('Y-m-d');
             $user_profile->ethnicity = $request->ethnicity;
-
-            if ($request->work_reel1 != null) {
+             if ($request->work_reel1 != null) {
                 $user_profile->work_reel1 = GeneralHelper::getYoutubeEmbedUrl($request->work_reel1);
             } else {
                 $user_profile->work_reel1 = null;
@@ -157,99 +133,96 @@ class SubmitProfileController extends Controller
             $user_profile->current_location = $request->current_location;
             $user_profile->weight = $request->weight;
             $user_profile->about_me = $request->about_me;
-            $user_profile->user_id =  $user->id;
+            $user_profile->user_id =$user->id;
             $user_profile->save();
-            $folderPath = public_path() . '/upload/profile/';
-            // upload image
-            if ($request->has('image1') && $request->image1 != '') {
 
-                $profile_image = UserProfileImage::where('user_id', $user->id)
-                    ->where('field_name', 'image1')
-                    ->first();
-                $existingImage = DB::table('user_profiles_image')
-                    ->where('user_id',  $user->id)
-                    ->where('field_name', 'image1')
-                    ->first();
+            // $folderPath = public_path() . '/upload/profile/';
+            // // upload image
+            // if ($request->has('image1') && $request->image1 != '') {
+            //     $profile_image = UserProfileImage::where('user_id', $userId)
+            //         ->where('field_name', 'image1')
+            //         ->first();
+            //     $existingImage = DB::table('user_profiles_image')
+            //         ->where('user_id', $userId)
+            //         ->where('field_name', 'image1')
+            //         ->first();
 
-                if (@file_exists($folderPath . $existingImage?->image)) {
-                    @unlink($folderPath . $existingImage->image);
-                }
-                if (!isset($profile_image)) {
+            //     if (@file_exists($folderPath . $existingImage?->image)) {
+            //         @unlink($folderPath . $existingImage->image);
+            //     }
+            //     if (!isset($profile_image)) {
+            //         $profile_image = new UserProfileImage();
+            //         $profile_image->user_id = $userId;
+            //     }
+            //     $fileType = GeneralHelper::base64MimeType($request->image1);
+            //     if ($fileType == 'data:application/octet-stream') {
+            //         $file = GeneralHelper::uploadOtherFile($request, 'image1');
+            //     } else {
+            //         $file = GeneralHelper::uploadImage($request, 'image1');
+            //     }
 
-                    $profile_image = new UserProfileImage();
-                    $profile_image->user_id =  $user->id;
-                }
-                $fileType = GeneralHelper::base64MimeType($request->image1);
-                if ($fileType == 'data:application/octet-stream') {
-                    $file = GeneralHelper::uploadOtherFile($request, 'image1');
-                } else {
-                    $file = GeneralHelper::uploadImage($request, 'image1');
-                }
+            //     $profile_image->field_name = 'image1';
+            //     $profile_image->image = $file;
+            //     $profile_image->save();
 
-                $profile_image->field_name = 'image1';
-                $profile_image->image = $file;
-                $profile_image->save();
+            //     // update profile pic date
+            //     $user->picture_updated_at = date('Y-m-d');
+            //     $user->picture_email_sent = false;
+            //     $user->save();
+            // }
+            // if ($request->has('image2') && $request->image2 != '') {
+            //     $profile_image = UserProfileImage::where('user_id', $userId)
+            //         ->where('field_name', 'image2')
+            //         ->first();
+            //     $existingImage = DB::table('user_profiles_image')
+            //         ->where('user_id', $userId)
+            //         ->where('field_name', 'image2')
+            //         ->first();
+            //     if (file_exists($folderPath . $existingImage?->image)) {
+            //         @unlink($folderPath . $existingImage->image);
+            //     }
+            //     if (!isset($profile_image)) {
+            //         $profile_image = new UserProfileImage();
+            //         $profile_image->user_id = $userId;
+            //     }
 
-                // update profile pic date
-                $user->picture_updated_at = date('Y-m-d');
-                $user->picture_email_sent = false;
-                $user->save();
-            }
-            if ($request->has('image2') && $request->image2 != '') {
-                $profile_image = UserProfileImage::where('user_id',  $user->id)
-                    ->where('field_name', 'image2')
-                    ->first();
-                $existingImage = DB::table('user_profiles_image')
-                    ->where('user_id',  $user->id)
-                    ->where('field_name', 'image2')
-                    ->first();
-                if (file_exists($folderPath . $existingImage?->image)) {
-                    @unlink($folderPath . $existingImage->image);
-                }
-                if (!isset($profile_image)) {
-
-                    $profile_image = new UserProfileImage();
-                    $profile_image->user_id =  $user->id;
-                }
-
-                // $file = GeneralHelper::uploadBase64Image($request, 'image2');
-                $fileType = GeneralHelper::base64MimeType($request->image2);
-                if ($fileType == 'data:application/octet-stream') {
-                    $file = GeneralHelper::uploadOtherFile($request, 'image2');
-                } else {
-                    $file = GeneralHelper::uploadImage($request, 'image2');
-                }
-                $profile_image->field_name = 'image2';
-                $profile_image->image = $file;
-                $profile_image->save();
-            }
-            if ($request->has('image3') && $request->image3 != '') {
-                $profile_image = UserProfileImage::where('user_id',  $user->id)
-                    ->where('field_name', 'image3')
-                    ->first();
-                $existingImage = DB::table('user_profiles_image')
-                    ->where('user_id',  $user->id)
-                    ->where('field_name', 'image3')
-                    ->first();
-                if (file_exists($folderPath . $existingImage?->image)) {
-                    @unlink($folderPath . $existingImage->image);
-                }
-                if (!isset($profile_image)) {
-                  //  dd('image3');
-                    $profile_image = new UserProfileImage();
-                    $profile_image->user_id =  $user->id;
-                }
-                // $file = GeneralHelper::uploadBase64Image($request, 'image3');
-                $fileType = GeneralHelper::base64MimeType($request->image3);
-                if ($fileType == 'data:application/octet-stream') {
-                    $file = GeneralHelper::uploadOtherFile($request, 'image3');
-                } else {
-                    $file = GeneralHelper::uploadImage($request, 'image3');
-                }
-                $profile_image->field_name = 'image3';
-                $profile_image->image = $file;
-                $profile_image->save();
-            }
+            //     // $file = GeneralHelper::uploadBase64Image($request, 'image2');
+            //     $fileType = GeneralHelper::base64MimeType($request->image2);
+            //     if ($fileType == 'data:application/octet-stream') {
+            //         $file = GeneralHelper::uploadOtherFile($request, 'image2');
+            //     } else {
+            //         $file = GeneralHelper::uploadImage($request, 'image2');
+            //     }
+            //     $profile_image->field_name = 'image2';
+            //     $profile_image->image = $file;
+            //     $profile_image->save();
+            // }
+            // if ($request->has('image3') && $request->image3 != '') {
+            //     $profile_image = UserProfileImage::where('user_id', $userId)
+            //         ->where('field_name', 'image3')
+            //         ->first();
+            //     $existingImage = DB::table('user_profiles_image')
+            //         ->where('user_id', $userId)
+            //         ->where('field_name', 'image3')
+            //         ->first();
+            //     if (file_exists($folderPath . $existingImage?->image)) {
+            //         @unlink($folderPath . $existingImage->image);
+            //     }
+            //     if (!isset($profile_image)) {
+            //         $profile_image = new UserProfileImage();
+            //         $profile_image->user_id = $userId;
+            //     }
+            //     // $file = GeneralHelper::uploadBase64Image($request, 'image3');
+            //     $fileType = GeneralHelper::base64MimeType($request->image3);
+            //     if ($fileType == 'data:application/octet-stream') {
+            //         $file = GeneralHelper::uploadOtherFile($request, 'image3');
+            //     } else {
+            //         $file = GeneralHelper::uploadImage($request, 'image3');
+            //     }
+            //     $profile_image->field_name = 'image3';
+            //     $profile_image->image = $file;
+            //     $profile_image->save();
+            // }
             /*Capture Image */
             /* if ($request->has('capture_image') && $request->capture_image != '') {
                 //dd($request->capture_image);
@@ -280,18 +253,15 @@ class SubmitProfileController extends Controller
                 $profile_image->save();
             } */
             // save intro video
-            $user_introvideo = IntroVideo::where('user_id',$user->id)->first();
-            if (!isset($user_introvideo)) {
                 $user_introvideo = new IntroVideo();
-                $user_introvideo->user_id = $user->id;
-            }
+                $user_introvideo->user_id =$user->id;
+
             if ($request->has('intro_video_link')) {
                 $user_introvideo->intro_video_link = GeneralHelper::getYoutubeEmbedUrl($request->intro_video_link);
             }
             $user_introvideo->save();
-            // dd($request->all());
             return redirect()
-                ->route('users.view-profile')
+                ->route('admin.profile-dashboard')
                 ->with('success', 'Profile submitted/saved successfully.');
         } else {
             return redirect()->route('users.login')
@@ -309,7 +279,11 @@ class SubmitProfileController extends Controller
         //dd($userInfo);
         $states = State::all();
 
-        return view('admin.submit-profile.create-profile', compact('userProfile', 'userInfo', 'states', 'userIntroVideo'));
+        return view('admin.submit-profile.create-profile');
+    }
+    public function dashboard(){
+
+        return view('admin.submit-profile.dashboard');
     }
 
 }

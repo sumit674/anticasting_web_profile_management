@@ -60,11 +60,6 @@
                 data-bs-content-id="popover-content" data-bs-trigger="focus" title="Headshot Image">
                 <i class="fa fa-info-circle"></i>
             </div>
-            {{-- @if (count($userInfo?->images) > 0)
-                <div class="close-btn"
-                    onclick="deleteAllHeadShotImages('{{ route('user.delete-all-headshots', auth()->user()->id) }}')">x
-                </div>
-            @endif --}}
         </div>
         <div id="popover-content" class="d-none">
             <div class="form-group">
@@ -86,53 +81,42 @@
                 <span>Type: jpg, jfif, jpeg, png, gif</span>
             </div>
         </div>
-        <div class="feature" @if (count($userInfo?->images) == 0) id="upload-default" @endif>
+        <div class="feature">
             <figure class="featured-item r-3-2 transition main-img img portrait">
-                @if (count($userInfo?->images) == 0)
-                    <img id="default-img" src="{{ asset('assets/images/default-user.jfif') }}" alt="User"
+                     <img id="default-img" src="{{ asset('assets/images/default-user.jfif') }}" alt="User"
                         title="Please select an image" style="width:100%; cursor: pointer;">
-                @endif
-            </figure>
+             </figure>
         </div>
         <div class="gallery-wrapper">
             <div class="gallery d-flex">
                 <div class="item-wrapper d-inline-flex">
-                    {{-- <div class="delete-single-btn">x</div> --}}
-                    {{-- @if (count($userInfo?->images) > 0)
-                        <div class="close-itm-btn"
-                            onclick="deleteAllHeadShotImages('{{ route('user.delete-all-headshots', auth()->user()->id) }}')">x
-                        </div>
-                    @endif --}}
                     <figure class="gallery-item image-holder r-3-2 active transition" id="image1" data-value="1">
                     </figure>
-
-                </div>
+                 </div>
                 <div class="item-wrapper d-inline-flex">
-                    @if (isset($userInfo?->images) && isset($userInfo?->images[1]->field_name) && $userInfo?->images[1]->field_name != '')
-                        <div class="close-itm-btn close-1" style="display: none;"
+                       <div class="close-itm-btn close-1" style="display: none;"
                             onclick="deleteSingleHeadShotImage('{{ route('user.delete-single.image', ['image2', auth()->user()->id]) }}')">
                             <i class="fa fa-trash"></i>
                         </div>
-                    @else
+
                         <div class="close-itm-btn close-1" style="display: none;"
                             onclick="deleteTempImage('image2')">
                             <i class="fa fa-trash"></i>
                         </div>
-                    @endif
+
                     <figure class="gallery-item image-holder r-3-2 transition" id="image2" data-value="2"></figure>
                 </div>
                 <div class="item-wrapper d-inline-flex">
-                    @if (isset($userInfo?->images) && isset($userInfo?->images[2]->field_name) && $userInfo?->images[2]->field_name != '')
                         <div class="close-itm-btn close-2" style="display: none;"
                             onclick="deleteSingleHeadShotImage('{{ route('user.delete-single.image', ['image3', auth()->user()->id]) }}')">
                             <i class="fa fa-trash"></i>
                         </div>
-                    @else
+
                         <div class="close-itm-btn close-2" style="display: none;"
                             onclick="deleteTempImage('image3')">
                             <i class="fa fa-trash"></i>
                         </div>
-                    @endif
+
                     <figure class="gallery-item image-holder r-3-2 transition" id="image3" data-value="3"></figure>
                 </div>
 
@@ -161,7 +145,7 @@
                     {{-- <label  class="form-label" for="">Upload video</label> --}}
                     <input type="text" class="form-control {{ $errors->has('intro_video_link') ? ' is-invalid' : '' }}" name="intro_video_link"
                         placeholder="Please enter  intro video" id="show_intro_video"
-                        value="{{ old('intro_video_link', isset($userIntroVideo->intro_video_link) ? $userIntroVideo->intro_video_link : '') }}" />
+                        value="{{ old('intro_video_link')}}" />
                     {{-- <button class="btn btn-sm" style="background-color: #ff5b00;" type="submit">Save</button> --}}
                 </div>
             </div>
@@ -171,8 +155,8 @@
             {{--  @if (isset($userIntroVideo) && $userIntroVideo != null)  --}}
                 {{--  <iframe style="width:100%; display:none;" src="{{ isset($userIntroVideo->intro_video_link) ? $userIntroVideo->intro_video_link : '' }}" allowfullscreen="true" id="introvideo"></iframe>  --}}
                 <iframe style="width:100%; display:none;" allowfullscreen="true" id="introvideo"></iframe>
-                <img id="default-video" src="{{ asset('assets/images/video-thumb.png') }}" alt="" style="width: 100%;">
-            {{--  @else  --}}
+                <img id="default-video" src="" alt="" style="width: 100%;"/>
+              {{--  @else  --}}
                 {{--  <iframe style="width: 100%;" src=" " allowfullscreen="true" id="video_intro">  --}}
                 {{--  </iframe>  --}}
                 {{--  <img src="{{ asset('assets/images/video-thumb.png') }}" alt="" style="width: 100%;">  --}}
@@ -199,4 +183,4 @@
 
     </div>
 </div>
-@include('submit-profile-new.upload-image')
+
