@@ -146,7 +146,7 @@ Route::get('cron-send-picture-notification', [CommonController::class, 'sendPict
 /*New Submit-Profile */
 
 Route::group(['prefix' => 'users', 'middleware' => ['web', 'user']], function () {
-   Route::get('submit-profile/{id?}',[FrontendProfileController::class,'createProfile'])->name('users.profile');
+   Route::get('submit-profile/{id?}/{flag?}',[FrontendProfileController::class,'createProfile'])->name('users.profile');
    Route::post('submit-profile/submit',[FrontendProfileController::class,'submitProfile'])->name('users.submit-profile');
    Route::get('view-profile',[FrontendProfileController::class,'viewProfile'])->name('users.view-profile');
 });

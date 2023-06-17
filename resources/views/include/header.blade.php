@@ -13,12 +13,12 @@
                   <li><a href="{{ route('our-work') }}">Our Work</a></li>
                   <li><a href="{{ url('/contact') }}">Contact</a></li>
                   @auth
-                      <li><a class="get-a-quote" href="{{ route('users.submitProfile') }}">Submit Profile</a></li>
+                      <li><a class="get-a-quote" href="{{ route('users.profile') }}">Submit Profile</a></li>
                       <li><a class="get-a-quote" href="{{ route('users.logout') }}">Logout</a></li>
                   @else
                       <li><a class="get-a-quote" href="{{ route('users.submitProfile') }}">Submit Profile</a></li>
                   @endauth
-                  
+
               </ul>
           </nav>
       </div>

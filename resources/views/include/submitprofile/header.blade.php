@@ -32,7 +32,7 @@
                                 <a href="{{ route('users.view-profile') }}">View Profile</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('users.submitProfile') }}">Submit Profile</a>
+                                <a href="{{ route('users.profile') }}">Submit Profile</a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('users.logout') }}">Logout</a>

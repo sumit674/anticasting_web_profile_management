@@ -10,18 +10,19 @@ use App\Helpers\GeneralHelper;
 class FrontendProfileController extends Controller
 {
     //
-    public function createProfile($id=" "){
+    public function createProfile(Request $request,$id=" "){
         $id = auth()->user()?->id;
+        $flag=$request->flag;
         $userProfile = UserProfile::where('user_id',  $id)->first();
         $userIntroVideo = IntroVideo::where('user_id', $id)->first();
         $userInfo = User::where('id',  $id)
             ->with('images')
             ->first();
         $states = State::all();
-        return view('submit-profile.create-edit',compact('states','userInfo','userProfile','userIntroVideo'));
+        return view('submit-profile.create-edit',compact('states','userInfo','userProfile','userIntroVideo','flag'));
     }
     public function submitProfile(Request $request){
-
+         //  dd($request->all());
         $request->validate(
             [
                 'first_name' => 'required|regex:/^[a-zA-Z ]+[a-zA-Z 0-9]*$/',
@@ -81,6 +82,7 @@ class FrontendProfileController extends Controller
                         }
                     },
                 ],
+                'imdb_profile'=>'nullable|regex:/^https?:\/\/(?:www\.)?imdb\.com\/title\/\w+\/?$/'
             ],
             [
                 'first_name.required' => 'Please enter a firstname',
@@ -124,10 +126,13 @@ class FrontendProfileController extends Controller
          }
          $user_profile->ethnicity = $request->ethnicity;
          $user_profile->email = $request->email;
-         $user_profile->date_of_birth = Carbon::parse($request->date_of_birth)->format('Y-m-d');
+         $user_profile->date_of_birth = Carbon::parse($request->date_of_birth)->format('d/m/y');
          $user_profile->gender = $request->gender;
          $user_profile->height = $request->height;
          $user_profile->weight = $request->weight;
+         $user_profile->imdb_profile = $request->imdb_profile;
+         $user_profile->skills = $request->skills;
+         $user_profile->formal_acting = $request->formal_acting;
          $user_profile->current_location = $request->current_location;
          $user_profile->about_me = $request->about_me;
          $user_profile->user_id = $userId;
