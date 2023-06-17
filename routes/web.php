@@ -3,7 +3,7 @@
 use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\{HomeController, AboutUsController, ContactUsController, MessageController, ImageController};
+use App\Http\Controllers\{HomeController, AboutUsController, ContactUsController, MessageController,FrontendProfileController,ImageController};
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\ChangePasswordController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
@@ -143,3 +143,10 @@ Route::get('/reload-captcha', [CommonController::class, 'reloadCaptcha'])->name(
  * CRON
  */
 Route::get('cron-send-picture-notification', [CommonController::class, 'sendPictureNotification']);
+/*New Submit-Profile */
+
+Route::group(['prefix' => 'users', 'middleware' => ['web', 'user']], function () {
+   Route::get('submit-profile/{id?}',[FrontendProfileController::class,'createProfile'])->name('users.profile');
+   Route::post('submit-profile/submit',[FrontendProfileController::class,'submitProfile'])->name('users.submit-profile');
+   Route::get('view-profile',[FrontendProfileController::class,'viewProfile'])->name('users.view-profile');
+});
