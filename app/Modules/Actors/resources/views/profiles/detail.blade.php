@@ -61,10 +61,10 @@
                                         <div class="pt-1 ms-1">
                                             <div class="image-container">
                                                 <div class="card-left">
-                                                    @if (isset($item?->images) && count($item?->images) > 0)
+                                                    @if (isset($item?->profile?->image1))
                                                         <div class="main-image gallary-image border border-dark rounded-6">
-                                                            @if (isset($item?->images[0]?->image))
-                                                                <img id="mainImage" src="{{ $item?->images[0]?->image }}"
+                                                            @if (isset($item?->profile?->image1))
+                                                                <img id="mainImage" src="{{asset('upload/profile/'.$item?->profile?->image1) }}"
                                                                     height="200" width="200" />
                                                             @else
                                                                 <img id="mainImage"
@@ -75,23 +75,23 @@
 
                                                         <div class="img-select">
                                                             <div class="divId" onmouseover="changeImageOnClick(event)">
-                                                                @if (isset($item?->images[0]?->image))
+                                                                @if (isset($item?->profile?->image1))
                                                                     <img class="imgStyle"
-                                                                        src="{{ $item?->images[0]?->image }}" />
+                                                                        src="{{ asset('upload/profile/'.$item?->profile?->image1) }}" />
                                                                 @else
                                                                     <img class="imgStyle"
                                                                         src="{{ asset('assets/images/user-default-image.png') }}" />
                                                                 @endif
-                                                                @if (isset($item?->images[1]?->image))
+                                                                @if (isset($item?->profile?->image2))
                                                                     <img class="imgStyle"
-                                                                        src="{{ $item?->images[1]?->image }}" />
+                                                                        src="{{ asset('upload/profile/'.$item?->profile?->image2) }}" />
                                                                 @else
                                                                     <img class="imgStyle"
                                                                         src="{{ asset('assets/images/user-default-image.png') }}" />
                                                                 @endif
-                                                                @if (isset($item?->images[2]?->image))
+                                                                @if (isset($item?->profile?->image3))
                                                                     <img class="imgStyle"
-                                                                        src="{{ $item?->images[2]?->image }}" />
+                                                                        src="{{asset('upload/profile/'.$item?->profile?->image3) }}" />
                                                                 @else
                                                                     <img class="imgStyle"
                                                                         src="{{ asset('assets/images/user-default-image.png') }}" />

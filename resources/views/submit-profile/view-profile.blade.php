@@ -1,6 +1,20 @@
 @extends('layouts.submit-profile.app')
 @section('title','View Profile')
 @section('header')
+<style>
+    .custom-image.up {
+        transform: rotate(180deg);
+        position:absolute;
+      }
+     .custom-image.down {
+        transform: rotate(180deg);
+        position:absolute;
+      }
+      .custom-image.expanded {
+        transform: scale(1.3);
+        position:absolute;
+      }
+</style>
 @endsection
 @section('content')
 <div class="content">
@@ -22,9 +36,9 @@
             <span class="personal-info">{{$userInfo?->first_name.' '.$userInfo?->last_name }}</span>
             @php
                 $dateOfBirth = Carbon\Carbon::parse($userInfo?->profile?->date_of_birth)->format('d-m-Y');
-
+                $years = Carbon\Carbon::parse($userInfo?->profile?->date_of_birth)->diffInYears(Carbon\Carbon::now());
             @endphp
-            <span class="personal-info">{{$dateOfBirth}} ({{$userInfo?->age}} Yrs)</span>
+            <span class="personal-info">{{$dateOfBirth}} ({{   $years }} Yrs)</span>
             <span class="personal-info">{{$userInfo?->profile?->gender}}</span>
             <span class="personal-info">{{$userInfo?->profile?->email}}</span>
             <span class="personal-info-mobile-no">{{$userInfo?->countryCode.' '.$userInfo?->mobile_no}}</span>
@@ -60,8 +74,8 @@
               <div class="col-md-12">
                 <div class="gallery-container">
                   <div class="gallery-item">
-                    @if (isset($userInfo?->images[0]?->image))
-                    <img src="{{$userInfo?->images[0]?->image}}" class="custom-image" alt="Image 1">
+                    @if (isset($userInfo?->profile?->image1))
+                        <img src="{{asset('upload/profile/'.$userInfo?->profile?->image1)}}" class="custom-image" alt="Image 1">
                       @else
                         <img src="{{ asset('assets/images/user-default-image.png') }}" class="custom-image" alt="Image 3">
                     @endif
@@ -77,15 +91,15 @@
 
                   </div>
                   <div class="gallery-item">
-                    @if (isset($userInfo?->images[1]?->image))
-                       <img src="{{$userInfo?->images[1]?->image}}" class="custom-image" alt="Image 1">
+                    @if (isset($userInfo?->profile?->image2))
+                       <img src="{{asset('upload/profile/'.$userInfo?->profile?->image2)}}" class="custom-image" alt="Image 2">
                       @else
                         <img src="{{ asset('assets/images/user-default-image.png') }}" class="custom-image" alt="Image 3">
                     @endif
                    </div>
                   <div class="gallery-item">
-                    @if (isset($userInfo?->images[2]?->image))
-                    <img src="{{$userInfo?->images[2]?->image}}" class="custom-image" alt="Image 1">
+                    @if (isset($userInfo?->profile?->image3))
+                    <img src="{{asset('upload/profile/'.$userInfo?->profile?->image3)}}" class="custom-image" alt="Image 3">
                     @else
                      <img src="{{ asset('assets/images/user-default-image.png') }}" class="custom-image" alt="Image 4">
                     @endif
@@ -197,10 +211,22 @@
           </div>
         </div>
       </div>
-
-
     </div>
   </div>
-@endsection
+  @endsection
 @section('footer')
+<script>
+    const images = document.querySelectorAll('.custom-image');
+
+    images.forEach((image) => {
+      image.addEventListener('click', () => {
+
+        image.classList.toggle('up');
+        image.classList.toggle('down');
+        image.classList.toggle('expanded');
+      });
+    });
+
+
+</script>
 @endsection

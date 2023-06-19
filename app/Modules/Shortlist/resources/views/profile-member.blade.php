@@ -32,7 +32,7 @@
                                     <div class="c-performer-card__common-info g-col-lg-8">
                                         <div class="c-performer-card__photo"><a href="#"
                                                 class="c-performer-card__photo-container"><img
-                                                    src="{{ $item?->user?->images[0]?->image }}"
+                                                    src="{{ asset('upload/profile/'.$item?->user?->profile?->image1)}}"
                                                     class="c-performer-card__photo-image" alt="CHRISTINA TAM"></a>
                                             <div class="c-performer-card__photo-triangle">
                                                 <div class="c-performer-card__photo-runningOrder">{{ $key + 1 }}</div>

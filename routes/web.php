@@ -63,7 +63,8 @@ Route::group(['prefix' => 'users', 'middleware' => ['web', 'user']], function ()
     Route::post('/userimage', [ProfileController::class, 'uploadUserImage'])->name('users.uploadImages');
     Route::post('/userworkreel', [ProfileController::class, 'submitWorkReel'])->name('users.userworkreel');
     Route::post('/userintrovideo', [ProfileController::class, 'IntroVideo'])->name('users.introvideos');
-    Route::get('/delete/{id}/{user_id}/image', [ImageController::class, 'deleteHeadShotImageSingle'])->name('user.delete-single.image');
+    Route::get('/delete/one/{id}/image', [ImageController::class, 'deleteHeadShotImageOne'])->name('users.delete-one.image');
+    Route::get('/delete/two/{id}/image', [ImageController::class, 'deleteHeadShotImageTwo'])->name('users.delete-two.image');
     Route::get('/delete/all/{user_id}/image', [ImageController::class, 'deleteHeadShotImageAll'])->name('user.delete-all-headshots');
     /*View User Profile */
     Route::get('/view-profile', [ProfileController::class, 'viewProfileDetails'])->name('users.view-profile');
@@ -125,13 +126,13 @@ Route::get('/our-work', [HomeController::class, 'ourWork'])->name('our-work');
 /**
  * ADMIN PROFILE CREATION
  */
-Route::group(['prefix' => 'admin', 'middleware' => ['web', 'admin']], function () {
-    Route::get('/submit-user-profile', [SubmitProfileController::class, 'submitUserProfile'])->name('admin.submit-user-profile');
-    Route::post('/submit-user-profile', [SubmitProfileController::class, 'storeUserProfile'])->name('admin.store-user-profile');
-    Route::get('/edit-user-profile/{id}/edit', [SubmitProfileController::class, 'editUserProfile'])->name('admin.edit-user-profile');
-    Route::post('/edit-user-profile/{id}/update', [SubmitProfileController::class, 'updateUpdateProfile'])->name('admin.update-user-profile');
-    Route::get('/profile-dashboard', [SubmitProfileController::class, 'dashboard'])->name('admin.profile-dashboard');
-});
+// Route::group(['prefix' => 'admin', 'middleware' => ['web', 'admin']], function () {
+//     Route::get('/submit-user-profile', [SubmitProfileController::class, 'submitUserProfile'])->name('admin.submit-user-profile');
+//     Route::post('/submit-user-profile', [SubmitProfileController::class, 'storeUserProfile'])->name('admin.store-user-profile');
+//     Route::get('/edit-user-profile/{id}/edit', [SubmitProfileController::class, 'editUserProfile'])->name('admin.edit-user-profile');
+//     Route::post('/edit-user-profile/{id}/update', [SubmitProfileController::class, 'updateUpdateProfile'])->name('admin.update-user-profile');
+//     Route::get('/profile-dashboard', [SubmitProfileController::class, 'dashboard'])->name('admin.profile-dashboard');
+// });
 
 /**
  * Captcha

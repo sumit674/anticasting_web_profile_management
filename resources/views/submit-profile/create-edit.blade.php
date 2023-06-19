@@ -33,7 +33,7 @@
                                     <div class="mb-3">
                                         <label for="birthdate" class="form-label">Birthdate <span
                                                 class="strik-color">*</span></label>
-                                        <input type="text" id="datepicker" name="date_of_birth"
+                                        <input type="date"  name="date_of_birth"
                                             value="{{ old('date_of_birth', isset($userProfile?->date_of_birth) ? $userProfile?->date_of_birth : ' ') }}"
                                             class="form-control  {{ $errors->has('date_of_birth') ? ' is-invalid' : '' }}"
                                             placeholder="Enter a date of birthday" />
@@ -109,11 +109,11 @@
                                                 class="strik-color">*</span></label>
                                         <div class="d-flex">
                                             <label class="thumbnail" for="image1">
-                                                @if (isset($userInfo?->images[0]?->image))
-                                                    <img src="{{ $userInfo?->images[0]?->image }}" class="custom-image"
+                                                @if (isset($userInfo?->profile?->image1))
+                                                    <img src="{{ asset('upload/profile/'.$userInfo?->profile?->image1)}}" class="custom-image-create"
                                                         id="preview1" alt="Image 1">
                                                 @else
-                                                    <img src="https://via.placeholder.com/180x180" alt="Image 1"
+                                                    <img src="{{ asset('assets/images/user-default-image.png') }}" alt="Image 1"
                                                         id="preview1" />
                                                 @endif
 
@@ -121,11 +121,11 @@
                                                     style="display: none" />
                                             </label>
                                             <label class="thumbnail" for="image2">
-                                                @if (isset($userInfo?->images[1]?->image))
-                                                    <img src="{{ $userInfo?->images[1]?->image }}" class="custom-image"
+                                                @if (isset($userInfo?->profile?->image2))
+                                                    <img src="{{asset('upload/profile/'.$userInfo?->profile?->image2) }}" class="custom-image-create"
                                                         alt="Image 1" id="preview2">
                                                 @else
-                                                    <img src="https://via.placeholder.com/180x180" alt="Image 2"
+                                                    <img src="{{ asset('assets/images/user-default-image.png') }}" alt="Image 2"
                                                         id="preview2" />
                                                 @endif
 
@@ -133,15 +133,15 @@
                                                     style="display: none" />
                                             </label>
                                             <div class="delete-image"
-                                                onclick="deleteSingleHeadShotImage('{{ route('user.delete-single.image', ['image2', auth()->user()->id]) }}')">
+                                                onclick="deleteSingleHeadShotImage('{{ route('users.delete-one.image',$userInfo?->profile?->id) }}')">
                                                 <i class="fa fa-trash delete-image"></i>
                                             </div>
                                             <label class="thumbnail" for="image3">
-                                                @if (isset($userInfo?->images[2]?->image))
-                                                    <img src="{{ $userInfo?->images[2]?->image }}" class="custom-image"
-                                                        alt="Image 1" id="preview3">
+                                                @if (isset($userInfo?->profile?->image3))
+                                                    <img src="{{asset('upload/profile/'.$userInfo?->profile?->image3)}}" class="custom-image-create"
+                                                        alt="Image 3" id="preview3">
                                                 @else
-                                                    <img src="https://via.placeholder.com/180x180" alt="Image 3"
+                                                    <img src="{{ asset('assets/images/user-default-image.png') }}" alt="Image 3"
                                                         id="preview3" />
                                                 @endif
 
@@ -149,7 +149,7 @@
                                                     style="display: none" />
                                             </label>
                                             <div class="delete-image"
-                                                onclick="deleteSingleHeadShotImage('{{ route('user.delete-single.image', ['image2', auth()->user()->id]) }}')">
+                                                onclick="deleteSingleHeadShotImage('{{ route('users.delete-two.image',$userInfo?->profile?->id) }}')">
                                                 <i class="fa fa-trash"></i>
                                             </div>
                                         </div>

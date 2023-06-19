@@ -25,6 +25,9 @@ class CreateUserProfilesTable extends Migration
             $table->string('skills')->nullable();
             $table->string('formal_acting')->nullable();
             $table->text('current_location')->nullable();
+            $table->string('image1')->nullable();
+            $table->string('image2')->nullable();
+            $table->string('image3')->nullable();
             $table->string('work_reel1')->nullable();
             $table->string('work_reel2')->nullable();
             $table->string('work_reel3')->nullable();

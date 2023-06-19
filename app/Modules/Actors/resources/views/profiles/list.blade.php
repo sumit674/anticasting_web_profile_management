@@ -111,9 +111,9 @@
                                     <div class="card d-flex flex-column actor-grid">
                                         <div class="card-img c-card__image-container">
                                             <div style="cursor: pointer;" data-toggle="popover" {{-- data-poload="{{ route('admin.actors.detail', $item->id) }}" --}}>
-                                                @isset($item->images[0]->image)
+                                                @isset($item?->profile?->image1)
                                                     <a href="{{ route('admin.profile-detail', $item->id) }}" target="__blank">
-                                                        <img class="c-card__image" src="{{ $item->images[0]?->image }}" />
+                                                        <img class="c-card__image" src="{{ asset('upload/profile/'.$item?->profile?->image1) }}" />
                                                     </a>
                                                 @else
                                                     <a href="{{ route('admin.profile-detail', $item->id) }}">

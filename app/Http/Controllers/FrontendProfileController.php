@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use App\Models\{State,User,UserProfile,UserProfileImage,IntroVideo};
 use Carbon\Carbon;
 use App\Helpers\GeneralHelper;
@@ -16,13 +17,12 @@ class FrontendProfileController extends Controller
         $userProfile = UserProfile::where('user_id',  $id)->first();
         $userIntroVideo = IntroVideo::where('user_id', $id)->first();
         $userInfo = User::where('id',  $id)
-            ->with('images')
             ->first();
         $states = State::all();
         return view('submit-profile.create-edit',compact('states','userInfo','userProfile','userIntroVideo','flag'));
     }
     public function submitProfile(Request $request){
-         //  dd($request->all());
+
         $request->validate(
             [
                 'first_name' => 'required|regex:/^[a-zA-Z ]+[a-zA-Z 0-9]*$/',
@@ -126,7 +126,7 @@ class FrontendProfileController extends Controller
          }
          $user_profile->ethnicity = $request->ethnicity;
          $user_profile->email = $request->email;
-         $user_profile->date_of_birth = Carbon::parse($request->date_of_birth)->format('d/m/y');
+         $user_profile->date_of_birth = Carbon::parse($request->date_of_birth)->format('Y-m-d');
          $user_profile->gender = $request->gender;
          $user_profile->height = $request->height;
          $user_profile->weight = $request->weight;
@@ -157,47 +157,42 @@ class FrontendProfileController extends Controller
          $user_profile->save();
 
          $folderPath = public_path() . '/upload/profile/';
+
          //First  image
          if($request->has('image1') && $request->image1 != null){
-           $user_profile_image = UserProfileImage::where('user_id', $userId)->where('field_name', 'image1')->first();
-          if(!isset($user_profile_image)){
-              $user_profile_image = new UserProfileImage();
-              $user_profile_image->user_id = $userId;
-           }
+         $existingfolderPathOne = public_path() . '/upload/profile/'.$user_profile->image1;
+          if (File::exists($existingfolderPathOne)) {
+                File::delete($existingfolderPathOne);
+          }
           $file = $request->file('image1');
           $fileName = uniqid() . '.' . $file->getClientOriginalExtension();
           $file->move($folderPath , $fileName);
-          $user_profile_image->field_name ='image1';
-          $user_profile_image->image = $fileName;
-          $user_profile_image->save();
+          $user_profile->image1 = $fileName;
+          $user_profile->save();
          }
           //Second  image
          if($request->has('image2') && $request->image2 != null){
-            $user_profile_image = UserProfileImage::where('user_id', $userId)->where('field_name', 'image2')->first();
-           if(!isset($user_profile_image)){
-               $user_profile_image = new UserProfileImage();
-               $user_profile_image->user_id = $userId;
+            $existingfolderPathTwo = public_path() . '/upload/profile/'.$user_profile->image2;
+            if (File::exists($existingfolderPathTwo)) {
+                  File::delete($existingfolderPathTwo);
             }
            $file = $request->file('image2');
            $fileName = uniqid() . '.' . $file->getClientOriginalExtension();
            $file->move($folderPath , $fileName);
-           $user_profile_image->field_name ='image2';
-           $user_profile_image->image = $fileName;
-           $user_profile_image->save();
+           $user_profile->image2 = $fileName;
+           $user_profile->save();
           }
           //Third Image
           if($request->has('image3') && $request->image3 != null){
-            $user_profile_image = UserProfileImage::where('user_id', $userId)->where('field_name', 'image3')->first();
-           if(!isset($user_profile_image)){
-               $user_profile_image = new UserProfileImage();
-               $user_profile_image->user_id = $userId;
+            $existingfolderPathThree = public_path() . '/upload/profile/'.$user_profile->image3;
+            if (File::exists($existingfolderPathThree)) {
+                  File::delete($existingfolderPathThree);
             }
            $file = $request->file('image3');
            $fileName = uniqid() . '.' . $file->getClientOriginalExtension();
            $file->move($folderPath , $fileName);
-           $user_profile_image->field_name ='image3';
-           $user_profile_image->image = $fileName;
-           $user_profile_image->save();
+           $user_profile->image3 = $fileName;
+           $user_profile->save();
           }
         // Save Intro video
        $user_introvideo = IntroVideo::where('user_id', auth()->user()->id)->first();

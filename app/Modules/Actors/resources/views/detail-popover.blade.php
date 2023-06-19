@@ -301,12 +301,12 @@
                                 <div class="pt-1 ms-1">
                                     <div class="image-container">
                                         <div class="card-left">
-                                            @if (isset($actor?->images) && count($actor?->images) > 0)
+                                            @if ($actor?->profile?->image1)
                                                 <div class="main-image gallary-image border border-dark rounded-6">
-                                                    @if (isset($actor?->images[0]?->image))
+                                                    @if (isset($actor?->profile?->image1))
                                                         <a href="{{ route('admin.profile-detail', $actor->id) }}"
                                                             target="__blank">
-                                                            <img id="mainImage" src="{{ $actor?->images[0]?->image }}"
+                                                            <img id="mainImage" src="{{ asset('upload/profile/'.$actor?->profile?->image1) }}"
                                                                 height="200" width="200" />
                                                         </a>
                                                     @else
@@ -320,20 +320,20 @@
                                                 </div>
                                                 <div class="img-select">
                                                     <div class="divId" onmouseover="changeImageOnClick(event)">
-                                                        @if (isset($actor?->images[0]?->image))
-                                                            <img class="imgStyle" src="{{ $actor?->images[0]?->image }}" />
+                                                        @if (isset($actor?->profile?->image1))
+                                                            <img class="imgStyle" src="{{asset('upload/profile/'.$actor?->profile?->image1) }}" />
                                                         @else
                                                             <img class="imgStyle"
                                                                 src="{{ asset('assets/images/user-default-image.png') }}" />
                                                         @endif
-                                                        @if (isset($actor?->images[1]?->image))
-                                                            <img class="imgStyle" src="{{ $actor?->images[1]?->image }}" />
+                                                        @if (isset($actor?->profile?->image2))
+                                                            <img class="imgStyle" src="{{ asset('upload/profile/'.$actor?->profile?->image2) }}" />
                                                         @else
                                                             <img class="imgStyle"
                                                                 src="{{ asset('assets/images/user-default-image.png') }}" />
                                                         @endif
-                                                        @if (isset($actor?->images[2]?->image))
-                                                            <img class="imgStyle" src="{{ $actor?->images[2]?->image }}" />
+                                                        @if (isset($actor?->profile?->image3))
+                                                            <img class="imgStyle" src="{{asset('upload/profile/'.$actor?->profile?->image3) }}" />
                                                         @else
                                                             <img class="imgStyle"
                                                                 src="{{ asset('assets/images/user-default-image.png') }}" />

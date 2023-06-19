@@ -28,7 +28,6 @@ class ActorsController extends Controller
             ->FilterGender()
             ->FilterProfile()
             ->FilterRating()
-            ->with('images')
             ->with('profile');
         // $items->with([
         //     'profile' => function ($query) use ($request) {
@@ -167,8 +166,7 @@ class ActorsController extends Controller
     }
     public function actorDetail($id)
     {
-        $actor = User::with('images')
-            ->with('profile')
+        $actor = User::with('profile')
             ->where('user_type', '0')
             ->where('id', $id)
             ->first();
@@ -199,7 +197,6 @@ class ActorsController extends Controller
         $item = User::where('id', $id)
             ->with('profile')
             ->with('introVideo')
-            ->with('images')
             ->first();
           $selectStar = User::where('id',$id)->first();
         return view('Actors::profiles.detail', compact('item','selectStar'));

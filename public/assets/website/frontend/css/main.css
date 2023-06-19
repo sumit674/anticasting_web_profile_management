@@ -166,7 +166,7 @@ html,
       }
       .other-value {
         font-size: 22px;
-        font-weight: bold;
+        font-weight: 500;
       }
       .other-unit {
         font-size: 16px;
@@ -194,20 +194,22 @@ html,
         flex-direction: column;
         align-items: center;
         margin-right: 10px;
+        cursor: pointer;
       }
-
       .thumbnail img {
         width: 100px;
         height: 100px;
+        margin-top: 2px;
         object-fit: cover;
         border-radius: 5px;
         margin-bottom: 5px;
-      }
-
+        cursor: pointer;
+    }
       .thumbnail .btn-browse {
         width: 100px;
         padding: 5px;
         font-size: 14px;
+        cursor: pointer;
       }
       .johns-profile{
         font-family: Poppins;
@@ -218,6 +220,7 @@ html,
         line-height: normal;
         letter-spacing: normal;
         color: #0059ff;
+        cursor: pointer;
       }
       .Complete-this-secti {
         margin: 4px 23px 18px 10px;
@@ -246,8 +249,23 @@ html,
     .custom-image {
       width: 200px;
       height: 239px;
-      margin-bottom: 226px;
+      margin-bottom: 238px;
+      margin-top:10px;
       object-fit: cover;
+      cursor: pointer;
+      overflow-y: hidden;
+      overflow-x: hidden;
+      transition: transform 0.3s ease;
+      background-size: cover;
+
+
+  }
+  .custom-image-create{
+    width: 200px;
+    height: 239px;
+    margin-bottom: 226px;
+    margin-top:10px;
+    object-fit: cover;
   }
   /*create css*/
   .strik-color{
