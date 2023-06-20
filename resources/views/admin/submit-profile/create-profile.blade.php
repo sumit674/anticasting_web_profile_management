@@ -1,4 +1,5 @@
 @extends('layouts.admin-submit-profile')
+@section('title','Admin|Submit-Profile')
 @php
     $action = route('admin.store-user-profile');
     $method = " ";
@@ -11,827 +12,405 @@
     }
 @endphp
 @section('header')
-    {{-- <link rel="stylesheet" href="{{ asset('assets/website/css/submit-profile.css') }}" /> --}}
-    <link rel="stylesheet" href="{{ asset('assets/admin/website/css/image-gallery.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/auth/toastr.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/website/css/alertbox.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/website/css/webcam.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/admin/website/css/crop-image.css') }}" />
-    <style>
-        .text-danger {
-            color: #ff0000 !important;
-            font-weight: 500;
-            font-size: 13px;
-            font-weight: 500;
-            background: #c5c5c5;
-        }
-
-        .form-control.is-invalid,
-        .was-validated .form-control:invalid {
-            border: 2px solid red !important;
-        }
-
-        .form-label {
-            margin-bottom: .2rem !important;
-        }
-
-        .work-reels {
-            padding-bottom: 11px;
-        }
-
-        .contact-us {
-            padding-top: 25px;
-        }
-
-        /*#introvideo img {
-                    border: 2px solid red;
-                }*/
-    </style>
 @endsection
 @section('content')
-    @include('include.submitprofile.image-header')
-    <section id="contact-us" class="contact-us section page-background">
-        <div class="container">
-            <form class="form-disable" id="profile-valdation" action="{{$action}}"
-                method="post">
-                @if($method === 'PATCH')
-                   <input type="hidden" name="_method" value="PATCH" />
-                @endif
-                @csrf
-                <input type="hidden" name="image1" id="picture1" />
-                <input type="hidden" name="image2" id="picture2" />
-                <input type="hidden" name="image3" id="picture3" />
-                {{-- @error('image1')
-                    <span class="text-danger">
-                        {{ $message }}
-                    </span>
-                @enderror
-                @error('image2')
-                    <span class="text-danger">
-                        {{ $message }}
-                    </span>
-                @enderror
-                @error('image3')
-                    <span class="text-danger">
-                        {{ $message }}
-                    </span>
-                @enderror --}}
-                <input type="hidden" name="capture_image" id="capture_image" />
-                <div class="row">
-                    <div class="col-lg-8 col-12">
-
-                        <div class="card mb-3">
+<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+         <div class="mb-3 edit-profile-card">
+                <form method="POST" action="{{ route('admin.store-user-profile') }}" enctype="multipart/form-data">
+                    @csrf
+                    <div id="profile_info">
+                        <h3 class="section-header">Personal Information</h3>
+                        <div class="card shadow-sm">
                             <div class="card-body">
-                                <h3 class="h6 fw-bold mb-3">Personal Information</h3>
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="mb-3">
-                                            <label class="form-label">
-                                                <b>
-                                                    First name
-                                                    <span style="color:red;"><b>*</b></span>
-                                                </b>
-                                            </label>
-                                            <input type="text"
-                                                class="form-control {{ $errors->has('first_name') ? ' is-invalid' : '' }}"
-                                                placeholder="First Name" name="first_name"
-                                                value="{{ old('first_name') }}" />
-                                            {{--  @error('first_name')
-                                                <span class="text-danger">
-                                                    {{ $message }}
-                                                </span>
-                                            @enderror  --}}
+                                <div class="mb-3">
+                                    <label for="first-name" class="form-label">First Name <span
+                                            class="strik-color">*</span></label>
+                                    <input type="text" id="name" name="first_name"
+                                        class="form-control {{ $errors->has('first_name') ? ' is-invalid' : '' }}"
+                                        value="{{ old('first_name', isset($userInfo?->first_name) ? $userInfo?->first_name : ' ') }}"
+                                        placeholder="Enter a first name" />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Last Name <span
+                                            class="strik-color">*</span></label>
+                                    <input type="text" id="name" name="last_name"
+                                        value="{{ old('last_name', isset($userInfo?->last_name) ? $userInfo?->last_name : ' ') }}"
+                                        class="form-control {{ $errors->has('last_name') ? ' is-invalid' : '' }}"
+                                        placeholder="Enter a last name" />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="birthdate" class="form-label">Birthdate <span
+                                            class="strik-color">*</span></label>
+                                    <input type="date"  name="date_of_birth"
+                                        value="{{ old('date_of_birth', isset($userProfile?->date_of_birth) ? $userProfile?->date_of_birth : ' ') }}"
+                                        class="form-control  {{ $errors->has('date_of_birth') ? ' is-invalid' : '' }}"
+                                        placeholder="Enter a date of birthday" />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email <span
+                                            class="strik-color">*</span></label>
+                                    <input type="email" id="email" name="email"
+                                        value="{{ old('email', isset($userInfo?->email) ? $userInfo?->email : ' ') }}"
+                                        class="form-control" placeholder="Enter a  email"/>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="phone" class="form-label">Mobile Number <span
+                                            class="strik-color">*</span></label>
+                                    <input type="tel"
+                                        class="form-control intel-input-width {{ $errors->has('mobile_no') ? ' is-invalid' : '' }}"
+                                        id="mobile_number" name="mobile_no"
+                                        value="{{ old('mobile_no', isset($userInfo?->mobile_no) ? $userInfo?->mobile_no : ' ') }}"
+                                        placeholder="Mobile number" />
+                                    <input type="hidden" name="iso2" id="phone_country_code" value="+91" />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="current_location" class="form-label">Current Location <span
+                                            class="strik-color">*</span></label>
+                                    <input type="text" id="current_location" name="current_location"
+                                        value="{{ old('current_location', isset($userProfile->current_location) ? $userProfile->current_location : ' ') }}"
+                                        class="form-control {{ $errors->has('current_location') ? ' is-invalid' : '' }}"
+                                        placeholder="Enter current location" />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="gender" class="form-label">Gender <span
+                                            class="strik-color">*</span></label>
+                                    <select name="gender" id="gender"
+                                        class="form-control  {{ $errors->has('gender') ? ' is-invalid' : '' }}">
+                                        <option value="">Select Gender</option>
+                                        <option value="Male"
+                                            {{ old('gender', isset($userProfile->gender) && $userProfile->gender ? $userProfile->gender : ' ') == 'Male' ? 'selected' : ' ' }}>
+                                            Male</option>
+                                        <option
+                                            value="Female"{{ old('gender', isset($userProfile->gender) && $userProfile->gender ? $userProfile->gender : ' ') == 'Female' ? 'selected' : ' ' }}>
+                                            Female</option>
+                                        <option value="prefernottosay"
+                                            {{ old('gender', isset($userProfile->gender) && $userProfile->gender ? $userProfile->gender : ' ') == 'prefernottosay' ? 'selected' : ' ' }}>
+                                            Prefer not to say</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="ethnicity" class="form-label">Ethnicity <span
+                                            class="strik-color">*</span></label>
+                                    <select name="ethnicity" id="ethnicity"
+                                        class="form-control  {{ $errors->has('ethnicity') ? ' is-invalid' : '' }}">
+                                        <option value="">Select Ethnicity</option>
+                                        @isset($states)
+                                            @foreach ($states as $item)
+                                                <option value="{{ $item->value }}"
+                                                    {{ old('ethnicity', isset($userProfile->ethnicity) && $item->value) ? 'selected' : ' ' }}>
+                                                    {{ $item->name }}</option>
+                                            @endforeach
+                                        @endisset
+                                    </select>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div id="profile_head_shot">
+                        <h3 class="section-header">HEAD SHOTS, INTRO VIDEO, AND WORK REELS</h3>
+                        <div class="card shadow-sm">
+                            <div class="card body">
+                                <!-- New gallery image thumbnail -->
+                                <div class="ms-3 mb-3">
+                                    <label for="gallery" class="form-label ">Headshot Images <span
+                                            class="strik-color">*</span></label>
+                                    <div class="d-flex">
+                                        <label class="thumbnail" for="image1">
+                                            @if (isset($userInfo?->profile?->image1))
+                                                <img src="{{ asset('upload/profile/'.$userInfo?->profile?->image1)}}" class="custom-image-create"
+                                                    id="preview1" alt="Image 1">
+                                            @else
+                                                <img src="{{ asset('assets/images/user-default-image.png') }}" alt="Image 1"
+                                                    id="preview1" />
+                                            @endif
+
+                                            <input type="file" id="image1" name="image1" class="image-input"
+                                                style="display: none" />
+                                        </label>
+                                        <label class="thumbnail" for="image2">
+                                            @if (isset($userInfo?->profile?->image2))
+                                                <img src="{{asset('upload/profile/'.$userInfo?->profile?->image2) }}" class="custom-image-create"
+                                                    alt="Image 1" id="preview2">
+                                            @else
+                                                <img src="{{ asset('assets/images/user-default-image.png') }}" alt="Image 2"
+                                                    id="preview2" />
+                                            @endif
+
+                                            <input type="file" id="image2" name="image2" class="image-input"
+                                                style="display: none" />
+                                        </label>
+                                        <div class="delete-image"
+                                            onclick="">
+                                            <i class="fa fa-trash delete-image"></i>
+                                        </div>
+                                        <label class="thumbnail" for="image3">
+                                            @if (isset($userInfo?->profile?->image3))
+                                                <img src="{{asset('upload/profile/'.$userInfo?->profile?->image3)}}" class="custom-image-create"
+                                                    alt="Image 3" id="preview3">
+                                            @else
+                                                <img src="{{ asset('assets/images/user-default-image.png') }}" alt="Image 3"
+                                                    id="preview3" />
+                                            @endif
+
+                                            <input type="file" id="image3" name="image3" class="image-input"
+                                                style="display: none" />
+                                        </label>
+                                        <div class="delete-image"
+                                            onclick="">
+                                            <i class="fa fa-trash"></i>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
-                                        <div class="mb-3">
-                                            <label class="form-label">
-                                                <b>
-                                                    Last name
-                                                    <span style="color:red;"><b>*</b></span>
-                                                </b>
-                                            </label>
-                                            <input type="text"
-                                                class="form-control {{ $errors->has('last_name') ? ' is-invalid' : '' }}"
-                                                placeholder="Last Name" name="last_name"
-                                                value="{{ old('last_name') }}" />
-                                            {{--  @error('last_name')
-                                                <span class="text-danger">
-                                                    {{ $message }}
-                                                </span>
-                                            @enderror  --}}
-
-                                        </div>
+                                    @error('image1')
+                                        <small class="text-danger">
+                                            {{ $message }}
+                                        </small>
+                                        <br />
+                                    @enderror
+                                    <small class="fst-italic small text-danger">*Click thumbnail to upload headshot
+                                        images</small>
+                                </div>
+                                <div class="ms-3 me-3">
+                                    <div class="mb-3">
+                                        <label for="intro_video" class="form-label">Intro Video <span
+                                                class="strik-color">*</span> <small>(only youtube
+                                                link)</small></label>
+                                        <input type="text" id="intro_video" name="intro_video_link"
+                                            class="form-control" placeholder="Enter intro video"
+                                            value="{{ old('intro_video_link', isset($userIntroVideo?->intro_video_link) ? $userIntroVideo?->intro_video_link : ' ') }}" />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="work_reel_1" class="form-label">Work Reel 1 <small>(only youtube
+                                                link)</small></label>
+                                        <input type="text" id="work_reel_1" name="work_reel1"
+                                            class="form-control"
+                                            value="{{ old('work_reel1', isset($userProfile->work_reel1) ? $userProfile->work_reel1 : ' ') }}"
+                                            placeholder="Work Reel 1 - only youtube link" />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="work_reel_2" class="form-label">Work Reel 2 <small>(only youtube
+                                                link)</small></label>
+                                        <input type="text" id="work_reel_2" name="work_reel2"
+                                            class="form-control"
+                                            value="{{ old('work_reel2', isset($userProfile->work_reel2) ? $userProfile->work_reel2 : ' ') }}"
+                                            placeholder="Work Reel 2 - only youtube link" />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="work_reel_3" class="form-label">Work Reel 3 <small>(only youtube
+                                                link)</small></label>
+                                        <input type="text" id="work_reel_3" name="work_reel3"
+                                            value="{{ old('work_reel3', isset($userProfile->work_reel3) ? $userProfile->work_reel3 : ' ') }}"
+                                            class="form-control" placeholder="Work Reel 3 - only youtube link" />
                                     </div>
                                 </div>
-                                <?php
-                                $date = date('Y-m-d');
-                                $newDate = date('Y-m-d', strtotime('-1 day', strtotime($date)));
-                                ?>
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="mb-3">
-                                            <label class="form-label">
-                                                <b>
-                                                    Date Of Birth
-                                                    <span style="color:red;"><b>*</b></span>
-                                                </b>
-                                            </label>
-                                            <input type="date"
-                                                class="form-control {{ $errors->has('date_of_birth') ? ' is-invalid' : '' }}"
-                                                placeholder="Date of Birth" name="date_of_birth" max="<?php echo $newDate; ?>"
-                                                value="{{ old('date_of_birth') }}" />
 
-                                            {{--  @error('date_of_birth')
-                                                <span class="text-danger">
-                                                    {{ $message }}
-                                                </span>
-                                            @enderror  --}}
-
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="mb-3">
-                                            <label class="form-label">
-                                                <b>
-                                                    Gender
-                                                    <span style="color:red;"><b>*</b></span>
-                                                </b>
-                                            </label>
-                                            <select name="gender" id="gender"
-                                                class="form-control {{ $errors->has('gender') ? ' is-invalid' : '' }}">
-                                                <option value="" class="0">
-                                                    Gender
-                                                </option>
-                                                <option value="Male">
-                                                    Male</option>
-                                                <option value="Female">
-                                                    Female</option>
-                                                <option value="prefernottosay">
-                                                    Prefer not to say</option>
-                                            </select>
-                                        </div>
-                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="profile_other_information">
+                        <h3 class="section-header">Other Information</h3>
+                        <div class="card shadow-sm">
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <label for="height" class="form-label">Height (feet', inches")</label>
+                                    <input type="text" id="height" name="height" class="form-control"
+                                        value="{{ old('height', isset($userProfile->height) ? $userProfile->height : ' ') }}" />
                                 </div>
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="mb-3">
-                                            <label class="form-label">
-                                                <b>
-                                                    Current Location
-                                                    <span style="color:red;"><b>*</b></span>
-                                                </b>
-                                            </label>
-                                            <input type="text"
-                                                class="form-control {{ $errors->has('current_location') ? ' is-invalid' : '' }}"
-                                                name="current_location" placeholder="Enter current location"
-                                                value="{{ old('current_location')}}" />
-                                            {{--  @error('current_location')
-                                                <span class="text-danger">
-                                                    {{ $message }}
-                                                </span>
-                                            @enderror  --}}
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="mb-3">
-                                            <label class="form-label">
-                                                <b>
-                                                    Ethnicity
-                                                    <span style="color:red;"><b>*</b></span>
-                                                </b>
-                                            </label>
-                                            <select name="ethnicity" id="ethnicity"
-                                                class="form-control {{ $errors->has('ethnicity') ? ' is-invalid' : '' }}">
-                                                <option value="" selected="selected" class="0">
-                                                    Select Ethnicity
-                                                </option>
-                                                @if (isset($states))
-                                                    @foreach ($states as $item)
-                                                        <option value="{{ $item->value }}"
-                                                            {{ old('ethnicity', isset($userProfile?->ethnicity) && $userProfile?->ethnicity) == $item?->value ? 'selected' : '' }}>
-                                                            {{ $item->name }}</option>
-                                                    @endforeach
-                                                @endif
-                                            </select>
-                                            {{--  @error('ethnicity')
-                                                <span class="text-danger">
-                                                    {{ $message }}
-                                                </span>
-                                            @enderror  --}}
-                                        </div>
-                                    </div>
+                                <div class="mb-3">
+                                    <label for="weight" class="form-label">Weight (KG)</label>
+                                    <input type="text" id="weight" name="weight" class="form-control"
+                                        value="{{ old('weight', isset($userProfile->weight) ? $userProfile->weight : ' ') }}" />
                                 </div>
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="mb-3">
-                                            <label class="form-label"><b>Email
-                                                    <span style="color:red;"><b>*</b></span>
-                                                </b></label>
-                                            <input type="email"
-                                                class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}"
-                                                placeholder="Email" name="email"
-                                                value="{{ old('email') }}" />
+                                <div class="mb-3">
+                                    <label for="imdb_profile" class="form-label">IMDB Profile <small>(only IMDB link)</small></label>
+                                    <input type="text" id="imdb_profile" name="imdb_profile" class="form-control"
+                                        value="{{ old('imdb_profile', isset($userProfile->imdb_profile) ? $userProfile->imdb_profile : ' ') }}" />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="skills" class="form-label">Skills</label>
+                                    <input type="text" id="skills" name="skills" class="form-control"
+                                        value="{{ old('skills', isset($userProfile->skills) ? $userProfile->skills : ' ') }}" />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="formal_acting" class="form-label">Formal training in acting</label>
+                                    <input type="text" id="formal_acting" name="formal_acting"
+                                        class="form-control"
+                                        value="{{ old('formal_acting', isset($userProfile->formal_acting) ? $userProfile->formal_acting : ' ') }}" />
+                                </div>
 
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="mb-3">
-                                            <label for="inputmobileNumber" class="form-label"><b>Mobile
-                                                    Number</b>&nbsp;<span style="color:red;"><b>*</b></span></label>
-                                            <div class="mb-3">
-                                                <input type="tel"
-                                                    class="form-control intel-input-width {{ $errors->has('mobile_no') ? ' is-invalid' : '' }}"
-                                                    id="mobile_number" name="mobile_no"
-                                                    value="{{ old('mobile_no') }}"
-                                                    placeholder="Mobile number" />
-                                                <input type="hidden" name="iso2" id="phone_country_code"
-                                                    value="+91" />
-                                                {{--  @error('mobile_no')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                @enderror  --}}
-
-                                            </div>
-                                        </div>
-                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="about_me_info">
+                        <h3 class="section-header">About Me</h3>
+                        <div class="card shadow-sm">
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <label for="weight" class="form-label">About me <small style="color:red;">(max
+                                            300
+                                            chars.)</small></label>
+                                    <textarea id="about_me" name="about_me" class="form-control">{{ old('about_me', isset($userProfile->about_me) ? $userProfile->about_me : ' ') }}</textarea>
                                 </div>
                             </div>
                         </div>
-                        <div class="card mb-2">
-                            <h3 class="h6 fw-bold mx-3 mt-2 mb-1">Other Information</h3>
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="mb-2">
-                                            <label class="form-label"><b>Height (CM)</b></label>
-                                            <input type="text"
-                                                class="form-control {{ $errors->has('height') ? ' is-invalid' : '' }}"
-                                                placeholder="Enter height" name="height"
-                                                value="{{ old('height')}}" />
-                                            {{--  @error('height')
-                                                <span class="text-danger">
-                                                    {{ $message }}
-                                                </span>
-                                            @enderror  --}}
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="mb-2">
-                                            <label class="form-label"><b>Weight (KG)</b></label>
-                                            <input type="text"
-                                                class="form-control {{ $errors->has('weight') ? ' is-invalid' : '' }}"
-                                                placeholder="Enter weight" name="weight"
-                                                value="{{ old('weight') }}" />
-                                            {{--  @error('weight')
-                                                <span class="text-danger">
-                                                    {{ $message }}
-                                                </span>
-                                            @enderror  --}}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="mb-3">
-                                            <label class="form-label">
-                                                <b>About me <small class="text-danger">(Maximum 300 characters
-                                                        allowed.)</small></b>
-                                            </label>
-                                            <textarea id="about_me" name="about_me" class="form-control {{ $errors->has('about_me') ? ' is-invalid' : '' }}">
-
-                                             </textarea>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <label class="form-label work-reels"><b>Work Reels</b>&nbsp;<span><b>(only youtube
-                                            links)</b></span></label>
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="mb-1">
-                                            <input type="text"
-                                                class="form-control {{ $errors->has('work_reel1') ? ' is-invalid' : '' }}"
-                                                name="work_reel1" placeholder="Work Reel 1 - only youtube link"
-                                                value="{{ old('work_reel1') }}" />
-                                            {{--  @error('work_reel1')
-                                                <span class="text-danger">
-                                                    {{ $message }}
-                                                </span>
-                                            @enderror  --}}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="mb-1">
-                                            <input type="text"
-                                                class="form-control {{ $errors->has('work_reel2') ? ' is-invalid' : '' }}"
-                                                name="work_reel2" placeholder="Work Reel 2 - only youtube link"
-                                                value="{{ old('work_reel2') }}" />
-                                            {{--  @error('work_reel2')
-                                                <span class="text-danger">
-                                                    {{ $message }}
-                                                </span>
-                                            @enderror  --}}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="mb-1">
-                                            <input type="text"
-                                                class="form-control {{ $errors->has('work_reel3') ? ' is-invalid' : '' }}"
-                                                name="work_reel3" placeholder="Work Reel 3 - only youtube link"
-                                                value="{{ old('work_reel3') }}" />
-                                            {{--  @error('work_reel3')
-                                                <span class="text-danger">
-                                                    {{ $message }}
-                                                </span>
-                                            @enderror  --}}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-
-                        <div class="d-flex justify-content-between mt-3">
-
-                            <a href="{{ route('users.view-profile') }}" class="btn btn-sm cust_btn"
-                                style="margin-bottom:10px;"><i class="fa fa-arrow-left" aria-hidden="true"></i> Profile
-                                View</a>
-                            <button type="submit" style="margin-bottom:10px;" class="btn btn-sm toster-show cust_btn"
-                                id="btn" tabindex="75">Submit <i class="fa fa-send"></i></button>
-
-                        </div>
                     </div>
 
-                    <div class="col-lg-4 col-12 mb-3">
-                        @include('admin.submit-profile.right-section')
+                    <div class="d-flex justify-content-between mt-3 ms-3 me-3 mb-3">
+                        <a href="{{ route('users.view-profile') }}" class="btn btn-sm btn-secondary">
+                            View Profile
+                        </a>
+                        <button type="submit" class="btn btn-sm btn-primary submit-btn">
+                            Save
+                        </button>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
+
         </div>
-    </section>
+    </div>
+</div>
 @endsection
 @section('footer')
-
-    <script src="{{ asset('assets/intl-telephone/js/intlTelInput.js') }}" type="text/javascript"></script>
-    </script>
-    <script>
-        var selectedFlag = 'in'
-        $("#mobile_number").intlTelInput({
-            //preferredCountries: ['in','ae', 'us'],
-            preferredCountries: ['in', 'ae', 'us'],
-            autoPlaceholder: true,
-            separateDialCode: true,
-            // onlyCountries: ['in','ae', 'us'],
-            initialCountry: selectedFlag,
-            utilsScript: '{{ asset('assets/intl-telephone/js/utils.js') }}'
-        });
-        $("#mobile_number").on("countrychange", function(e, countryData) {
-            $("#phone_country_code").val(countryData.dialCode);
-        });
-    </script>
-    <script>
-        $(document).ready(function() {
-            $('#about_me').summernote({
-                placeholder: 'Enter movie description goes here..',
-                // tabsize: 2,
-                height: 80,
-                // followingToolbar: true,
-                toolbar: [
-                    ['style', ['style']],
-                    ['font', ['bold', 'underline', 'clear']],
-                    ['fontname', ['fontname']],
+<script src="{{ asset('assets/intl-telephone/js/intlTelInput.js') }}" type="text/javascript"></script>
+</script>
+<script>
+    var selectedFlag = 'in'
+    $("#mobile_number").intlTelInput({
+        //preferredCountries: ['in','ae', 'us'],
+        preferredCountries: ['in', 'ae', 'us'],
+        autoPlaceholder: true,
+        separateDialCode: true,
+        // onlyCountries: ['in','ae', 'us'],
+        initialCountry: selectedFlag,
+        utilsScript: '{{ asset('assets/intl-telephone/js/utils.js') }}'
+    });
+    $("#mobile_number").on("countrychange", function(e, countryData) {
+        $("#phone_country_code").val(countryData.dialCode);
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('#about_me').summernote({
+            placeholder: 'Enter movie description goes here..',
+            // tabsize: 2,
+            height: 80,
+            // followingToolbar: true,
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'underline', 'clear']],
+                ['fontname', ['fontname']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                // ['table', ['table']],
+                // ['insert', ['link', 'picture', 'video']],
+                // ['view', ['fullscreen', 'codeview', 'help']],
+            ],
+            popover: {
+                image: [
+                    ['image', ['resizeFull', 'resizeHalf', 'resizeQuarter', 'resizeNone']],
+                    ['float', ['floatLeft', 'floatRight', 'floatNone']],
+                    ['remove', ['removeMedia']]
+                ],
+                link: [
+                    ['link', ['linkDialogShow', 'unlink']]
+                ],
+                table: [
+                    ['add', ['addRowDown', 'addRowUp', 'addColLeft', 'addColRight']],
+                    ['delete', ['deleteRow', 'deleteCol', 'deleteTable']],
+                ],
+                air: [
                     ['color', ['color']],
-                    ['para', ['ul', 'ol', 'paragraph']],
-                    // ['table', ['table']],
-                    // ['insert', ['link', 'picture', 'video']],
-                    // ['view', ['fullscreen', 'codeview', 'help']],
-                ],
-                popover: {
-                    image: [
-                        ['image', ['resizeFull', 'resizeHalf', 'resizeQuarter', 'resizeNone']],
-                        ['float', ['floatLeft', 'floatRight', 'floatNone']],
-                        ['remove', ['removeMedia']]
-                    ],
-                    link: [
-                        ['link', ['linkDialogShow', 'unlink']]
-                    ],
-                    table: [
-                        ['add', ['addRowDown', 'addRowUp', 'addColLeft', 'addColRight']],
-                        ['delete', ['deleteRow', 'deleteCol', 'deleteTable']],
-                    ],
-                    air: [
-                        ['color', ['color']],
-                        ['font', ['bold', 'underline', 'clear']],
-                        ['para', ['ul', 'paragraph']],
-                        ['table', ['table']],
-                        ['insert', ['link', 'picture']]
-                    ]
-                }
-
-            })
-            $('.dropdown-toggle').dropdown();
-        });
-    </script>
-    <script>
-        $(function() {
-            $("#success").dialog({
-                autoOpen: true,
-                modal: true,
-                width: camWidth,
-                height: camHeight,
-                buttons: [
-                    // {
-                    //     text: 'Yes, proceed!',
-                    //     open: function() {
-                    //         $(this).addClass('yescls')
-                    //     },
-                    //     click: function() {
-                    //         $(this).dialog("close")
-                    //     }
-                    // },
-                    {
-                        text: "OK",
-                        open: function() {
-                            $(this).addClass('okcls')
-                        },
-                        click: function() {
-                            $(this).dialog("close")
-                        }
-                    }
-                ],
-                show: {
-                    effect: "bounce",
-                    duration: 1500
-                },
-                hide: {
-                    effect: "fade",
-                    duration: 1000
-                },
-                open: function(event, ui) {
-                    $(".ui-dialog-titlebar", $(this).parent())
-                        .hide();
-                }
-            });
-        });
-    </script>
-    <script>
-        //  $('#show-intro').on('click', function() {
-        //     $('#video-section').slideToggle();
-        // });
-        //     /*Sample Intro video js*/
-        //     $('#intro_video').hide();
-        //     $('#hide').on('click', function() {
-        //         $('#intro_video').hide();
-        //     })
-        //     $('#show').on('click', function() {
-        //         $('#intro_video').show();
-        //     })
-        //     /*Choose Intro video js*/
-        //     $('#hindi').on('click', function() {
-
-        //         $('#intro_hindi').show();
-        //         $('#intro_english').hide();
-        //     })
-        //     $('#intro_english').hide();
-        //     $('#english').on('click', function() {
-
-        //       $('#intro_hindi').hide();
-        //       $('#intro_english').show();
-        //   })
-        // to stop the ifram video
-        function stopVideo(element) {
-            // getting every iframe from the body
-            var iframes = element.querySelectorAll('iframe');
-            // reinitializing the values of the src attribute of every iframe to stop the YouTube video.
-            for (let i = 0; i < iframes.length; i++) {
-                if (iframes[i] !== null) {
-                    var temp = iframes[i].src;
-                    iframes[i].src = temp;
-                }
+                    ['font', ['bold', 'underline', 'clear']],
+                    ['para', ['ul', 'paragraph']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'picture']]
+                ]
             }
-        };
-        // $('#first').click(function(){
-        //     alert('Mahesh')
-        //     $('#content').viewbox();
-        // })
-        // $(function() {
 
-        //     $('.popperOpen').popover({
-        //         placement: 'bottom',
-        //         container: 'body',
-        //         html: true,
-        //         content: function() {
-        //             return $(this).next('#popover-content-head').html();
-        //         }
-        //     })
-        // });
-
-        //Popover Sample Headshot Image
-        // const Poplist = [].slice.call(document.querySelectorAll('[data-toggle="popover"]'))
-        // Poplist.map((el) => {
-        //     let opts = {
-        //         animation: false,
-        //         html:true,
-        //     }
-        //     if (el.hasAttribute('data-bs-content-id')) {
-        //         opts.content = document.getElementById(el.getAttribute('data-bs-content-id')).innerHTML;
-        //         opts.html = true;
-        //     }
-        //     new bootstrap.Popover(el, opts);
-        // })
-        //Popover Sample Image
-        const list = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
-        list.map((el) => {
-            let opts = {
-                animation: false,
-            }
-            if (el.hasAttribute('data-bs-content-id')) {
-                opts.content = document.getElementById(el.getAttribute('data-bs-content-id')).innerHTML;
-                opts.html = true;
-            }
-            new bootstrap.Popover(el, opts);
         })
-        /*Image Size Validation*/
-        $('.pictureCls').prop("disabled", true);
-        var a = 0;
-        //binds to onchange event of your input field
-        $('.image').bind('change', function() {
-            if ($('.pictureCls').attr('disabled', false)) {
-                $('.pictureCls').attr('disabled', true);
-            }
-            var ext = $('#picture').val().split('.').pop().toLowerCase();
-            if ($.inArray(ext, ['gif', 'png', 'jpg', 'jpeg', 'jfif']) == -1) {
-                $('#error1').slideDown("slow");
-                $('#error2').slideUp("slow");
-                a = 0;
-            } else {
-                const fi = document.getElementById('picture');
-                if (fi.files.length > 0) {
-                    for (let i = 0; i <= fi.files.length - 1; i++) {
-
-                        const fsize = fi.files.item(i).size;
-                        const file = Math.round((fsize / 1024));
-
-                        // The size of the file.
-                        // if (file >= 4096) {
-                        // $('#error2').slideDown("slow");
-                        //   a = 0;
-                        // }
-                        if (file > 4096) {
-                            $('#error3').slideDown("slow");
-                            a = 0;
-                        } else {
-                            a = 1;
-                            // $('#error2').slideUp("slow");
-                            $('#error3').slideUp("slow");
-                        }
-                        $('#error1').slideUp("slow");
-                        // $('#error2').slideDown("slow");
-                        //  $('#error3').slideDown("slow");
-                        if (a == 1) {
-                            $('.pictureCls').attr('disabled', false);
-                        }
-                    }
+        $('.dropdown-toggle').dropdown();
+    });
+    /*Upload Image then will be show the in image*/
+    // First Image
+    $(document).ready(function() {
+        $('#image1').change(function() {
+            var file = $(this)[0].files[0];
+            if (file) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    $('#preview1').attr('src', e.target.result);
+                    $('#preview1').show();
                 }
-                // var picsize = (this.files[0].size);
-                // if (picsize >= 2048 && picsize < 4096){
-
-                //     $('#error2').slideDown("slow");
-                //     a = 0;
-                // } else {
-
-                //    a = 1;
-                //     $('#error2').slideUp("slow");
-                // }
-                // $('#error1').slideUp("slow");
-                // if (a == 1) {
-
-                //     $('input:submit').attr('disabled', false);
-                // }
+                reader.readAsDataURL(file);
             }
         });
-
-        function deleteAllHeadShotImages(url) {
-            if (confirm('Do you really want to delete all headshot images?')) {
-                document.location.href = url;
+    });
+    // Second Image
+    $(document).ready(function() {
+        $('#image2').change(function() {
+            var file = $(this)[0].files[0];
+            if (file) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    $('#preview2').attr('src', e.target.result);
+                    $('#preview2').show();
+                }
+                reader.readAsDataURL(file);
             }
-        }
-
-        function deleteSingleHeadShotImage(url) {
-            if (confirm('Do you really want to delete this headshot image?')) {
-                document.location.href = url;
+        });
+    });
+    //Third Image
+    $(document).ready(function() {
+        $('#image3').change(function() {
+            var file = $(this)[0].files[0];
+            if (file) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    $('#preview3').attr('src', e.target.result);
+                    $('#preview3').show();
+                }
+                reader.readAsDataURL(file);
             }
+        });
+    });
+    //date picker
+    $(document).ready(function() {
+        // Initialize the datepicker
+        $("#datepicker").datepicker({
+            dateFormat: "dd-mm-yy",
+        });
+    });
+    //HeadShot Delete Image
+    function deleteSingleHeadShotImage(url) {
+        if (confirm('Do you really want to delete this headshot image?')) {
+            document.location.href = url;
         }
-    </script>
-    <script>
-        //Phone number validation of submit profile
-
-        {{--  $('#profile-valdation').validate({
-        debug: false,
-        errorClass: 'text-danger',
-        errorElement: "span",
-        rules: {
-            mobile_no: {
-                required: true, // field is mandatory
-                intlTelNumber: true, // must contain a valid phone number
-                minlength: 10,
+    }
+</script>
+<script>
+    {{--  var editFlag = '{{ $flag }}';  --}}
+    $(document).ready(function() {
+        var divName = "";
+        if (editFlag == "profile") {
+            divName = "#profile_info";
+        } else if (editFlag == "pics") {
+            divName = "#profile_head_shot";
+        } else if (editFlag == "other_info") {
+            divName = "#profile_other_information";
+        } else if (editFlag == "about") {
+            divName = "#about_me_info";
+        } else {
+            divName = "#profile_info";
+        }
+        $('html,body').animate({
+                // scrollTop: $(".second").offset().top},
+                // 'slow');
+                //$('html,body').animate({
+                scrollTop: $(divName).offset().top
             },
-        },
-        messages: {
-            mobile_no: {
-
-                required: "Please enter your mobile number",
-                // remote:"Mobile number already exist",
-                minlength: "Mobile number must be at least 10 digit long"
-            },
-        },
-        highlight: function(element) {
-            $(element).parent().addClass("field-error");
-        },
-        unhighlight: function(element) {
-            $(element).parent().removeClass("field-error");
-        },
-        submitHandler: function(form) {
-            form.submit();
-        }
-
-    });  --}}
-
-        {{--  jQuery.validator.addMethod("intlTelNumber", function(value, element) {
-        return this.optional(element) || $(element).intlTelInput("isValidNumber");
-    }, "Please enter a valid phone number 10 digits");  --}}
-    </script>
-    <script>
-        /*Upload Image JavaScript*/
-
-        $('.upload-capture').hide()
-        $('#image-upload').on('click', function() {
-            Webcam.reset();
-            $('.upload-picture').show();
-            $('.upload-capture').hide();
-        })
-        $('#image-capture').on('click', function() {
-            $('.upload-capture').show();
-            $('.upload-picture').hide();
-
-            Webcam.set({
-                width: camWidth,
-                height: camHeight,
-                image_format: 'jpeg',
-                jpeg_quality: 108,
-                flip_horiz: true
-            });
-            Webcam.attach('#my_camera');
-        })
-    </script>
-    <script>
-        /*Upload web cam on pop up*/
-        $('.take-snap-configuration').hide();
-        $('.take-snap-second').hide();
-        /* Webcam.set({
-            width: camWidth,
-            height: camHeight,
-            image_format: 'jpeg',
-            jpeg_quality:108,
-            flip_horiz: true
-        });
-        Webcam.attach('#my_camera'); */
-        function take_snapshot() {
-
-            let imgId = $('#image_number').val();
-
-            $('#take').hide();
-            $('#retake').show();
-            $('#my_camera').hide();
-            $('#results').show();
-            $('#take-btn').show();
-            // $('.take-snap-first').hide();
-            $('.take-snap-configuration').show();
-            $('.take-snap-second').show();
-            Webcam.snap(function(data_uri) {
-                $(".image-tag").val(data_uri);
-                document.getElementById('results').innerHTML = '<img src="' + data_uri +
-                    '"  class="image-snapshot"/>';
-                // document.querySelector('#capture_image').value = data_uri;
-
-                // $('#upload-image-modal').modal('hide');
-                if (imgId == 1) {
-                    // document.querySelector("#default-img").src = evt.target.result;
-                    $("#default-img").attr('src', data_uri);
-                    // document.querySelector("#image1").style.backgroundImage = 'url(' + data_uri + ')';
-                    $('#image1').css("background-image", 'url(' + data_uri + ')');
-                    document.querySelector("#picture1").value = data_uri;
-                }
-                if (imgId == 2) {
-                    document.querySelector("#image2").style.backgroundImage = 'url(' + data_uri + ')';
-                    document.querySelector("#picture2").value = data_uri;
-                }
-                if (imgId == 3) {
-                    document.querySelector("#image3").style.backgroundImage = 'url(' + data_uri + ')';
-                    document.querySelector("#picture3").value = data_uri;
-                }
-
-            });
-        }
-
-        function ReConfigureCamera() {
-            Webcam.reset();
-
-            Webcam.set({
-                width: camWidth,
-                height: camHeight,
-                image_format: 'jpeg',
-                jpeg_quality: 90,
-                flip_horiz: true
-            });
-            $('#my_camera').show();
-            $('#take').show();
-            $('#retake').hide();
-            $('#results').hide();
-            $('#take-btn').hide();
-            Webcam.attach('#my_camera');
-        }
-
-        function Retake_snapshot() {
-            Webcam.snap(function(data_uri) {
-                $(".image-tag").val(data_uri);
-                document.getElementById('results').innerHTML = '<img src="' + data_uri +
-                    '"class="image-snapshot"/>';
-                document.querySelector('#capture_image').value = data_uri;
-            });
-        }
-        //Automatic load intro video show js
-        // $('iframe#introvideo').contents().find('img').css({width: '100%', 'height': '100%'});
-        @if (isset($userIntroVideo->intro_video_link))
-            $('#default-video').hide();
-            $('#introvideo').show();
-            $('#introvideo').attr("src", '{{ $userIntroVideo->intro_video_link }}');
-        @endif
-        $("#show_intro_video").change(function() {
-            const url = $('#show_intro_video').val()
-            var youTubeId;
-            var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-            var match = url.match(regExp);
-            if (match && match[2].length == 11) {
-                youTubeId = match[2];
-            } else {
-                youTubeId = '';
-            }
-            // $('#introvideo').attr("src", "{{ asset('assets/images/video-thumb.png') }}")
-            // $('#introvideo').attr("style", "height: 100%")
-            //if (url == '') {
-            // let videoIframe = $("#introvideo");
-            // videoIframe.on('load', function(){
-            // videoIframe.contents().find("html").append("<p>test2</p>");
-            // });
-            // }
-            if (youTubeId !== '') {
-                $('#default-video').hide();
-                $('#introvideo').show();
-                $('#introvideo').attr("src", `//www.youtube.com/embed/${youTubeId}`);
-            } else if (url !== '') {
-                $('#default-video').hide();
-                $('#introvideo').show();
-                $('#introvideo').attr("src", `//www.youtube.com/embed/${youTubeId}`)
-            } else {
-                $('#introvideo').hide();
-                $('#default-video').show();
-                $('#default-video').attr("src", "{{ asset('assets/images/video-thumb.png') }}")
-                $('#default-video').attr("style", "height: 100%")
-            }
-            /*else {
-                // let iframe = $('iframe#introvideo').parent();
-                let iframe = $('iframe#introvideo');
-                iframe.replaceWith('<img style="width: 100%; height: 100%;" src="{{ asset('assets/images/video-thumb.png') }}">');
-            }*/
-
-        });
-        {{--  $(window).on('load', function() {
-        $('.featured-item').each(
-            function() {
-                if ($(this).width() / $(this).height() >= 1) {
-                    $(this).addClass('landscape');
-                } else {
-                    $(this).addClass('portrait');
-                }
-            });
-    });  --}}
-        /*Check file type when upload a headshot image*/
-        $("#picture").change(function() {
-
-            var validExtensions = ["jpg", "jfif", "jpeg", "gif", "png"]
-            var file = $(this).val().split('.').pop().toLowerCase();
-            if (validExtensions.indexOf(file) == -1) {
-                alert("Only formats are allowed : " + validExtensions.join(', '));
-
-            }
-
-
-        });
-    </script>
+            'slow');
+    });
+</script>
 @endsection

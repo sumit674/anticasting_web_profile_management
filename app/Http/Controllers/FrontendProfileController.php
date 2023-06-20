@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\File;
 use App\Models\{State,User,UserProfile,UserProfileImage,IntroVideo};
 use Carbon\Carbon;
 use App\Helpers\GeneralHelper;
+use App\Rules\ConditionalValidation;
 
 class FrontendProfileController extends Controller
 {
@@ -21,85 +22,95 @@ class FrontendProfileController extends Controller
         $states = State::all();
         return view('submit-profile.create-edit',compact('states','userInfo','userProfile','userIntroVideo','flag'));
     }
-    public function submitProfile(Request $request){
+    public function submitProfile(Request $request)
+    {
+        $userProfile = UserProfile::where('user_id', auth()->user()->id)->first();
 
+        $rules = [
+            'first_name' => 'required|regex:/^[a-zA-Z ]+[a-zA-Z 0-9]*$/',
+            'last_name' => 'required|regex:/^[a-zA-Z ]+[a-zA-Z 0-9]*$/',
+            'date_of_birth' => 'required',
+            'ethnicity' => 'required',
+            'gender' => 'required',
+            'current_location' => 'required|regex:/^[a-zA-Z ]+[a-zA-Z 0-9]*$/',
+            'height' => 'numeric|min:1|max:250',
+            'mobile_no' => [
+                'required',
+                'regex:/^[0-9][0-9\s]+[0-9]$/',
+                // check number with white space
+                function ($attribute, $value, $fail) {
+                    if (strlen(str_replace(' ', '', $value)) != 10) {
+                        $fail('Message fail');
+                        // dd('error');
+                        return false;
+                    }
+                    return true;
+                },
+            ],
+            'about_me' =>'nullable|string|max:300',
+            'weight' => 'numeric|min:1|max:400',
+            // 'image1' => 'required_if:image1,null|mimes:jpg,jfif,png,jpeg,gif',
+            'image2' => 'nullable|image|mimes:jpg,jfif,png,jpeg,gif|max:4096',
+            'image3' => 'nullable|image|mimes:jpg,jfif,png,jpeg,gif|max:4096',
+            'intro_video_link' => [
+                'required',
+                function ($attribute, $requesturl, $failed) {
+                    if (!preg_match('/(youtube.com|youtu.be)\/(embed)?(\?v=)?(\S+)?/', $requesturl)) {
+                        $failed(trans('Intro  video link should be youtube url', ['name' => trans('general.url')]));
+                    }
+                },
+            ],
+            'work_reel1' => [
+                'nullable',
+                function ($attribute, $requesturl, $failed) {
+                    if (!preg_match('/(youtube.com|youtu.be)\/(embed)?(\?v=)?(\S+)?/', $requesturl)) {
+                        $failed(trans('Work reel one should be youtube url', ['name' => trans('general.url')]));
+                    }
+                },
+            ],
+            'work_reel2' => [
+                'nullable',
+                function ($attribute, $requesturl, $failed) {
+                    if (!preg_match('/(youtube.com|youtu.be)\/(embed)?(\?v=)?(\S+)?/', $requesturl)) {
+                        $failed(trans('Work reel two should be youtube url', ['name' => trans('general.url')]));
+                    }
+                },
+            ],
+            'work_reel3' => [
+                'nullable',
+                function ($attribute, $requesturl, $failed) {
+                    if (!preg_match('/(youtube.com|youtu.be)\/(embed)?(\?v=)?(\S+)?/', $requesturl)) {
+                        $failed(trans('Work reel three should be youtube url', ['name' => trans('general.url')]));
+                    }
+                },
+            ],
+            'imdb_profile'=>'nullable|regex:/^https?:\/\/(?:www\.)?imdb\.com\/title\/\w+\/?$/'
+        ];
+        $messages = [
+            'first_name.required' => 'Please enter a firstname',
+            'last_name.required' => 'Please enter a lastname',
+            'date_of_birth.required' => 'Please enter a DateOfBirth',
+            'ethnicity.required' => 'Please select ethnicity',
+            'gender.required' => 'Please select  gender',
+            'mobile_no.required' => 'Please enter mobile number',
+            'current_location.required' => 'Please enter a current location',
+            'intro_video_link.required' => 'Please enter your intro video',
+            'about_me.max' => 'Maximum 300 characters allowed.',
+            // 'image1.required'=>'First image is required',
+            // 'work_reel1.url' => 'The work reel one must be a valid URL.',
+            // 'work_reel2.url' => 'The work reel two must be a valid URL.',
+            // 'work_reel3.url' => 'The work reel three must be a valid URL.',
+        ];
+        if (isset($userProfile) && $userProfile->image1 == null) {
+            $rules['image1'] = 'required|image|mimes:jpg,jfif,png,jpeg,gif|max:4096';
+        } else {
+            $rules['image1'] = 'nullable|image|mimes:jpg,jfif,png,jpeg,gif|max:4096';
+        }
         $request->validate(
-            [
-                'first_name' => 'required|regex:/^[a-zA-Z ]+[a-zA-Z 0-9]*$/',
-                'last_name' => 'required|regex:/^[a-zA-Z ]+[a-zA-Z 0-9]*$/',
-                'date_of_birth' => 'required',
-                'ethnicity' => 'required',
-                'gender' => 'required',
-                'current_location' => 'required|regex:/^[a-zA-Z ]+[a-zA-Z 0-9]*$/',
-                'height' => 'numeric|min:1|max:250',
-                'mobile_no' => [
-                    'required',
-                    'regex:/^[0-9][0-9\s]+[0-9]$/',
-                    // check number with white space
-                    function ($attribute, $value, $fail) {
-                        if (strlen(str_replace(' ', '', $value)) != 10) {
-                            $fail('Message fail');
-                            // dd('error');
-                            return false;
-                        }
-                        return true;
-                    },
-                ],
-                'about_me' =>'nullable|string|max:300',
-                'weight' => 'numeric|min:1|max:400',
-                'image1' => 'required|image|mimes:jpg,jfif,png,jpeg,gif|max:4096',
-                'image2' => 'nullable|image|mimes:jpg,jfif,png,jpeg,gif|max:4096',
-                'image3' => 'nullable|image|mimes:jpg,jfif,png,jpeg,gif|max:4096',
-                'intro_video_link' => [
-                    'required',
-                    function ($attribute, $requesturl, $failed) {
-                        if (!preg_match('/(youtube.com|youtu.be)\/(embed)?(\?v=)?(\S+)?/', $requesturl)) {
-                            $failed(trans('Intro  video link should be youtube url', ['name' => trans('general.url')]));
-                        }
-                    },
-                ],
-                'work_reel1' => [
-                    'nullable',
-                    function ($attribute, $requesturl, $failed) {
-                        if (!preg_match('/(youtube.com|youtu.be)\/(embed)?(\?v=)?(\S+)?/', $requesturl)) {
-                            $failed(trans('Work reel one should be youtube url', ['name' => trans('general.url')]));
-                        }
-                    },
-                ],
-                'work_reel2' => [
-                    'nullable',
-                    function ($attribute, $requesturl, $failed) {
-                        if (!preg_match('/(youtube.com|youtu.be)\/(embed)?(\?v=)?(\S+)?/', $requesturl)) {
-                            $failed(trans('Work reel two should be youtube url', ['name' => trans('general.url')]));
-                        }
-                    },
-                ],
-                'work_reel3' => [
-                    'nullable',
-                    function ($attribute, $requesturl, $failed) {
-                        if (!preg_match('/(youtube.com|youtu.be)\/(embed)?(\?v=)?(\S+)?/', $requesturl)) {
-                            $failed(trans('Work reel three should be youtube url', ['name' => trans('general.url')]));
-                        }
-                    },
-                ],
-                'imdb_profile'=>'nullable|regex:/^https?:\/\/(?:www\.)?imdb\.com\/title\/\w+\/?$/'
-            ],
-            [
-                'first_name.required' => 'Please enter a firstname',
-                'last_name.required' => 'Please enter a lastname',
-                'date_of_birth.required' => 'Please enter a DateOfBirth',
-                'ethnicity.required' => 'Please select ethnicity',
-                'gender.required' => 'Please select  gender',
-                'mobile_no.required' => 'Please enter mobile number',
-                'current_location.required' => 'Please enter a current location',
-                'intro_video_link.required' => 'Please enter your intro video',
-                'about_me.max' => 'Maximum 300 characters allowed.',
-                'image1.required'=>'First image is required',
-                // 'work_reel1.url' => 'The work reel one must be a valid URL.',
-                // 'work_reel2.url' => 'The work reel two must be a valid URL.',
-                // 'work_reel3.url' => 'The work reel three must be a valid URL.',
-            ],
+            $rules,
+            $messages,
         );
+
          //User
        $userId = auth()->user()->id;
        $dateOfBirth = Carbon::parse($request->date_of_birth)->format('Y-m-d');
