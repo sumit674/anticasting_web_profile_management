@@ -22,7 +22,7 @@ class CreateUserProfilesTable extends Migration
             $table->string('height')->nullable();
             $table->string('weight')->nullable();
             $table->string('imdb_profile')->nullable();
-            $table->string('skills')->nullable();
+            $table->Text('skills')->nullable();
             $table->string('formal_acting')->nullable();
             $table->text('current_location')->nullable();
             $table->string('image1')->nullable();

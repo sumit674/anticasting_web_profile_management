@@ -33,7 +33,7 @@
                                     <div class="mb-3">
                                         <label for="birthdate" class="form-label">Birthdate <span
                                                 class="strik-color">*</span></label>
-                                        <input type="date"  name="date_of_birth"
+                                        <input type="date" name="date_of_birth"
                                             value="{{ old('date_of_birth', isset($userProfile?->date_of_birth) ? $userProfile?->date_of_birth : ' ') }}"
                                             class="form-control  {{ $errors->has('date_of_birth') ? ' is-invalid' : '' }}"
                                             placeholder="Enter a date of birthday" />
@@ -84,16 +84,24 @@
                                         <label for="ethnicity" class="form-label">Ethnicity <span
                                                 class="strik-color">*</span></label>
                                         <select name="ethnicity" id="ethnicity"
-                                            class="form-control  {{ $errors->has('ethnicity') ? ' is-invalid' : '' }}">
-                                            <option value="">Select Ethnicity</option>
+                                            class="form-control">
+                                            <option
+                                                value="{{ isset($userProfile?->ethnicity) ? $userProfile?->ethnicity : '' }}">
+                                                {{ isset($userProfile?->ethnicity) ? $userProfile?->ethnicity : '' }}
+                                            </option>
                                             @isset($states)
                                                 @foreach ($states as $item)
                                                     <option value="{{ $item->value }}"
-                                                        {{ old('ethnicity', isset($userProfile->ethnicity) && $item->value) ? 'selected' : ' ' }}>
+                                                        {{ old('ethnicity', $userProfile?->ethnicity) == $item?->value ? 'selected' : '' }}>
                                                         {{ $item->name }}</option>
                                                 @endforeach
                                             @endisset
                                         </select>
+                                        @error('ethnicity')
+                                              <div class="text-danger">
+                                              {{ $message }}
+                                              </div>
+                                        @enderror
                                     </div>
 
                                 </div>
@@ -110,11 +118,11 @@
                                         <div class="d-flex">
                                             <label class="thumbnail" for="image1">
                                                 @if (isset($userInfo?->profile?->image1))
-                                                    <img src="{{ asset('upload/profile/'.$userInfo?->profile?->image1)}}" class="custom-image-create"
-                                                        id="preview1" alt="Image 1">
+                                                    <img src="{{ asset('upload/profile/' . $userInfo?->profile?->image1) }}"
+                                                        class="custom-image-create" id="preview1" alt="Image 1">
                                                 @else
-                                                    <img src="{{ asset('assets/images/user-default-image.png') }}" alt="Image 1"
-                                                        id="preview1" />
+                                                    <img src="{{ asset('assets/images/user-default-image.png') }}"
+                                                        alt="Image 1" id="preview1" />
                                                 @endif
 
                                                 <input type="file" id="image1" name="image1" class="image-input"
@@ -122,34 +130,34 @@
                                             </label>
                                             <label class="thumbnail" for="image2">
                                                 @if (isset($userInfo?->profile?->image2))
-                                                    <img src="{{asset('upload/profile/'.$userInfo?->profile?->image2) }}" class="custom-image-create"
-                                                        alt="Image 1" id="preview2">
+                                                    <img src="{{ asset('upload/profile/' . $userInfo?->profile?->image2) }}"
+                                                        class="custom-image-create" alt="Image 1" id="preview2">
                                                 @else
-                                                    <img src="{{ asset('assets/images/user-default-image.png') }}" alt="Image 2"
-                                                        id="preview2" />
+                                                    <img src="{{ asset('assets/images/user-default-image.png') }}"
+                                                        alt="Image 2" id="preview2" />
                                                 @endif
 
                                                 <input type="file" id="image2" name="image2" class="image-input"
                                                     style="display: none" />
                                             </label>
                                             <div class="delete-image"
-                                                onclick="deleteSingleHeadShotImage('{{ route('users.delete-one.image',$userInfo?->profile?->id) }}')">
+                                                onclick="deleteSingleHeadShotImage('{{ route('users.delete-one.image', $userInfo?->profile?->id) }}')">
                                                 <i class="fa fa-trash delete-image"></i>
                                             </div>
                                             <label class="thumbnail" for="image3">
                                                 @if (isset($userInfo?->profile?->image3))
-                                                    <img src="{{asset('upload/profile/'.$userInfo?->profile?->image3)}}" class="custom-image-create"
-                                                        alt="Image 3" id="preview3">
+                                                    <img src="{{ asset('upload/profile/' . $userInfo?->profile?->image3) }}"
+                                                        class="custom-image-create" alt="Image 3" id="preview3">
                                                 @else
-                                                    <img src="{{ asset('assets/images/user-default-image.png') }}" alt="Image 3"
-                                                        id="preview3" />
+                                                    <img src="{{ asset('assets/images/user-default-image.png') }}"
+                                                        alt="Image 3" id="preview3" />
                                                 @endif
 
                                                 <input type="file" id="image3" name="image3" class="image-input"
                                                     style="display: none" />
                                             </label>
                                             <div class="delete-image"
-                                                onclick="deleteSingleHeadShotImage('{{ route('users.delete-two.image',$userInfo?->profile?->id) }}')">
+                                                onclick="deleteSingleHeadShotImage('{{ route('users.delete-two.image', $userInfo?->profile?->id) }}')">
                                                 <i class="fa fa-trash"></i>
                                             </div>
                                         </div>
@@ -165,34 +173,45 @@
                                     <div class="ms-3 me-3">
                                         <div class="mb-3">
                                             <label for="intro_video" class="form-label">Intro Video <span
-                                                    class="strik-color">*</span> <small>(only youtube
-                                                    link)</small></label>
-                                            <input type="text" id="intro_video" name="intro_video_link"
-                                                class="form-control" placeholder="Enter intro video"
+                                                    class="strik-color">*</span> <small class="text-danger">(only youtube
+                                                    link)</small> <span
+                                                    id="IntroVideoYoutubeUrlValidationMessage"></span></label>
+                                            <input type="text" id="IntroVideoYoutubeUrlInput" name="intro_video_link"
+                                                class="form-control  {{ $errors->has('intro_video_link') ? ' is-invalid' : '' }}"
+                                                placeholder="Enter intro video"
                                                 value="{{ old('intro_video_link', isset($userIntroVideo?->intro_video_link) ? $userIntroVideo?->intro_video_link : ' ') }}" />
+
                                         </div>
                                         <div class="mb-3">
-                                            <label for="work_reel_1" class="form-label">Work Reel 1 <small>(only youtube
-                                                    link)</small></label>
-                                            <input type="text" id="work_reel_1" name="work_reel1"
-                                                class="form-control"
+                                            <label for="WorkReelOneVideoYoutubeUrlInput" class="form-label">Work Reel 1
+                                                <small class="text-danger">(only youtube
+                                                    link)</small><span
+                                                    id="WorkReelOneYoutubeUrlValidationMessage"></span></label></label>
+                                            <input type="text" id="WorkReelOneVideoYoutubeUrlInput" name="work_reel1"
+                                                class="form-control {{ $errors->has('work_reel1') ? ' is-invalid' : '' }}"
                                                 value="{{ old('work_reel1', isset($userProfile->work_reel1) ? $userProfile->work_reel1 : ' ') }}"
                                                 placeholder="Work Reel 1 - only youtube link" />
                                         </div>
                                         <div class="mb-3">
-                                            <label for="work_reel_2" class="form-label">Work Reel 2 <small>(only youtube
-                                                    link)</small></label>
-                                            <input type="text" id="work_reel_2" name="work_reel2"
-                                                class="form-control"
+                                            <label for="WorkReelTwoVideoYoutubeUrlInput" class="form-label">Work Reel 2
+                                                <small class="text-danger">(only youtube
+                                                    link)</small><span
+                                                    id="WorkReelTwoYoutubeUrlValidationMessage"></span></label></label>
+                                            <input type="text" id="WorkReelTwoVideoYoutubeUrlInput" name="work_reel2"
+                                                class="form-control  {{ $errors->has('work_reel2') ? ' is-invalid' : '' }}"
                                                 value="{{ old('work_reel2', isset($userProfile->work_reel2) ? $userProfile->work_reel2 : ' ') }}"
                                                 placeholder="Work Reel 2 - only youtube link" />
                                         </div>
                                         <div class="mb-3">
-                                            <label for="work_reel_3" class="form-label">Work Reel 3 <small>(only youtube
-                                                    link)</small></label>
-                                            <input type="text" id="work_reel_3" name="work_reel3"
+                                            <label for="WorkReelThreeVideoYoutubeUrlInput" class="form-label">Work Reel 3
+                                                <small class="text-danger">(only youtube
+                                                    link)</small><span
+                                                    id="WorkReelThreeYoutubeUrlValidationMessage"></span></label></label>
+                                            <input type="text" id="WorkReelThreeVideoYoutubeUrlInput"
+                                                name="work_reel3"
                                                 value="{{ old('work_reel3', isset($userProfile->work_reel3) ? $userProfile->work_reel3 : ' ') }}"
-                                                class="form-control" placeholder="Work Reel 3 - only youtube link" />
+                                                class="form-control  {{ $errors->has('work_reel3') ? ' is-invalid' : '' }}"
+                                                placeholder="Work Reel 3 - only youtube link" />
                                         </div>
                                     </div>
 
@@ -204,29 +223,38 @@
                             <div class="card shadow-sm">
                                 <div class="card-body">
                                     <div class="mb-3">
-                                        <label for="height" class="form-label">Height (feet', inches")</label>
-                                        <input type="text" id="height" name="height" class="form-control"
+                                        <label for="height" class="form-label">Height <small class="text-danger">(feet', inches" less than 250.)</small></label>
+                                        <input type="text" id="height" name="height"
+                                            class="form-control  {{ $errors->has('height') ? ' is-invalid' : '' }}"
                                             value="{{ old('height', isset($userProfile->height) ? $userProfile->height : ' ') }}" />
+
                                     </div>
                                     <div class="mb-3">
-                                        <label for="weight" class="form-label">Weight (KG)</label>
-                                        <input type="text" id="weight" name="weight" class="form-control"
+                                        <label for="weight" class="form-label">Weight <small class="text-danger">(kg less than 400.)</small></label>
+                                        <input type="text" id="weight" name="weight"
+                                            class="form-control  {{ $errors->has('weight') ? ' is-invalid' : '' }}"
                                             value="{{ old('weight', isset($userProfile->weight) ? $userProfile->weight : ' ') }}" />
                                     </div>
                                     <div class="mb-3">
-                                        <label for="imdb_profile" class="form-label">IMDB Profile <small>(only IMDB link)</small></label>
-                                        <input type="text" id="imdb_profile" name="imdb_profile" class="form-control"
+                                        <label for="ImdbUrlInput" class="form-label">IMDB Profile <small class="text-danger">(only IMDB
+                                                link)</small><span id="ImdbUrlValidationMessage"></span></label>
+                                        <input type="text" id="ImdbUrlInput" name="imdb_profile"
+                                            class="form-control  {{ $errors->has('imdb_profile') ? ' is-invalid' : '' }}"
                                             value="{{ old('imdb_profile', isset($userProfile->imdb_profile) ? $userProfile->imdb_profile : ' ') }}" />
                                     </div>
                                     <div class="mb-3">
-                                        <label for="skills" class="form-label">Skills</label>
-                                        <input type="text" id="skills" name="skills" class="form-control"
-                                            value="{{ old('skills', isset($userProfile->skills) ? $userProfile->skills : ' ') }}" />
+                                        <label for="skills" class="form-label">Skills <small class="text-danger">(max
+                                                300
+                                                chars.)</small></label>
+                                                 <textarea id="skills" name="skills" class="form-control {{ $errors->has('skills') ? ' is-invalid' : '' }}">{{ old('skills', isset($userProfile->skills) ? $userProfile->skills : ' ') }}</textarea>
                                     </div>
+                                    @error('skills')
+                                    <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                     <div class="mb-3">
                                         <label for="formal_acting" class="form-label">Formal training in acting</label>
                                         <input type="text" id="formal_acting" name="formal_acting"
-                                            class="form-control"
+                                            class="form-control  {{ $errors->has('formal_acting') ? ' is-invalid' : '' }}"
                                             value="{{ old('formal_acting', isset($userProfile->formal_acting) ? $userProfile->formal_acting : ' ') }}" />
                                     </div>
 
@@ -238,11 +266,14 @@
                             <div class="card shadow-sm">
                                 <div class="card-body">
                                     <div class="mb-3">
-                                        <label for="weight" class="form-label">About me <small style="color:red;">(max
+                                        <label for="weight" class="form-label">About me <small class="text-danger">(max
                                                 300
                                                 chars.)</small></label>
-                                        <textarea id="about_me" name="about_me" class="form-control">{{ old('about_me', isset($userProfile->about_me) ? $userProfile->about_me : ' ') }}</textarea>
+                                        <textarea id="about_me" name="about_me" class="form-control {{ $errors->has('about_me') ? ' is-invalid' : '' }}">{{ old('about_me', isset($userProfile->about_me) ? $userProfile->about_me : ' ') }}</textarea>
                                     </div>
+                                     @error('about_me')
+                                    <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
@@ -282,8 +313,51 @@
         });
     </script>
     <script>
+     //About Me Editor.
         $(document).ready(function() {
             $('#about_me').summernote({
+                placeholder: 'Enter movie description goes here..',
+                // tabsize: 2,
+                height: 80,
+                // followingToolbar: true,
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'underline', 'clear']],
+                    ['fontname', ['fontname']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    // ['table', ['table']],
+                    // ['insert', ['link', 'picture', 'video']],
+                    // ['view', ['fullscreen', 'codeview', 'help']],
+                ],
+                popover: {
+                    image: [
+                        ['image', ['resizeFull', 'resizeHalf', 'resizeQuarter', 'resizeNone']],
+                        ['float', ['floatLeft', 'floatRight', 'floatNone']],
+                        ['remove', ['removeMedia']]
+                    ],
+                    link: [
+                        ['link', ['linkDialogShow', 'unlink']]
+                    ],
+                    table: [
+                        ['add', ['addRowDown', 'addRowUp', 'addColLeft', 'addColRight']],
+                        ['delete', ['deleteRow', 'deleteCol', 'deleteTable']],
+                    ],
+                    air: [
+                        ['color', ['color']],
+                        ['font', ['bold', 'underline', 'clear']],
+                        ['para', ['ul', 'paragraph']],
+                        ['table', ['table']],
+                        ['insert', ['link', 'picture']]
+                    ]
+                }
+
+            })
+            $('.dropdown-toggle').dropdown();
+        });
+        //Skills Editor.
+          $(document).ready(function() {
+            $('#skills').summernote({
                 placeholder: 'Enter movie description goes here..',
                 // tabsize: 2,
                 height: 80,
@@ -404,4 +478,260 @@
                 'slow');
         });
     </script>
+
+    <script>
+        // check Youtube IntroVideo Url valid yes no
+        $(document).ready(function() {
+            $('#IntroVideoYoutubeUrlInput').on('input', function() {
+                var youtubeUrl = $(this).val();
+
+                validateIntroVideoYoutubeUrl(youtubeUrl);
+            });
+        });
+
+        function validateIntroVideoYoutubeUrl(youtubeUrl) {
+            // Regular expression pattern for YouTube URL validation
+            var youtubeUrlPattern = /^https?:\/\/(?:www\.)?youtube\.com\/watch\?v=([a-zA-Z0-9_-]{11})/;
+            var youtubeShortUrlPattern = /^(https?:\/\/)?(www\.)?youtu\.be\/[a-zA-Z0-9_-]{11}/;
+            var youtubeUrlEmbedPattern =
+                /^(?:https?:\/\/)?(?:www\.|m\.)?youtu(?:\.be|be\.com)\/(?:watch\?v=|embed\/|v\/|u\/\w\/|embed\/|v=|youtube\.com\/user\/\w+\/|user\/\w+\/videos\/|embed\/videoseries\?list=)([^#\&\?]*).*/;
+            var youtubeLiveUrlPattern = /^https?:\/\/(?:www\.)?youtube\.com\/live\/[a-zA-Z0-9_-]+\?feature=share$/;
+            var youtubeUrlBePattern = /^https?:\/\/youtu\.be\/[a-zA-Z0-9_-]{11}$/;
+            if (youtubeUrl.match(youtubeShortUrlPattern) || youtubeUrl.match(youtubeUrlPattern) || youtubeUrl.match(
+                    youtubeUrlEmbedPattern) || youtubeUrl.match(youtubeLiveUrlPattern) || youtubeUrl.match(
+                    youtubeUrlBePattern)) {
+                // Send an AJAX request to the Laravel backend for further validation
+                $.ajax({
+                    url: '/introvideo-validate-youtube-url',
+                    type: 'GET',
+                    data: {
+                        intro_video_link: youtubeUrl,
+                    },
+                    success: function(response) {
+                        if (response.valid) {
+                            $('#IntroVideoYoutubeUrlInput').removeClass('is-invalid').addClass('is-valid');
+                            $('#IntroVideoYoutubeUrlValidationMessage').removeClass('invalid-feedback')
+                                .addClass('valid-feedback').text('Valid YouTube URL.');
+                        } else {
+                            $('#IntroVideoYoutubeUrlInput').removeClass('is-valid').addClass('is-invalid');
+                            $('#IntroVideoYoutubeUrlValidationMessage').removeClass('valid-feedback').addClass(
+                                'invalid-feedback').text('Invalid YouTube URL.');
+                        }
+                    },
+                    error: function() {
+                        console.log('Error occurred during YouTube URL validation.');
+                    }
+                });
+            } else {
+                $('#IntroVideoYoutubeUrlInput').removeClass('is-valid is-invalid');
+                $('#IntroVideoYoutubeUrlValidationMessage').removeClass('valid-feedback invalid-feedback').text('');
+            }
+        }
+
+        // check Youtube Work_reel_one Url valid yes no
+        $(document).ready(function() {
+            $('#WorkReelOneVideoYoutubeUrlInput').on('input', function() {
+                var youtubeUrl = $(this).val();
+
+                validateWorkVideoOneYoutubeUrl(youtubeUrl);
+            });
+        });
+
+        function validateWorkVideoOneYoutubeUrl(youtubeUrl) {
+            // Regular expression pattern for YouTube URL validation
+            var youtubeUrlPattern = /^https?:\/\/(?:www\.)?youtube\.com\/watch\?v=([a-zA-Z0-9_-]{11})/;
+            var youtubeShortUrlPattern = /^(https?:\/\/)?(www\.)?youtu\.be\/[a-zA-Z0-9_-]{11}/;
+            var youtubeUrlEmbedPattern =
+                /^(?:https?:\/\/)?(?:www\.|m\.)?youtu(?:\.be|be\.com)\/(?:watch\?v=|embed\/|v\/|u\/\w\/|embed\/|v=|youtube\.com\/user\/\w+\/|user\/\w+\/videos\/|embed\/videoseries\?list=)([^#\&\?]*).*/;
+            var youtubeLiveUrlPattern = /^https?:\/\/(?:www\.)?youtube\.com\/live\/[a-zA-Z0-9_-]+\?feature=share$/;
+            var youtubeUrlBePattern = /^https?:\/\/youtu\.be\/[a-zA-Z0-9_-]{11}$/;
+            if (youtubeUrl.match(youtubeShortUrlPattern) || youtubeUrl.match(youtubeUrlPattern) || youtubeUrl.match(
+                    youtubeUrlEmbedPattern) || youtubeUrl.match(youtubeLiveUrlPattern) || youtubeUrl.match(
+                    youtubeUrlBePattern)) {
+                // Send an AJAX request to the Laravel backend for further validation
+                $.ajax({
+                    url: '/work-reel-video-one-validate-youtube-url',
+                    type: 'GET',
+                    data: {
+                        work_reel1: youtubeUrl,
+                    },
+                    success: function(response) {
+                        if (response.valid) {
+                            $('#WorkReelOneVideoYoutubeUrlInput').removeClass('is-invalid').addClass(
+                                'is-valid');
+                            $('#WorkReelOneYoutubeUrlValidationMessage').removeClass('invalid-feedback')
+                                .addClass('valid-feedback').text('Valid YouTube URL.');
+                        } else {
+                            $('#WorkReelOneVideoYoutubeUrlInput').removeClass('is-valid').addClass(
+                                'is-invalid');
+                            $('#WorkReelOneYoutubeUrlValidationMessage').removeClass('valid-feedback').addClass(
+                                'invalid-feedback').text('Invalid YouTube URL.');
+                        }
+                    },
+                    error: function() {
+                        console.log('Error occurred during YouTube URL validation.');
+                    }
+                });
+            } else {
+                $('#WorkReelOneVideoYoutubeUrlInput').removeClass('is-valid is-invalid');
+                $('#WorkReelOneYoutubeUrlValidationMessage').removeClass('valid-feedback invalid-feedback').text('');
+            }
+        }
+        // check Youtube Work_reel_two Url valid yes no
+        $(document).ready(function() {
+            $('#WorkReelTwoVideoYoutubeUrlInput').on('input', function() {
+                var youtubeUrl = $(this).val();
+                validateWorkVideoTwoYoutubeUrl(youtubeUrl);
+            });
+        });
+
+        function validateWorkVideoTwoYoutubeUrl(youtubeUrl) {
+            // Regular expression pattern for YouTube URL validation
+            var youtubeUrlPattern = /^https?:\/\/(?:www\.)?youtube\.com\/watch\?v=([a-zA-Z0-9_-]{11})/;
+            var youtubeShortUrlPattern = /^(https?:\/\/)?(www\.)?youtu\.be\/[a-zA-Z0-9_-]{11}/;
+            var youtubeUrlEmbedPattern =
+                /^(?:https?:\/\/)?(?:www\.|m\.)?youtu(?:\.be|be\.com)\/(?:watch\?v=|embed\/|v\/|u\/\w\/|embed\/|v=|youtube\.com\/user\/\w+\/|user\/\w+\/videos\/|embed\/videoseries\?list=)([^#\&\?]*).*/;
+            var youtubeLiveUrlPattern = /^https?:\/\/(?:www\.)?youtube\.com\/live\/[a-zA-Z0-9_-]+\?feature=share$/;
+            var youtubeUrlBePattern = /^https?:\/\/youtu\.be\/[a-zA-Z0-9_-]{11}$/;
+            if (youtubeUrl.match(youtubeShortUrlPattern) || youtubeUrl.match(youtubeUrlPattern) || youtubeUrl.match(
+                    youtubeUrlEmbedPattern) || youtubeUrl.match(youtubeLiveUrlPattern) || youtubeUrl.match(
+                    youtubeUrlBePattern)) {
+                // Send an AJAX request to the Laravel backend for further validation
+                $.ajax({
+                    url: '/work-reel-video-two-validate-youtube-url',
+                    type: 'GET',
+                    data: {
+                        work_reel2: youtubeUrl,
+                    },
+                    success: function(response) {
+                        if (response.valid) {
+                            $('#WorkReelTwoVideoYoutubeUrlInput').removeClass('is-invalid').addClass(
+                                'is-valid');
+                            $('#WorkReelTwoYoutubeUrlValidationMessage').removeClass('invalid-feedback')
+                                .addClass('valid-feedback').text('Valid YouTube URL.');
+                        } else {
+                            $('#WorkReelTwoVideoYoutubeUrlInput').removeClass('is-valid').addClass(
+                                'is-invalid');
+                            $('#WorkReelTwoYoutubeUrlValidationMessage').removeClass('valid-feedback').addClass(
+                                'invalid-feedback').text('Invalid YouTube URL.');
+                        }
+                    },
+                    error: function() {
+                        console.log('Error occurred during YouTube URL validation.');
+                    }
+                });
+            } else {
+                $('#WorkReelTwoVideoYoutubeUrlInput').removeClass('is-valid is-invalid');
+                $('#WorkReelTwoYoutubeUrlValidationMessage').removeClass('valid-feedback invalid-feedback').text('');
+            }
+        }
+
+        // check Youtube Work_reel_three Url valid yes no
+        $(document).ready(function() {
+            $('#WorkReelThreeVideoYoutubeUrlInput').on('input', function() {
+                var youtubeUrl = $(this).val();
+                validateWorkVideoThreeYoutubeUrl(youtubeUrl);
+            });
+        });
+
+        function validateWorkVideoThreeYoutubeUrl(youtubeUrl) {
+            // Regular expression pattern for YouTube URL validation
+            var youtubeUrlPattern = /^https?:\/\/(?:www\.)?youtube\.com\/watch\?v=([a-zA-Z0-9_-]{11})/;
+            var youtubeShortUrlPattern = /^(https?:\/\/)?(www\.)?youtu\.be\/[a-zA-Z0-9_-]{11}/;
+            var youtubeUrlEmbedPattern =
+                /^(?:https?:\/\/)?(?:www\.|m\.)?youtu(?:\.be|be\.com)\/(?:watch\?v=|embed\/|v\/|u\/\w\/|embed\/|v=|youtube\.com\/user\/\w+\/|user\/\w+\/videos\/|embed\/videoseries\?list=)([^#\&\?]*).*/;
+            var youtubeLiveUrlPattern = /^https?:\/\/(?:www\.)?youtube\.com\/live\/[a-zA-Z0-9_-]+\?feature=share$/;
+            var youtubeUrlBePattern = /^https?:\/\/youtu\.be\/[a-zA-Z0-9_-]{11}$/;
+            if (youtubeUrl.match(youtubeShortUrlPattern) || youtubeUrl.match(youtubeUrlPattern) || youtubeUrl.match(
+                    youtubeUrlEmbedPattern) || youtubeUrl.match(youtubeLiveUrlPattern) || youtubeUrl.match(
+                    youtubeUrlBePattern)) {
+                // Send an AJAX request to the Laravel backend for further validation
+                $.ajax({
+                    url: '/work-reel-video-three-validate-youtube-url',
+                    type: 'GET',
+                    data: {
+                        work_reel3: youtubeUrl,
+                    },
+                    success: function(response) {
+                        if (response.valid) {
+                            $('#WorkReelThreeVideoYoutubeUrlInput').removeClass('is-invalid').addClass(
+                                'is-valid');
+                            $('#WorkReelThreeYoutubeUrlValidationMessage').removeClass('invalid-feedback')
+                                .addClass('valid-feedback').text('Valid YouTube URL.');
+                        } else {
+                            $('#WorkReelThreeVideoYoutubeUrlInput').removeClass('is-valid').addClass(
+                                'is-invalid');
+                            $('#WorkReelThreeYoutubeUrlValidationMessage').removeClass('valid-feedback')
+                                .addClass('invalid-feedback').text('Invalid YouTube URL.');
+                        }
+                    },
+                    error: function() {
+                        console.log('Error occurred during YouTube URL validation.');
+                    }
+                });
+            } else {
+                $('#WorkReelThreeVideoYoutubeUrlInput').removeClass('is-valid is-invalid');
+                $('#WorkReelThreeYoutubeUrlValidationMessage').removeClass('valid-feedback invalid-feedback').text('');
+            }
+        }
+    </script>
+
+    <script>
+        // check Imdb  Url valid yes no
+        $(document).ready(function() {
+            $('#ImdbUrlInput').on('input', function() {
+                var ImdbUrl = $(this).val();
+
+                validateImdbUrl(ImdbUrl);
+
+            });
+        });
+
+        function validateImdbUrl(ImdbUrl) {
+            // Regular expression pattern for YouTube URL validation
+            var imdbUrlPattern = /^https?:\/\/www\.imdb\.com\/title\/[a-zA-Z0-9]+\/$/;
+            if (ImdbUrl.match(imdbUrlPattern)) {
+
+                // Send an AJAX request to the Laravel backend for further validation
+                $.ajax({
+                    url: '/validate-imdb-url',
+                    type: 'GET',
+                    data: {
+                        imdb_profile: ImdbUrl,
+                    },
+                    success: function(response) {
+                        if (response.valid) {
+                            $('#ImdbUrlInput').removeClass('is-invalid').addClass('is-valid');
+                            $('#ImdbUrlValidationMessage').removeClass('invalid-feedback')
+                                .addClass('valid-feedback').text('Valid YouTube URL.');
+                        } else {
+                            $('#ImdbUrlInput').removeClass('is-valid').addClass('is-invalid');
+                            $('#ImdbUrlValidationMessage').removeClass('valid-feedback').addClass(
+                                'invalid-feedback').text('Invalid YouTube URL.');
+                        }
+                    },
+                    error: function() {
+                        console.log('Error occurred during YouTube URL validation.');
+                    }
+                });
+            } else {
+                $('#ImdbUrlInput').removeClass('is-valid is-invalid');
+                $('#ImdbUrlValidationMessage').removeClass('valid-feedback invalid-feedback').text('');
+            }
+        }
+        $(document).ready(function() {
+            // Initialize select2 with data
+            $('#ethnicity').select2({
+                placeholder: 'Select Ethnicity',
+                tags: true,
+                theme: 'bootstrap'
+            });
+            $('form').on('submit', function() {
+                if ($('#ethnicity').val() == '') {
+                    $('#ethnicity').addClass('is-invalid');
+                }
+            });
+        });
+    </script>
+
 @endsection

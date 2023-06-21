@@ -99,6 +99,65 @@ html,
        .sidebar.active {
           width: 80%;
         }
+        .personal-info {
+            width: 100%;
+            font-size: 22px;
+            line-height:25px;
+            text-align:center;
+            font-family: Poppins;
+            margin-left:10px;
+            justify-content:center;
+
+          }
+          .personal-info-name{
+            width: 100%;
+            font-size: 30px;
+            line-height: 25px;
+            text-align: center;
+            font-family: Poppins;
+            margin-left:10px;
+
+        }
+        .personal-info-phone{
+            width: 100%;
+            font-size: 22px;
+            line-height:25px;
+            text-align:center;
+            font-family: Poppins;
+            margin-left:10px;
+        }
+        .personal-info-phone:not(:last-child)::after{
+            content: " | ";
+            margin-left: 5px;
+            margin-right: 5px;
+            color: gray;
+        }
+          /* .personal-info:not(:last-child)::after {
+            content: " | ";
+            margin-left: 5px;
+            margin-right: 5px;
+            color: gray;
+          } */
+          .personal-info:not(:first-child)::before {
+            content: " | ";
+            margin-left: 5px;
+            margin-right: 5px;
+            color: gray;
+          }
+          .personal-info:not(:last-child)::after {
+            margin-right: 5px;
+            color: gray;
+          }
+          .personal-main-first{
+            display: inline-block;
+
+          }
+          .personal-main-second{
+             display:block;
+             margin-top:15px;
+
+          }
+
       }
 
       @media (max-width: 576px) {
@@ -144,28 +203,74 @@ html,
       .section-header {
         text-transform: uppercase;
         margin-top: 10px;
+        font-size: 22px;
       }
       .personal-info {
-        font-size: 22px;
+        width: 100%;
+        font-size: 25px;
         line-height:25px;
         text-align:center;
+        font-family: Poppins;
+        margin-left:15px;
+        justify-content:center;
 
       }
+      .personal-info-name{
+        width: 100%;
+        font-size: 35px;
+        line-height: 25px;
+        text-align: center;
+        font-family: Poppins;
+        margin-left:3px;
+        justify-content:center;
 
-      .personal-info:not(:last-child)::after {
+    }
+    .personal-info-phone{
+        width: 100%;
+        font-size: 25px;
+        line-height:25px;
+        text-align:center;
+        font-family: Poppins;
+        margin-left:3px;
+        justify-content:center;
+    }
+    .personal-info-phone:not(:last-child)::after{
+        content: " | ";
+        margin-left: 5px;
+        margin-right: 5px;
+        color: gray;
+    }
+      /* .personal-info:not(:last-child)::after {
+        content: " | ";
+        margin-left: 5px;
+        margin-right: 5px;
+        color: gray;
+      } */
+      .personal-info:not(:first-child)::before {
         content: " | ";
         margin-left: 5px;
         margin-right: 5px;
         color: gray;
       }
-      .personal-info-mobile-no{
-        font-size: 22px;
+      .personal-info:not(:last-child)::after {
+        margin-right: 5px;
+        color: gray;
       }
+      .personal-main-first{
+        display: inline-block;
+
+      }
+      .personal-main-second{
+         display:block;
+         margin-top:15px;
+
+      }
+
       .about-me {
         font-size: 16px;
       }
       .other-value {
-        font-size: 22px;
+        font-size: 21px;
         font-weight: 500;
       }
       .other-unit {
@@ -277,3 +382,17 @@ html,
     margin-left: -8px;
     color: red;
   }
+  .select2-container .select2-selection--single{
+    box-sizing: border-box;
+    cursor: pointer;
+    display: block;
+    height: 36px !important;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  .select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: #444;
+    line-height: 34px !important;
+}
+
+

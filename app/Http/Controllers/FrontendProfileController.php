@@ -24,6 +24,8 @@ class FrontendProfileController extends Controller
     }
     public function submitProfile(Request $request)
     {
+        //dd($request->all());
+
         $userProfile = UserProfile::where('user_id', auth()->user()->id)->first();
 
         $rules = [
@@ -48,6 +50,7 @@ class FrontendProfileController extends Controller
                 },
             ],
             'about_me' =>'nullable|string|max:300',
+            'skills'=>'nullable|string|max:300',
             'weight' => 'numeric|min:1|max:400',
             // 'image1' => 'required_if:image1,null|mimes:jpg,jfif,png,jpeg,gif',
             'image2' => 'nullable|image|mimes:jpg,jfif,png,jpeg,gif|max:4096',
@@ -90,12 +93,13 @@ class FrontendProfileController extends Controller
             'first_name.required' => 'Please enter a firstname',
             'last_name.required' => 'Please enter a lastname',
             'date_of_birth.required' => 'Please enter a DateOfBirth',
-            'ethnicity.required' => 'Please select ethnicity',
+            'ethnicity.required' => 'Please select or create ethnicity',
             'gender.required' => 'Please select  gender',
             'mobile_no.required' => 'Please enter mobile number',
             'current_location.required' => 'Please enter a current location',
             'intro_video_link.required' => 'Please enter your intro video',
             'about_me.max' => 'Maximum 300 characters allowed.',
+            'skills.max'=>'Maximum 300 characters allowed.',
             // 'image1.required'=>'First image is required',
             // 'work_reel1.url' => 'The work reel one must be a valid URL.',
             // 'work_reel2.url' => 'The work reel two must be a valid URL.',
@@ -112,6 +116,7 @@ class FrontendProfileController extends Controller
         );
 
          //User
+
        $userId = auth()->user()->id;
        $dateOfBirth = Carbon::parse($request->date_of_birth)->format('Y-m-d');
        $age = Carbon::parse($dateOfBirth)->age;
@@ -147,19 +152,20 @@ class FrontendProfileController extends Controller
          $user_profile->current_location = $request->current_location;
          $user_profile->about_me = $request->about_me;
          $user_profile->user_id = $userId;
-         if($request->has('work_reel1') && $request->work_reel1 != ' '){
+         if($request->has('work_reel1') && $request->work_reel1 != null){
+
             $user_profile->work_reel1 =GeneralHelper::getYoutubeEmbedUrl($request->work_reel1);
          }
          else{
             $user_profile->work_reel1 = null;
          }
-         if($request->has('work_reel2') && $request->work_reel2 != ' '){
+         if($request->has('work_reel2') && $request->work_reel2 != null){
             $user_profile->work_reel2 =GeneralHelper::getYoutubeEmbedUrl($request->work_reel2);
          }
          else{
             $user_profile->work_reel2 = null;
          }
-         if($request->has('work_reel3') && $request->work_reel3 != ' '){
+         if($request->has('work_reel3') && $request->work_reel3 != null){
             $user_profile->work_reel3 = GeneralHelper::getYoutubeEmbedUrl($request->work_reel3);
          }
          else{

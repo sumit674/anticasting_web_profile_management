@@ -63,8 +63,8 @@ Route::group(['prefix' => 'users', 'middleware' => ['web', 'user']], function ()
     Route::post('/userimage', [ProfileController::class, 'uploadUserImage'])->name('users.uploadImages');
     Route::post('/userworkreel', [ProfileController::class, 'submitWorkReel'])->name('users.userworkreel');
     Route::post('/userintrovideo', [ProfileController::class, 'IntroVideo'])->name('users.introvideos');
-    Route::get('/delete/one/{id}/image', [ImageController::class, 'deleteHeadShotImageOne'])->name('users.delete-one.image');
-    Route::get('/delete/two/{id}/image', [ImageController::class, 'deleteHeadShotImageTwo'])->name('users.delete-two.image');
+    Route::get('/delete/one/{id?}/image', [ImageController::class, 'deleteHeadShotImageOne'])->name('users.delete-one.image');
+    Route::get('/delete/two/{id?}/image', [ImageController::class, 'deleteHeadShotImageTwo'])->name('users.delete-two.image');
     Route::get('/delete/all/{user_id}/image', [ImageController::class, 'deleteHeadShotImageAll'])->name('user.delete-all-headshots');
     /*View User Profile */
     Route::get('/view-profile', [ProfileController::class, 'viewProfileDetails'])->name('users.view-profile');
@@ -151,3 +151,11 @@ Route::group(['prefix' => 'users', 'middleware' => ['web', 'user']], function ()
    Route::post('submit-profile/submit',[FrontendProfileController::class,'submitProfile'])->name('users.submit-profile');
    Route::get('view-profile',[FrontendProfileController::class,'viewProfile'])->name('users.view-profile');
 });
+/*Check Valid Youtube Url */
+Route::get('/introvideo-validate-youtube-url', [CommonController::class, 'IntroVideoValidateYoutubeUrl']);
+Route::get('/work-reel-video-one-validate-youtube-url', [CommonController::class, 'WorkReelOneVideoValidateYoutubeUrl']);
+Route::get('/work-reel-video-two-validate-youtube-url', [CommonController::class, 'WorkReelTwoVideoValidateYoutubeUrl']);
+Route::get('/work-reel-video-three-validate-youtube-url', [CommonController::class, 'WorkReelThreeVideoValidateYoutubeUrl']);
+
+/* Check Valid Imdb Url */
+Route::get('/validate-imdb-url', [CommonController::class, 'ValidateImdbUrl']);

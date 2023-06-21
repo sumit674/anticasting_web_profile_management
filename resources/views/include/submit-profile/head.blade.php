@@ -19,5 +19,5 @@ href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&
 <link rel="stylesheet" href="{{ asset('assets/website/frontend/css/main.css') }}" />
 <link rel="stylesheet" href="{{ asset('assets/intl-telephone/css/intlTelInput.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/toast/jquery.toast.css') }}" />
-
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.10/select2-bootstrap.min.css">
