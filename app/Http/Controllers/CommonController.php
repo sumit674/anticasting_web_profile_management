@@ -32,43 +32,27 @@ class CommonController extends Controller
         dd($userProfile);
 
     }
-    public function IntroVideoValidateYoutubeUrl(Request $request){
+    public function ValidateYoutubeUrl(Request $request)
+    {
 
-        $youtubeUrl = $request->input('intro_video_link');
-
-        // Perform additional validation on the YouTube URL if required
-        // Example: Check if the video exists or extract video ID
-
-        // Return a JSON response indicating whether the URL is valid or not
-        return response()->json([
-            'valid' => true, // Set this based on your validation logic
-        ]);
-    }
-    public function WorkReelOneVideoValidateYoutubeUrl(Request $request){
-        $youtubeUrl = $request->input('work_reel1');
-        return response()->json([
-            'valid' => true, // Set this based on your validation logic
-        ]);
-    }
-    public function WorkReelTwoVideoValidateYoutubeUrl(Request $request){
-        $youtubeUrl = $request->input('work_reel2');
+        $url = $request->input('url');
+        $pattern = '/^(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:watch\?v=|embed\/|v\/|(?:live))|youtu\.be\/)([^\s&]+)/';
+        $isValid = preg_match($pattern, $url);
 
         return response()->json([
-            'valid' => true, // Set this based on your validation logic
+            'isValid' => $isValid
         ]);
     }
-    public function WorkReelThreeVideoValidateYoutubeUrl(Request $request){
-        $youtubeUrl = $request->input('work_reel3');
+    public function ValidateImdbUrl(Request $request)
+    {
+        $url = $request->input('url');
+        $pattern = '/^https?:\/\/(?:www\.)?imdb\.com\/title\/tt\d{7,8}\/?$/';
+        $isValid = preg_match($pattern, $url);
 
         return response()->json([
-            'valid' => true, // Set this based on your validation logic
+            'isValid' => $isValid
         ]);
     }
-    public function  ValidateImdbUrl(Request $request){
-        $imdbUrl = $request->input('imdb_profile');
 
-        return response()->json([
-            'valid' => true, // Set this based on your validation logic
-        ]);
-    }
+
 }

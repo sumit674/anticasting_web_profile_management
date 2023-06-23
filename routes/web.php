@@ -152,10 +152,7 @@ Route::group(['prefix' => 'users', 'middleware' => ['web', 'user']], function ()
    Route::get('view-profile',[FrontendProfileController::class,'viewProfile'])->name('users.view-profile');
 });
 /*Check Valid Youtube Url */
-Route::get('/introvideo-validate-youtube-url', [CommonController::class, 'IntroVideoValidateYoutubeUrl']);
-Route::get('/work-reel-video-one-validate-youtube-url', [CommonController::class, 'WorkReelOneVideoValidateYoutubeUrl']);
-Route::get('/work-reel-video-two-validate-youtube-url', [CommonController::class, 'WorkReelTwoVideoValidateYoutubeUrl']);
-Route::get('/work-reel-video-three-validate-youtube-url', [CommonController::class, 'WorkReelThreeVideoValidateYoutubeUrl']);
+Route::get('youtubevideo-url', [CommonController::class, 'ValidateYoutubeUrl'])->name('youtubeVideoValidUrl');
 
 /* Check Valid Imdb Url */
-Route::get('/validate-imdb-url', [CommonController::class, 'ValidateImdbUrl']);
+Route::get('imdbvideo-url', [CommonController::class, 'ValidateImdbUrl'])->name('imdbVideoValidUrl');

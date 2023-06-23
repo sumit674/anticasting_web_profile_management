@@ -30,13 +30,17 @@
                                             class="form-control {{ $errors->has('last_name') ? ' is-invalid' : '' }}"
                                             placeholder="Enter a last name" />
                                     </div>
+                                    <?php
+                                    $date = date('Y-m-d');
+                                    $newDate = date('Y-m-d', strtotime('-1 day', strtotime($date)));
+                                    ?>
                                     <div class="mb-3">
                                         <label for="birthdate" class="form-label">Birthdate <span
                                                 class="strik-color">*</span></label>
                                         <input type="date" name="date_of_birth"
                                             value="{{ old('date_of_birth', isset($userProfile?->date_of_birth) ? $userProfile?->date_of_birth : ' ') }}"
                                             class="form-control  {{ $errors->has('date_of_birth') ? ' is-invalid' : '' }}"
-                                            placeholder="Enter a date of birthday" />
+                                            placeholder="Enter a date of birthday" max="<?php echo $newDate; ?>" />
                                     </div>
                                     <div class="mb-3">
                                         <label for="email" class="form-label">Email <span
@@ -137,7 +141,7 @@
                                             title="Headshot Image">
                                             <i class="fa fa-info-circle"></i>
                                         </span>
-                                          <div class="strik-color validation-image-mark">*</div>
+                                        <div class="strik-color validation-image-mark">*</div>
                                         <div class="d-flex">
 
                                             <label class="thumbnail" for="image1">
@@ -200,8 +204,7 @@
                                         <div class="mb-3">
                                             <label for="intro_video" class="form-label">Intro Video <span
                                                     class="strik-color">*</span> <small class="text-danger">(only youtube
-                                                    link)</small> <span
-                                                    id="IntroVideoYoutubeUrlValidationMessage"></span></label>
+                                                    link)</small></label>
                                             <span class="fa fa-play-circle" data-bs-toggle="modal"
                                                 data-bs-target="#videoModal"></span>
 
@@ -209,23 +212,23 @@
                                                 class="form-control  {{ $errors->has('intro_video_link') ? ' is-invalid' : '' }}"
                                                 placeholder="Enter intro video"
                                                 value="{{ old('intro_video_link', isset($userIntroVideo?->intro_video_link) ? $userIntroVideo?->intro_video_link : ' ') }}" />
-
+                                            <span id="IntroVideoYoutubeUrlValidationMessage" class="text-danger"></span>
                                         </div>
+
                                         <div class="mb-3">
                                             <label for="WorkReelOneVideoYoutubeUrlInput" class="form-label">Work Reel 1
                                                 <small class="text-danger">(only youtube
-                                                    link)</small><span
-                                                    id="WorkReelOneYoutubeUrlValidationMessage"></span></label></label>
+                                                    link)</small></label>
                                             <input type="text" id="WorkReelOneVideoYoutubeUrlInput" name="work_reel1"
                                                 class="form-control {{ $errors->has('work_reel1') ? ' is-invalid' : '' }}"
                                                 value="{{ old('work_reel1', isset($userProfile->work_reel1) ? $userProfile->work_reel1 : ' ') }}"
                                                 placeholder="Work Reel 1 - only youtube link" />
+                                            <span id="WorkReelOneYoutubeUrlValidationMessage"></span>
                                         </div>
                                         <div class="mb-3">
                                             <label for="WorkReelTwoVideoYoutubeUrlInput" class="form-label">Work Reel 2
                                                 <small class="text-danger">(only youtube
-                                                    link)</small><span
-                                                    id="WorkReelTwoYoutubeUrlValidationMessage"></span></label></label>
+                                                    link)</small></label>
                                             <input type="text" id="WorkReelTwoVideoYoutubeUrlInput" name="work_reel2"
                                                 class="form-control  {{ $errors->has('work_reel2') ? ' is-invalid' : '' }}"
                                                 value="{{ old('work_reel2', isset($userProfile->work_reel2) ? $userProfile->work_reel2 : ' ') }}"
@@ -234,8 +237,7 @@
                                         <div class="mb-3">
                                             <label for="WorkReelThreeVideoYoutubeUrlInput" class="form-label">Work Reel 3
                                                 <small class="text-danger">(only youtube
-                                                    link)</small><span
-                                                    id="WorkReelThreeYoutubeUrlValidationMessage"></span></label></label>
+                                                    link)</small></label>
                                             <input type="text" id="WorkReelThreeVideoYoutubeUrlInput"
                                                 name="work_reel3"
                                                 value="{{ old('work_reel3', isset($userProfile->work_reel3) ? $userProfile->work_reel3 : ' ') }}"
@@ -253,15 +255,15 @@
                                 <div class="card-body">
                                     <div class="mb-3">
                                         <label for="height" class="form-label">Height <small
-                                                class="text-danger">(feet', inches" less than 250.)</small></label>
+                                                class="text-danger">(feet', inches")</small></label>
                                         <input type="text" id="height" name="height"
                                             class="form-control  {{ $errors->has('height') ? ' is-invalid' : '' }}"
                                             value="{{ old('height', isset($userProfile->height) ? $userProfile->height : ' ') }}"
                                             placeholder="Height (CM)" />
                                     </div>
                                     <div class="mb-3">
-                                        <label for="weight" class="form-label">Weight <small class="text-danger">(kg
-                                                less than 400.)</small></label>
+                                        <label for="weight" class="form-label">Weight <small
+                                                class="text-danger">(kg)</small></label>
                                         <input type="text" id="weight" name="weight"
                                             class="form-control  {{ $errors->has('weight') ? ' is-invalid' : '' }}"
                                             value="{{ old('weight', isset($userProfile->weight) ? $userProfile->weight : ' ') }}"
@@ -270,7 +272,7 @@
                                     <div class="mb-3">
                                         <label for="ImdbUrlInput" class="form-label">IMDB Profile <small
                                                 class="text-danger">(only IMDB
-                                                link)</small><span id="ImdbUrlValidationMessage"></span></label>
+                                                link)</small></label>
                                         <input type="text" id="ImdbUrlInput" name="imdb_profile"
                                             class="form-control  {{ $errors->has('imdb_profile') ? ' is-invalid' : '' }}"
                                             value="{{ old('imdb_profile', isset($userProfile->imdb_profile) ? $userProfile->imdb_profile : ' ') }}"
@@ -493,247 +495,176 @@
                 'slow');
         });
     </script>
-
     <script>
-        // check Youtube IntroVideo Url valid yes no
-        $(document).ready(function() {
-            $('#IntroVideoYoutubeUrlInput').on('input', function() {
-                var youtubeUrl = $(this).val();
+        // check Intro video  Youtube  url
 
-                validateIntroVideoYoutubeUrl(youtubeUrl);
+        $(document).ready(function() {
+            $('#IntroVideoYoutubeUrlInput').on('keyup', function() {
+                var youtubeUrl = $(this).val();
+                $.ajax({
+                    url: "{{ route('youtubeVideoValidUrl') }}",
+                    method: 'GET',
+                    data: {
+                        url: youtubeUrl
+                    },
+                    success: function(response) {
+                        if (response.isValid) {
+                            //    $('#IntroVideoYoutubeUrlValidationMessage').text(
+                            // 'This URL is valid.').show();
+                            $('#IntroVideoYoutubeUrlInput').removeClass('is-invalid')
+                                .addClass(
+                                    'is-valid');
+                        } else {
+                            if (youtubeUrl.trim() !== '') {
+                                $('#IntroVideoYoutubeUrlInput').removeClass('is-valid')
+                                    .addClass(
+                                        'is-invalid');
+                            } else {
+                                $('#IntroVideoYoutubeUrlInput').removeClass(
+                                    'is-invalid is-valid');
+                            }
+
+                        }
+                    }
+                });
+
+
+            });
+        });
+        // check workreel one video  Youtube  url
+
+        $(document).ready(function() {
+            $('#WorkReelOneVideoYoutubeUrlInput').on('keyup', function() {
+                var youtubeUrl = $(this).val();
+                $.ajax({
+                    url: "{{ route('youtubeVideoValidUrl') }}",
+                    method: 'GET',
+                    data: {
+                        url: youtubeUrl
+                    },
+                    success: function(response) {
+                        if (response.isValid) {
+                            //    $('#IntroVideoYoutubeUrlValidationMessage').text(
+                            // 'This URL is valid.').show();
+                            $('#WorkReelOneVideoYoutubeUrlInput').removeClass('is-invalid')
+                                .addClass(
+                                    'is-valid');
+                        } else {
+                            if (youtubeUrl.trim() !== '') {
+                                $('#WorkReelOneVideoYoutubeUrlInput').removeClass('is-valid')
+                                    .addClass(
+                                        'is-invalid');
+                            } else {
+                                $('#WorkReelOneVideoYoutubeUrlInput').removeClass(
+                                    'is-invalid is-valid');
+                            }
+
+                        }
+                    }
+                });
             });
         });
 
-        function validateIntroVideoYoutubeUrl(youtubeUrl) {
-            // Regular expression pattern for YouTube URL validation
-            var youtubeUrlPattern = /^https?:\/\/(?:www\.)?youtube\.com\/watch\?v=([a-zA-Z0-9_-]{11})/;
-            var youtubeShortUrlPattern = /^(https?:\/\/)?(www\.)?youtu\.be\/[a-zA-Z0-9_-]{11}/;
-            var youtubeUrlEmbedPattern =
-                /^(?:https?:\/\/)?(?:www\.|m\.)?youtu(?:\.be|be\.com)\/(?:watch\?v=|embed\/|v\/|u\/\w\/|embed\/|v=|youtube\.com\/user\/\w+\/|user\/\w+\/videos\/|embed\/videoseries\?list=)([^#\&\?]*).*/;
-            var youtubeLiveUrlPattern = /^https?:\/\/(?:www\.)?youtube\.com\/live\/[a-zA-Z0-9_-]+\?feature=share$/;
-            var youtubeUrlBePattern = /^https?:\/\/youtu\.be\/[a-zA-Z0-9_-]{11}$/;
-            if (youtubeUrl.match(youtubeShortUrlPattern) || youtubeUrl.match(youtubeUrlPattern) || youtubeUrl.match(
-                    youtubeUrlEmbedPattern) || youtubeUrl.match(youtubeLiveUrlPattern) || youtubeUrl.match(
-                    youtubeUrlBePattern)) {
-                // Send an AJAX request to the Laravel backend for further validation
+        // check workreel two video  Youtube  url
+
+        $(document).ready(function() {
+            $('#WorkReelTwoVideoYoutubeUrlInput').on('keyup', function() {
+                var youtubeUrl = $(this).val();
                 $.ajax({
-                    url: '/introvideo-validate-youtube-url',
-                    type: 'GET',
+                    url: "{{ route('youtubeVideoValidUrl') }}",
+                    method: 'GET',
                     data: {
-                        intro_video_link: youtubeUrl,
+                        url: youtubeUrl
                     },
                     success: function(response) {
-                        if (response.valid) {
-                            $('#IntroVideoYoutubeUrlInput').removeClass('is-invalid').addClass('is-valid');
-                            $('#IntroVideoYoutubeUrlValidationMessage').removeClass('invalid-feedback')
-                                .addClass('valid-feedback').text('Valid YouTube URL.');
+                        if (response.isValid) {
+                            //    $('#IntroVideoYoutubeUrlValidationMessage').text(
+                            // 'This URL is valid.').show();
+                            $('#WorkReelTwoVideoYoutubeUrlInput').removeClass('is-invalid')
+                                .addClass(
+                                    'is-valid');
                         } else {
-                            $('#IntroVideoYoutubeUrlInput').removeClass('is-valid').addClass('is-invalid');
-                            $('#IntroVideoYoutubeUrlValidationMessage').removeClass('valid-feedback').addClass(
-                                'invalid-feedback').text('Invalid YouTube URL.');
+                            if (youtubeUrl.trim() !== '') {
+                                $('#WorkReelTwoVideoYoutubeUrlInput').removeClass('is-valid')
+                                    .addClass(
+                                        'is-invalid');
+                            } else {
+                                $('#WorkReelTwoVideoYoutubeUrlInput').removeClass(
+                                    'is-invalid is-valid');
+                            }
+
                         }
-                    },
-                    error: function() {
-                        console.log('Error occurred during YouTube URL validation.');
                     }
                 });
-            } else {
-                $('#IntroVideoYoutubeUrlInput').removeClass('is-valid is-invalid');
-                $('#IntroVideoYoutubeUrlValidationMessage').removeClass('valid-feedback invalid-feedback').text('');
-            }
-        }
-
-        // check Youtube Work_reel_one Url valid yes no
+            });
+        });
+        // check workreel three video  Youtube  url
         $(document).ready(function() {
-            $('#WorkReelOneVideoYoutubeUrlInput').on('input', function() {
+            $('#WorkReelThreeVideoYoutubeUrlInput').on('keyup', function() {
                 var youtubeUrl = $(this).val();
+                $.ajax({
+                    url: "{{ route('youtubeVideoValidUrl') }}",
+                    method: 'GET',
+                    data: {
+                        url: youtubeUrl
+                    },
+                    success: function(response) {
+                        if (response.isValid) {
+                            //    $('#IntroVideoYoutubeUrlValidationMessage').text(
+                            // 'This URL is valid.').show();
+                            $('#WorkReelThreeVideoYoutubeUrlInput').removeClass('is-invalid')
+                                .addClass(
+                                    'is-valid');
+                        } else {
+                            if (youtubeUrl.trim() !== '') {
+                                $('#WorkReelThreeVideoYoutubeUrlInput').removeClass('is-valid')
+                                    .addClass(
+                                        'is-invalid');
+                            } else {
+                                $('#WorkReelThreeVideoYoutubeUrlInput').removeClass(
+                                    'is-invalid is-valid');
+                            }
 
-                validateWorkVideoOneYoutubeUrl(youtubeUrl);
+                        }
+                    }
+                });
+            });
+        });
+         // check imdb url
+         $(document).ready(function() {
+            $('#ImdbUrlInput').on('keyup', function() {
+                var imdbUrl = $(this).val();
+                $.ajax({
+                    url: "{{ route('imdbVideoValidUrl') }}",
+                    method: 'GET',
+                    data: {
+                        url: imdbUrl
+                    },
+                    success: function(response) {
+                        if (response.isValid) {
+                            //    $('#IntroVideoYoutubeUrlValidationMessage').text(
+                            // 'This URL is valid.').show();
+                            $('#ImdbUrlInput').removeClass('is-invalid')
+                                .addClass(
+                                    'is-valid');
+                        } else {
+                            if (imdbUrl.trim() !== '') {
+                                $('#ImdbUrlInput').removeClass('is-valid')
+                                    .addClass(
+                                        'is-invalid');
+                            } else {
+                                $('#ImdbUrlInput').removeClass(
+                                    'is-invalid is-valid');
+                            }
+
+                        }
+                    }
+                });
             });
         });
 
-        function validateWorkVideoOneYoutubeUrl(youtubeUrl) {
-            // Regular expression pattern for YouTube URL validation
-            var youtubeUrlPattern = /^https?:\/\/(?:www\.)?youtube\.com\/watch\?v=([a-zA-Z0-9_-]{11})/;
-            var youtubeShortUrlPattern = /^(https?:\/\/)?(www\.)?youtu\.be\/[a-zA-Z0-9_-]{11}/;
-            var youtubeUrlEmbedPattern =
-                /^(?:https?:\/\/)?(?:www\.|m\.)?youtu(?:\.be|be\.com)\/(?:watch\?v=|embed\/|v\/|u\/\w\/|embed\/|v=|youtube\.com\/user\/\w+\/|user\/\w+\/videos\/|embed\/videoseries\?list=)([^#\&\?]*).*/;
-            var youtubeLiveUrlPattern = /^https?:\/\/(?:www\.)?youtube\.com\/live\/[a-zA-Z0-9_-]+\?feature=share$/;
-            var youtubeUrlBePattern = /^https?:\/\/youtu\.be\/[a-zA-Z0-9_-]{11}$/;
-            if (youtubeUrl.match(youtubeShortUrlPattern) || youtubeUrl.match(youtubeUrlPattern) || youtubeUrl.match(
-                    youtubeUrlEmbedPattern) || youtubeUrl.match(youtubeLiveUrlPattern) || youtubeUrl.match(
-                    youtubeUrlBePattern)) {
-                // Send an AJAX request to the Laravel backend for further validation
-                $.ajax({
-                    url: '/work-reel-video-one-validate-youtube-url',
-                    type: 'GET',
-                    data: {
-                        work_reel1: youtubeUrl,
-                    },
-                    success: function(response) {
-                        if (response.valid) {
-                            $('#WorkReelOneVideoYoutubeUrlInput').removeClass('is-invalid').addClass(
-                                'is-valid');
-                            $('#WorkReelOneYoutubeUrlValidationMessage').removeClass('invalid-feedback')
-                                .addClass('valid-feedback').text('Valid YouTube URL.');
-                        } else {
-                            $('#WorkReelOneVideoYoutubeUrlInput').removeClass('is-valid').addClass(
-                                'is-invalid');
-                            $('#WorkReelOneYoutubeUrlValidationMessage').removeClass('valid-feedback').addClass(
-                                'invalid-feedback').text('Invalid YouTube URL.');
-                        }
-                    },
-                    error: function() {
-                        console.log('Error occurred during YouTube URL validation.');
-                    }
-                });
-            } else {
-                $('#WorkReelOneVideoYoutubeUrlInput').removeClass('is-valid is-invalid');
-                $('#WorkReelOneYoutubeUrlValidationMessage').removeClass('valid-feedback invalid-feedback').text('');
-            }
-        }
-        // check Youtube Work_reel_two Url valid yes no
-        $(document).ready(function() {
-            $('#WorkReelTwoVideoYoutubeUrlInput').on('input', function() {
-                var youtubeUrl = $(this).val();
-                validateWorkVideoTwoYoutubeUrl(youtubeUrl);
-            });
-        });
-
-        function validateWorkVideoTwoYoutubeUrl(youtubeUrl) {
-            // Regular expression pattern for YouTube URL validation
-            var youtubeUrlPattern = /^https?:\/\/(?:www\.)?youtube\.com\/watch\?v=([a-zA-Z0-9_-]{11})/;
-            var youtubeShortUrlPattern = /^(https?:\/\/)?(www\.)?youtu\.be\/[a-zA-Z0-9_-]{11}/;
-            var youtubeUrlEmbedPattern =
-                /^(?:https?:\/\/)?(?:www\.|m\.)?youtu(?:\.be|be\.com)\/(?:watch\?v=|embed\/|v\/|u\/\w\/|embed\/|v=|youtube\.com\/user\/\w+\/|user\/\w+\/videos\/|embed\/videoseries\?list=)([^#\&\?]*).*/;
-            var youtubeLiveUrlPattern = /^https?:\/\/(?:www\.)?youtube\.com\/live\/[a-zA-Z0-9_-]+\?feature=share$/;
-            var youtubeUrlBePattern = /^https?:\/\/youtu\.be\/[a-zA-Z0-9_-]{11}$/;
-            if (youtubeUrl.match(youtubeShortUrlPattern) || youtubeUrl.match(youtubeUrlPattern) || youtubeUrl.match(
-                    youtubeUrlEmbedPattern) || youtubeUrl.match(youtubeLiveUrlPattern) || youtubeUrl.match(
-                    youtubeUrlBePattern)) {
-                // Send an AJAX request to the Laravel backend for further validation
-                $.ajax({
-                    url: '/work-reel-video-two-validate-youtube-url',
-                    type: 'GET',
-                    data: {
-                        work_reel2: youtubeUrl,
-                    },
-                    success: function(response) {
-                        if (response.valid) {
-                            $('#WorkReelTwoVideoYoutubeUrlInput').removeClass('is-invalid').addClass(
-                                'is-valid');
-                            $('#WorkReelTwoYoutubeUrlValidationMessage').removeClass('invalid-feedback')
-                                .addClass('valid-feedback').text('Valid YouTube URL.');
-                        } else {
-                            $('#WorkReelTwoVideoYoutubeUrlInput').removeClass('is-valid').addClass(
-                                'is-invalid');
-                            $('#WorkReelTwoYoutubeUrlValidationMessage').removeClass('valid-feedback').addClass(
-                                'invalid-feedback').text('Invalid YouTube URL.');
-                        }
-                    },
-                    error: function() {
-                        console.log('Error occurred during YouTube URL validation.');
-                    }
-                });
-            } else {
-                $('#WorkReelTwoVideoYoutubeUrlInput').removeClass('is-valid is-invalid');
-                $('#WorkReelTwoYoutubeUrlValidationMessage').removeClass('valid-feedback invalid-feedback').text('');
-            }
-        }
-
-        // check Youtube Work_reel_three Url valid yes no
-        $(document).ready(function() {
-            $('#WorkReelThreeVideoYoutubeUrlInput').on('input', function() {
-                var youtubeUrl = $(this).val();
-                validateWorkVideoThreeYoutubeUrl(youtubeUrl);
-            });
-        });
-
-        function validateWorkVideoThreeYoutubeUrl(youtubeUrl) {
-            // Regular expression pattern for YouTube URL validation
-            var youtubeUrlPattern = /^https?:\/\/(?:www\.)?youtube\.com\/watch\?v=([a-zA-Z0-9_-]{11})/;
-            var youtubeShortUrlPattern = /^(https?:\/\/)?(www\.)?youtu\.be\/[a-zA-Z0-9_-]{11}/;
-            var youtubeUrlEmbedPattern =
-                /^(?:https?:\/\/)?(?:www\.|m\.)?youtu(?:\.be|be\.com)\/(?:watch\?v=|embed\/|v\/|u\/\w\/|embed\/|v=|youtube\.com\/user\/\w+\/|user\/\w+\/videos\/|embed\/videoseries\?list=)([^#\&\?]*).*/;
-            var youtubeLiveUrlPattern = /^https?:\/\/(?:www\.)?youtube\.com\/live\/[a-zA-Z0-9_-]+\?feature=share$/;
-            var youtubeUrlBePattern = /^https?:\/\/youtu\.be\/[a-zA-Z0-9_-]{11}$/;
-            if (youtubeUrl.match(youtubeShortUrlPattern) || youtubeUrl.match(youtubeUrlPattern) || youtubeUrl.match(
-                    youtubeUrlEmbedPattern) || youtubeUrl.match(youtubeLiveUrlPattern) || youtubeUrl.match(
-                    youtubeUrlBePattern)) {
-                // Send an AJAX request to the Laravel backend for further validation
-                $.ajax({
-                    url: '/work-reel-video-three-validate-youtube-url',
-                    type: 'GET',
-                    data: {
-                        work_reel3: youtubeUrl,
-                    },
-                    success: function(response) {
-                        if (response.valid) {
-                            $('#WorkReelThreeVideoYoutubeUrlInput').removeClass('is-invalid').addClass(
-                                'is-valid');
-                            $('#WorkReelThreeYoutubeUrlValidationMessage').removeClass('invalid-feedback')
-                                .addClass('valid-feedback').text('Valid YouTube URL.');
-                        } else {
-                            $('#WorkReelThreeVideoYoutubeUrlInput').removeClass('is-valid').addClass(
-                                'is-invalid');
-                            $('#WorkReelThreeYoutubeUrlValidationMessage').removeClass('valid-feedback')
-                                .addClass('invalid-feedback').text('Invalid YouTube URL.');
-                        }
-                    },
-                    error: function() {
-                        console.log('Error occurred during YouTube URL validation.');
-                    }
-                });
-            } else {
-                $('#WorkReelThreeVideoYoutubeUrlInput').removeClass('is-valid is-invalid');
-                $('#WorkReelThreeYoutubeUrlValidationMessage').removeClass('valid-feedback invalid-feedback').text('');
-            }
-        }
     </script>
-
     <script>
-        // check Imdb  Url valid yes no
-        $(document).ready(function() {
-            $('#ImdbUrlInput').on('input', function() {
-                var ImdbUrl = $(this).val();
-
-                validateImdbUrl(ImdbUrl);
-
-            });
-        });
-
-        function validateImdbUrl(ImdbUrl) {
-            // Regular expression pattern for YouTube URL validation
-            var imdbUrlPattern = /^https?:\/\/www\.imdb\.com\/title\/[a-zA-Z0-9]+\/$/;
-            if (ImdbUrl.match(imdbUrlPattern)) {
-
-                // Send an AJAX request to the Laravel backend for further validation
-                $.ajax({
-                    url: '/validate-imdb-url',
-                    type: 'GET',
-                    data: {
-                        imdb_profile: ImdbUrl,
-                    },
-                    success: function(response) {
-                        if (response.valid) {
-                            $('#ImdbUrlInput').removeClass('is-invalid').addClass('is-valid');
-                            $('#ImdbUrlValidationMessage').removeClass('invalid-feedback')
-                                .addClass('valid-feedback').text('Valid YouTube URL.');
-                        } else {
-                            $('#ImdbUrlInput').removeClass('is-valid').addClass('is-invalid');
-                            $('#ImdbUrlValidationMessage').removeClass('valid-feedback').addClass(
-                                'invalid-feedback').text('Invalid YouTube URL.');
-                        }
-                    },
-                    error: function() {
-                        console.log('Error occurred during YouTube URL validation.');
-                    }
-                });
-            } else {
-                $('#ImdbUrlInput').removeClass('is-valid is-invalid');
-                $('#ImdbUrlValidationMessage').removeClass('valid-feedback invalid-feedback').text('');
-            }
-        }
         $(document).ready(function() {
             // Initialize select2 with data
             $('#ethnicity').select2({
