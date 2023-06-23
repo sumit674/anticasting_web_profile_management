@@ -35,7 +35,7 @@ class FrontendProfileController extends Controller
             'ethnicity' => 'required',
             'gender' => 'required',
             'current_location' => 'required|regex:/^[a-zA-Z ]+[a-zA-Z 0-9]*$/',
-            'height' => 'numeric|min:1|max:250',
+            'height' => 'nullable|numeric|min:1|max:250',
             'mobile_no' => [
                 'required',
                 'regex:/^[0-9][0-9\s]+[0-9]$/',
@@ -51,7 +51,7 @@ class FrontendProfileController extends Controller
             ],
             'about_me' =>'nullable|string|max:300',
             'skills'=>'nullable|string|max:300',
-            'weight' => 'numeric|min:1|max:400',
+            'weight' => 'nullable|numeric|min:1|max:400',
             // 'image1' => 'required_if:image1,null|mimes:jpg,jfif,png,jpeg,gif',
             'image2' => 'nullable|image|mimes:jpg,jfif,png,jpeg,gif|max:4096',
             'image3' => 'nullable|image|mimes:jpg,jfif,png,jpeg,gif|max:4096',

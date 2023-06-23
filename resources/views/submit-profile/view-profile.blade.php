@@ -20,7 +20,7 @@
 @endsection
 @section('content')
     <div class="content">
-        <div class="row">
+        <div class="row main-section">
             <div class="col-md-12">
                 <div class="d-flex justify-content-between">
                     <div class="">
@@ -83,7 +83,7 @@
                 <div class="card mb-3 custom-card">
                     <div class="card-body shadow bg-body rounded">
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-12 col-sm-12 col-lg-12 col-12 ">
                                 <div class="gallery-container">
                                     <div class="gallery-item">
                                         @if (isset($userInfo?->profile?->image1))
@@ -200,7 +200,7 @@
                                         <div class="other-value">
                                             <a href="{{ $userInfo?->profile?->imdb_profile }}"
                                                 class="text-decoration-none">
-                                                <span class="johns-profile me-2">{{ $userInfo?->first_name }} 's
+                                                <span class="johns-profile me-2">{{ $userInfo?->first_name }}'s
                                                     Profile</span>
                                             </a>
                                         </div>
@@ -208,7 +208,7 @@
                                 </div>
                             </div>
                             <div class="mt-3">Skills</div>
-                            <span class="other-value">{!! $userInfo?->profile?->skills !!}&nbsp;</span>
+                            <span class="other-value">{{$userInfo?->profile?->skills}}&nbsp;</span>
                             <div class="mt-3">Formal training in acting</div>
                             <span class="other-value">{{ $userInfo?->profile?->formal_acting }}</span>
 
@@ -243,7 +243,6 @@
 
         images.forEach((image) => {
             image.addEventListener('click', () => {
-
                 image.classList.toggle('up');
                 image.classList.toggle('down');
                 image.classList.toggle('expanded');

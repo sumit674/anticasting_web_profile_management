@@ -232,6 +232,8 @@
 
     .login-card{
         overflow-y: scroll;
+        height: 572px;
+        bottom: 34px;
     }
  }
 

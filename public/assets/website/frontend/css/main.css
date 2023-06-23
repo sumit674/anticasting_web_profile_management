@@ -23,17 +23,20 @@ html,
         flex-grow: 1;
         flex-shrink: 1;
         transition: width 0.3s ease;
+        margin-right: 45px;
       }
 
       .sidebar.active {
-        width: 0;
+        width: 0%;
       }
 
       .content {
         width: 80%;
         padding: 20px;
       }
-
+      .content .main-section{
+        margin-left:-42px;
+    }
       header {
         background-color: #1f1f27;
       }
@@ -91,17 +94,33 @@ html,
       @media (max-width: 992px) {
         .sidebar {
           width: 0;
+
         }
+        .sidebar {
+            width: 20%;
+            background-color: #343a40;
+            color: #fff;
+            flex-grow: 1;
+            flex-shrink: 1;
+            transition: width 0.3s ease;
+            margin-right: 45px;
+          }
+
 
         .content {
-          width:75%;
+          width:67%;
+          margin-left: -25px;
+        }
+        .content .main-section{
+            margin-left:-42px;
         }
        .sidebar.active {
-          width: 80%;
+          width:0%;
         }
         .personal-info {
             width: 100%;
-            font-size: 22px;
+            font-size: 23px;
+            font-weight: 500;
             line-height:25px;
             text-align:center;
             font-family: Poppins;
@@ -111,7 +130,8 @@ html,
           }
           .personal-info-name{
             width: 100%;
-            font-size: 30px;
+            font-size: 23px;
+            font-weight: 500;
             line-height: 25px;
             text-align: center;
             font-family: Poppins;
@@ -120,7 +140,8 @@ html,
         }
         .personal-info-phone{
             width: 100%;
-            font-size: 22px;
+            font-size: 23px;
+            font-weight: 500;
             line-height:25px;
             text-align:center;
             font-family: Poppins;
@@ -161,11 +182,12 @@ html,
       }
 
       @media (max-width: 576px) {
+
         .sidebar img {
           display: none;
         }
         .sidebar.active {
-          width: 100%;
+          width:37%;
         }
         .sidebar.active img {
           display: block;
@@ -199,6 +221,11 @@ html,
         .header-menu li {
           margin: 5px 0;
         }
+        .validation-image-mark{
+            margin-top: -20px;
+            padding-left: 0px;
+            position: absolute;
+        }
       }
       .section-header {
         text-transform: uppercase;
@@ -207,8 +234,9 @@ html,
       }
       .personal-info {
         width: 100%;
-        font-size: 25px;
-        line-height:25px;
+        font-size: 23px;
+        font-weight: 500;
+        line-height:37px;
         text-align:center;
         font-family: Poppins;
         margin-left:15px;
@@ -217,7 +245,8 @@ html,
       }
       .personal-info-name{
         width: 100%;
-        font-size: 35px;
+        font-size: 23px;
+        font-weight: 500;
         line-height: 25px;
         text-align: center;
         font-family: Poppins;
@@ -227,7 +256,8 @@ html,
     }
     .personal-info-phone{
         width: 100%;
-        font-size: 25px;
+        font-size: 23px;
+        font-weight: 500;
         line-height:25px;
         text-align:center;
         font-family: Poppins;
@@ -394,5 +424,39 @@ html,
     color: #444;
     line-height: 34px !important;
 }
+.validation-image-mark{
+    margin-top: -18px;
+    padding-left: 0px;
+    position: absolute;
+}
+/* Custom styles for the modal */
+.modal-content {
+    background-color: #f8f9fa; /* Customize the background color */
+  }
+
+  .modal-header {
+    background-color: #007bff; /* Customize the header background color */
+    color: #fff; /* Customize the header text color */
+  }
+
+  .modal-title {
+    font-size: 20px; /* Customize the title font size */
+  }
+
+  .modal-body {
+    padding: 0; /* Remove padding from the body */
+  }
+
+  .embed-responsive {
+    padding-bottom: 56.25%; /* Maintain the aspect ratio of the video */
+  }
+
+  .embed-responsive iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
 
 

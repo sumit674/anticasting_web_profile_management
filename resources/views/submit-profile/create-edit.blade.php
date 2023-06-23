@@ -4,7 +4,7 @@
 @endsection
 @section('content')
     <div class="content">
-        <div class="row">
+        <div class="row main-section">
             <div class="col-md-12">
 
                 <div class="mb-3 edit-profile-card">
@@ -83,8 +83,7 @@
                                     <div class="mb-3">
                                         <label for="ethnicity" class="form-label">Ethnicity <span
                                                 class="strik-color">*</span></label>
-                                        <select name="ethnicity" id="ethnicity"
-                                            class="form-control">
+                                        <select name="ethnicity" id="ethnicity" class="form-control">
                                             <option
                                                 value="{{ isset($userProfile?->ethnicity) ? $userProfile?->ethnicity : '' }}">
                                                 {{ isset($userProfile?->ethnicity) ? $userProfile?->ethnicity : '' }}
@@ -98,9 +97,9 @@
                                             @endisset
                                         </select>
                                         @error('ethnicity')
-                                              <div class="text-danger">
-                                              {{ $message }}
-                                              </div>
+                                            <div class="text-danger">
+                                                {{ $message }}
+                                            </div>
                                         @enderror
                                     </div>
 
@@ -112,11 +111,37 @@
                             <div class="card shadow-sm">
                                 <div class="card body">
                                     <!-- New gallery image thumbnail -->
+
+                                    <div id="popover-content" class="d-none">
+                                        <div class="form-group">
+                                            {{-- <label class="form-label" for="LocationInput">Sample Headshot Image</label> --}}
+                                            <div id="" class="yt-video">
+                                                <img width="200"
+                                                    src="https://t4.ftcdn.net/jpg/02/86/91/07/360_F_286910763_zOX9bUhDQPUvk45vWOaNsGAvDf18oSod.jpg"
+                                                    border="1">
+                                            </div>
+                                            <strong class="form-label">Sample resolutions</strong>
+                                            <ul>
+                                                <li>width: 250px</li>
+                                                <li>height: 167px</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
                                     <div class="ms-3 mb-3">
                                         <label for="gallery" class="form-label ">Headshot Images <span
                                                 class="strik-color">*</span></label>
+                                        <span class="info" style="cursor:pointer;" tabindex="0"
+                                            data-bs-placement="top" data-bs-toggle="popover"
+                                            data-bs-content-id="popover-content" data-bs-trigger="focus"
+                                            title="Headshot Image">
+                                            <i class="fa fa-info-circle"></i>
+                                        </span>
+                                          <div class="strik-color validation-image-mark">*</div>
                                         <div class="d-flex">
+
                                             <label class="thumbnail" for="image1">
+
                                                 @if (isset($userInfo?->profile?->image1))
                                                     <img src="{{ asset('upload/profile/' . $userInfo?->profile?->image1) }}"
                                                         class="custom-image-create" id="preview1" alt="Image 1">
@@ -171,11 +196,15 @@
                                             images</small>
                                     </div>
                                     <div class="ms-3 me-3">
+                                        @include('submit-profile.sample-video')
                                         <div class="mb-3">
                                             <label for="intro_video" class="form-label">Intro Video <span
                                                     class="strik-color">*</span> <small class="text-danger">(only youtube
                                                     link)</small> <span
                                                     id="IntroVideoYoutubeUrlValidationMessage"></span></label>
+                                            <span class="fa fa-play-circle" data-bs-toggle="modal"
+                                                data-bs-target="#videoModal"></span>
+
                                             <input type="text" id="IntroVideoYoutubeUrlInput" name="intro_video_link"
                                                 class="form-control  {{ $errors->has('intro_video_link') ? ' is-invalid' : '' }}"
                                                 placeholder="Enter intro video"
@@ -223,39 +252,45 @@
                             <div class="card shadow-sm">
                                 <div class="card-body">
                                     <div class="mb-3">
-                                        <label for="height" class="form-label">Height <small class="text-danger">(feet', inches" less than 250.)</small></label>
+                                        <label for="height" class="form-label">Height <small
+                                                class="text-danger">(feet', inches" less than 250.)</small></label>
                                         <input type="text" id="height" name="height"
                                             class="form-control  {{ $errors->has('height') ? ' is-invalid' : '' }}"
-                                            value="{{ old('height', isset($userProfile->height) ? $userProfile->height : ' ') }}" />
-
+                                            value="{{ old('height', isset($userProfile->height) ? $userProfile->height : ' ') }}"
+                                            placeholder="Height (CM)" />
                                     </div>
                                     <div class="mb-3">
-                                        <label for="weight" class="form-label">Weight <small class="text-danger">(kg less than 400.)</small></label>
+                                        <label for="weight" class="form-label">Weight <small class="text-danger">(kg
+                                                less than 400.)</small></label>
                                         <input type="text" id="weight" name="weight"
                                             class="form-control  {{ $errors->has('weight') ? ' is-invalid' : '' }}"
-                                            value="{{ old('weight', isset($userProfile->weight) ? $userProfile->weight : ' ') }}" />
+                                            value="{{ old('weight', isset($userProfile->weight) ? $userProfile->weight : ' ') }}"
+                                            placeholder="Weight (KG)" />
                                     </div>
                                     <div class="mb-3">
-                                        <label for="ImdbUrlInput" class="form-label">IMDB Profile <small class="text-danger">(only IMDB
+                                        <label for="ImdbUrlInput" class="form-label">IMDB Profile <small
+                                                class="text-danger">(only IMDB
                                                 link)</small><span id="ImdbUrlValidationMessage"></span></label>
                                         <input type="text" id="ImdbUrlInput" name="imdb_profile"
                                             class="form-control  {{ $errors->has('imdb_profile') ? ' is-invalid' : '' }}"
-                                            value="{{ old('imdb_profile', isset($userProfile->imdb_profile) ? $userProfile->imdb_profile : ' ') }}" />
+                                            value="{{ old('imdb_profile', isset($userProfile->imdb_profile) ? $userProfile->imdb_profile : ' ') }}"
+                                            placeholder="IMDB Profile - only imdb link" />
                                     </div>
                                     <div class="mb-3">
                                         <label for="skills" class="form-label">Skills <small class="text-danger">(max
                                                 300
                                                 chars.)</small></label>
-                                                 <textarea id="skills" name="skills" class="form-control {{ $errors->has('skills') ? ' is-invalid' : '' }}">{{ old('skills', isset($userProfile->skills) ? $userProfile->skills : ' ') }}</textarea>
+                                        <input type="text" id="skills" name="skills"
+                                            class="form-control  {{ $errors->has('skills') ? ' is-invalid' : '' }}"
+                                            value="{{ old('skills', isset($userProfile->skills) ? $userProfile->skills : ' ') }}"
+                                            placeholder="Enter your skills" />
                                     </div>
-                                    @error('skills')
-                                    <span class="text-danger">{{ $message }}</span>
-                                    @enderror
                                     <div class="mb-3">
                                         <label for="formal_acting" class="form-label">Formal training in acting</label>
                                         <input type="text" id="formal_acting" name="formal_acting"
                                             class="form-control  {{ $errors->has('formal_acting') ? ' is-invalid' : '' }}"
-                                            value="{{ old('formal_acting', isset($userProfile->formal_acting) ? $userProfile->formal_acting : ' ') }}" />
+                                            value="{{ old('formal_acting', isset($userProfile->formal_acting) ? $userProfile->formal_acting : ' ') }}"
+                                            placeholder="Enter formal training in acting" />
                                     </div>
 
                                 </div>
@@ -271,8 +306,8 @@
                                                 chars.)</small></label>
                                         <textarea id="about_me" name="about_me" class="form-control {{ $errors->has('about_me') ? ' is-invalid' : '' }}">{{ old('about_me', isset($userProfile->about_me) ? $userProfile->about_me : ' ') }}</textarea>
                                     </div>
-                                     @error('about_me')
-                                    <span class="text-danger">{{ $message }}</span>
+                                    @error('about_me')
+                                        <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
@@ -313,7 +348,7 @@
         });
     </script>
     <script>
-     //About Me Editor.
+        //About Me Editor.
         $(document).ready(function() {
             $('#about_me').summernote({
                 placeholder: 'Enter movie description goes here..',
@@ -355,48 +390,7 @@
             })
             $('.dropdown-toggle').dropdown();
         });
-        //Skills Editor.
-          $(document).ready(function() {
-            $('#skills').summernote({
-                placeholder: 'Enter movie description goes here..',
-                // tabsize: 2,
-                height: 80,
-                // followingToolbar: true,
-                toolbar: [
-                    ['style', ['style']],
-                    ['font', ['bold', 'underline', 'clear']],
-                    ['fontname', ['fontname']],
-                    ['color', ['color']],
-                    ['para', ['ul', 'ol', 'paragraph']],
-                    // ['table', ['table']],
-                    // ['insert', ['link', 'picture', 'video']],
-                    // ['view', ['fullscreen', 'codeview', 'help']],
-                ],
-                popover: {
-                    image: [
-                        ['image', ['resizeFull', 'resizeHalf', 'resizeQuarter', 'resizeNone']],
-                        ['float', ['floatLeft', 'floatRight', 'floatNone']],
-                        ['remove', ['removeMedia']]
-                    ],
-                    link: [
-                        ['link', ['linkDialogShow', 'unlink']]
-                    ],
-                    table: [
-                        ['add', ['addRowDown', 'addRowUp', 'addColLeft', 'addColRight']],
-                        ['delete', ['deleteRow', 'deleteCol', 'deleteTable']],
-                    ],
-                    air: [
-                        ['color', ['color']],
-                        ['font', ['bold', 'underline', 'clear']],
-                        ['para', ['ul', 'paragraph']],
-                        ['table', ['table']],
-                        ['insert', ['link', 'picture']]
-                    ]
-                }
 
-            })
-            $('.dropdown-toggle').dropdown();
-        });
         /*Upload Image then will be show the in image*/
         // First Image
         $(document).ready(function() {
@@ -453,6 +447,27 @@
                 document.location.href = url;
             }
         }
+        //Popover Sample Image
+        const list = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+        list.map((el) => {
+            let opts = {
+                animation: false,
+            }
+            if (el.hasAttribute('data-bs-content-id')) {
+                opts.content = document.getElementById(el.getAttribute('data-bs-content-id')).innerHTML;
+                opts.html = true;
+            }
+            new bootstrap.Popover(el, opts);
+        })
+        //close intro video
+        $(document).ready(function() {
+            $('#videoModal').on('hide.bs.modal', function() {
+                var videoPlayer = document.getElementById('videoPlayer');
+                var videoSrc = videoPlayer.getAttribute('src');
+                videoPlayer.setAttribute('src', '');
+                videoPlayer.setAttribute('src', videoSrc);
+            });
+        });
     </script>
     <script>
         var editFlag = '{{ $flag }}';

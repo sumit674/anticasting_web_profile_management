@@ -5,7 +5,7 @@
             <div class="container">
                 <div class="card login-card">
                     <div class="row no-gutters">
-                        <div class="col-md-5">
+                        <div class="col-md-5 col-sm-12 col-lg-5">
                             <div class="card-body">
                                 <div class="brand-wrapper">
                                     <a href="{{ route('users.home') }}">
@@ -35,7 +35,7 @@
                                             <span class="text-danger"><b>{{ $message }}</b></span>
                                         @enderror
                                     </div>
-                                    <div class="form-group mb-3">
+                                    <div class="form-group mb-2">
                                         <label for="password" class="form-label text-muted">
                                             <b>Password</b>&nbsp;<span style="color:red;"><b>*</b></span>
                                         </label>
@@ -59,14 +59,14 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group mb-3">
+                                    <div class="form-group mb-1">
                                         <input id="captcha" type="text" class="form-control"
                                             placeholder="Enter Captcha" name="captcha">
                                         @error('captcha')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
-                                    <div class="form-group mb-3">
+                                    <div class="form-group mb-1">
                                         <input type="checkbox" name="remeber_me" id="rember-me" />
                                         <label for="rember-me" class="form-label text-muted">&nbsp;<b>Remember
                                                 Me</b></label>
@@ -76,11 +76,11 @@
                                                     password?</b></a>
                                         </label>
                                     </div>
-                                    <div class="d-grid gap-2 mb-1 mt-3 col-6 mx-auto">
+                                    <div class="d-grid gap-2 mt-3 col-6 mx-auto">
                                         <input type="submit" class="btn btn-dark form-control" value="Login">
                                     </div>
                                 </form>
-                                <div class="mt-3">
+                                <div class="register-link">
                                     <p class="login-card-footer-text"><b>Don't have an account?</b>
                                         <a href="{{ route('users.register') }}" class="text-reset text-muted"> Register
                                             here</a>
@@ -88,7 +88,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-7 d-none d-sm-none d-md-block">
+                        <div class="col-md-7 col-sm-7 col-lg-7 d-none d-sm-none d-md-block">
                             <img src="{{ asset('assets/website/images/banner.jpg') }}" alt="login"
                                 class="login-card-img">
                         </div>
