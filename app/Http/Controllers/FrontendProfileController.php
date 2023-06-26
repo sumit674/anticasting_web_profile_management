@@ -49,6 +49,7 @@ class FrontendProfileController extends Controller
                     return true;
                 },
             ],
+            'formal_acting'=>'nullable|string|max:300',
             'about_me' =>'nullable|string|max:300',
             'skills'=>'nullable|string|max:300',
             'weight' => 'nullable|numeric|min:1|max:400',

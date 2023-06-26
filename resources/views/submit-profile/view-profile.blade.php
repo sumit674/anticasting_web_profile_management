@@ -43,7 +43,8 @@
                                         $dateOfBirth = Carbon\Carbon::parse($userInfo?->profile?->date_of_birth)->format('d  M  Y');
                                         $years = Carbon\Carbon::parse($userInfo?->profile?->date_of_birth)->diffInYears(Carbon\Carbon::now());
                                     @endphp
-                                    <span class="personal-info">{{ $dateOfBirth }} &nbsp({{ $years }} Yrs age)</span>
+                                    <span class="personal-info">{{ $dateOfBirth }} &nbsp({{ $years }} Yrs
+                                        age)</span>
                                     <span class="personal-info">{{ $userInfo?->profile?->gender }}</span>
                                 </div>
                                 <div class="personal-main-second">
@@ -62,8 +63,8 @@
                                         <div class="other-value">{{ $userInfo?->profile?->current_location }}</div>
                                     </div>
                                 </div>
-                             </div>
-                         </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -91,7 +92,7 @@
                                                 class="custom-image" alt="Image 1">
                                         @else
                                             <img src="{{ asset('assets/images/user-default-image.png') }}"
-                                                class="custom-image" alt="Image 3">
+                                                class="youtube-thumbanil-image" alt="Image 3">
                                         @endif
                                     </div>
                                     <div class="gallery-item">
@@ -110,7 +111,7 @@
                                                 class="custom-image" alt="Image 2">
                                         @else
                                             <img src="{{ asset('assets/images/user-default-image.png') }}"
-                                                class="custom-image" alt="Image 3">
+                                                class="youtube-thumbanil-image" alt="Image 3">
                                         @endif
                                     </div>
                                     <div class="gallery-item">
@@ -119,7 +120,7 @@
                                                 class="custom-image" alt="Image 3">
                                         @else
                                             <img src="{{ asset('assets/images/user-default-image.png') }}"
-                                                class="custom-image" alt="Image 4">
+                                                class="youtube-thumbanil-image" alt="Image 4">
                                         @endif
 
                                     </div>
@@ -128,8 +129,8 @@
                                             <iframe src="{{ $userInfo?->profile?->work_reel1 }}" frameborder="0"
                                                 allowfullscreen height="239" width="200"></iframe>
                                         @else
-                                            <img src="{{ asset('assets/website/images/youtube.png') }}" alt=""
-                                                class="custom-image">
+                                            <img src="{{ asset('assets/images/No-Thumbnail.png') }}" alt=""
+                                                class="youtube-thumbanil-image">
                                         @endif
 
                                     </div>
@@ -138,8 +139,8 @@
                                             <iframe src="{{ $userInfo?->profile?->work_reel2 }}" frameborder="0"
                                                 allowfullscreen height="239" width="200"></iframe>
                                         @else
-                                            <img src="{{ asset('assets/website/images/youtube.png') }}" alt=""
-                                                class="custom-image">
+                                            <img src="{{ asset('assets/images/No-Thumbnail.png') }}" alt=""
+                                                class="youtube-thumbanil-image">
                                         @endif
 
                                     </div>
@@ -149,8 +150,8 @@
                                                 src="{{ $userInfo?->profile?->work_reel3 }}" frameborder="0"
                                                 allowfullscreen></iframe>
                                         @else
-                                            <img src="{{ asset('assets/website/images/youtube.png') }}" alt=""
-                                                class="custom-image">
+                                            <img src="{{ asset('assets/images/No-Thumbnail.png') }}" alt=""
+                                                class="youtube-thumbanil-image">
                                         @endif
 
                                     </div>
@@ -173,45 +174,71 @@
                 <div class="card mb-3">
                     <div class="card-body shadow  bg-body rounded">
                         <div class="row">
-
                             <!-- <div class="col-md-2">
-                          <img
-                            src="https://via.placeholder.com/170x230"
-                            alt="Profile Image"
-                            class="img-fluid"
-                          />
-                        </div> -->
+                                          <img
+                                            src="https://via.placeholder.com/170x230"
+                                            alt="Profile Image"
+                                            class="img-fluid"
+                                          />
+                                        </div> -->
                             <div class="col-md-10">
                                 <div class="row">
                                     <div class="col-md-4 col-sm-4 col-lg-4  align-items-baseline">
                                         <div>Height (ft', in")</div>
                                         <div class="other-value">
-                                            {{ $userInfo?->profile?->height }}
+                                            @if (isset($userInfo?->profile?->height) && $userInfo?->profile?->height != null)
+                                                {{ $userInfo?->profile?->height }}
+                                            @else
+                                                <span class="johns-profile-empty me-2">N/A</span>
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="col-md-4  col-sm-4 col-lg-4  align-items-baseline">
                                         <div>Weight (Kg)</div>
                                         <div class="other-value">
-                                            {{ $userInfo?->profile?->weight }}
+                                            @if (isset($userInfo?->profile?->weight) && $userInfo?->profile?->weight != null)
+                                                {{ $userInfo?->profile?->weight }}
+                                            @else
+                                                <span class="johns-profile-empty me-2">N/A</span>
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="col-md-4  col-sm-4 col-lg-4 align-items-baseline">
                                         <div>IMDB Profile</div>
                                         <div class="other-value">
-                                            <a href="{{ $userInfo?->profile?->imdb_profile }}"
-                                                class="text-decoration-none">
-                                                <span class="johns-profile me-2">{{ $userInfo?->first_name }}'s
-                                                    Profile</span>
-                                            </a>
+                                            @if (isset($userInfo?->profile?->imdb_profile) && $userInfo?->profile?->imdb_profile != null)
+                                                <a href="{{ $userInfo?->profile?->imdb_profile }}"
+                                                    class="text-decoration-none">
+                                                    <span class="johns-profile me-2">{{ $userInfo?->first_name }}'s
+                                                        Profile</span>
+                                                </a>
+                                            @else
+                                                <span class="johns-profile-empty me-2">N/A</span>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="mt-3">Skills</div>
-                            <span class="other-value">{{$userInfo?->profile?->skills}}&nbsp;</span>
-                            <div class="mt-3">Formal training in acting</div>
-                            <span class="other-value">{{ $userInfo?->profile?->formal_acting }}</span>
+                            <span class="other-value">
+                                @if (isset($userInfo?->profile?->skills) && $userInfo?->profile?->skills != null)
+                                    {{ $userInfo?->profile?->skills }}
+                                @else
+                                    <span class="johns-profile-empty me-2">N/A</span>
+                                @endif
 
+                                &nbsp;
+                            </span>
+                            <div class="mt-3">Formal training in acting</div>
+                            <span class="other-value">
+                                @if (isset($userInfo?->profile?->formal_acting) && $userInfo?->profile?->formal_acting != null)
+                                    {{ $userInfo?->profile?->formal_acting }}
+                                @else
+                                    <span class="johns-profile-empty me-2">N/A</span>
+                                @endif
+
+                                &nbsp;
+                            </span>
                         </div>
                     </div>
                 </div>

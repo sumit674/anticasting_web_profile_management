@@ -202,7 +202,15 @@ html,
         .menu-container {
           display: none;
         }
-
+        .thumbnail img {
+            width: 89px;
+            height: 100px;
+            margin-top: 2px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 5px;
+            cursor: pointer;
+        }
         .header-menu {
           position: absolute;
           top: 100%;
@@ -221,6 +229,7 @@ html,
         .header-menu li {
           margin: 5px 0;
         }
+
         .validation-image-mark{
             margin-top: -20px;
             padding-left: 0px;
@@ -234,7 +243,7 @@ html,
       }
       .personal-info {
         width: 100%;
-        font-size: 23px;
+        font-size: 21px;
         font-weight: 500;
         line-height:37px;
         text-align:center;
@@ -245,7 +254,7 @@ html,
       }
       .personal-info-name{
         width: 100%;
-        font-size: 23px;
+        font-size: 21px;
         font-weight: 500;
         line-height: 25px;
         text-align: center;
@@ -256,7 +265,7 @@ html,
     }
     .personal-info-phone{
         width: 100%;
-        font-size: 23px;
+        font-size: 21px;
         font-weight: 500;
         line-height:25px;
         text-align:center;
@@ -348,7 +357,7 @@ html,
       }
       .johns-profile{
         font-family: Poppins;
-        font-size: 24px;
+        font-size: 21px;
         font-weight: 500;
         font-stretch: normal;
         font-style: normal;
@@ -395,6 +404,16 @@ html,
 
 
   }
+  .youtube-thumbanil-image {
+    width: 200px;
+    height: 239px;
+    margin-bottom: 238px;
+    margin-top:10px;
+    object-fit: cover;
+    background-size: cover;
+
+
+}
   .custom-image-create{
     width: 200px;
     height: 239px;
@@ -458,5 +477,15 @@ html,
     width: 100%;
     height: 100%;
   }
+  .johns-profile-empty{
+        font-family: Poppins;
+        font-size: 21px;
+        font-weight: 500;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        color: #808183;
 
+  }
 

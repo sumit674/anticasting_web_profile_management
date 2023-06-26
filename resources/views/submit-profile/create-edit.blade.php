@@ -259,7 +259,7 @@
                                         <input type="text" id="height" name="height"
                                             class="form-control  {{ $errors->has('height') ? ' is-invalid' : '' }}"
                                             value="{{ old('height', isset($userProfile->height) ? $userProfile->height : ' ') }}"
-                                            placeholder="Height (CM)" />
+                                            placeholder="Height (e.g.,5.6)" />
                                     </div>
                                     <div class="mb-3">
                                         <label for="weight" class="form-label">Weight <small
@@ -276,7 +276,7 @@
                                         <input type="text" id="ImdbUrlInput" name="imdb_profile"
                                             class="form-control  {{ $errors->has('imdb_profile') ? ' is-invalid' : '' }}"
                                             value="{{ old('imdb_profile', isset($userProfile->imdb_profile) ? $userProfile->imdb_profile : ' ') }}"
-                                            placeholder="IMDB Profile - only imdb link" />
+                                            placeholder="IMDB Profile-only imdb link" />
                                     </div>
                                     <div class="mb-3">
                                         <label for="skills" class="form-label">Skills <small class="text-danger">(max
@@ -288,7 +288,9 @@
                                             placeholder="Enter your skills" />
                                     </div>
                                     <div class="mb-3">
-                                        <label for="formal_acting" class="form-label">Formal training in acting</label>
+                                        <label for="formal_acting" class="form-label">Formal training in acting <small class="text-danger">(max
+                                                300
+                                                chars.)</small></label>
                                         <input type="text" id="formal_acting" name="formal_acting"
                                             class="form-control  {{ $errors->has('formal_acting') ? ' is-invalid' : '' }}"
                                             value="{{ old('formal_acting', isset($userProfile->formal_acting) ? $userProfile->formal_acting : ' ') }}"
